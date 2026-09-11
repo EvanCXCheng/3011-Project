@@ -1,4 +1,5 @@
 import time
+import random
 # import timeout_decorator
 '''
 WINDOWS COMPATIBILITY NOTE:
@@ -11,6 +12,12 @@ WINDOWS COMPATIBILITY NOTE:
     independently during marking.
 '''
 from agent_baselines import Agent
+
+
+''' Thoughts: 
+Greedy: defend our SCs, then take others, then take "good" squares (distance to SC and takeable)
+'''
+
 
 class StudentAgent(Agent):
     '''
@@ -27,12 +34,25 @@ class StudentAgent(Agent):
 
         '''Implement your agent here.'''
 
+        self.our_scs = set()
+        self.scs = {}
+
     # @timeout_decorator.timeout(1)
     def new_game(self, game, power_name):
         self.game = game
         self.power_name = power_name
 
         '''Implement your agent here.'''
+
+        #Establish supply centers (map of supply center : adjacent locations)
+        centers = self.game.map.centers #Player : [supply centers]
+        for player in centers:
+            if player == power_name:
+                for i in centers[player]:
+                    self.our_scs.add(i)
+            for i in centers[player]:
+                #All caps for fleet and army accessible, all lowercase for army only
+                self.scs[i] = self.game.map.abut_list(i)
 
     # @timeout_decorator.timeout(1) # This is only for updating the game engine and other states if any. Do not implement heavy strategy here.
     def update_game(self, all_power_orders):
@@ -41,12 +61,110 @@ class StudentAgent(Agent):
             self.game.set_orders(power_name, all_power_orders[power_name])
         self.game.process()
 
+    def check_supply_center(self, sc, armies, fleets, f_armies, f_fleets, used, friendly = False):
+        order, potential_friendly, potential_enemy = [], 0, 0
+
+        #If supply center is held
+        if friendly and sc in armies:
+            potential_friendly = 1
+        elif sc in armies:
+            potential_enemy = 1
+
+        #Find support and threat
+        for adjacent in self.scs[sc]:
+            if adjacent in armies or (adjacent.isupper() and adjacent in fleets):
+                potential_enemy += 1
+            if adjacent not in used and adjacent in f_armies or (adjacent.isupper() and adjacent in fleets):
+                potential_friendly += 1
+
+        #Can't be defended
+        if friendly and potential_enemy > potential_friendly:
+            return [], used
+        #Can't be taken
+        elif potential_enemy >= potential_friendly:
+            return [], used
+        
+        i = 0
+        for adjacent in self.scs[sc]:
+            #Have enough support, don't overdo
+            if i >= potential_enemy:
+                break
+            type_ = None
+
+            #Valid army or fleet
+            if adjacent in f_armies and adjacent not in used:
+                type_ = 'A'
+            elif adjacent.isupper() and adjacent in f_fleets and adjacent not in used:
+                type_ = 'F'
+
+            if type_:
+                used.add(adjacent)
+                #First attack has different notation, rest will be support, holding will be done already
+                if i == 0 and not friendly:
+                    order.append(f"{type_} {adjacent} - {sc}")
+                    first = (adjacent, type_)
+                else:
+                    #Support notation is different for hold and attack
+                    if friendly:
+                        order.append(f"{type_} {adjacent} S A {sc}")
+                    else:
+                        order.append(f"{type_} {adjacent} S {first[1]} {first[0]} - {sc}")
+            i += 1
+        return order, used
+
     # @timeout_decorator.timeout(1)
     def get_actions(self):
 
         '''Implement your agent here.'''
-        
-        return [] 
+        #M is movement, R is retreat, A is adjustment (this is probably suboptimal)
+        if self.game.phase_type != 'M':
+            return []
+        orders = []
+        position = self.game.get_units()
+        friendly_armies, friendly_fleets, enemy_armies, enemy_fleets, used = set(), set(), set(), set(), set()
+
+        #Find all units, lowercase edge is army only, uppercase is armies and fleets
+        for power in position:
+            mine = False
+            if power == self.power_name:
+                mine = True
+            for unit in position[power]:
+                unit = unit.split()
+                if unit[0] == 'A' and mine:
+                    friendly_armies.add(unit[1])
+                elif unit[0] == 'F' and mine:
+                    friendly_fleets.add(unit[1])
+                elif unit[0] == 'A':
+                    enemy_armies.add(unit[1])
+                elif unit[0] == 'F':
+                    enemy_fleets.add(unit[1])
+
+        #Hold our supply centers first (maybe this is suboptimal)
+        for sc in self.our_scs:
+            if sc in friendly_armies:
+                orders.append(f"A {sc} H")
+                used.add(sc)
+
+        #See if supply centers can be held or attacked, and do where possible
+        for sc in self.scs:
+            if sc in self.our_scs:
+                order, used = self.check_supply_center(sc, enemy_armies, enemy_fleets, friendly_armies, friendly_fleets, used, True)
+            else:
+                order, used = self.check_supply_center(sc, enemy_armies, enemy_fleets, friendly_armies, friendly_fleets, used)
+        orders.extend(order)
+
+        #Now need to decide what to do with remaining units
+        orders_remaining = self.game.get_all_possible_orders()
+        for army in friendly_armies:
+            if army not in used:
+                orders.append(random.choice(orders_remaining[army]))
+                used.add(army)
+        for fleet in friendly_fleets:
+            if fleet not in used:
+                orders.append(random.choice(orders_remaining[fleet]))
+                used.add(fleet)
+
+        return orders 
 
         '''
         Return a list of orders. Each order is a string, with specific format. For the format, read the game rule and game engine documentation.
