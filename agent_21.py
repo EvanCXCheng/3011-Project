@@ -12,6 +12,7 @@ WINDOWS COMPATIBILITY NOTE:
     independently during marking.
 '''
 from agent_baselines import Agent
+from collections import deque
 
 
 ''' Thoughts: 
@@ -61,6 +62,7 @@ class StudentAgent(Agent):
             self.game.set_orders(power_name, all_power_orders[power_name])
         self.game.process()
 
+    #Assuming other players attack and defend supply centers optimally, find which can be held and taken
     def check_supply_center(self, sc, armies, fleets, f_armies, f_fleets, used, friendly = False):
         order, potential_friendly, potential_enemy = [], 0, 0
 
@@ -116,10 +118,59 @@ class StudentAgent(Agent):
     def get_actions(self):
 
         '''Implement your agent here.'''
-        #M is movement, R is retreat, A is adjustment (this is probably suboptimal)
-        if self.game.phase_type != 'M':
-            return []
         orders = []
+
+        #Adjustment (we probably want to do something here)
+        if self.game.phase_type == 'A':
+            return []
+
+        #Retreating
+        if self.game.phase_type == 'R':
+            ours = self.game.get_orderable_locations(self.power_name)
+            retreat_moves = {unit : moves for unit, moves in self.game.get_all_possible_orders().items() if moves and unit in ours}
+
+            for unit in retreat_moves:
+                moves = retreat_moves[unit]
+                if len(moves) == 1: #Must disband
+                    orders.append(moves[0])
+                else:
+                    #BFS to find best space to get to an enemy controlled supply center
+                    seen = {unit : None}
+                    queue = deque()
+                    unit_type = moves[0].split()[0]
+
+                    #Start queue with legal moves only to avoid blocked spaces
+                    for move in moves:
+                        move = move.split()
+                        if len(move) == 4: #Retreat order as A somewhere R somewhere, disband is only 3 as A somewhere D
+                            queue.append(move[3])
+                            seen[move[3]] = unit
+
+                    while queue:
+                        on = queue.popleft()
+
+                        if on in self.scs and on not in self.our_scs:
+                            #Find adjacent space (legal move)
+                            while seen[on] != unit:
+                                on = seen[on]
+
+                            orders.append(f"{unit_type} {unit} R {on}")
+                            break
+
+                        neighbours = self.game.map.abut_list(on)
+                        for neighbour in neighbours:
+                            #Fleet only path
+                            if unit_type == 'A' and neighbour[1].islower():
+                                continue
+                            #Army only path
+                            if unit_type == 'F' and neighbour.islower():
+                                continue
+
+                            if neighbour not in seen:
+                                queue.append(neighbour)
+                                seen[neighbour] = on
+            return orders
+        
         position = self.game.get_units()
         friendly_armies, friendly_fleets, enemy_armies, enemy_fleets, used = set(), set(), set(), set(), set()
 
@@ -164,7 +215,7 @@ class StudentAgent(Agent):
                 orders.append(random.choice(orders_remaining[fleet]))
                 used.add(fleet)
 
-        return orders 
+        return orders
 
         '''
         Return a list of orders. Each order is a string, with specific format. For the format, read the game rule and game engine documentation.
