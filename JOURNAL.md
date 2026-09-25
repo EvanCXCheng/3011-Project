@@ -47,3 +47,31 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Lab fix: Python 3.12 `ProcessPoolExecutor(max_tasks_per_child=...)` deadlocked after ~75 games (all workers
   exited, parent waiting). `evaluate.py` now recycles workers by running batches in fresh pools. The 75 games already
   recorded were kept and reused.
+
+## [002] bot_001 greedy/base — PROMOTED
+
+- family: greedy | parent: none | tags: bfs-greedy
+- hypothesis: each unit moving to the neighbour closest (BFS, per unit type, coast-aware) to the nearest unowned SC
+  gives a working baseline near the Greedy baseline (S1 ~7 SC, S2 ~10 SC). No dedup, supports or convoys yet.
+- plan: Tier 0 (X, n=3, workers 1) → Tier 1 (A, n=42). Bootstrap: first bot to pass Tier 1 becomes overall champion.
+- results: Tier 0 clean (tmax 2 ms). Tier 1 A42: S1 6.14±0.40 / S2 8.31±0.82 (11.9% win) / S3 6.10±0.64 (2.4%).
+  Tier 2 B210: S1 6.14±0.18 (0%) / S2 7.43±0.33 (6.7%) / S3 6.14±0.28 (3.3%) → est. mark 2 (S2 1, S3 1). tmax 0.07 s.
+- takeaway: below the Greedy baseline (S1 7.4, S2 9.9). Weaknesses: self-bounces, no convoys (England armies stuck),
+  S1 stalls after neutrals (no supported attacks). Bootstrap → greedy champion + overall champion (agent_21.py).
+
+## [003] bot_002 valuemap/base — RUNNING
+
+- family: valuemap | parent: none | tags: value-map, value-diffusion (DumbBot-style idea, cite; own code)
+- hypothesis: a province value map (neutral SC 10, enemy SC 7, own SC 5×adjacent enemy units, diffused over the
+  per-unit-type graph: v = base + 0.6·max(nbr) + 0.05·sum(nbr), 6 passes), with units greedily assigned the highest-value
+  reachable province (no two units on one province), beats plain nearest-SC greedy in S2/S3 through defence and dedup.
+- plan: Tier 0 → Tier 1 (A, 42) → Tier 2 (B, 210) vs bot_001.
+
+## [004] bot_003 search/base — RUNNING
+
+- family: search | parent: none | tags: local-search, hill-climbing, heuristic-eval
+- hypothesis: coordinate-ascent hill climbing with random restarts (≤0.4 s, stop after 25 stale restarts) over our joint
+  orders (hold/move/support own units), scored by a heuristic (move success prob from strength vs occupancy and
+  contesting enemies; expected SC capture + distance to nearest unowned SC; penalty for open threatened own SCs),
+  finds supported attacks and avoids self-bounces → better than bot_001 in S1 (needs 2v1) and S2.
+- plan: Tier 0 → Tier 1 (A, 42) → Tier 2 (B, 210, or 126 if too slow).

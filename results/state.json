@@ -1,5 +1,33 @@
 {
- "bots": {},
+ "bots": {
+  "bot_001": {
+   "created": "2026-09-26T01:32",
+   "family": "greedy",
+   "file": "bots/bot_001_greedy_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "bfs-greedy"
+  },
+  "bot_002": {
+   "created": "2026-09-26T01:34",
+   "family": "valuemap",
+   "file": "bots/bot_002_valuemap_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "value-map,value-diffusion"
+  },
+  "bot_003": {
+   "created": "2026-09-26T01:37",
+   "family": "search",
+   "file": "bots/bot_003_search_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "local-search,hill-climbing,heuristic-eval"
+  }
+ },
  "families": {
   "adaptive": {
    "champion": null,
@@ -8,8 +36,8 @@
    "status": "ACTIVE"
   },
   "greedy": {
-   "champion": null,
-   "iterations": 0,
+   "champion": "bot_001",
+   "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -27,20 +55,27 @@
   },
   "search": {
    "champion": null,
-   "iterations": 0,
+   "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
   },
   "valuemap": {
    "champion": null,
-   "iterations": 0,
+   "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
   }
  },
- "hall_of_fame": [],
- "next_bot_id": 1,
- "overall_champions": [],
+ "hall_of_fame": [
+  "bot_001"
+ ],
+ "next_bot_id": 4,
+ "overall_champions": [
+  {
+   "bot": "bot_001",
+   "date": "2026-09-26T01:34"
+  }
+ ],
  "standin_rotation": 0,
  "techniques": {}
 }
