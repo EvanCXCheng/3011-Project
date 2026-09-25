@@ -1,0 +1,49 @@
+# BACKLOG
+
+Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: reason]`; don't delete them.
+
+## lab / cross-cutting
+1. Iteration 0: profile baselines. Static, Random, Attitude and Greedy as the player in S1 and S2, 49 games each
+   (seed set A), plus the S3 (Greedy stand-in) number for Greedy. Record in JOURNAL.
+2. Confirm engine behaviour for missing disbands (Static powers in S1) and for retreat defaults.
+
+## greedy (basic technique)
+1. Base: each unit moves toward the nearest SC we don't own (BFS distance per unit type, coast-aware).
+2. No self-bounces: unique targets per province; resolve chains where one unit vacates a province another enters.
+3. Supports: units with no useful move support a neighbouring unit's attack.
+4. Supported attacks on occupied SCs (2 vs 1), assigned as a matching problem (`scipy.optimize.linear_sum_assignment`).
+5. Fall priority: in Fall, occupy or stay on unowned SCs before ownership updates.
+6. Home defence: hold or support-hold SCs threatened by an adjacent enemy.
+7. Build choice: army vs fleet by which remaining targets need sea access; build nearest the front.
+8. Retreats: prefer SCs, then provinces nearer to targets; disband otherwise.
+9. Convoys for England and Turkey.
+
+## valuemap (DumbBot-style idea: cite it; own code)
+1. Base: province value = SC value (unowned/enemy weighted) spread over the map by iterated neighbour blur;
+   separate attack and defence weights; each unit moves to its highest-value reachable province, avoiding duplicates.
+2. Competition and strength estimates per province (adjacent enemy units) to discount contested targets.
+3. Supports assigned toward the highest-value contested destinations.
+4. Season-dependent weights (Fall: occupy SCs; Spring: position).
+
+## search (local search over our joint orders)
+1. Base: hill climbing with random restarts over the joint order set, scored by a heuristic evaluation
+   (expected SC gain, supported-attack bonus, threatened-own-SC penalty, distance to targets), within the time budget.
+2. Simulated annealing instead of hill climbing.
+3. Alternative evaluation functions (unit safety, threatened SCs).
+
+## lookahead (simulate, then choose)
+1. Base: generate top-N candidate joint orders (from a greedy/value generator), simulate each against sampled
+   opponent orders on engine copies (1 move deep), and pick the best mean resulting SC/position score. Stop at the budget.
+2. Opponent model for sampling: static in S1-like games, greedy-like elsewhere.
+3. Own lightweight resolver if engine copies become the bottleneck.
+4. Lightweight MCTS over our candidate set.
+
+## adaptive (opponent modelling)
+1. Base: classify each opponent (static / greedy / random / attitude) from order history; predict greedy moves exactly;
+   defend where predicted attacks land; attack powers that are weak or static first.
+2. Scenario detection: all holding → S1 plan (supported attacks on held SCs); otherwise S2/S3 plan.
+3. Avoid provoking Attitude powers that are friendly (don't attack their SCs while other targets exist).
+
+## positional (slower, safer expansion)
+1. Base: compact front, never leave a home SC open to an adjacent enemy, expand into the weakest reachable neighbour power.
+2. Target-power selection by weakness plus reachability.

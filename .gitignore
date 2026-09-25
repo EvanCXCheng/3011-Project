@@ -1,2 +1,7 @@
 .venv
 .vscode
+__pycache__/
+*.pyc
+game_for_vis.json
+results/logs/
+results/tmp/

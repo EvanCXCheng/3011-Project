@@ -1,0 +1,46 @@
+{
+ "bots": {},
+ "families": {
+  "adaptive": {
+   "champion": null,
+   "iterations": 0,
+   "reason": "",
+   "status": "ACTIVE"
+  },
+  "greedy": {
+   "champion": null,
+   "iterations": 0,
+   "reason": "",
+   "status": "ACTIVE"
+  },
+  "lookahead": {
+   "champion": null,
+   "iterations": 0,
+   "reason": "",
+   "status": "ACTIVE"
+  },
+  "positional": {
+   "champion": null,
+   "iterations": 0,
+   "reason": "",
+   "status": "ACTIVE"
+  },
+  "search": {
+   "champion": null,
+   "iterations": 0,
+   "reason": "",
+   "status": "ACTIVE"
+  },
+  "valuemap": {
+   "champion": null,
+   "iterations": 0,
+   "reason": "",
+   "status": "ACTIVE"
+  }
+ },
+ "hall_of_fame": [],
+ "next_bot_id": 1,
+ "overall_champions": [],
+ "standin_rotation": 0,
+ "techniques": {}
+}
