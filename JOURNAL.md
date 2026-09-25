@@ -263,7 +263,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs bot_011: S1 +1.57±0.22, S2 −0.22±0.33, S3 +0.87±0.34, pooled +0.74±0.18, marks 11 vs 9 → PROMOTE → valuemap champion.
 - takeaway: the jam fix works in S1 (one power, ITA, still short of 18); S2 unchanged.
 
-## [017] bot_015 lookahead/defcands — RUNNING
+## [017] bot_015 lookahead/defcands — REJECTED
 
 - family: lookahead | parent: bot_007 | tags: defensive-candidates
 - analysis (bot_007 S3, n=168): 42/168 games lose ≥3 SC from peak; worst 20% mostly vs the bot_003 stand-in; growth
@@ -272,6 +272,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   enemy reach held, neighbours support-hold them) lets the rollouts choose defence when it pays → S3 gain.
 - sanity S3 (stand-in bot_003) seeds 11/12/13 → 14/18/14 SC, tmax 0.47 s, no errors.
 - plan: main2 queue: Tier 0 → Tier 1 (A, stand-in bot_003 = bot_007's) → Tier 2 (B126, stand-in bot_003).
+- Tier 1 A42: S1 18.00 / S2 14.00±0.85 / S3 9.00±0.94; vs bot_007 pooled −0.65±0.41 (not < −2 SE → Tier 2).
+- Tier 2 B126 (stand-in bot_003): S1 17.99 / S2 14.39±0.46 (57.9%) / S3 11.27±0.50 (28.6%). vs bot_007: S1 −0.01,
+  S2 −0.88±0.43, S3 −0.02±0.51, pooled −0.30±0.22, marks 13 vs 13 → REJECT.
+- takeaway: extra defensive candidates don't help S3 and cost S2 (fewer attacking candidates in a fixed 10-candidate
+  budget; the 1-ply score with sampled opponents rarely rewards defence). The S3 gap is about the opponent model,
+  not the candidate set → bot_018.
 
 ## [018] bot_016 search/predacc — RUNNING
 

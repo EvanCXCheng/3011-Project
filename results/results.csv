@@ -164,3 +164,9 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-054426_bot_017_positional_threatw_tier2,2026-09-26T06:41,bot_017_positional_threatw,a0235c50f5,tier2,B,1,,210,0,0.8571,17.7143,0.0484,5,False,0.044,0,101.8,0,0,0,0
 20260926-054426_bot_017_positional_threatw_tier2,2026-09-26T06:41,bot_017_positional_threatw,a0235c50f5,tier2,B,2,,210,0,0.2333,10.4095,0.3812,3,True,0.0512,0,106.3,0,0,0,0
 20260926-054426_bot_017_positional_threatw_tier2,2026-09-26T06:41,bot_017_positional_threatw,a0235c50f5,tier2,B,3,bot_004_lookahead_base,210,0,0.0571,7.4048,0.3459,1,False,0.0312,0,107.1,0,0,0,0
+20260926-064518_bot_018_lookahead_strongopp_tier0,2026-09-26T06:47,bot_018_lookahead_strongopp,dbdee9ad6a,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4519,0,90.7,0,0,0,0
+20260926-064518_bot_018_lookahead_strongopp_tier0,2026-09-26T06:47,bot_018_lookahead_strongopp,dbdee9ad6a,tier0,X,2,,3,0,0.3333,11.6667,5.8405,3,True,0.455,0,95.5,0,0,0,0
+20260926-064518_bot_018_lookahead_strongopp_tier0,2026-09-26T06:47,bot_018_lookahead_strongopp,dbdee9ad6a,tier0,X,3,bot_009_adaptive_scenswitch,3,0,0.3333,12.0,5.5076,3,True,0.4765,0,97.0,0,0,0,0
+20260926-063314_bot_015_lookahead_defcands_tier2,2026-09-26T07:01,bot_015_lookahead_defcands,9190515ba2,tier2,B,1,,126,0,0.9921,17.9921,0.0079,5,False,0.4782,0,93.9,0,0,0,0
+20260926-063314_bot_015_lookahead_defcands_tier2,2026-09-26T07:01,bot_015_lookahead_defcands,9190515ba2,tier2,B,2,,126,0,0.5794,14.3889,0.4638,5,False,0.496,0,97.1,0,0,0,0
+20260926-063314_bot_015_lookahead_defcands_tier2,2026-09-26T07:01,bot_015_lookahead_defcands,9190515ba2,tier2,B,3,bot_003_search_base,126,0,0.2857,11.2698,0.497,3,False,0.4911,0,97.2,0,0,0,0
