@@ -71,12 +71,21 @@
    "parent": "bot_003",
    "status": "RUNNING",
    "tags": "opponent-aware-eval"
+  },
+  "bot_009": {
+   "created": "2026-09-26T03:36",
+   "family": "adaptive",
+   "file": "bots/bot_009_adaptive_scenswitch.py",
+   "note": "",
+   "parent": "bot_005",
+   "status": "RUNNING",
+   "tags": "scenario-detection,hybrid-switch"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_005",
-   "iterations": 1,
+   "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -119,7 +128,7 @@
   "bot_003",
   "bot_002"
  ],
- "next_bot_id": 9,
+ "next_bot_id": 10,
  "overall_champions": [
   {
    "bot": "bot_001",

@@ -164,3 +164,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   probability (unsupported into a holder: 0; supported: 0.95; mover-out: 1) should fix S1 and sharpen S2 defence.
 - sanity: S1 seed 4 → 18 SC, S2 seed 4 → 18 SC, tmax 0.28 s.
 - plan: Tier 0 → Tier 1 (A, 42, stand-in bot_001 = bot_003's Tier 1) → Tier 2 (B, 210, stand-in bot_004 = chain3 ref).
+
+## [011] bot_009 adaptive/scenswitch — RUNNING
+
+- family: adaptive | parent: bot_005 | tags: scenario-detection, hybrid-switch (lookahead code copied from bot_004)
+- analysis (lab/analyze.py bot_005): S1 100% for every power; S2/S3 SC falls with #greedy opponents
+  (S2: 0 greedy 18.0 → 4 greedy 9.3), worst 20% of S3 games dominated by the lookahead stand-in.
+- hypothesis: all opponents classified static → bot_005 rule plan (S1 100%); otherwise bot_004 lookahead (S2 14.8,
+  S3 11.4). Expect ≈ S1 18 / S2 ≈ bot_004 / S3 ≈ bot_004 → beats both parents.
+- sanity: S1 seed 11 → 18 SC (won 1907, t_mean 18 ms: switch fires after S1901M); S2 seed 11 → 6 SC; tmax 0.46 s.
+- plan: Tier 0 → Tier 1 (A, 42, stand-in bot_003 = bot_005's Tier 1) → Tier 2 (B, 126 fallback, stand-in bot_004;
+  refs bot_005 B210 and bot_004 B126 S3-with-bot_004 from chain6).
