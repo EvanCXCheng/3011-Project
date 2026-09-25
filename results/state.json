@@ -107,6 +107,15 @@
    "parent": "bot_010",
    "status": "RUNNING",
    "tags": "supported-attack-matching"
+  },
+  "bot_013": {
+   "created": "2026-09-26T03:51",
+   "family": "positional",
+   "file": "bots/bot_013_positional_supadvance.py",
+   "note": "",
+   "parent": "bot_006",
+   "status": "RUNNING",
+   "tags": "supported-advance"
   }
  },
  "families": {
@@ -130,7 +139,7 @@
   },
   "positional": {
    "champion": "bot_006",
-   "iterations": 1,
+   "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -156,7 +165,7 @@
   "bot_002",
   "bot_001"
  ],
- "next_bot_id": 13,
+ "next_bot_id": 14,
  "overall_champions": [
   {
    "bot": "bot_001",

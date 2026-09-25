@@ -208,3 +208,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   keeping only fully staffed targets, turns bot_010's S1 plateau (8.6 SC, 0 wins) into steady 2v1 growth.
 - sanity: S1 seed 11 → 18 SC; S2 seed 11 → 6 SC; tmax 6 ms; new_game 29 ms (scipy import at module load).
 - plan: spare-core queue after bot_011: Tier 0 → Tier 1 (A, stand-in greedy baseline = bot_010's) → Tier 2 (B210, stand-in bot_001).
+
+## [015] bot_013 positional/supadvance — RUNNING
+
+- family: positional | parent: bot_006 | tags: supported-advance
+- analysis (bot_006 Tier 1): S1 deterministic per power (AUS 7, ITA 8 stall); S2 growth stops after 1905 (8.6 SC)
+  while losses stay low (6/42 games lose ≥3 from peak) → defence ok, offence too weak.
+- hypothesis: bot_006's gate counts potential supporters but never orders them, so gated moves into contested
+  provinces bounce. Committing the k = enemy_adj − 1 needed supporters with the move makes the advance real → S2/S3 gain.
+- plan: spare-core queue after bot_012: Tier 0 → Tier 1 (A, stand-in bot_004 = bot_006's) → Tier 2 (B210, stand-in bot_004).
