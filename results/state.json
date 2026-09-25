@@ -116,6 +116,15 @@
    "parent": "bot_006",
    "status": "RUNNING",
    "tags": "supported-advance"
+  },
+  "bot_014": {
+   "created": "2026-09-26T04:02",
+   "family": "valuemap",
+   "file": "bots/bot_014_valuemap_strength.py",
+   "note": "",
+   "parent": "bot_011",
+   "status": "RUNNING",
+   "tags": "strength-aware-values"
   }
  },
  "families": {
@@ -151,7 +160,7 @@
   },
   "valuemap": {
    "champion": "bot_011",
-   "iterations": 2,
+   "iterations": 3,
    "reason": "",
    "status": "ACTIVE"
   }
@@ -165,7 +174,7 @@
   "bot_011",
   "bot_001"
  ],
- "next_bot_id": 14,
+ "next_bot_id": 15,
  "overall_champions": [
   {
    "bot": "bot_001",

@@ -94,3 +94,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-035250_bot_011_valuemap_supports_tier2,2026-09-26T04:01,bot_011_valuemap_supports,b321c6a472,tier2,B,1,,210,0,0.5714,16.0,0.2124,3,True,0.076,0,102.6,0,0,0,0
 20260926-035250_bot_011_valuemap_supports_tier2,2026-09-26T04:01,bot_011_valuemap_supports,b321c6a472,tier2,B,2,,210,0,0.3952,12.3619,0.3943,3,False,0.0511,0,106.8,0,0,0,0
 20260926-035250_bot_011_valuemap_supports_tier2,2026-09-26T04:01,bot_011_valuemap_supports,b321c6a472,tier2,B,3,bot_001_greedy_base,210,0,0.2714,10.5,0.4117,3,False,0.0663,0,107.1,0,0,0,0
+20260926-040134_bot_012_greedy_attackmatch_tier0,2026-09-26T04:02,bot_012_greedy_attackmatch,ec3dfc04ef,tier0,X,1,,3,0,0.6667,14.6667,3.3333,3,True,0.002,0,128.6,0,0,0,0
+20260926-040134_bot_012_greedy_attackmatch_tier0,2026-09-26T04:02,bot_012_greedy_attackmatch,ec3dfc04ef,tier0,X,2,,3,0,0.3333,13.3333,2.3333,5,True,0.0038,0,132.3,0,0,0,0
+20260926-040134_bot_012_greedy_attackmatch_tier0,2026-09-26T04:02,bot_012_greedy_attackmatch,ec3dfc04ef,tier0,X,3,bot_004_lookahead_base,3,0,0.0,6.0,3.0551,0,True,0.0043,0,132.7,0,0,0,0

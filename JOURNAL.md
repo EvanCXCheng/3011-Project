@@ -222,3 +222,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - hypothesis: bot_006's gate counts potential supporters but never orders them, so gated moves into contested
   provinces bounce. Committing the k = enemy_adj − 1 needed supporters with the move makes the advance real → S2/S3 gain.
 - plan: spare-core queue after bot_012: Tier 0 → Tier 1 (A, stand-in bot_004 = bot_006's) → Tier 2 (B210, stand-in bot_004).
+
+## [016] bot_014 valuemap/strength — RUNNING
+
+- family: valuemap | parent: bot_011 | tags: strength-aware-values (backlog item 2)
+- analysis (bot_011): S1 by power AUS 9 / ITA 15 / TUR 16 (others 18). Trace S1 Austria: from 1905 to 1920 the same 9
+  orders every turn: each unit attacks a static holder unsupported or an own unit that cannot leave → permanent jam.
+- hypothesis: discount unsupported moves into enemy-occupied provinces (keep 15% of value) so units gather next to
+  targets and the 2v1 pre-pass can fire.
+- sanity: with the planned second term COMP=0.25 (competition divisor) S1 AUS/ITA/TUR = 7/8/10 (worse); OCC only
+  (COMP=0) → 18/15/18. Default set to COMP=0 (knob kept). S2 seeds 11/12 → 3/18 SC, no errors.
+- plan: spare-core queue after bot_013: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_011's) → Tier 2 (B210, stand-in bot_001).
