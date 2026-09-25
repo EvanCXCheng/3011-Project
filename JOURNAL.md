@@ -121,6 +121,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Tier 1 A42 (stand-in bot_004): S1 12.29±0.61 (14.3%) / S2 8.60±0.82 (11.9%) / S3 5.57±0.59 (0%) → est. 4.
   Bootstrap → positional family champion; new family → Tier 2 queued (chain6).
 - takeaway: safety gating is too passive in S2/S3 (8.6 / 5.6 SC); S1 fine thanks to 2v1 attacks.
+- Tier 2 B210 (stand-in bot_004): S1 12.29±0.27 (14.3%) / S2 8.69±0.35 (8.1%) / S3 6.30±0.29 (3.3%) → est. 5.
 - Tier 0 clean (tmax 6 ms). Tier 1 A42 (stand-in bot_003): S1 18.00±0.00 (100%) / S2 14.02±0.77 (45.2%) /
   S3 9.79±0.96 (26.2%) → est. 13. Bootstrap → adaptive family champion. Tier 2 in chain3 (stand-in bot_004).
 - Tier 2 B210 (stand-in bot_004): S1 18.00±0.00 (100%) / S2 12.75±0.42 (48.1%) / S3 9.74±0.44 (26.2%) → est. 11.
@@ -233,7 +234,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   Peak memory 141 MB (numpy/scipy import), fine.
 - takeaway: Hungarian role matching for 2v1 attacks gives +3 SC; greedy family now at est. 13 (S3 with weak stand-in bot_001).
 
-## [015] bot_013 positional/supadvance — RUNNING
+## [015] bot_013 positional/supadvance — REJECTED
 
 - family: positional | parent: bot_006 | tags: supported-advance
 - analysis (bot_006 Tier 1): S1 deterministic per power (AUS 7, ITA 8 stall); S2 growth stops after 1905 (8.6 SC)
@@ -241,6 +242,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - hypothesis: bot_006's gate counts potential supporters but never orders them, so gated moves into contested
   provinces bounce. Committing the k = enemy_adj − 1 needed supporters with the move makes the advance real → S2/S3 gain.
 - plan: spare-core queue after bot_012: Tier 0 → Tier 1 (A, stand-in bot_004 = bot_006's) → Tier 2 (B210, stand-in bot_004).
+- Tier 1 A42: S1 11.86 / S2 8.33 / S3 5.19; vs bot_006 pooled −0.36±0.23 (not < −2 SE → Tier 2).
+- Tier 2 B210 (stand-in bot_004): S1 11.86±0.24 (0%) / S2 8.70±0.35 (11.9%) / S3 6.35±0.30 (2.9%) → est. 3.
+  vs bot_006: S1 −0.43±0.07, S2 +0.01±0.29, S3 +0.05±0.28, pooled −0.12±0.14, marks 3 vs 5 → REJECT.
+- takeaway: the bounce hypothesis was wrong: committing supporters just removes units from expansion. Positional
+  weakness is target selection/passivity, not failed gated moves.
 
 ## [016] bot_014 valuemap/strength — RUNNING
 

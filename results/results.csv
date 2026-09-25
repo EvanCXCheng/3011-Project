@@ -121,3 +121,9 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-041531_bot_008_search_oppaware_tier2,2026-09-26T04:38,bot_008_search_oppaware,a33b156ef0,tier2,B,1,,210,0,1.0,18.0,0.0,5,False,0.4013,0,97.4,0,0,0,0
 20260926-041531_bot_008_search_oppaware_tier2,2026-09-26T04:38,bot_008_search_oppaware,a33b156ef0,tier2,B,2,,210,0,0.4476,13.0381,0.3816,5,True,0.404,0,101.5,0,0,0,0
 20260926-041531_bot_008_search_oppaware_tier2,2026-09-26T04:38,bot_008_search_oppaware,a33b156ef0,tier2,B,3,bot_004_lookahead_base,210,0,0.2667,9.9476,0.4156,3,False,0.4007,0,100.5,0,0,0,0
+20260926-044027_bot_006_positional_base_tier2,2026-09-26T04:59,bot_006_positional_base,b97bf8e9c7,tier2,B,1,,210,0,0.1429,12.2857,0.271,3,False,0.0579,0,99.8,0,0,0,0
+20260926-044027_bot_006_positional_base_tier2,2026-09-26T04:59,bot_006_positional_base,b97bf8e9c7,tier2,B,2,,210,0,0.081,8.6905,0.3454,1,False,0.0537,0,102.3,0,0,0,0
+20260926-044027_bot_006_positional_base_tier2,2026-09-26T04:59,bot_006_positional_base,b97bf8e9c7,tier2,B,3,bot_004_lookahead_base,210,0,0.0333,6.2952,0.2861,1,False,0.031,0,100.7,0,0,0,0
+20260926-042454_bot_013_positional_supadvance_tier2,2026-09-26T05:21,bot_013_positional_supadvance,0181bdb8a0,tier2,B,1,,210,0,0.0,11.8571,0.2351,1,True,0.075,0,102.7,0,0,0,0
+20260926-042454_bot_013_positional_supadvance_tier2,2026-09-26T05:21,bot_013_positional_supadvance,0181bdb8a0,tier2,B,2,,210,0,0.119,8.7,0.3526,1,False,0.0911,0,107.1,0,0,0,0
+20260926-042454_bot_013_positional_supadvance_tier2,2026-09-26T05:21,bot_013_positional_supadvance,0181bdb8a0,tier2,B,3,bot_004_lookahead_base,210,0,0.0286,6.3476,0.2968,1,True,0.0428,0,107.7,0,0,0,0

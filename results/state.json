@@ -112,9 +112,9 @@
    "created": "2026-09-26T03:51",
    "family": "positional",
    "file": "bots/bot_013_positional_supadvance.py",
-   "note": "",
+   "note": "committing supporters for gated advances: S1 -0.43\u00b10.07, S2/S3 \u00b10; pooled -0.12\u00b10.14 vs bot_006",
    "parent": "bot_006",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "supported-advance"
   },
   "bot_014": {
