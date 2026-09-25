@@ -242,3 +242,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity: with the planned second term COMP=0.25 (competition divisor) S1 AUS/ITA/TUR = 7/8/10 (worse); OCC only
   (COMP=0) → 18/15/18. Default set to COMP=0 (knob kept). S2 seeds 11/12 → 3/18 SC, no errors.
 - plan: spare-core queue after bot_013: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_011's) → Tier 2 (B210, stand-in bot_001).
+
+## [017] bot_015 lookahead/defcands — RUNNING
+
+- family: lookahead | parent: bot_007 | tags: defensive-candidates
+- analysis (bot_007 S3, n=168): 42/168 games lose ≥3 SC from peak; worst 20% mostly vs the bot_003 stand-in; growth
+  flattens after 1905 (7.9 → 11.2 SC). bot_007's candidates never contain support-holds or garrisons.
+- hypothesis: adding support-hold perturbations (supported unit set to hold) and one garrison candidate (own SCs in
+  enemy reach held, neighbours support-hold them) lets the rollouts choose defence when it pays → S3 gain.
+- sanity S3 (stand-in bot_003) seeds 11/12/13 → 14/18/14 SC, tmax 0.47 s, no errors.
+- plan: main2 queue: Tier 0 → Tier 1 (A, stand-in bot_003 = bot_007's) → Tier 2 (B126, stand-in bot_003).

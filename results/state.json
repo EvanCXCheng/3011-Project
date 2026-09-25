@@ -125,6 +125,15 @@
    "parent": "bot_011",
    "status": "RUNNING",
    "tags": "strength-aware-values"
+  },
+  "bot_015": {
+   "created": "2026-09-26T04:14",
+   "family": "lookahead",
+   "file": "bots/bot_015_lookahead_defcands.py",
+   "note": "",
+   "parent": "bot_007",
+   "status": "RUNNING",
+   "tags": "defensive-candidates"
   }
  },
  "families": {
@@ -142,7 +151,7 @@
   },
   "lookahead": {
    "champion": "bot_007",
-   "iterations": 2,
+   "iterations": 3,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -175,7 +184,7 @@
   "bot_001",
   "bot_004"
  ],
- "next_bot_id": 15,
+ "next_bot_id": 16,
  "overall_champions": [
   {
    "bot": "bot_001",

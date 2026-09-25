@@ -112,3 +112,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-041247_bot_013_positional_supadvance_tier0,2026-09-26T04:13,bot_013_positional_supadvance,0181bdb8a0,tier0,X,1,,3,0,0.0,12.0,2.0817,1,True,0.0219,0,92.8,0,0,0,0
 20260926-041247_bot_013_positional_supadvance_tier0,2026-09-26T04:13,bot_013_positional_supadvance,0181bdb8a0,tier0,X,2,,3,0,0.0,6.0,1.1547,0,True,0.0024,0,97.6,0,0,0,0
 20260926-041247_bot_013_positional_supadvance_tier0,2026-09-26T04:13,bot_013_positional_supadvance,0181bdb8a0,tier0,X,3,bot_004_lookahead_base,3,0,0.0,7.0,3.0551,0,True,0.0031,0,98.4,0,0,0,0
+20260926-041334_bot_008_search_oppaware_tier1,2026-09-26T04:15,bot_008_search_oppaware,a33b156ef0,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.3993,0,97.5,0,0,0,0
+20260926-041334_bot_008_search_oppaware_tier1,2026-09-26T04:15,bot_008_search_oppaware,a33b156ef0,tier1,A,2,,42,0,0.5,13.5476,0.9031,5,True,0.4004,0,101.5,0,0,0,0
+20260926-041334_bot_008_search_oppaware_tier1,2026-09-26T04:15,bot_008_search_oppaware,a33b156ef0,tier1,A,3,bot_001_greedy_base,42,0,0.3571,12.5476,0.9297,5,True,0.4057,0,100.7,0,0,0,0
