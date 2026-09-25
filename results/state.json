@@ -134,6 +134,15 @@
    "parent": "bot_007",
    "status": "RUNNING",
    "tags": "defensive-candidates"
+  },
+  "bot_016": {
+   "created": "2026-09-26T04:40",
+   "family": "search",
+   "file": "bots/bot_016_search_predacc.py",
+   "note": "",
+   "parent": "bot_008",
+   "status": "RUNNING",
+   "tags": "prediction-accuracy-gating"
   }
  },
  "families": {
@@ -163,7 +172,7 @@
   },
   "search": {
    "champion": "bot_008",
-   "iterations": 2,
+   "iterations": 3,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -184,7 +193,7 @@
   "bot_003",
   "bot_004"
  ],
- "next_bot_id": 16,
+ "next_bot_id": 17,
  "overall_champions": [
   {
    "bot": "bot_001",

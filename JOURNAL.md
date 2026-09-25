@@ -262,3 +262,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   enemy reach held, neighbours support-hold them) lets the rollouts choose defence when it pays → S3 gain.
 - sanity S3 (stand-in bot_003) seeds 11/12/13 → 14/18/14 SC, tmax 0.47 s, no errors.
 - plan: main2 queue: Tier 0 → Tier 1 (A, stand-in bot_003 = bot_007's) → Tier 2 (B126, stand-in bot_003).
+
+## [018] bot_016 search/predacc — RUNNING
+
+- family: search | parent: bot_008 | tags: prediction-accuracy-gating
+- analysis: classifier check in an S3 game (seed 12, after 1905): Greedy baseline greedy-prediction hit rate 0.91–1.0;
+  Random/Attitude 0.08–0.30; the lookahead stand-in 0.64–0.65 with 74–79% target-seeking moves → bot_008 classed it
+  'erratic' (uniform moves, low hold prob) so unsupported attacks on it looked good → S3 −1.23 vs bot_003.
+- hypothesis: classify by hit rate (≥0.85 greedy, ≥0.4 'strong', else erratic); 'strong' powers get bot_003's worst
+  case (every reachable province a full threat, hold prob 0.85) → recover S3 while keeping S1 100%.
+- sanity: classes now correct (stand-in → strong); S3 seeds 11/13 (stand-in bot_004) → 2/10 SC, no errors.
+- plan: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_008's) → Tier 2 (B210, stand-in bot_004 = bot_008's).
