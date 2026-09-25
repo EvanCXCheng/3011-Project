@@ -1,18 +1,34 @@
-"""bot_001 — family: greedy — parent: none
+"""bot_003 — family: search — parent: none
 
-Hypothesis: moving every unit one step toward its nearest supply centre (SC) that we do not own, using
-BFS distances computed separately for armies and fleets (coast-aware), is a working basic agent.
-Deliberately minimal: no bounce avoidance, no supports, no convoys (those are later greedy iterations).
+Hypothesis: local search over our joint order set (moves, holds and supports to our own units) scored by a
+heuristic evaluation finds coordinated orders (supported attacks, no self-bounces, covered home SCs) that per-unit
+greedy rules miss. The evaluation estimates, for each move, a success probability from our attack strength
+(1 + valid supports), whether the destination is occupied, and how many enemy units could contest it. It then
+scores expected unit positions (unowned SC captured, distance to the nearest unowned SC) and penalises own SCs left
+open to adjacent enemies. Search: coordinate-ascent hill climbing with random restarts until the time budget.
 
-Technique tags: bfs-greedy
+Technique tags: local-search, hill-climbing, heuristic-eval
 """
+import random
 import time
+import zlib
 from collections import deque
 
 from agent_baselines import Agent
 
 CONFIG = {
-    'TIME_BUDGET': 0.5,      # s per get_actions call
+    'TIME_BUDGET': 0.40,     # s of search per movement phase (whole call stays well under 0.6 s)
+    'W_SC': 10.0,            # value of ending a Fall move on an SC we do not own
+    'SPRING_SC_FACTOR': 0.4, # the same in Spring (position only; ownership changes in Fall)
+    'W_DIST': 1.0,           # per step to the nearest unowned SC
+    'W_DEF': 6.0,            # own SC left open to an adjacent enemy (Fall; half in Spring)
+    'P_OCC_1': 0.15,         # unsupported move into an enemy-occupied province
+    'P_OCC_2': 0.85,         # supported (>=2) move into an enemy-occupied province
+    'P_COMP_1': 0.65,        # per contesting enemy unit, unsupported move
+    'P_COMP_2': 0.90,        # per contesting enemy unit, supported move
+    'CUT_FACTOR': 0.6,       # support value when the supporter is adjacent to an enemy unit
+    'RESTARTS': True,
+    'MAX_STALE_RESTARTS': 25,  # stop after this many restarts without improvement
 }
 
 INF = 10 ** 6
@@ -41,7 +57,6 @@ def _bfs(adj, src):
 
 
 def map_info(game):
-    """Adjacency and SC distances per unit type. scdist[t][loc][sc] = moves for a unit of type t at loc to reach sc."""
     m = game.map
     key = m.name
     if key in _MAP_CACHE:
@@ -49,7 +64,6 @@ def map_info(game):
     locs = [l.upper() for l in m.locs]
     ltype = {l: m.loc_type.get(l, m.area_type(l)) for l in locs}
     army_nodes = [l for l in locs if '/' not in l and ltype[l] in ('LAND', 'COAST')]
-    # fleets occupy water, coasts without split coasts, and the split coasts themselves
     has_coasts = {_base(l) for l in locs if '/' in l}
     fleet_nodes = [l for l in locs if ltype[l] in ('WATER', 'COAST') and l not in has_coasts]
     adj = {'A': {}, 'F': {}}
@@ -62,6 +76,7 @@ def map_info(game):
                 if b in nodeset and m.abuts(t, a, '-', b):
                     nbrs.append(b)
             adj[t][a] = nbrs
+    reach = {t: {a: {_base(b) for b in adj[t][a]} for a in adj[t]} for t in adj}
     scs = [s.upper() for s in m.scs]
     scdist = {'A': {}, 'F': {}}
     for t, nodes in (('A', army_nodes), ('F', fleet_nodes)):
@@ -75,13 +90,12 @@ def map_info(game):
                         best = dl
                 row[sc] = best
             scdist[t][a] = row
-    info = {'adj': adj, 'scs': scs, 'scdist': scdist, 'army_nodes': set(army_nodes), 'fleet_nodes': set(fleet_nodes)}
+    info = {'adj': adj, 'reach': reach, 'scs': scs, 'scset': set(scs), 'scdist': scdist}
     _MAP_CACHE[key] = info
     return info
 
 
 def parse_order(order):
-    """Return (unit_type, loc, kind, dest) for simple order strings; dest is None where not applicable."""
     tok = order.split()
     if len(tok) < 3:
         return None, None, tok[-1] if tok else None, None
@@ -92,12 +106,18 @@ def parse_order(order):
     return ut, loc, kind, dest
 
 
+def _unit_split(u):
+    u = u.lstrip('*')
+    t, loc = u.split()[:2]
+    return t, loc
+
+
 # ----------------------------------------------------------------------------------------------------------------
 # Agent
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_001_greedy_base'):
+    def __init__(self, agent_name='bot_003_search_base'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -144,38 +164,201 @@ class StudentAgent(Agent):
             return INF
         return min(row[sc] for sc in targets)
 
+    # --------------------------------------------------------------------------------------------------------
     def _movement(self, possible, locs, t0):
-        targets = self._targets()
-        orders = []
+        info = self.info
+        me = self.power_name
+        game = self.game
+        fall = game.get_current_phase().startswith('F')
+        own_scs = set(game.get_power(me).centers)
+        targets = [sc for sc in info['scs'] if sc not in own_scs]
+        target_set = set(targets)
+
+        enemy_reach, enemy_occ = {}, set()
+        for p, power in game.powers.items():
+            if p == me:
+                continue
+            for u in power.units:
+                t, loc = _unit_split(u)
+                enemy_occ.add(_base(loc))
+                for prov in info['reach'][t].get(loc, ()):
+                    enemy_reach[prov] = enemy_reach.get(prov, 0) + 1
+
+        # units and their candidate orders
+        units = []          # (utype, loc, prov)
+        cands = []          # per unit: list of (order, kind, dest_loc, dest_prov, sup_src_prov, sup_dest_prov)
+        my_provs = set()
         for base in locs:
             opts = possible.get(base) or []
             if not opts:
                 continue
-            best, best_key = None, None
+            ut, loc = None, None
             for o in opts:
-                ut, loc, kind, dest = parse_order(o)
-                if kind == 'H':
-                    d = self._near(ut, loc, targets)
-                elif kind == '-' and dest is not None and not o.endswith('VIA'):
-                    d = self._near(ut, dest, targets)
-                else:
+                ut, loc, _, _ = parse_order(o)
+                if ut:
+                    break
+            if ut is None:
+                continue
+            units.append((ut, loc, _base(loc)))
+            my_provs.add(_base(loc))
+        for (ut, loc, prov) in units:
+            lst = []
+            for o in possible.get(prov) or []:
+                tok = o.split()
+                if len(tok) < 3:
                     continue
-                key = (d, 0 if kind == '-' else 1, o)
-                if best_key is None or key < best_key:
-                    best, best_key = o, key
-            if best is not None:
-                orders.append(best)
-            if time.perf_counter() - t0 > CONFIG['TIME_BUDGET']:
-                break
-        return orders
+                kind = tok[2]
+                if kind == 'H':
+                    lst.append((o, 'H', loc, prov, None, None))
+                elif kind == '-':
+                    if tok[-1] == 'VIA':
+                        continue
+                    lst.append((o, '-', tok[3], _base(tok[3]), None, None))
+                elif kind == 'S':
+                    sprov = _base(tok[4])
+                    if sprov not in my_provs:
+                        continue
+                    if len(tok) >= 7 and tok[5] == '-':
+                        lst.append((o, 'SM', loc, prov, sprov, _base(tok[6])))
+                    else:
+                        lst.append((o, 'SH', loc, prov, sprov, None))
+            if not lst:
+                lst.append((f'{ut} {loc} H', 'H', loc, prov, None, None))
+            cands.append(lst)
+        n = len(units)
+        if n == 0:
+            return []
 
+        sc_w = CONFIG['W_SC'] * (1.0 if fall else CONFIG['SPRING_SC_FACTOR'])
+        def_w = CONFIG['W_DEF'] * (1.0 if fall else 0.5)
+        w_dist = CONFIG['W_DIST']
+        near_cache = {}
+
+        def value(ut, loc):
+            key = (ut, loc)
+            v = near_cache.get(key)
+            if v is None:
+                d = self._near(ut, loc, targets)
+                v = (sc_w if _base(loc) in target_set else 0.0) - w_dist * min(d, 20)
+                near_cache[key] = v
+            return v
+
+        cut = {prov: (CONFIG['CUT_FACTOR'] if enemy_reach.get(prov, 0) > 0 else 1.0) for (_, _, prov) in units}
+        threatened_own = [sc for sc in own_scs if enemy_reach.get(sc, 0) > 0]
+        p_occ1, p_occ2 = CONFIG['P_OCC_1'], CONFIG['P_OCC_2']
+        p_c1, p_c2 = CONFIG['P_COMP_1'], CONFIG['P_COMP_2']
+
+        def evaluate(assign):
+            chosen = [cands[i][assign[i]] for i in range(n)]
+            moving = {}
+            dest_count = {}
+            sup_move, sup_hold = {}, {}
+            for i, c in enumerate(chosen):
+                kind = c[1]
+                if kind == '-':
+                    moving[units[i][2]] = c[3]
+                    dest_count[c[3]] = dest_count.get(c[3], 0) + 1
+            for i, c in enumerate(chosen):
+                kind = c[1]
+                if kind == 'SM':
+                    if moving.get(c[4]) == c[5]:
+                        k = (c[4], c[5])
+                        sup_move[k] = sup_move.get(k, 0.0) + cut[units[i][2]]
+                elif kind == 'SH':
+                    if c[4] not in moving:
+                        sup_hold[c[4]] = sup_hold.get(c[4], 0.0) + cut[units[i][2]]
+            score = 0.0
+            p_success = {}
+            for i, c in enumerate(chosen):
+                ut, loc, prov = units[i]
+                if c[1] != '-':
+                    score += value(ut, loc)
+                    continue
+                dprov = c[3]
+                s = 1.0 + sup_move.get((prov, dprov), 0.0)
+                if dest_count[dprov] > 1:
+                    p = 0.0
+                elif dprov in my_provs and (dprov not in moving or moving[dprov] == prov):
+                    p = 0.0
+                else:
+                    strong = s >= 1.99
+                    p = 1.0
+                    if dprov in enemy_occ:
+                        p = p_occ2 if strong else p_occ1
+                    k = enemy_reach.get(dprov, 0)
+                    if k:
+                        p *= (p_c2 if strong else p_c1) ** k
+                p_success[prov] = p
+                score += p * value(ut, c[2]) + (1.0 - p) * value(ut, loc)
+            # own SCs open to adjacent enemies
+            for sc in threatened_own:
+                q = 0.0
+                if sc in my_provs:
+                    q = 1.0 - p_success.get(sc, 0.0) if sc in moving else 1.0
+                for src, dst in moving.items():
+                    if dst == sc:
+                        q = max(q, p_success.get(src, 0.0))
+                if q < 1.0:
+                    score -= def_w * (1.0 - q) * min(1.0, 0.5 * enemy_reach[sc])
+            return score
+
+        # initial: every unit's best order in isolation (others hold)
+        rng = random.Random(zlib.crc32((game.get_current_phase() + me).encode()))
+        hold_idx = []
+        for lst in cands:
+            hi = 0
+            for j, c in enumerate(lst):
+                if c[1] == 'H':
+                    hi = j
+                    break
+            hold_idx.append(hi)
+        budget = CONFIG['TIME_BUDGET']
+
+        def climb(assign, cur):
+            improved = True
+            while improved:
+                improved = False
+                order = list(range(n))
+                rng.shuffle(order)
+                for i in order:
+                    if time.perf_counter() - t0 > budget:
+                        return assign, cur
+                    best_j, best_v = assign[i], cur
+                    for j in range(len(cands[i])):
+                        if j == assign[i]:
+                            continue
+                        assign[i] = j
+                        v = evaluate(assign)
+                        if v > best_v + 1e-9:
+                            best_j, best_v = j, v
+                    assign[i] = best_j
+                    if best_v > cur + 1e-9:
+                        cur = best_v
+                        improved = True
+            return assign, cur
+
+        start = list(hold_idx)
+        best_assign, best_val = climb(start, evaluate(start))
+        best_assign = list(best_assign)
+        stale = 0
+        while CONFIG['RESTARTS'] and time.perf_counter() - t0 < budget and stale < CONFIG['MAX_STALE_RESTARTS']:
+            stale += 1
+            a = list(best_assign)
+            for i in rng.sample(range(n), max(1, n // 3)):
+                a[i] = rng.randrange(len(cands[i]))
+            a, v = climb(a, evaluate(a))
+            if v > best_val + 1e-9:
+                best_assign, best_val = list(a), v
+                stale = 0
+        return [cands[i][best_assign[i]][0] for i in range(n)]
+
+    # --------------------------------------------------------------------------------------------------------
     def _retreats(self, possible, locs):
         targets = self._targets()
         orders = []
         for base in locs:
-            opts = possible.get(base) or []
             best, best_key, disband = None, None, None
-            for o in opts:
+            for o in possible.get(base) or []:
                 ut, loc, kind, dest = parse_order(o)
                 if kind == 'R' and dest is not None:
                     key = (self._near(ut, dest, targets), o)

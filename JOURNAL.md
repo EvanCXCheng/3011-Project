@@ -59,7 +59,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: below the Greedy baseline (S1 7.4, S2 9.9). Weaknesses: self-bounces, no convoys (England armies stuck),
   S1 stalls after neutrals (no supported attacks). Bootstrap → greedy champion + overall champion (agent_21.py).
 
-## [003] bot_002 valuemap/base — RUNNING
+## [003] bot_002 valuemap/base — PROMOTED
 
 - family: valuemap | parent: none | tags: value-map, value-diffusion (DumbBot-style idea, cite; own code)
 - hypothesis: a province value map (neutral SC 10, enemy SC 7, own SC 5×adjacent enemy units, diffused over the
@@ -67,9 +67,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   reachable province (no two units on one province), beats plain nearest-SC greedy in S2/S3 through defence and dedup.
 - plan: Tier 0 → Tier 1 (A, 42) → Tier 2 (B, 210) vs bot_001.
 - Tier 0 clean (tmax 4 ms). Tier 1 A42 (S3 stand-in bot_001): S1 12.29±0.44 (0%) / S2 9.17±0.84 (14.3%) / S3 6.40±0.66 (4.8%)
-  → est. 5. Bootstrap → valuemap family champion. Tier 2 queued (chain1).
+  → est. 5. Bootstrap → valuemap family champion.
+- Tier 2 B210 (stand-in bot_001): S1 12.29±0.19 (0%) / S2 8.12±0.37 (11.4%) / S3 6.53±0.33 (7.1%) → est. 5.
+  vs bot_001 paired: S1 +6.14±0.20, S2 +0.69±0.36, S3 −0.22±0.31, pooled +2.20±0.20 (PROMOTE verdict, but bot_003 better).
+- takeaway: value map + dedup solves S1 neutral grab (12.3 SC, 0 wins: never 2v1) but adds little in S2/S3.
 
-## [004] bot_003 search/base — RUNNING
+## [004] bot_003 search/base — PROMOTED
 
 - family: search | parent: none | tags: local-search, hill-climbing, heuristic-eval
 - hypothesis: coordinate-ascent hill climbing with random restarts (≤0.4 s, stop after 25 stale restarts) over our joint
@@ -78,7 +81,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   finds supported attacks and avoids self-bounces → better than bot_001 in S1 (needs 2v1) and S2.
 - plan: Tier 0 → Tier 1 (A, 42) → Tier 2 (B, 210, or 126 if too slow).
 - Tier 0 clean (tmax 0.40 s). Tier 1 A42 (stand-in bot_001): S1 11.50±0.65 (23.8%) / S2 13.24±0.90 (45.2%) /
-  S3 12.86±0.89 (47.6%) → est. 13 (all borderline). Bootstrap → search family champion. Tier 2 queued (chain1).
+  S3 12.86±0.89 (47.6%) → est. 13 (all borderline). Bootstrap → search family champion.
+- Tier 2 B210 (stand-in bot_001): S1 11.76±0.30 (22.4%) / S2 13.57±0.37 (49.5%) / S3 12.72±0.39 (43.8%) → est. 13.
+  vs bot_001 paired: +5.61±0.31 / +6.14±0.37 / +5.97±0.39, pooled +5.91±0.21 → PROMOTE.
+- stress (lab/stress.py, ×4.18 slowdown): tmax 0.412 s, overshoot 0.012 s → PASS. → OVERALL CHAMPION (agent_21.py).
+- takeaway: coordinated joint orders (supports, dedup, garrisons) are worth ~+6 SC over per-unit greedy. S2 win 49.5%
+  sits right on the 50% 5-pt line; S1 11.8 just under the 12 line.
 
 ## [005] bot_004 lookahead/base — RUNNING
 
@@ -90,6 +98,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   own moves), simulate each 1 move deep against sampled opponent orders (hold / move to own-nearest SC / random),
   common random numbers across candidates, pick best mean score (SCs held+occupied, units kept, distance). Beats bot_001.
 - plan: Tier 0 → Tier 1 (A, 42) → Tier 2 (B, 210 or 126).
+- Tier 0 clean (tmax 0.52 s under contention). ~200 rollouts/phase (20 rounds × 10 candidates).
+- Tier 1 A42 (stand-in auto = bot_003): S1 16.52±0.49 (76.2%) / S2 15.07±0.69 (59.5%) / S3 10.14±1.01 (31.0%) → est. 13.
+  Bootstrap → lookahead family champion. stress ×4.21: tmax 0.543 s, overshoot 0.093 s → PASS.
+- Tier 2 at the 126 fallback (210 would take ~63 min > 45 min limit): chain3, stand-in bot_003.
 
 ## [006] bot_005 adaptive/base — RUNNING
 
@@ -100,6 +112,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   whose occupant is predicted to hold, (3) route other units to free targets, avoiding predicted holders.
   Expect strong S1 (all static detected after 1 phase), competitive S2.
 - plan: Tier 0 → Tier 1 (A, 42) → Tier 2.
+- Tier 0 clean (tmax 3 ms): S1 13.0 / S2 7.3 / S3 5.7 (n=3). Tier 1 in chain3 (stand-in bot_004).
+- Tier 0 clean (tmax 6 ms). Tier 1 A42 (stand-in bot_003): S1 18.00±0.00 (100%) / S2 14.02±0.77 (45.2%) /
+  S3 9.79±0.96 (26.2%) → est. 13. Bootstrap → adaptive family champion. Tier 2 in chain3 (stand-in bot_004).
 
 ## [007] bot_006 positional/base — RUNNING
 
