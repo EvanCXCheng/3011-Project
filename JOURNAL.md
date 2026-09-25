@@ -192,7 +192,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs bot_001 paired: +2.43±0.13 / +3.49±0.35 / +2.62±0.29, pooled +2.85±0.16 → PROMOTE → greedy family champion.
 - takeaway: self-bounces cost ~3 SC; greedy with dedup now beats the Greedy baseline (S2 10.9 vs 9.9). Next: supports.
 
-## [013] bot_011 valuemap/supports — RUNNING
+## [013] bot_011 valuemap/supports — PROMOTED
 
 - family: valuemap | parent: bot_002 | tags: supported-attacks (backlog item 3 moved ahead of item 2: bot_002's S1
   stalls at 12.3 SC with 0 wins because it never attacks holders 2v1)
@@ -200,6 +200,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   leftover holders supporting contested own moves → S1 wins, some S2 gain.
 - sanity: S1 seed 11 → 15 SC, S2 seed 11 → 8 SC, tmax 9 ms.
 - plan: spare-core queue (--workers 1): Tier 0 → Tier 1 (A, stand-in bot_001 = bot_002's) → Tier 2 (B210, stand-in bot_001).
+- Tier 1 A42: S1 16.00±0.48 (57.1%) / S2 12.55±0.90 (42.9%) / S3 9.95±0.87 (16.7%); vs bot_002 pooled +3.55±0.39.
+- Tier 2 B210 (stand-in bot_001): S1 16.00±0.21 (57.1%) / S2 12.36±0.39 (39.5%) / S3 10.50±0.41 (27.1%) → est. 9.
+  vs bot_002 paired: +3.71±0.14 / +4.24±0.35 / +3.97±0.36, pooled +3.97±0.17 → PROMOTE → valuemap family champion.
+- takeaway: 2v1 supports are the single biggest rule-bot gain so far (+4 SC in every scenario). S1 16.0 but only 57%
+  wins: some powers stall below 18 (S1 is deterministic per power).
 
 ## [014] bot_012 greedy/attackmatch — RUNNING
 

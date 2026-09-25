@@ -96,7 +96,7 @@
    "file": "bots/bot_011_valuemap_supports.py",
    "note": "",
    "parent": "bot_002",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "supported-attacks"
   },
   "bot_012": {
@@ -150,7 +150,7 @@
    "status": "ACTIVE"
   },
   "valuemap": {
-   "champion": "bot_002",
+   "champion": "bot_011",
    "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
@@ -162,7 +162,7 @@
   "bot_004",
   "bot_006",
   "bot_003",
-  "bot_002",
+  "bot_011",
   "bot_001"
  ],
  "next_bot_id": 14,
@@ -201,6 +201,10 @@
   "opponent-classification": {
    "bot": "bot_005",
    "effect": "S1 100% win (210/210); pooled +1.33\u00b10.27 SC vs bot_003 but S2 \u22120.82, S3 \u22121.44"
+  },
+  "supported-attacks": {
+   "bot": "bot_011",
+   "effect": "pooled +3.97\u00b10.17 SC vs bot_002 (630 paired, B); S1 +3.71, S2 +4.24, S3 +3.97; mark 9 vs 5"
   },
   "value-map": {
    "bot": "bot_002",
