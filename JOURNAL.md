@@ -329,3 +329,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - stand-in: rule gives bot_009, but bot_009 runs bot_004's lookahead code outside S1 (same family in effect) → use
   bot_008 (search, S2 44.8%) for Tier 2 and a matching bot_007 S3 reference. Deviation noted.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_003 = bot_007's) on the spare core; Tier 2 (B126, stand-in bot_008) + ref in main4.
+
+## [022] bot_019 adaptive/peaceful — RUNNING
+
+- family: adaptive | parent: bot_009 | tags: provocation-avoidance (adaptive backlog item 3)
+- baseline reading (agent_baselines.py AttitudeAgent): starts FRIENDLY to all; never moves into provinces (units/SCs)
+  of powers it is friendly to; being attacked → neutral/hostile; being supported → back toward friendly.
+- hypothesis: a non-static, non-greedy power that has never moved into our provinces is likely a friendly Attitude
+  agent. Charging 0.3 score per move into its provinces (in bot_009's lookahead choice) keeps it passive toward us
+  while other targets exist → fewer losses in S2/S3.
+- sanity S2 seeds 11/12/13 → 5/18/12 SC, tmax 0.48 s, no errors.
+- plan: main5 after main4: Tier 0 → Tier 1 (A, stand-in bot_003 = bot_009's) → Tier 2 (B126, stand-in bot_004 = bot_009's).
