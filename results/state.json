@@ -15,7 +15,7 @@
    "file": "bots/bot_002_valuemap_base.py",
    "note": "",
    "parent": "none",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "value-map,value-diffusion"
   },
   "bot_003": {
@@ -24,14 +24,41 @@
    "file": "bots/bot_003_search_base.py",
    "note": "",
    "parent": "none",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "local-search,hill-climbing,heuristic-eval"
+  },
+  "bot_004": {
+   "created": "2026-09-26T01:39",
+   "family": "lookahead",
+   "file": "bots/bot_004_lookahead_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "one-ply-simulation,opponent-sampling,light-game-copy"
+  },
+  "bot_005": {
+   "created": "2026-09-26T01:52",
+   "family": "adaptive",
+   "file": "bots/bot_005_adaptive_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "opponent-classification,opponent-prediction"
+  },
+  "bot_006": {
+   "created": "2026-09-26T01:54",
+   "family": "positional",
+   "file": "bots/bot_006_positional_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "target-power-selection,strength-gated-moves,home-garrison"
   }
  },
  "families": {
   "adaptive": {
    "champion": null,
-   "iterations": 0,
+   "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -43,33 +70,35 @@
   },
   "lookahead": {
    "champion": null,
-   "iterations": 0,
+   "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
   },
   "positional": {
    "champion": null,
-   "iterations": 0,
+   "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
   },
   "search": {
-   "champion": null,
+   "champion": "bot_003",
    "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
   },
   "valuemap": {
-   "champion": null,
+   "champion": "bot_002",
    "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
   }
  },
  "hall_of_fame": [
-  "bot_001"
+  "bot_001",
+  "bot_003",
+  "bot_002"
  ],
- "next_bot_id": 4,
+ "next_bot_id": 7,
  "overall_champions": [
   {
    "bot": "bot_001",

@@ -66,6 +66,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   per-unit-type graph: v = base + 0.6·max(nbr) + 0.05·sum(nbr), 6 passes), with units greedily assigned the highest-value
   reachable province (no two units on one province), beats plain nearest-SC greedy in S2/S3 through defence and dedup.
 - plan: Tier 0 → Tier 1 (A, 42) → Tier 2 (B, 210) vs bot_001.
+- Tier 0 clean (tmax 4 ms). Tier 1 A42 (S3 stand-in bot_001): S1 12.29±0.44 (0%) / S2 9.17±0.84 (14.3%) / S3 6.40±0.66 (4.8%)
+  → est. 5. Bootstrap → valuemap family champion. Tier 2 queued (chain1).
 
 ## [004] bot_003 search/base — RUNNING
 
@@ -75,3 +77,35 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   contesting enemies; expected SC capture + distance to nearest unowned SC; penalty for open threatened own SCs),
   finds supported attacks and avoids self-bounces → better than bot_001 in S1 (needs 2v1) and S2.
 - plan: Tier 0 → Tier 1 (A, 42) → Tier 2 (B, 210, or 126 if too slow).
+- Tier 0 clean (tmax 0.40 s). Tier 1 A42 (stand-in bot_001): S1 11.50±0.65 (23.8%) / S2 13.24±0.90 (45.2%) /
+  S3 12.86±0.89 (47.6%) → est. 13 (all borderline). Bootstrap → search family champion. Tier 2 queued (chain1).
+
+## [005] bot_004 lookahead/base — RUNNING
+
+- family: lookahead | parent: none | tags: one-ply-simulation, opponent-sampling, light-game-copy
+- engine note: copy_game (saved-format round trip) costs ~8 ms by S1912 because it carries history; a history-free
+  "light" Game (Game() + set_units/set_centers/set_current_phase) costs 0.6 ms to build once, then copy.deepcopy 0.3 ms
+  and deepcopy+process ~0.6 ms. → rollouts on light copies.
+- hypothesis: generate K candidate joint orders (greedy distance/SC scorer + random perturbations incl. supports of
+  own moves), simulate each 1 move deep against sampled opponent orders (hold / move to own-nearest SC / random),
+  common random numbers across candidates, pick best mean score (SCs held+occupied, units kept, distance). Beats bot_001.
+- plan: Tier 0 → Tier 1 (A, 42) → Tier 2 (B, 210 or 126).
+
+## [006] bot_005 adaptive/base — RUNNING
+
+- family: adaptive | parent: none | tags: opponent-classification, opponent-prediction
+- hypothesis: classifying each opponent from its order history (static: ≥95% holds; greedy: ≥80% of moves reduce its
+  distance to its nearest unowned SC; erratic otherwise; unknown before history → treated as greedy) and predicting
+  its next moves lets a rule bot (1) garrison own SCs that predicted moves hit, (2) make 2v1 supported attacks on SCs
+  whose occupant is predicted to hold, (3) route other units to free targets, avoiding predicted holders.
+  Expect strong S1 (all static detected after 1 phase), competitive S2.
+- plan: Tier 0 → Tier 1 (A, 42) → Tier 2.
+
+## [007] bot_006 positional/base — RUNNING
+
+- family: positional | parent: none | tags: target-power-selection, strength-gated-moves, home-garrison
+- hypothesis: slow, safe expansion: (1) never leave an own SC empty when an enemy unit is adjacent (garrison / move in);
+  (2) choose one target power by weakness (units) + reachability (mean distance from our units to its SCs), targets =
+  neutral SCs + that power's SCs; (3) only move into a province where our adjacent strength (mover + possible
+  supporters) ≥ adjacent enemy strength, and add a support when it is contested or occupied. Loses fewer SCs in S2/S3.
+- plan: Tier 0 → Tier 1 (A, 42) → Tier 2.
