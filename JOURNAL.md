@@ -134,3 +134,20 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   tmax, movement-phase overshoot past CONFIG TIME_BUDGET, timeouts. Not written to results/raw. Gate: tmax < 0.8 s.
 - CLAUDE.md: the gate is required before an overall-champion promotion when tmax > 0.1 s; run only between evaluations.
 - Validated on bot_001 (1 proc, 3 games): PASS, tmax 0.006 s. First real use: bot_003/bot_004 once chains 1–2 finish.
+
+## [009] bot_007 lookahead/oppmodel — RUNNING
+
+- family: lookahead | parent: bot_004 | tags: opponent-model-sampling (hybrid: adaptive's classifier inside lookahead)
+- hypothesis: sampling opponent orders from a per-power class (static → always hold; greedy → 90% greedy move;
+  erratic → 30% hold / 50% random / 20% greedy; unknown → bot_004's 40/10/50 mix) makes rollouts match reality,
+  so S1 moves stop fearing holders (→ S1 wins like bot_005's 100%) and S2 defence/attack gets sharper.
+- plan: Tier 0 → Tier 1 (A, 42, same stand-in as bot_004: bot_003) → Tier 2 (B, 126) vs bot_004 and bot_003.
+
+## [010] bot_008 search/oppaware — RUNNING
+
+- family: search | parent: bot_003 | tags: opponent-aware-eval
+- hypothesis: bot_003's eval counts every adjacent enemy unit as a contester/threat, so static units freeze moves in S1
+  (S1 11.8 SC vs adaptive's 18.0). Replacing counts with class-predicted expected entries (threat) and occupant hold
+  probability (unsupported into a holder: 0; supported: 0.95; mover-out: 1) should fix S1 and sharpen S2 defence.
+- sanity: S1 seed 4 → 18 SC, S2 seed 4 → 18 SC, tmax 0.28 s.
+- plan: Tier 0 → Tier 1 (A, 42, stand-in bot_001 = bot_003's Tier 1) → Tier 2 (B, 210, stand-in bot_004 = chain3 ref).

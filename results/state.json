@@ -53,6 +53,24 @@
    "parent": "none",
    "status": "RUNNING",
    "tags": "target-power-selection,strength-gated-moves,home-garrison"
+  },
+  "bot_007": {
+   "created": "2026-09-26T02:22",
+   "family": "lookahead",
+   "file": "bots/bot_007_lookahead_oppmodel.py",
+   "note": "",
+   "parent": "bot_004",
+   "status": "RUNNING",
+   "tags": "opponent-model-sampling"
+  },
+  "bot_008": {
+   "created": "2026-09-26T02:24",
+   "family": "search",
+   "file": "bots/bot_008_search_oppaware.py",
+   "note": "",
+   "parent": "bot_003",
+   "status": "RUNNING",
+   "tags": "opponent-aware-eval"
   }
  },
  "families": {
@@ -70,7 +88,7 @@
   },
   "lookahead": {
    "champion": "bot_004",
-   "iterations": 1,
+   "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -82,7 +100,7 @@
   },
   "search": {
    "champion": "bot_003",
-   "iterations": 1,
+   "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -100,7 +118,7 @@
   "bot_003",
   "bot_002"
  ],
- "next_bot_id": 7,
+ "next_bot_id": 9,
  "overall_champions": [
   {
    "bot": "bot_001",
