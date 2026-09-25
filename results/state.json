@@ -51,7 +51,7 @@
    "file": "bots/bot_006_positional_base.py",
    "note": "",
    "parent": "none",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "target-power-selection,strength-gated-moves,home-garrison"
   },
   "bot_007": {
@@ -93,7 +93,7 @@
    "status": "ACTIVE"
   },
   "positional": {
-   "champion": null,
+   "champion": "bot_006",
    "iterations": 1,
    "reason": "",
    "status": "ACTIVE"
@@ -115,6 +115,7 @@
   "bot_005",
   "bot_001",
   "bot_004",
+  "bot_006",
   "bot_003",
   "bot_002"
  ],
@@ -127,6 +128,10 @@
   {
    "bot": "bot_003",
    "date": "2026-09-26T02:21"
+  },
+  {
+   "bot": "bot_004",
+   "date": "2026-09-26T03:35"
   }
  ],
  "standin_rotation": 0,
@@ -138,6 +143,14 @@
   "local-search": {
    "bot": "bot_003",
    "effect": "pooled +5.91\u00b10.21 SC vs bot_001 (630 paired, B); mark 13 vs 2"
+  },
+  "one-ply-simulation": {
+   "bot": "bot_004",
+   "effect": "pooled +2.16\u00b10.31 SC vs bot_003 (378 paired, B); mark 13 vs 11; S1 +4.31\u00b10.44"
+  },
+  "opponent-classification": {
+   "bot": "bot_005",
+   "effect": "S1 100% win (210/210); pooled +1.33\u00b10.27 SC vs bot_003 but S2 \u22120.82, S3 \u22121.44"
   },
   "value-map": {
    "bot": "bot_002",

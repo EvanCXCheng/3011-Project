@@ -88,7 +88,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: coordinated joint orders (supports, dedup, garrisons) are worth ~+6 SC over per-unit greedy. S2 win 49.5%
   sits right on the 50% 5-pt line; S1 11.8 just under the 12 line.
 
-## [005] bot_004 lookahead/base — RUNNING
+## [005] bot_004 lookahead/base — PROMOTED
 
 - family: lookahead | parent: none | tags: one-ply-simulation, opponent-sampling, light-game-copy
 - engine note: copy_game (saved-format round trip) costs ~8 ms by S1912 because it carries history; a history-free
@@ -102,8 +102,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Tier 1 A42 (stand-in auto = bot_003): S1 16.52±0.49 (76.2%) / S2 15.07±0.69 (59.5%) / S3 10.14±1.01 (31.0%) → est. 13.
   Bootstrap → lookahead family champion. stress ×4.21: tmax 0.543 s, overshoot 0.093 s → PASS.
 - Tier 2 at the 126 fallback (210 would take ~63 min > 45 min limit): chain3, stand-in bot_003.
+- Tier 2 B126: S1 16.10±0.29 (63.5%) / S2 14.79±0.44 (61.9%) / S3 11.40±0.54 (34.1%) → est. 13. tmax 0.533 s.
+  vs bot_003 paired (S3 both with stand-in bot_003): S1 +4.31±0.44, S2 +1.35±0.47, S3 +0.83±0.63, pooled +2.16±0.31,
+  marks 13 vs 11 → PROMOTE → OVERALL CHAMPION (stress already PASS).
+- takeaway: 1-ply engine rollouts on light copies beat the heuristic-eval search everywhere. S1 still 36% non-wins
+  (adaptive gets 100%): the fixed 40% opponent-hold mix underrates static holders → bot_007 tests class-based sampling.
 
-## [006] bot_005 adaptive/base — RUNNING
+## [006] bot_005 adaptive/base — PROMOTED
 
 - family: adaptive | parent: none | tags: opponent-classification, opponent-prediction
 - hypothesis: classifying each opponent from its order history (static: ≥95% holds; greedy: ≥80% of moves reduce its
@@ -113,10 +118,18 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   Expect strong S1 (all static detected after 1 phase), competitive S2.
 - plan: Tier 0 → Tier 1 (A, 42) → Tier 2.
 - Tier 0 clean (tmax 3 ms): S1 13.0 / S2 7.3 / S3 5.7 (n=3). Tier 1 in chain3 (stand-in bot_004).
+- Tier 1 A42 (stand-in bot_004): S1 12.29±0.61 (14.3%) / S2 8.60±0.82 (11.9%) / S3 5.57±0.59 (0%) → est. 4.
+  Bootstrap → positional family champion; new family → Tier 2 queued (chain6).
+- takeaway: safety gating is too passive in S2/S3 (8.6 / 5.6 SC); S1 fine thanks to 2v1 attacks.
 - Tier 0 clean (tmax 6 ms). Tier 1 A42 (stand-in bot_003): S1 18.00±0.00 (100%) / S2 14.02±0.77 (45.2%) /
   S3 9.79±0.96 (26.2%) → est. 13. Bootstrap → adaptive family champion. Tier 2 in chain3 (stand-in bot_004).
+- Tier 2 B210 (stand-in bot_004): S1 18.00±0.00 (100%) / S2 12.75±0.42 (48.1%) / S3 9.74±0.44 (26.2%) → est. 11.
+  vs bot_003 paired (S3 stand-in bot_004 both): S1 +6.24±0.30, S2 −0.82±0.41, S3 −1.44±0.45, pooled +1.33±0.27, marks
+  11 vs 11 → PROMOTE verdict vs bot_003, but bot_004 is stronger (13) → stays adaptive family champion only.
+- takeaway: static detection + 2v1 supported attacks solves S1 completely (210/210 wins). S2/S3 weaker than search:
+  rule-based moves lack coordination. Hybrid candidate: adaptive S1 plan + lookahead elsewhere.
 
-## [007] bot_006 positional/base — RUNNING
+## [007] bot_006 positional/base — PROMOTED
 
 - family: positional | parent: none | tags: target-power-selection, strength-gated-moves, home-garrison
 - hypothesis: slow, safe expansion: (1) never leave an own SC empty when an enemy unit is adjacent (garrison / move in);
