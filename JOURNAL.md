@@ -163,7 +163,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   so S1 moves stop fearing holders (→ S1 wins like bot_005's 100%) and S2 defence/attack gets sharper.
 - plan: Tier 0 → Tier 1 (A, 42, same stand-in as bot_004: bot_003) → Tier 2 (B, 126) vs bot_004 and bot_003.
 
-## [010] bot_008 search/oppaware — RUNNING
+## [010] bot_008 search/oppaware — PROMOTED
 
 - family: search | parent: bot_003 | tags: opponent-aware-eval
 - hypothesis: bot_003's eval counts every adjacent enemy unit as a contester/threat, so static units freeze moves in S1
@@ -171,6 +171,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   probability (unsupported into a holder: 0; supported: 0.95; mover-out: 1) should fix S1 and sharpen S2 defence.
 - sanity: S1 seed 4 → 18 SC, S2 seed 4 → 18 SC, tmax 0.28 s.
 - plan: Tier 0 → Tier 1 (A, 42, stand-in bot_001 = bot_003's Tier 1) → Tier 2 (B, 210, stand-in bot_004 = chain3 ref).
+- Tier 0 clean (tmax 0.29 s). Tier 1 A42: S1 18.00 (100%) / S2 13.55±0.90 (50%) / S3 12.55±0.93 (35.7%), vs bot_003
+  pooled +2.17±0.55.
+- Tier 2 B210 (stand-in bot_004): S1 18.00 (100%) / S2 13.04±0.38 (44.8%) / S3 9.95±0.42 (26.7%) → est. 13.
+  vs bot_003 paired: S1 +6.24±0.30, S2 −0.53±0.35, S3 −1.23±0.39, pooled +1.49±0.24, marks 13 vs 11 → PROMOTE →
+  search family champion (not overall: below bot_007 in S2/S3).
+- takeaway: class-predicted threats fix S1 (100%) but hurt vs the strong lookahead stand-in in S3: a strong unknown
+  opponent gets classified greedy/erratic and its moves are mispredicted, so the eval under-defends. Idea: fall back to
+  raw adjacency for opponents that are neither static nor well predicted (per-power prediction accuracy).
 
 ## [011] bot_009 adaptive/scenswitch — RUNNING
 

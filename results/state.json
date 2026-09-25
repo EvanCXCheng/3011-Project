@@ -69,7 +69,7 @@
    "file": "bots/bot_008_search_oppaware.py",
    "note": "",
    "parent": "bot_003",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "opponent-aware-eval"
   },
   "bot_009": {
@@ -162,7 +162,7 @@
    "status": "ACTIVE"
   },
   "search": {
-   "champion": "bot_003",
+   "champion": "bot_008",
    "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
@@ -179,9 +179,10 @@
   "bot_012",
   "bot_007",
   "bot_006",
-  "bot_003",
+  "bot_008",
   "bot_011",
   "bot_001",
+  "bot_003",
   "bot_004"
  ],
  "next_bot_id": 16,
@@ -216,6 +217,10 @@
   "one-ply-simulation": {
    "bot": "bot_004",
    "effect": "pooled +2.16\u00b10.31 SC vs bot_003 (378 paired, B); mark 13 vs 11; S1 +4.31\u00b10.44"
+  },
+  "opponent-aware-eval": {
+   "bot": "bot_008",
+   "effect": "pooled +1.49\u00b10.24 SC vs bot_003 (630 paired, B); S1 +6.24\u00b10.30 (100% wins) but S3 \u22121.23\u00b10.39"
   },
   "opponent-classification": {
    "bot": "bot_005",

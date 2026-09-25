@@ -47,3 +47,10 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
 ## positional (slower, safer expansion)
 1. Base: compact front, never leave a home SC open to an adjacent enemy, expand into the weakest reachable neighbour power.
 2. Target-power selection by weakness plus reachability.
+
+## added 26 Sep (after bots 007–012)
+- search: per-power prediction accuracy → use class-predicted threat only for powers we predict well (static / greedy
+  with high hit rate); raw adjacency for the rest (bot_008 S3 −1.23 vs bot_003 against the lookahead stand-in).
+- lookahead: same idea for rollout sampling (bot_007 S2/S3 flat vs bot_004).
+- adaptive/lookahead: hybrid of adaptive S1 plan and lookahead is bot_009 (queued).
+- greedy: fall priority / home defence on top of bot_012 (S3 still with weak stand-in; re-run S3 with bot_007 stand-in).
