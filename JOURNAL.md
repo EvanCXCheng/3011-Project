@@ -352,3 +352,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Their S3 numbers were against the weak stand-in bot_001. Re-run S3 B126 with stand-in bot_008 (search, strong):
   bot_012 greedy 9.99±0.55 (26.2%), bot_014 valuemap 9.88±0.54 (24.6%) → both est. 11 (was 13 / 11).
 - Family review: greedy → DORMANT (3 iters, 11 vs 13); valuemap stays DORMANT. ACTIVE: search, lookahead, adaptive.
+
+## [024] bot_020 search/rolloutsel — RUNNING
+
+- family: search | parent: bot_016 | tags: rollout-selection (hybrid of search and lookahead ideas)
+- hypothesis: bot_016's heuristic eval picks well-coordinated orders but misjudges outcomes (S2 −1.45 vs bot_007).
+  Hill climbing for 0.20 s, keeping the top-6 distinct local optima, then choosing among them by 1-ply engine rollouts
+  (class-based opponent sampling, bot_004-style outcome score) for the rest of the 0.45 s → closes the S2 gap.
+- sanity: S2/S3 seeds 11–12 → 14/1/18/18 SC, tmax 0.455 s; 139–294 rollouts per phase in a test game.
+- plan: main6 after main5: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_016's) → Tier 2 (B126 fallback, stand-in bot_004).

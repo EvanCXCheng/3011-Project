@@ -170,6 +170,15 @@
    "parent": "bot_009",
    "status": "RUNNING",
    "tags": "provocation-avoidance"
+  },
+  "bot_020": {
+   "created": "2026-09-26T07:28",
+   "family": "search",
+   "file": "bots/bot_020_search_rolloutsel.py",
+   "note": "",
+   "parent": "bot_016",
+   "status": "RUNNING",
+   "tags": "rollout-selection"
   }
  },
  "families": {
@@ -199,7 +208,7 @@
   },
   "search": {
    "champion": "bot_016",
-   "iterations": 3,
+   "iterations": 4,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -220,7 +229,7 @@
   "bot_003",
   "bot_004"
  ],
- "next_bot_id": 20,
+ "next_bot_id": 21,
  "overall_champions": [
   {
    "bot": "bot_001",
