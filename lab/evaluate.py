@@ -39,26 +39,29 @@ def reuse_key(r):
 
 
 def run_tasks(tasks, workers, log, label):
-    """Run tasks in a spawn pool; recreate the pool if a worker dies. Yields finished records."""
+    """Run tasks in spawn pools; yields finished records. Workers are recycled by running the tasks in
+    batches of workers*MAX_TASKS_PER_CHILD, each in a fresh pool (Python 3.12's own max_tasks_per_child
+    can deadlock). A pool whose worker dies (BrokenProcessPool) is replaced and its unfinished tasks retried."""
+    t0 = time.time()
+    done_n = 0
+    if workers <= 1:
+        run_game.worker_init()
+        for t in tasks:
+            yield run_game.run_task(t)
+            done_n += 1
+            log.write(f'{label} {done_n}/{len(tasks)} {time.time()-t0:.0f}s\n')
+            log.flush()
+        return
+    ctx = mp.get_context('spawn')
+    batch = workers * C.MAX_TASKS_PER_CHILD
     pending = list(tasks)
     crashes = 0
-    done_n = 0
-    t0 = time.time()
     while pending:
-        if workers <= 1:
-            run_game.worker_init()
-            for t in pending:
-                yield run_game.run_task(t)
-                done_n += 1
-                log.write(f'{done_n}/{len(tasks)} {time.time()-t0:.0f}s\n')
-                log.flush()
-            return
-        ctx = mp.get_context('spawn')
+        chunk, rest = pending[:batch], pending[batch:]
         finished = set()
         try:
-            with ProcessPoolExecutor(max_workers=workers, mp_context=ctx, initializer=run_game.worker_init,
-                                     max_tasks_per_child=C.MAX_TASKS_PER_CHILD) as ex:
-                futs = {ex.submit(run_game.run_task, t): i for i, t in enumerate(pending)}
+            with ProcessPoolExecutor(max_workers=workers, mp_context=ctx, initializer=run_game.worker_init) as ex:
+                futs = {ex.submit(run_game.run_task, t): i for i, t in enumerate(chunk)}
                 for fu in as_completed(futs):
                     rec = fu.result()
                     finished.add(futs[fu])
@@ -67,18 +70,19 @@ def run_tasks(tasks, workers, log, label):
                         log.write(f'{label} {done_n}/{len(tasks)} {time.time()-t0:.0f}s\n')
                         log.flush()
                     yield rec
-                pending = []
+            pending = rest
         except BrokenProcessPool:
             crashes += 1
-            pending = [t for i, t in enumerate(pending) if i not in finished]
-            log.write(f'worker crash #{crashes}; {len(pending)} tasks left\n')
+            unfinished = [t for i, t in enumerate(chunk) if i not in finished]
+            log.write(f'worker crash #{crashes}; {len(unfinished)} tasks of this batch left\n')
             log.flush()
             if crashes >= 3:
-                for t in pending:
+                for t in unfinished + rest:
                     out = dict(t['meta'])
                     out.update(status='error', error='worker process crashed (memory?)')
                     yield out
                 return
+            pending = unfinished + rest
 
 
 def summarize(recs, scenario):

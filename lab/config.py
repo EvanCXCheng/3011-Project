@@ -23,7 +23,7 @@ WIN_SC = 18
 
 # Parallelism: every core but one
 WORKERS = max(1, (os.cpu_count() or 2) - 1)
-MAX_TASKS_PER_CHILD = 25
+MAX_TASKS_PER_CHILD = 25   # tasks per worker per pool batch (evaluate.py recycles pools itself)
 
 # Hard rules
 TIME_LIMIT = 1.0          # s, enforced per agent call with timeout_decorator

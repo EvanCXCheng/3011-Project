@@ -27,3 +27,23 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   already recorded. Smoke-test raw data deleted before the first commit.
 - Lab design: `game.run_one_game` is used unmodified. Our seat is wrapped in `InstrumentedAgent` (timing via
   `timeout_decorator(1)`, legality vs the true game, desync check of the bot's internal game).
+
+## [001] Baseline profiling — DONE
+
+- Seed set A, 49 games per scenario (7 per power), S3 stand-in = Greedy baseline. Mean SC ± SE / win%:
+
+| player | S1 | S2 | S3 (greedy stand-in) |
+|---|---|---|---|
+| Static | 3.14±0.05 / 0% | 2.45±0.16 / 0% | 2.41±0.16 / 0% |
+| Random | 6.55±0.25 / 0% | 1.55±0.30 / 0% | 1.37±0.29 / 0% |
+| Attitude | 6.76±0.24 / 0% | 1.55±0.26 / 0% | 1.37±0.23 / 0% |
+| Greedy | 7.39±0.40 / 4.1% | 9.92±0.98 / 30.6% | 7.65±0.85 / 14.3% |
+
+- Greedy baseline ≈ 5/15 estimated (S1 1, S2 3, S3 1), with everything borderline. In S1 it plateaus at ~7.7 SC from
+  1908: it never dislodges holders, which confirms the key fact for S1.
+- Greedy is by far the strongest baseline; Random and Attitude are fodder (~1.5 SC in S2). The S2 threat is Greedy neighbours.
+- The Hidden Agent (~50% S2 win) is much stronger than the Greedy baseline, so the S3 numbers with a Greedy stand-in are optimistic.
+- Targets for our bots: S1 needs supported attacks on holders (>12 SC for 3 pts, >16 for 5); S2 needs >50% wins, well above Greedy's 31%.
+- Lab fix: Python 3.12 `ProcessPoolExecutor(max_tasks_per_child=...)` deadlocked after ~75 games (all workers
+  exited, parent waiting). `evaluate.py` now recycles workers by running batches in fresh pools. The 75 games already
+  recorded were kept and reused.

@@ -3,7 +3,7 @@
 Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: reason]`; don't delete them.
 
 ## lab / cross-cutting
-1. Iteration 0: profile baselines. Static, Random, Attitude and Greedy as the player in S1 and S2, 49 games each
+1. [done: JOURNAL 001] Iteration 0: profile baselines. Static, Random, Attitude and Greedy as the player in S1 and S2, 49 games each
    (seed set A), plus the S3 (Greedy stand-in) number for Greedy. Record in JOURNAL.
 2. Confirm engine behaviour for missing disbands (Static powers in S1) and for retreat defaults.
 

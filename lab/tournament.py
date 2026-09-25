@@ -59,8 +59,7 @@ def main():
     raw_path = os.path.join(C.RAW_DIR, run_id + '.jsonl')
     results = []
     with open(raw_path, 'w') as raw, ProcessPoolExecutor(
-            max_workers=a.workers, mp_context=mp.get_context('spawn'), initializer=run_game.worker_init,
-            max_tasks_per_child=C.MAX_TASKS_PER_CHILD) as ex:
+            max_workers=a.workers, mp_context=mp.get_context('spawn'), initializer=run_game.worker_init) as ex:
         for fu in as_completed([ex.submit(run_game.run_task, t) for t in tasks]):
             rec = fu.result()
             if rec.get('status') == 'ok':
