@@ -200,3 +200,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   leftover holders supporting contested own moves → S1 wins, some S2 gain.
 - sanity: S1 seed 11 → 15 SC, S2 seed 11 → 8 SC, tmax 9 ms.
 - plan: spare-core queue (--workers 1): Tier 0 → Tier 1 (A, stand-in bot_001 = bot_002's) → Tier 2 (B210, stand-in bot_001).
+
+## [014] bot_012 greedy/attackmatch — RUNNING
+
+- family: greedy | parent: bot_010 | tags: supported-attack-matching
+- hypothesis: matching units to attacker/supporter roles on enemy-occupied SCs with linear_sum_assignment (Hungarian),
+  keeping only fully staffed targets, turns bot_010's S1 plateau (8.6 SC, 0 wins) into steady 2v1 growth.
+- sanity: S1 seed 11 → 18 SC; S2 seed 11 → 6 SC; tmax 6 ms; new_game 29 ms (scipy import at module load).
+- plan: spare-core queue after bot_011: Tier 0 → Tier 1 (A, stand-in greedy baseline = bot_010's) → Tier 2 (B210, stand-in bot_001).

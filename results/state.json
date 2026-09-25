@@ -98,6 +98,15 @@
    "parent": "bot_002",
    "status": "RUNNING",
    "tags": "supported-attacks"
+  },
+  "bot_012": {
+   "created": "2026-09-26T03:50",
+   "family": "greedy",
+   "file": "bots/bot_012_greedy_attackmatch.py",
+   "note": "",
+   "parent": "bot_010",
+   "status": "RUNNING",
+   "tags": "supported-attack-matching"
   }
  },
  "families": {
@@ -109,7 +118,7 @@
   },
   "greedy": {
    "champion": "bot_010",
-   "iterations": 2,
+   "iterations": 3,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -147,7 +156,7 @@
   "bot_002",
   "bot_001"
  ],
- "next_bot_id": 12,
+ "next_bot_id": 13,
  "overall_champions": [
   {
    "bot": "bot_001",
