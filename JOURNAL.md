@@ -183,7 +183,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   opponent gets classified greedy/erratic and its moves are mispredicted, so the eval under-defends. Idea: fall back to
   raw adjacency for opponents that are neither static nor well predicted (per-power prediction accuracy).
 
-## [011] bot_009 adaptive/scenswitch — RUNNING
+## [011] bot_009 adaptive/scenswitch — PROMOTED
 
 - family: adaptive | parent: bot_005 | tags: scenario-detection, hybrid-switch (lookahead code copied from bot_004)
 - analysis (lab/analyze.py bot_005): S1 100% for every power; S2/S3 SC falls with #greedy opponents
@@ -284,7 +284,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity: classes now correct (stand-in → strong); S3 seeds 11/13 (stand-in bot_004) → 2/10 SC, no errors.
 - plan: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_008's) → Tier 2 (B210, stand-in bot_004 = bot_008's).
 
-## [019] bot_017 positional/threatw — RUNNING
+## [019] bot_017 positional/threatw — PROMOTED
 
 - family: positional | parent: bot_006 | tags: threat-weighted-safety (uses bot_016's hit-rate classifier)
 - hypothesis: bot_006 freezes because any adjacent enemy unit (incl. static/random/attitude) triggers garrisons and
@@ -292,3 +292,23 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   expected threat ≥ 0.5) frees units for expansion without dropping defence against real attackers → S2/S3 gain.
 - sanity: S1/S2/S3 seed 11 → 18/2/10 SC, no errors, tmax 6 ms.
 - plan: spare queue after bot_014: Tier 0 → Tier 1 (A, stand-in bot_004 = bot_006's) → Tier 2 (B210, stand-in bot_004).
+
+## [020] Every-5 review (after 17 iterations) — DONE
+
+- bot_009 (adaptive scenswitch) Tier 2 B126 (stand-in bot_004): S1 18.00 (100%) / S2 15.16±0.39 (62.7%) / S3 11.52±0.52
+  (32.5%) → est. 13. vs bot_005: S2 +2.03±0.50, S3 +1.80±0.48, pooled +1.28±0.24 → PROMOTE → adaptive champion.
+  vs bot_007 (overall): S2 −0.11±0.45, S3 −0.34±0.51, pooled −0.15±0.23 → tie, not promoted. Tier 1 A42: S1 18.00 /
+  S2 14.81±0.79 / S3 11.31±0.95.
+- bot_017 (positional threatw) Tier 1 A42: S1 17.71 / S2 10.64 / S3 6.62, pooled +2.84±0.39 vs bot_006. Tier 2 B210
+  (stand-in bot_004): S1 17.71±0.05 (85.7%) / S2 10.41±0.38 (23.3%) / S3 7.40±0.35 (5.7%) → est. 9. vs bot_006: +5.43±0.26
+  / +1.72±0.31 / +1.11±0.30, pooled +2.75±0.19 → PROMOTE → positional champion. Takeaway: raw-adjacency caution was
+  the positional weakness; class weights free the units.
+- Tournament (28 games, HoF, 6 bots): 005 5.58±0.78, 008 5.03±0.71, 007 4.91±0.93, 011 4.69±0.66, 006 4.61±0.49,
+  012 4.27±0.75 SC. All within ~1 SE: no separation at 28 games (7-seat all-bot games are low-scoring and noisy).
+- Held-out C (bot_007, n=42, stand-in bot_003): S1 18.00 (100%) / S2 14.67±0.78 (59.5%) / S3 11.38±0.90 (28.6%),
+  in line with B (18.00 / 15.27 / 11.29) → no sign of overfitting seed sets A/B.
+- Family review: positional DORMANT (3 iters, est 9 vs 13), valuemap DORMANT (3 iters, est 11 vs 13; S3 only vs weak
+  stand-in). greedy/search/lookahead/adaptive ACTIVE (champions at est. 13; greedy's S3 uses weak stand-in bot_001 →
+  re-measure S3 with the bot_007 stand-in before trusting it).
+- Overall picture: S1 solved (100%) by 005/007/008/009; S2 ≈ 15 SC / ~60% wins (5 pts); S3 ≈ 11.5 SC / ~35% (3 pts,
+  5 pts needs >12 SC or >40% wins). S3 is where the remaining marks are.

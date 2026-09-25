@@ -78,7 +78,7 @@
    "file": "bots/bot_009_adaptive_scenswitch.py",
    "note": "",
    "parent": "bot_005",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "scenario-detection,hybrid-switch"
   },
   "bot_010": {
@@ -150,53 +150,53 @@
    "file": "bots/bot_017_positional_threatw.py",
    "note": "",
    "parent": "bot_006",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "threat-weighted-safety"
   }
  },
  "families": {
   "adaptive": {
-   "champion": "bot_005",
+   "champion": "bot_009",
    "iterations": 2,
-   "reason": "",
+   "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
   "greedy": {
    "champion": "bot_012",
    "iterations": 3,
-   "reason": "",
+   "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
   "lookahead": {
    "champion": "bot_007",
    "iterations": 3,
-   "reason": "",
+   "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
   "positional": {
-   "champion": "bot_006",
+   "champion": "bot_017",
    "iterations": 3,
-   "reason": "",
-   "status": "ACTIVE"
+   "reason": "3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC)",
+   "status": "DORMANT"
   },
   "search": {
    "champion": "bot_008",
    "iterations": 3,
-   "reason": "",
+   "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
   "valuemap": {
    "champion": "bot_014",
    "iterations": 3,
-   "reason": "",
-   "status": "ACTIVE"
+   "reason": "3 iters; champion bot_014 est 11 vs 13, S3 measured only vs weak bot_001 stand-in",
+   "status": "DORMANT"
   }
  },
  "hall_of_fame": [
-  "bot_005",
+  "bot_009",
   "bot_012",
   "bot_007",
-  "bot_006",
+  "bot_017",
   "bot_008",
   "bot_014",
   "bot_003",
@@ -251,6 +251,10 @@
    "bot": "bot_007",
    "effect": "pooled +0.75\u00b10.26 SC vs bot_004 (378 paired, B); S1 100% wins (+1.90\u00b10.29), S2/S3 n.s."
   },
+  "scenario-detection": {
+   "bot": "bot_009",
+   "effect": "pooled +1.28\u00b10.24 SC vs bot_005 (378 paired, B); S2 +2.03, S3 +1.80; tie with bot_007 (-0.15\u00b10.23)"
+  },
   "strength-aware-values": {
    "bot": "bot_014",
    "effect": "pooled +0.74\u00b10.18 SC vs bot_011 (630 paired, B); S1 +1.57\u00b10.22 (86% wins), S3 +0.87\u00b10.34"
@@ -262,6 +266,10 @@
   "supported-attacks": {
    "bot": "bot_011",
    "effect": "pooled +3.97\u00b10.17 SC vs bot_002 (630 paired, B); S1 +3.71, S2 +4.24, S3 +3.97; mark 9 vs 5"
+  },
+  "threat-weighted-safety": {
+   "bot": "bot_017",
+   "effect": "pooled +2.75\u00b10.19 SC vs bot_006 (630 paired, B); S1 +5.43, S2 +1.72, S3 +1.11; mark 9 vs 5"
   },
   "value-map": {
    "bot": "bot_002",
