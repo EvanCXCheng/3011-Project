@@ -175,3 +175,21 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity: S1 seed 11 → 18 SC (won 1907, t_mean 18 ms: switch fires after S1901M); S2 seed 11 → 6 SC; tmax 0.46 s.
 - plan: Tier 0 → Tier 1 (A, 42, stand-in bot_003 = bot_005's Tier 1) → Tier 2 (B, 126 fallback, stand-in bot_004;
   refs bot_005 B210 and bot_004 B126 S3-with-bot_004 from chain6).
+
+## [012] bot_010 greedy/dedup — RUNNING
+
+- family: greedy | parent: bot_001 | tags: no-self-bounce
+- hypothesis: joint destination assignment (best unit–destination pair first, no shared destinations, enter an
+  own-occupied province only if the occupant leaves and it is not a swap) removes self-bounces → S1/S2 gain over bot_001.
+- plan: Tier 0 → Tier 1 (A, 42, --workers 1 on the spare core; stand-in = greedy baseline, as bot_001's Tier 1) →
+  Tier 2 (B, 210, stand-in bot_001, pairs with bot_001's B210 stand-in-bot_001 run). Cheap bot → run outside the chains.
+- Tier 0 clean (tmax 4 ms): S1 9.67 / S2 8.67 / S3 4.00 (n=3).
+
+## [013] bot_011 valuemap/supports — RUNNING
+
+- family: valuemap | parent: bot_002 | tags: supported-attacks (backlog item 3 moved ahead of item 2: bot_002's S1
+  stalls at 12.3 SC with 0 wins because it never attacks holders 2v1)
+- hypothesis: attacker+supporter pairs on enemy-occupied SCs (highest value first) before the value assignment, and
+  leftover holders supporting contested own moves → S1 wins, some S2 gain.
+- sanity: S1 seed 11 → 15 SC, S2 seed 11 → 8 SC, tmax 9 ms.
+- plan: spare-core queue (--workers 1): Tier 0 → Tier 1 (A, stand-in bot_001 = bot_002's) → Tier 2 (B210, stand-in bot_001).

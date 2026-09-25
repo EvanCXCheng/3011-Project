@@ -80,6 +80,24 @@
    "parent": "bot_005",
    "status": "RUNNING",
    "tags": "scenario-detection,hybrid-switch"
+  },
+  "bot_010": {
+   "created": "2026-09-26T03:37",
+   "family": "greedy",
+   "file": "bots/bot_010_greedy_dedup.py",
+   "note": "",
+   "parent": "bot_001",
+   "status": "RUNNING",
+   "tags": "no-self-bounce"
+  },
+  "bot_011": {
+   "created": "2026-09-26T03:41",
+   "family": "valuemap",
+   "file": "bots/bot_011_valuemap_supports.py",
+   "note": "",
+   "parent": "bot_002",
+   "status": "RUNNING",
+   "tags": "supported-attacks"
   }
  },
  "families": {
@@ -91,7 +109,7 @@
   },
   "greedy": {
    "champion": "bot_001",
-   "iterations": 1,
+   "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -115,7 +133,7 @@
   },
   "valuemap": {
    "champion": "bot_002",
-   "iterations": 1,
+   "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
   }
@@ -128,7 +146,7 @@
   "bot_003",
   "bot_002"
  ],
- "next_bot_id": 10,
+ "next_bot_id": 12,
  "overall_champions": [
   {
    "bot": "bot_001",
