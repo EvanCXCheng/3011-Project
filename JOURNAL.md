@@ -109,3 +109,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   neutral SCs + that power's SCs; (3) only move into a province where our adjacent strength (mover + possible
   supporters) ≥ adjacent enemy strength, and add a support when it is contested or occupied. Loses fewer SCs in S2/S3.
 - plan: Tier 0 → Tier 1 (A, 42) → Tier 2.
+
+## [008] Lab: slow-machine timing gate — DONE
+
+- Concern: the marking CPU may be slower than ours. Bots stop on wall-clock budgets (0.40–0.50 s), so a slower CPU
+  mainly lowers search quality; the risk is the unbudgeted work (possible-orders, candidate generation, rollout in
+  flight, final selection), which scales with CPU speed. bot_004 already reached 0.52 s vs a 0.45 s budget under mild load.
+- Added `lab/stress.py`: K games (default 4) pinned to one core ≈ K× slowdown, measured with a calibration loop; reports
+  tmax, movement-phase overshoot past CONFIG TIME_BUDGET, timeouts. Not written to results/raw. Gate: tmax < 0.8 s.
+- CLAUDE.md: the gate is required before an overall-champion promotion when tmax > 0.1 s; run only between evaluations.
+- Validated on bot_001 (1 proc, 3 games): PASS, tmax 0.006 s. First real use: bot_003/bot_004 once chains 1–2 finish.

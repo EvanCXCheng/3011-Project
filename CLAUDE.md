@@ -110,6 +110,7 @@ lab/leaderboard.py     regenerates LEADERBOARD.md
 lab/tournament.py      Scenario 4 stand-in
 lab/analyze.py         failure analysis
 lab/bench_engine.py    engine timing benchmark
+lab/stress.py          slow-machine timing gate: games pinned to one core (≈4× slower), reports tmax and budget overshoot
 lab/status.py          resume helper (running evals, RUNNING entries, champion/agent file match, hours to freeze)
 tools/export_prompts.py  writes LLM_PROMPTS.md from Claude Code transcripts, for llm_usage_21.pdf (not part of any bot)
 results/raw/           one JSONL file per evaluation run (append-only); one line per game
@@ -140,6 +141,7 @@ $P lab/state.py technique supported-attack-matching bot_007 "S1 +2.1 SC vs bot_0
 $P lab/state.py standin --for bot_007                                                           # S3 stand-in rule
 $P lab/tournament.py --bots hof --games 28
 $P lab/analyze.py --bot bot_007
+$P lab/stress.py --bot bots/bot_007_x.py                                                     # slow-CPU timing gate (no eval running)
 $P lab/evaluate.py --bot bots/bot_007_x.py --seedset A --n 42 --set USE_SUPPORTS=false --tag ablation   # ablation
 $P lab/leaderboard.py
 ```
@@ -197,6 +199,10 @@ Repeat until usage runs out:
 8. **Promote** when the estimated mark is at least the champion's and the mean-SC gain across scenarios is > 2 standard errors (paired):
    - **Family champion:** the bot beats its own family champion.
    - **Overall champion:** the bot also beats the overall champion. Copy it to `agent_groupnumber.py`.
+   - **Slow-machine gate (overall champion only):** the marking machine's CPU may be slower than ours. If the bot's
+     tmax is above 0.1 s, it must also pass `lab/stress.py` (4 games pinned to one core, ≈4× slowdown; slowest
+     move < 0.8 s, no timeouts or exceptions) before it is copied to `agent_21.py`. Run the stress test only when no
+     evaluation is running. On FAIL, lower `TIME_BUDGET` or cut the unbudgeted work, then re-run the stress test.
    - **Hall of fame:** every family champion, plus the 3 most recent overall champions.
    - **Bootstrap:** the first bot to pass Tier 1 becomes overall champion immediately, so `agent_21.py` is never the stub
      for long. Likewise, a family's first bot to pass Tier 1 becomes that family's champion.
@@ -311,6 +317,15 @@ For a pessimistic single-core timing check before promoting an expensive bot:
 
 ```bash
 taskset -c 0 .venv/bin/python lab/run_game.py --bot bots/bot_NNN_x.py --scenario 2 --seed 5
+```
+
+Slower marking CPU: the bots' search stops on wall-clock time, so a slower CPU mainly costs search quality. The risk
+is the work outside the budget check (order generation, the rollout in flight, final selection), which scales with CPU
+speed. `lab/stress.py` pins several games to one core to simulate a ≈4× slower machine and reports the slowest move
+and the overshoot past the bot's `TIME_BUDGET` (summary in `results/logs/stress_<bot>.json`, never in `results/raw/`):
+
+```bash
+.venv/bin/python lab/stress.py --bot bots/bot_NNN_x.py            # --procs 4 --n 4 --gate 0.8 by default
 ```
 
 ## Engine API pointers (verify before use)

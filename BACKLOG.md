@@ -5,7 +5,7 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
 ## lab / cross-cutting
 1. [done: JOURNAL 001] Iteration 0: profile baselines. Static, Random, Attitude and Greedy as the player in S1 and S2, 49 games each
    (seed set A), plus the S3 (Greedy stand-in) number for Greedy. Record in JOURNAL.
-2. Confirm engine behaviour for missing disbands (Static powers in S1) and for retreat defaults.
+2. [done: engine civil-disorder auto-disbands units farthest from home when no disband orders; checked 26 Sep] Confirm engine behaviour for missing disbands (Static powers in S1) and for retreat defaults.
 
 ## greedy (basic technique)
 1. Base: each unit moves toward the nearest SC we don't own (BFS distance per unit type, coast-aware).
