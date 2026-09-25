@@ -1,6 +1,10 @@
-"""bot_004 — family: lookahead — parent: none
+"""bot_007 — family: lookahead — parent: bot_004
 
-Hypothesis: simulating candidate order sets one move deep beats choosing orders by rules. Each movement phase:
+Change vs bot_004 (one idea): opponent orders in the rollouts are sampled from a per-power model learned from the
+order history (static / greedy / erratic / unknown, as in the adaptive family's classifier) instead of one fixed mix.
+Static powers always hold; greedy powers mostly make their greedy move; erratic ones mostly random.
+
+Parent hypothesis: simulating candidate order sets one move deep beats choosing orders by rules. Each movement phase:
   1. generate K candidate joint orders for us: a greedy candidate (each unit to the neighbour closest to an unowned
      SC, no two units to one province) plus random perturbations (other good moves, supports of our own moves);
   2. sample opponent orders from a simple model (hold / move toward that power's nearest unowned SC / random);
@@ -8,7 +12,7 @@ Hypothesis: simulating candidate order sets one move deep beats choosing orders 
      score the outcome (SCs held and occupied, units kept, distance to unowned SCs) and keep the best mean.
 Engine note: copying the real game costs ~8 ms late in the game (history), a light copy ~0.3 ms.
 
-Technique tags: one-ply-simulation, opponent-sampling, light-game-copy
+Technique tags: one-ply-simulation, opponent-sampling, light-game-copy, opponent-model-sampling
 """
 import copy
 import random
@@ -27,6 +31,14 @@ CONFIG = {
     'P_SUPPORT': 0.5,        # when deviating, chance to pick a support of an own move (if any)
     'OPP_HOLD': 0.4,         # opponent model: hold probability
     'OPP_RANDOM': 0.1,       # opponent model: random legal order probability (else greedy move)
+    'OPP_MODEL': True,       # sample opponents by class (False = bot_004's single mix for everyone)
+    # (hold, random) probabilities per class; the rest is the greedy move
+    'MIX_STATIC': (1.0, 0.0),
+    'MIX_GREEDY': (0.1, 0.0),
+    'MIX_ERRATIC': (0.3, 0.5),
+    'STATIC_HOLD_FRAC': 0.95,
+    'GREEDY_TOWARD_FRAC': 0.8,
+    'MIN_OBS': 2,
     'W_SC': 1.0,             # per SC we own after the move (occupied unowned SCs count in Fall)
     'W_OCC_SPRING': 0.5,     # per unowned SC occupied after a Spring move
     'W_UNIT': 0.6,           # per unit kept (not dislodged)
@@ -129,12 +141,14 @@ def light_game(game):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_004_lookahead_base'):
+    def __init__(self, agent_name='bot_007_lookahead_oppmodel'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
         self.game = game
         self.power_name = power_name
+        self.obs = {}            # power -> [n_unit_orders, n_holds, n_moves, n_toward]
+        self.seen_phases = set()
         try:
             self.info = map_info(game)
         except Exception:
@@ -152,6 +166,10 @@ class StudentAgent(Agent):
         try:
             if self.info is None:
                 self.info = map_info(self.game)
+            try:
+                self._observe()
+            except Exception:
+                pass
             possible = self.game.get_all_possible_orders()
             locs = self.game.get_orderable_locations(self.power_name)
             ptype = self.game.phase_type
@@ -164,6 +182,62 @@ class StudentAgent(Agent):
         except Exception:
             pass
         return orders
+
+    # --------------------------------------------------------------------------------------------------------
+    # opponent model
+    def _observe(self):
+        """Update per-power order statistics from movement phases not yet seen."""
+        g = self.game
+        for phase in list(g.order_history.keys()):
+            ph = str(phase)
+            if ph in self.seen_phases or not ph.endswith('M'):
+                continue
+            self.seen_phases.add(ph)
+            st = g.state_history.get(phase)
+            if st is None:
+                continue
+            orders_by_power = g.order_history[phase]
+            for p, units in st['units'].items():
+                if p == self.power_name:
+                    continue
+                own = set(st['centers'].get(p, []))
+                targets = [sc for sc in self.info['scs'] if sc not in own]
+                ordered = {}
+                for o in orders_by_power.get(p, []) or []:
+                    tok = o.split()
+                    if len(tok) >= 3:
+                        ordered[_base(tok[1])] = o
+                ob = self.obs.setdefault(p, [0, 0, 0, 0])
+                for u in units:
+                    t, loc = _unit_split(u)
+                    ob[0] += 1
+                    o = ordered.get(_base(loc))
+                    if o is None or o.split()[2] == 'H':
+                        ob[1] += 1
+                        continue
+                    tok = o.split()
+                    if tok[2] == '-':
+                        ob[2] += 1
+                        if self._near_set(t, tok[3], targets) < self._near_set(t, loc, targets):
+                            ob[3] += 1
+
+    def _classify(self, p):
+        ob = self.obs.get(p)
+        if not ob or ob[0] < CONFIG['MIN_OBS']:
+            return 'unknown'
+        if ob[1] >= CONFIG['STATIC_HOLD_FRAC'] * ob[0]:
+            return 'static'
+        if ob[2] > 0 and ob[3] >= CONFIG['GREEDY_TOWARD_FRAC'] * ob[2]:
+            return 'greedy'
+        return 'erratic'
+
+    def _mix(self, p):
+        """(hold, random) probabilities used to sample power p's orders."""
+        default = (CONFIG['OPP_HOLD'], CONFIG['OPP_RANDOM'])
+        if not CONFIG['OPP_MODEL']:
+            return default
+        return {'static': CONFIG['MIX_STATIC'], 'greedy': CONFIG['MIX_GREEDY'],
+                'erratic': CONFIG['MIX_ERRATIC']}.get(self._classify(p), default)
 
     # --------------------------------------------------------------------------------------------------------
     def _near_set(self, utype, loc, targets):
@@ -272,18 +346,21 @@ class StudentAgent(Agent):
             ptargets = self._targets(p)
             pset = set(ptargets)
             plocs = [b for b in game.get_orderable_locations(p) if possible.get(b)]
+            mix = self._mix(p)
+            if mix[0] >= 1.0:
+                continue            # always holds: no orders needed
             popts = [self._unit_options(possible, b, ptargets, pset) for b in plocs]
-            opp_ctx[p] = (plocs, popts)
+            opp_ctx[p] = (plocs, popts, mix)
 
         def sample_opponents():
             out = {}
-            for p, (plocs, popts) in opp_ctx.items():
+            for p, (plocs, popts, mix) in opp_ctx.items():
                 lst = []
                 for b, po in zip(plocs, popts):
                     r = rng.random()
-                    if r < CONFIG['OPP_HOLD'] or not po:
+                    if r < mix[0] or not po:
                         continue
-                    if r < CONFIG['OPP_HOLD'] + CONFIG['OPP_RANDOM']:
+                    if r < mix[0] + mix[1]:
                         lst.append(rng.choice(possible[b]))
                     else:
                         best = po[0][0]

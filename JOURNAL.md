@@ -148,13 +148,15 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - CLAUDE.md: the gate is required before an overall-champion promotion when tmax > 0.1 s; run only between evaluations.
 - Validated on bot_001 (1 proc, 3 games): PASS, tmax 0.006 s. First real use: bot_003/bot_004 once chains 1–2 finish.
 
-## [009] bot_007 lookahead/oppmodel — RUNNING
+## [009] bot_007 lookahead/oppmodel — PROMOTED
 
 - Tier 0 clean. Tier 1 A42 (stand-in bot_003): S1 18.00 (100%) / S2 14.69±0.72 (57.1%) / S3 10.26±1.06 (33.3%);
   vs bot_004 paired: S1 +1.48±0.49, S2 −0.38±0.72, S3 +0.12±1.04, pooled +0.40±0.46 → passes screen.
 - Tier 2 B126 (stand-in bot_003): S1 18.00 (100%) / S2 15.27±0.39 (57.9%) / S3 11.29±0.54 (32.5%) → est. 13.
   vs bot_004 paired: S1 +1.90±0.29, S2 +0.48±0.47, S3 −0.12±0.53, pooled +0.75±0.26, marks 13 vs 13 → PROMOTE
-  (lookahead family champion now; overall promotion waits for lab/stress.py on an idle CPU: gate1.sh).
+  (lookahead family champion now; overall promotion waits for lab/stress.py on an idle CPU).
+- stress (core 0 alone; bot_013's evaluation pinned to core 3): ×3.94, tmax 0.542 s, overshoot 0.092 s → PASS →
+  OVERALL CHAMPION (agent_21.py).
 - takeaway: class-based opponent sampling fixes S1 completely (126/126 wins); no measurable effect in S2/S3.
 
 - family: lookahead | parent: bot_004 | tags: opponent-model-sampling (hybrid: adaptive's classifier inside lookahead)
