@@ -150,6 +150,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 
 ## [009] bot_007 lookahead/oppmodel — RUNNING
 
+- Tier 0 clean. Tier 1 A42 (stand-in bot_003): S1 18.00 (100%) / S2 14.69±0.72 (57.1%) / S3 10.26±1.06 (33.3%);
+  vs bot_004 paired: S1 +1.48±0.49, S2 −0.38±0.72, S3 +0.12±1.04, pooled +0.40±0.46 → passes screen. Tier 2 running.
+
 - family: lookahead | parent: bot_004 | tags: opponent-model-sampling (hybrid: adaptive's classifier inside lookahead)
 - hypothesis: sampling opponent orders from a per-power class (static → always hold; greedy → 90% greedy move;
   erratic → 30% hold / 50% random / 20% greedy; unknown → bot_004's 40/10/50 mix) makes rollouts match reality,
@@ -176,7 +179,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: Tier 0 → Tier 1 (A, 42, stand-in bot_003 = bot_005's Tier 1) → Tier 2 (B, 126 fallback, stand-in bot_004;
   refs bot_005 B210 and bot_004 B126 S3-with-bot_004 from chain6).
 
-## [012] bot_010 greedy/dedup — RUNNING
+## [012] bot_010 greedy/dedup — PROMOTED
 
 - family: greedy | parent: bot_001 | tags: no-self-bounce
 - hypothesis: joint destination assignment (best unit–destination pair first, no shared destinations, enter an
@@ -184,6 +187,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: Tier 0 → Tier 1 (A, 42, --workers 1 on the spare core; stand-in = greedy baseline, as bot_001's Tier 1) →
   Tier 2 (B, 210, stand-in bot_001, pairs with bot_001's B210 stand-in-bot_001 run). Cheap bot → run outside the chains.
 - Tier 0 clean (tmax 4 ms): S1 9.67 / S2 8.67 / S3 4.00 (n=3).
+- Tier 1 A42: S1 8.57±0.32 / S2 10.45±0.95 (28.6%) / S3 9.62±0.76 (14.3%); vs bot_001 pooled +2.70±0.36.
+- Tier 2 B210 (stand-in bot_001): S1 8.57±0.14 (0%) / S2 10.92±0.39 (25.7%) / S3 9.38±0.35 (13.3%) → est. 7.
+  vs bot_001 paired: +2.43±0.13 / +3.49±0.35 / +2.62±0.29, pooled +2.85±0.16 → PROMOTE → greedy family champion.
+- takeaway: self-bounces cost ~3 SC; greedy with dedup now beats the Greedy baseline (S2 10.9 vs 9.9). Next: supports.
 
 ## [013] bot_011 valuemap/supports — RUNNING
 

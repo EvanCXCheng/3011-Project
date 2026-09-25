@@ -87,7 +87,7 @@
    "file": "bots/bot_010_greedy_dedup.py",
    "note": "",
    "parent": "bot_001",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "no-self-bounce"
   },
   "bot_011": {
@@ -108,7 +108,7 @@
    "status": "ACTIVE"
   },
   "greedy": {
-   "champion": "bot_001",
+   "champion": "bot_010",
    "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
@@ -140,11 +140,12 @@
  },
  "hall_of_fame": [
   "bot_005",
-  "bot_001",
+  "bot_010",
   "bot_004",
   "bot_006",
   "bot_003",
-  "bot_002"
+  "bot_002",
+  "bot_001"
  ],
  "next_bot_id": 12,
  "overall_champions": [
@@ -170,6 +171,10 @@
   "local-search": {
    "bot": "bot_003",
    "effect": "pooled +5.91\u00b10.21 SC vs bot_001 (630 paired, B); mark 13 vs 2"
+  },
+  "no-self-bounce": {
+   "bot": "bot_010",
+   "effect": "pooled +2.85\u00b10.16 SC vs bot_001 (630 paired, B); mark 7 vs 2"
   },
   "one-ply-simulation": {
    "bot": "bot_004",
