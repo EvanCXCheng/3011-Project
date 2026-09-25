@@ -312,3 +312,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   re-measure S3 with the bot_007 stand-in before trusting it).
 - Overall picture: S1 solved (100%) by 005/007/008/009; S2 ≈ 15 SC / ~60% wins (5 pts); S3 ≈ 11.5 SC / ~35% (3 pts,
   5 pts needs >12 SC or >40% wins). S3 is where the remaining marks are.
+
+## [021] bot_018 lookahead/strongopp — RUNNING
+
+- family: lookahead | parent: bot_007 | tags: adversarial-sampling (+ bot_016's hit-rate classes)
+- hypothesis: bot_007 labels a strong opponent 'erratic' (move-direction rule) and samples it as mostly random, so
+  rollouts underrate attacks by the Hidden Agent. Hit-rate classes + adversarial sampling for 'strong' powers (each
+  unit attacks one of our provinces w.p. 0.5, with a supporting unit w.p. 0.7 when possible) → S3 gain.
+- sanity S3 (stand-in bot_004) seeds 11–14 → 18/12/8/18 SC, tmax 0.47 s, no errors.
+- stand-in: rule gives bot_009, but bot_009 runs bot_004's lookahead code outside S1 (same family in effect) → use
+  bot_008 (search, S2 44.8%) for Tier 2 and a matching bot_007 S3 reference. Deviation noted.
+- plan: Tier 0 + Tier 1 (A, stand-in bot_003 = bot_007's) on the spare core; Tier 2 (B126, stand-in bot_008) + ref in main4.

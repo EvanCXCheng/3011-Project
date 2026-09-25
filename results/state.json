@@ -152,6 +152,15 @@
    "parent": "bot_006",
    "status": "PROMOTED",
    "tags": "threat-weighted-safety"
+  },
+  "bot_018": {
+   "created": "2026-09-26T06:42",
+   "family": "lookahead",
+   "file": "bots/bot_018_lookahead_strongopp.py",
+   "note": "",
+   "parent": "bot_007",
+   "status": "RUNNING",
+   "tags": "adversarial-sampling"
   }
  },
  "families": {
@@ -169,7 +178,7 @@
   },
   "lookahead": {
    "champion": "bot_007",
-   "iterations": 3,
+   "iterations": 4,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -202,7 +211,7 @@
   "bot_003",
   "bot_004"
  ],
- "next_bot_id": 18,
+ "next_bot_id": 19,
  "overall_champions": [
   {
    "bot": "bot_001",
