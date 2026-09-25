@@ -184,3 +184,12 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-070414_bot_016_search_predacc_tier2,2026-09-26T07:27,bot_016_search_predacc,5faadff884,tier2,B,1,,210,0,1.0,18.0,0.0,5,False,0.4003,0,97.5,0,0,0,0
 20260926-070414_bot_016_search_predacc_tier2,2026-09-26T07:27,bot_016_search_predacc,5faadff884,tier2,B,2,,210,0,0.5333,13.8286,0.3693,5,True,0.4024,0,102.6,0,0,0,0
 20260926-070414_bot_016_search_predacc_tier2,2026-09-26T07:27,bot_016_search_predacc,5faadff884,tier2,B,3,bot_004_lookahead_base,210,0,0.3238,11.419,0.4109,3,False,0.4007,0,102.6,0,0,0,0
+20260926-073050_bot_020_search_rolloutsel_tier0,2026-09-26T07:33,bot_020_search_rolloutsel,f5338bf295,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4519,0,90.4,0,0,0,0
+20260926-073050_bot_020_search_rolloutsel_tier0,2026-09-26T07:33,bot_020_search_rolloutsel,f5338bf295,tier0,X,2,,3,0,0.3333,14.0,2.0817,5,True,0.4543,0,92.3,0,0,0,0
+20260926-073050_bot_020_search_rolloutsel_tier0,2026-09-26T07:33,bot_020_search_rolloutsel,f5338bf295,tier0,X,3,bot_004_lookahead_base,3,0,0.3333,11.0,3.6056,3,True,0.4538,0,96.4,0,0,0,0
+20260926-072753_bot_018_lookahead_strongopp_tier2,2026-09-26T07:55,bot_018_lookahead_strongopp,dbdee9ad6a,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.478,0,94.1,0,0,0,0
+20260926-072753_bot_018_lookahead_strongopp_tier2,2026-09-26T07:55,bot_018_lookahead_strongopp,dbdee9ad6a,tier2,B,2,,126,0,0.5873,14.7698,0.429,5,False,0.4966,0,97.0,0,0,0,0
+20260926-072753_bot_018_lookahead_strongopp_tier2,2026-09-26T07:55,bot_018_lookahead_strongopp,dbdee9ad6a,tier2,B,3,bot_008_search_oppaware,126,0,0.3889,12.0159,0.5355,5,True,0.4846,0,97.0,0,0,0,0
+20260926-073311_bot_020_search_rolloutsel_tier1,2026-09-26T07:55,bot_020_search_rolloutsel,f5338bf295,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4723,0,91.9,0,0,0,0
+20260926-073311_bot_020_search_rolloutsel_tier1,2026-09-26T07:55,bot_020_search_rolloutsel,f5338bf295,tier1,A,2,,42,0,0.5476,15.0238,0.7281,5,True,0.4837,0,96.2,0,0,0,0
+20260926-073311_bot_020_search_rolloutsel_tier1,2026-09-26T07:55,bot_020_search_rolloutsel,f5338bf295,tier1,A,3,bot_001_greedy_base,42,0,0.4524,13.0476,0.91,5,True,0.4822,0,97.1,0,0,0,0
