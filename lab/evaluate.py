@@ -175,7 +175,7 @@ def main():
     lines = [f'{label} seedset={a.seedset} n={a.n} new={len(tasks)} ({time.time()-t0:.0f}s) '
              f'standin={common.spec_label(standin) if standin else "-"}']
     with open(C.RESULTS_CSV, 'a', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=CSV_FIELDS)
+        w = csv.DictWriter(f, fieldnames=CSV_FIELDS, lineterminator='\n')
         if write_header:
             w.writeheader()
         for sc in a.scenarios:
