@@ -289,6 +289,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   case (every reachable province a full threat, hold prob 0.85) → recover S3 while keeping S1 100%.
 - sanity: classes now correct (stand-in → strong); S3 seeds 11/13 (stand-in bot_004) → 2/10 SC, no errors.
 - plan: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_008's) → Tier 2 (B210, stand-in bot_004 = bot_008's).
+- Tier 0 clean. Tier 1 A42: S1 18.00 / S2 13.36±0.82 (47.6%) / S3 12.29±0.90 (35.7%); vs bot_008 pooled −0.15±0.38 → Tier 2.
 
 ## [019] bot_017 positional/threatw — PROMOTED
 
@@ -329,6 +330,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - stand-in: rule gives bot_009, but bot_009 runs bot_004's lookahead code outside S1 (same family in effect) → use
   bot_008 (search, S2 44.8%) for Tier 2 and a matching bot_007 S3 reference. Deviation noted.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_003 = bot_007's) on the spare core; Tier 2 (B126, stand-in bot_008) + ref in main4.
+- Tier 0 clean. Tier 1 A42: S1 18.00 / S2 14.83±0.79 (61.9%) / S3 11.45±0.93 (28.6%); vs bot_007 pooled +0.44±0.40 → Tier 2.
 
 ## [022] bot_019 adaptive/peaceful — RUNNING
 
