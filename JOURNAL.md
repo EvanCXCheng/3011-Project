@@ -151,7 +151,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 ## [009] bot_007 lookahead/oppmodel — RUNNING
 
 - Tier 0 clean. Tier 1 A42 (stand-in bot_003): S1 18.00 (100%) / S2 14.69±0.72 (57.1%) / S3 10.26±1.06 (33.3%);
-  vs bot_004 paired: S1 +1.48±0.49, S2 −0.38±0.72, S3 +0.12±1.04, pooled +0.40±0.46 → passes screen. Tier 2 running.
+  vs bot_004 paired: S1 +1.48±0.49, S2 −0.38±0.72, S3 +0.12±1.04, pooled +0.40±0.46 → passes screen.
+- Tier 2 B126 (stand-in bot_003): S1 18.00 (100%) / S2 15.27±0.39 (57.9%) / S3 11.29±0.54 (32.5%) → est. 13.
+  vs bot_004 paired: S1 +1.90±0.29, S2 +0.48±0.47, S3 −0.12±0.53, pooled +0.75±0.26, marks 13 vs 13 → PROMOTE
+  (lookahead family champion now; overall promotion waits for lab/stress.py on an idle CPU: gate1.sh).
+- takeaway: class-based opponent sampling fixes S1 completely (126/126 wins); no measurable effect in S2/S3.
 
 - family: lookahead | parent: bot_004 | tags: opponent-model-sampling (hybrid: adaptive's classifier inside lookahead)
 - hypothesis: sampling opponent orders from a per-power class (static → always hold; greedy → 90% greedy move;
@@ -206,13 +210,18 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: 2v1 supports are the single biggest rule-bot gain so far (+4 SC in every scenario). S1 16.0 but only 57%
   wins: some powers stall below 18 (S1 is deterministic per power).
 
-## [014] bot_012 greedy/attackmatch — RUNNING
+## [014] bot_012 greedy/attackmatch — PROMOTED
 
 - family: greedy | parent: bot_010 | tags: supported-attack-matching
 - hypothesis: matching units to attacker/supporter roles on enemy-occupied SCs with linear_sum_assignment (Hungarian),
   keeping only fully staffed targets, turns bot_010's S1 plateau (8.6 SC, 0 wins) into steady 2v1 growth.
 - sanity: S1 seed 11 → 18 SC; S2 seed 11 → 6 SC; tmax 6 ms; new_game 29 ms (scipy import at module load).
 - plan: spare-core queue after bot_011: Tier 0 → Tier 1 (A, stand-in greedy baseline = bot_010's) → Tier 2 (B210, stand-in bot_001).
+- Tier 1 A42: S1 12.29±0.74 (28.6%) / S2 13.88±0.87 (54.8%) / S3 13.38±0.81 (47.6%); vs bot_010 pooled +3.63±0.45.
+- Tier 2 B210 (stand-in bot_001): S1 12.29±0.33 (28.6%) / S2 13.49±0.36 (47.6%) / S3 12.08±0.40 (35.7%) → est. 13.
+  vs bot_010: +3.71±0.30 / +2.57±0.35 / +2.70±0.34, pooled +3.00±0.19 → PROMOTE → greedy family champion.
+  Peak memory 141 MB (numpy/scipy import), fine.
+- takeaway: Hungarian role matching for 2v1 attacks gives +3 SC; greedy family now at est. 13 (S3 with weak stand-in bot_001).
 
 ## [015] bot_013 positional/supadvance — RUNNING
 

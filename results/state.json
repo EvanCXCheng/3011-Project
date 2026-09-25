@@ -60,7 +60,7 @@
    "file": "bots/bot_007_lookahead_oppmodel.py",
    "note": "",
    "parent": "bot_004",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "opponent-model-sampling"
   },
   "bot_008": {
@@ -105,7 +105,7 @@
    "file": "bots/bot_012_greedy_attackmatch.py",
    "note": "",
    "parent": "bot_010",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "supported-attack-matching"
   },
   "bot_013": {
@@ -135,13 +135,13 @@
    "status": "ACTIVE"
   },
   "greedy": {
-   "champion": "bot_010",
+   "champion": "bot_012",
    "iterations": 3,
    "reason": "",
    "status": "ACTIVE"
   },
   "lookahead": {
-   "champion": "bot_004",
+   "champion": "bot_007",
    "iterations": 2,
    "reason": "",
    "status": "ACTIVE"
@@ -167,12 +167,13 @@
  },
  "hall_of_fame": [
   "bot_005",
-  "bot_010",
-  "bot_004",
+  "bot_012",
+  "bot_007",
   "bot_006",
   "bot_003",
   "bot_011",
-  "bot_001"
+  "bot_001",
+  "bot_004"
  ],
  "next_bot_id": 15,
  "overall_champions": [
@@ -210,6 +211,14 @@
   "opponent-classification": {
    "bot": "bot_005",
    "effect": "S1 100% win (210/210); pooled +1.33\u00b10.27 SC vs bot_003 but S2 \u22120.82, S3 \u22121.44"
+  },
+  "opponent-model-sampling": {
+   "bot": "bot_007",
+   "effect": "pooled +0.75\u00b10.26 SC vs bot_004 (378 paired, B); S1 100% wins (+1.90\u00b10.29), S2/S3 n.s."
+  },
+  "supported-attack-matching": {
+   "bot": "bot_012",
+   "effect": "pooled +3.00\u00b10.19 SC vs bot_010 (630 paired, B); S1 +3.71, S2 +2.57, S3 +2.70; mark 13 vs 7"
   },
   "supported-attacks": {
    "bot": "bot_011",
