@@ -179,3 +179,8 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-064743_bot_018_lookahead_strongopp_tier1,2026-09-26T07:15,bot_018_lookahead_strongopp,dbdee9ad6a,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4813,0,92.5,0,0,0,0
 20260926-064743_bot_018_lookahead_strongopp_tier1,2026-09-26T07:15,bot_018_lookahead_strongopp,dbdee9ad6a,tier1,A,2,,42,0,0.619,14.8333,0.7941,5,False,0.4836,0,97.5,0,0,0,0
 20260926-064743_bot_018_lookahead_strongopp_tier1,2026-09-26T07:15,bot_018_lookahead_strongopp,dbdee9ad6a,tier1,A,3,bot_003_search_base,42,0,0.2857,11.4524,0.9253,3,True,0.4828,0,98.0,0,0,0,0
+20260926-071552_bot_012_greedy_attackmatch_restandin,2026-09-26T07:21,bot_012_greedy_attackmatch,ec3dfc04ef,restandin,B,3,bot_008_search_oppaware,126,0,0.2619,9.9921,0.5452,3,False,0.0483,0,144.8,0,0,0,0
+20260926-072138_bot_014_valuemap_strength_restandin,2026-09-26T07:27,bot_014_valuemap_strength,3e7784ce3f,restandin,B,3,bot_008_search_oppaware,126,0,0.246,9.881,0.5413,3,False,0.0389,0,109.6,0,0,0,0
+20260926-070414_bot_016_search_predacc_tier2,2026-09-26T07:27,bot_016_search_predacc,5faadff884,tier2,B,1,,210,0,1.0,18.0,0.0,5,False,0.4003,0,97.5,0,0,0,0
+20260926-070414_bot_016_search_predacc_tier2,2026-09-26T07:27,bot_016_search_predacc,5faadff884,tier2,B,2,,210,0,0.5333,13.8286,0.3693,5,True,0.4024,0,102.6,0,0,0,0
+20260926-070414_bot_016_search_predacc_tier2,2026-09-26T07:27,bot_016_search_predacc,5faadff884,tier2,B,3,bot_004_lookahead_base,210,0,0.3238,11.419,0.4109,3,False,0.4007,0,102.6,0,0,0,0

@@ -279,7 +279,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   budget; the 1-ply score with sampled opponents rarely rewards defence). The S3 gap is about the opponent model,
   not the candidate set → bot_018.
 
-## [018] bot_016 search/predacc — RUNNING
+## [018] bot_016 search/predacc — PROMOTED
 
 - family: search | parent: bot_008 | tags: prediction-accuracy-gating
 - analysis: classifier check in an S3 game (seed 12, after 1905): Greedy baseline greedy-prediction hit rate 0.91–1.0;
@@ -290,6 +290,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity: classes now correct (stand-in → strong); S3 seeds 11/13 (stand-in bot_004) → 2/10 SC, no errors.
 - plan: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_008's) → Tier 2 (B210, stand-in bot_004 = bot_008's).
 - Tier 0 clean. Tier 1 A42: S1 18.00 / S2 13.36±0.82 (47.6%) / S3 12.29±0.90 (35.7%); vs bot_008 pooled −0.15±0.38 → Tier 2.
+- Tier 2 B210 (stand-in bot_004): S1 18.00 (100%) / S2 13.83±0.37 (53.3%) / S3 11.42±0.41 (32.4%) → est. 13.
+  vs bot_008: S1 0, S2 +0.79±0.39, S3 +1.47±0.41, pooled +0.75±0.19 → PROMOTE → search champion.
+  vs bot_007 (overall): S2 −1.45±0.46, S3 −0.49±0.47, pooled −0.62±0.25 → not overall.
+- takeaway: hit-rate classes recover bot_008's S3 loss (+1.47) and keep S1 at 100%. Search still trails lookahead in S2.
 
 ## [019] bot_017 positional/threatw — PROMOTED
 
@@ -342,3 +346,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   while other targets exist → fewer losses in S2/S3.
 - sanity S2 seeds 11/12/13 → 5/18/12 SC, tmax 0.48 s, no errors.
 - plan: main5 after main4: Tier 0 → Tier 1 (A, stand-in bot_003 = bot_009's) → Tier 2 (B126, stand-in bot_004 = bot_009's).
+
+## [023] S3 re-measure of greedy/valuemap champions — DONE
+
+- Their S3 numbers were against the weak stand-in bot_001. Re-run S3 B126 with stand-in bot_008 (search, strong):
+  bot_012 greedy 9.99±0.55 (26.2%), bot_014 valuemap 9.88±0.54 (24.6%) → both est. 11 (was 13 / 11).
+- Family review: greedy → DORMANT (3 iters, 11 vs 13); valuemap stays DORMANT. ACTIVE: search, lookahead, adaptive.

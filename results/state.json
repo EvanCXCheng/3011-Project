@@ -141,7 +141,7 @@
    "file": "bots/bot_016_search_predacc.py",
    "note": "",
    "parent": "bot_008",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "prediction-accuracy-gating"
   },
   "bot_017": {
@@ -182,8 +182,8 @@
   "greedy": {
    "champion": "bot_012",
    "iterations": 3,
-   "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
-   "status": "ACTIVE"
+   "reason": "3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13",
+   "status": "DORMANT"
   },
   "lookahead": {
    "champion": "bot_007",
@@ -198,7 +198,7 @@
    "status": "DORMANT"
   },
   "search": {
-   "champion": "bot_008",
+   "champion": "bot_016",
    "iterations": 3,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
@@ -206,7 +206,7 @@
   "valuemap": {
    "champion": "bot_014",
    "iterations": 3,
-   "reason": "3 iters; champion bot_014 est 11 vs 13, S3 measured only vs weak bot_001 stand-in",
+   "reason": "3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13",
    "status": "DORMANT"
   }
  },
@@ -215,7 +215,7 @@
   "bot_012",
   "bot_007",
   "bot_017",
-  "bot_008",
+  "bot_016",
   "bot_014",
   "bot_003",
   "bot_004"
@@ -268,6 +268,10 @@
   "opponent-model-sampling": {
    "bot": "bot_007",
    "effect": "pooled +0.75\u00b10.26 SC vs bot_004 (378 paired, B); S1 100% wins (+1.90\u00b10.29), S2/S3 n.s."
+  },
+  "prediction-accuracy-gating": {
+   "bot": "bot_016",
+   "effect": "pooled +0.75\u00b10.19 SC vs bot_008 (630 paired, B); S2 +0.79\u00b10.39, S3 +1.47\u00b10.41"
   },
   "scenario-detection": {
    "bot": "bot_009",
