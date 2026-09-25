@@ -279,3 +279,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   case (every reachable province a full threat, hold prob 0.85) → recover S3 while keeping S1 100%.
 - sanity: classes now correct (stand-in → strong); S3 seeds 11/13 (stand-in bot_004) → 2/10 SC, no errors.
 - plan: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_008's) → Tier 2 (B210, stand-in bot_004 = bot_008's).
+
+## [019] bot_017 positional/threatw — RUNNING
+
+- family: positional | parent: bot_006 | tags: threat-weighted-safety (uses bot_016's hit-rate classifier)
+- hypothesis: bot_006 freezes because any adjacent enemy unit (incl. static/random/attitude) triggers garrisons and
+  blocks moves. Weighting enemy units by class (static 0, erratic 0.35, unknown 0.7, greedy/strong 1; garrison at
+  expected threat ≥ 0.5) frees units for expansion without dropping defence against real attackers → S2/S3 gain.
+- sanity: S1/S2/S3 seed 11 → 18/2/10 SC, no errors, tmax 6 ms.
+- plan: spare queue after bot_014: Tier 0 → Tier 1 (A, stand-in bot_004 = bot_006's) → Tier 2 (B210, stand-in bot_004).

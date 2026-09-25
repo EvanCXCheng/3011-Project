@@ -143,6 +143,15 @@
    "parent": "bot_008",
    "status": "RUNNING",
    "tags": "prediction-accuracy-gating"
+  },
+  "bot_017": {
+   "created": "2026-09-26T05:22",
+   "family": "positional",
+   "file": "bots/bot_017_positional_threatw.py",
+   "note": "",
+   "parent": "bot_006",
+   "status": "RUNNING",
+   "tags": "threat-weighted-safety"
   }
  },
  "families": {
@@ -166,7 +175,7 @@
   },
   "positional": {
    "champion": "bot_006",
-   "iterations": 2,
+   "iterations": 3,
    "reason": "",
    "status": "ACTIVE"
   },
@@ -193,7 +202,7 @@
   "bot_003",
   "bot_004"
  ],
- "next_bot_id": 17,
+ "next_bot_id": 18,
  "overall_champions": [
   {
    "bot": "bot_001",
