@@ -16,7 +16,7 @@ Mark = estimated rubric points /15 (per scenario: highest tier reached by win ra
 | 3 | bot_003_search_base | search | PROMOTED | 11.71±0.27 (23%) 252 → 3* | 13.52±0.34 (49%) 252 → 5* | 12.74±0.36 (44%) 252 → 5 | **13** | 0.403 | 103 | 0 | - |
 | 4 | bot_002_valuemap_base | valuemap | PROMOTED | 12.29±0.18 (0%) 252 → 3 | 8.29±0.34 (12%) 252 → 1 | 6.51±0.30 (7%) 252 → 1 | **5** | 0.056 | 102 | 0 | - |
 | 5 | baseline:greedy | - | - | 7.39±0.40 (4%) 49 → 1* | 9.92±0.98 (31%) 49 → 3* | 7.65±0.85 (14%) 49 → 1* | **5** | 0.051 | 101 | 12 | - |
-| 6 | bot_006_positional_base | positional | RUNNING | 12.29±0.61 (14%) 42 → 3* | 8.54±0.87 (8%) 26 → 1 | - | **4** | 0.045 | 100 | 0 | - |
+| 6 | bot_006_positional_base | positional | RUNNING | 12.29±0.61 (14%) 42 → 3* | 8.60±0.82 (12%) 42 → 1 | - | **4** | 0.045 | 100 | 0 | - |
 | 7 | bot_001_greedy_base | greedy | PROMOTED | 6.14±0.16 (0%) 252 → 0 | 7.58±0.31 (8%) 252 → 1 | 6.41±0.19 (3%) 462 → 1 | **2** | 0.074 | 102 | 0 | - |
 | 8 | baseline:attitude | - | - | 6.76±0.24 (0%) 49 → 0 | 1.55±0.26 (0%) 49 → 0 | 1.37±0.23 (0%) 49 → 0 | **0** | 0.079 | 101 | 0 | - |
 | 9 | baseline:random | - | - | 6.55±0.25 (0%) 49 → 0 | 1.55±0.30 (0%) 49 → 0 | 1.37±0.29 (0%) 49 → 0 | **0** | 0.074 | 100 | 0 | - |
@@ -38,10 +38,13 @@ Mark = estimated rubric points /15 (per scenario: highest tier reached by win ra
 
 ## Report coverage: techniques
 
-Distinct techniques measured: 0 (need basic + 3 new).
+Distinct techniques measured: 3 (need basic + 3 new).
 
 | technique tag | first bot | measured effect vs parent |
 |---|---|---|
+| bfs-greedy | bot_001 | basic technique: est. mark 2 (B210: S1 6.14, S2 7.43, S3 6.75) |
+| local-search | bot_003 | pooled +5.91±0.21 SC vs bot_001 (630 paired, B); mark 13 vs 2 |
+| value-map | bot_002 | pooled +2.20±0.20 SC vs bot_001 (630 paired, B); S1 +6.14±0.20 |
 
 ## Champion bot_003 by power (mean SC / win%)
 
