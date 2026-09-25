@@ -248,7 +248,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: the bounce hypothesis was wrong: committing supporters just removes units from expansion. Positional
   weakness is target selection/passivity, not failed gated moves.
 
-## [016] bot_014 valuemap/strength — RUNNING
+## [016] bot_014 valuemap/strength — PROMOTED
 
 - family: valuemap | parent: bot_011 | tags: strength-aware-values (backlog item 2)
 - analysis (bot_011): S1 by power AUS 9 / ITA 15 / TUR 16 (others 18). Trace S1 Austria: from 1905 to 1920 the same 9
@@ -258,6 +258,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity: with the planned second term COMP=0.25 (competition divisor) S1 AUS/ITA/TUR = 7/8/10 (worse); OCC only
   (COMP=0) → 18/15/18. Default set to COMP=0 (knob kept). S2 seeds 11/12 → 3/18 SC, no errors.
 - plan: spare-core queue after bot_013: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_011's) → Tier 2 (B210, stand-in bot_001).
+- Tier 1 A42: S1 17.57±0.16 (85.7%) / S2 14.07±0.73 (42.9%) / S3 10.86±0.90 (21.4%); vs bot_011 pooled +1.33±0.38.
+- Tier 2 B210 (stand-in bot_001): S1 17.57±0.07 (85.7%) / S2 12.14±0.40 (39.5%) / S3 11.37±0.42 (33.3%) → est. 11.
+  vs bot_011: S1 +1.57±0.22, S2 −0.22±0.33, S3 +0.87±0.34, pooled +0.74±0.18, marks 11 vs 9 → PROMOTE → valuemap champion.
+- takeaway: the jam fix works in S1 (one power, ITA, still short of 18); S2 unchanged.
 
 ## [017] bot_015 lookahead/defcands — RUNNING
 

@@ -123,7 +123,7 @@
    "file": "bots/bot_014_valuemap_strength.py",
    "note": "",
    "parent": "bot_011",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "strength-aware-values"
   },
   "bot_015": {
@@ -186,7 +186,7 @@
    "status": "ACTIVE"
   },
   "valuemap": {
-   "champion": "bot_011",
+   "champion": "bot_014",
    "iterations": 3,
    "reason": "",
    "status": "ACTIVE"
@@ -198,7 +198,7 @@
   "bot_007",
   "bot_006",
   "bot_008",
-  "bot_011",
+  "bot_014",
   "bot_003",
   "bot_004"
  ],
@@ -250,6 +250,10 @@
   "opponent-model-sampling": {
    "bot": "bot_007",
    "effect": "pooled +0.75\u00b10.26 SC vs bot_004 (378 paired, B); S1 100% wins (+1.90\u00b10.29), S2/S3 n.s."
+  },
+  "strength-aware-values": {
+   "bot": "bot_014",
+   "effect": "pooled +0.74\u00b10.18 SC vs bot_011 (630 paired, B); S1 +1.57\u00b10.22 (86% wins), S3 +0.87\u00b10.34"
   },
   "supported-attack-matching": {
    "bot": "bot_012",
