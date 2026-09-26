@@ -547,3 +547,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: inside the hybrid, rollout selection and the lookahead candidates carry the gains; halving and the
   opponent-model terms of the hill-climb heuristic no longer matter (the rollouts decide). Check OPP_AWARE/ACC_GATE off
   on B126 (paired with bot_022's B runs) before considering a simpler champion.
+- B126 check (stand-in 004, paired with bot_022): OPP_AWARE=off S2 +0.01±0.40, S3 −0.54±0.43, pooled −0.18±0.20;
+  ACC_GATE=off S2 +0.05±0.40, S3 −0.20±0.48, pooled −0.05±0.21. With A (+0.20, +0.23): both neutral inside the hybrid
+  → keep bot_022 unchanged (no simpler champion).

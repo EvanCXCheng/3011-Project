@@ -305,3 +305,9 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-150345_bot_022_search_hybridrace_ablation,2026-09-26T15:05,bot_022_search_hybridrace[ROLLOUT=False],b579520529,ablation,A,1,,42,0,1.0,18.0,0.0,5,False,0.3347,0,97.6,0,0,0,0
 20260926-150345_bot_022_search_hybridrace_ablation,2026-09-26T15:05,bot_022_search_hybridrace[ROLLOUT=False],b579520529,ablation,A,2,,42,0,0.4762,13.5952,0.8264,5,True,0.4004,0,100.5,0,0,0,0
 20260926-150345_bot_022_search_hybridrace_ablation,2026-09-26T15:05,bot_022_search_hybridrace[ROLLOUT=False],b579520529,ablation,A,3,bot_001_greedy_base,42,0,0.4286,12.9048,0.9156,5,True,0.4005,0,101.7,0,0,0,0
+20260926-150556_bot_022_search_hybridrace_ablation,2026-09-26T15:34,bot_022_search_hybridrace[OPP_AWARE=False],b579520529,ablation,B,1,,126,0,1.0,18.0,0.0,5,False,0.4732,0,92.8,0,0,0,0
+20260926-150556_bot_022_search_hybridrace_ablation,2026-09-26T15:34,bot_022_search_hybridrace[OPP_AWARE=False],b579520529,ablation,B,2,,126,0,0.746,16.0397,0.353,5,False,0.4762,0,96.3,0,0,0,0
+20260926-150556_bot_022_search_hybridrace_ablation,2026-09-26T15:34,bot_022_search_hybridrace[OPP_AWARE=False],b579520529,ablation,B,3,bot_004_lookahead_base,126,0,0.5238,13.5397,0.4948,5,False,0.4851,0,97.5,0,0,0,0
+20260926-153443_bot_022_search_hybridrace_ablation,2026-09-26T16:03,bot_022_search_hybridrace[ACC_GATE=False],b579520529,ablation,B,1,,126,0,1.0,18.0,0.0,5,False,0.4766,0,91.0,0,0,0,0
+20260926-153443_bot_022_search_hybridrace_ablation,2026-09-26T16:03,bot_022_search_hybridrace[ACC_GATE=False],b579520529,ablation,B,2,,126,0,0.7143,16.0794,0.3443,5,False,0.4791,0,95.9,0,0,0,0
+20260926-153443_bot_022_search_hybridrace_ablation,2026-09-26T16:03,bot_022_search_hybridrace[ACC_GATE=False],b579520529,ablation,B,3,bot_004_lookahead_base,126,0,0.5556,13.881,0.4992,5,False,0.4866,0,98.0,0,0,0,0
