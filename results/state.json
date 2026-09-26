@@ -177,7 +177,7 @@
    "file": "bots/bot_020_search_rolloutsel.py",
    "note": "",
    "parent": "bot_016",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "rollout-selection"
   },
   "bot_021": {
@@ -216,7 +216,7 @@
    "status": "DORMANT"
   },
   "search": {
-   "champion": "bot_016",
+   "champion": "bot_020",
    "iterations": 4,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
@@ -233,7 +233,7 @@
   "bot_012",
   "bot_007",
   "bot_017",
-  "bot_016",
+  "bot_020",
   "bot_014",
   "bot_003",
   "bot_004"
@@ -290,6 +290,10 @@
   "prediction-accuracy-gating": {
    "bot": "bot_016",
    "effect": "pooled +0.75\u00b10.19 SC vs bot_008 (630 paired, B); S2 +0.79\u00b10.39, S3 +1.47\u00b10.41"
+  },
+  "rollout-selection": {
+   "bot": "bot_020",
+   "effect": "pooled +1.11\u00b10.23 SC vs bot_016 (378 paired, B); S3 +2.41\u00b10.53 (13.57 SC, 49% wins); mark 15 vs 13"
   },
   "scenario-detection": {
    "bot": "bot_009",

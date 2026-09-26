@@ -363,7 +363,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   bot_012 greedy 9.99±0.55 (26.2%), bot_014 valuemap 9.88±0.54 (24.6%) → both est. 11 (was 13 / 11).
 - Family review: greedy → DORMANT (3 iters, 11 vs 13); valuemap stays DORMANT. ACTIVE: search, lookahead, adaptive.
 
-## [024] bot_020 search/rolloutsel — RUNNING
+## [024] bot_020 search/rolloutsel — PROMOTED
 
 - family: search | parent: bot_016 | tags: rollout-selection (hybrid of search and lookahead ideas)
 - hypothesis: bot_016's heuristic eval picks well-coordinated orders but misjudges outcomes (S2 −1.45 vs bot_007).
@@ -373,6 +373,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: main6 after main5: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_016's) → Tier 2 (B126 fallback, stand-in bot_004).
 - Tier 0 clean (tmax 0.454 s). Tier 1 A42 (spare core): S1 18.00 / S2 15.02±0.73 (54.8%) / S3 13.05±0.91 (45.2%);
   vs bot_016 S2 +1.67±0.76, S3 +0.76±0.73, pooled +0.81±0.35 → Tier 2 (S1 part on the spare core, rest in main6).
+- Tier 2 B126 (stand-in bot_004): S1 18.00 (100%) / S2 14.72±0.43 (57.1%) / S3 13.57±0.49 (49.2%) → est. 15.
+  vs bot_016: S2 +0.90±0.44, S3 +2.41±0.53, pooled +1.11±0.23 → PROMOTE → search champion.
+  vs bot_007 (overall): S2 −0.55±0.51, S3 +1.71±0.53, pooled +0.39±0.25 (< 2 SE) → not promoted overall by the rule,
+  although its est. mark is 15 vs 13 (S3 crosses both 5-pt lines). Revisit after bot_021's Tier 2.
+- takeaway: heuristic local search as the candidate generator + engine rollouts to choose is the best S3 bot so far.
 
 ## [025] bot_021 lookahead/halving — RUNNING
 
