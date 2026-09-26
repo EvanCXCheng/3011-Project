@@ -247,9 +247,9 @@
    "created": "2026-09-26T16:41",
    "family": "lookahead",
    "file": "bots/bot_028_lookahead_twoply.py",
-   "note": "",
+   "note": "two-ply Spring rollouts: S2 +0.04\u00b10.37, S3 +0.86\u00b10.45, pooled +0.30\u00b10.19 (z=1.6, n.s.)",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "two-ply-spring"
   }
  },
@@ -405,6 +405,10 @@
   "threat-weighted-safety": {
    "bot": "bot_017",
    "effect": "pooled +2.75\u00b10.19 SC vs bot_006 (630 paired, B); S1 +5.43, S2 +1.72, S3 +1.11; mark 9 vs 5"
+  },
+  "two-ply-spring": {
+   "bot": "bot_028",
+   "effect": "pooled +0.30\u00b10.19 SC vs bot_022 (378 paired, B; n.s.); S3 +0.86\u00b10.45 (65.9% vs 57.1% wins)"
   },
   "value-map": {
    "bot": "bot_002",

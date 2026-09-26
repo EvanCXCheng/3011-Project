@@ -566,7 +566,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: recombined children are rarely better than their parents under 1-ply rollouts; the race is near its
   ceiling for this evaluation. Further gains need a different evaluation (deeper lookahead) rather than more candidates.
 
-## [039] bot_028 lookahead/twoply — RUNNING
+## [039] bot_028 lookahead/twoply — REJECTED
 
 - family: lookahead | parent: bot_022 (hybrid lineage; the change is a lookahead idea) | tags: two-ply-spring
 - hypothesis: three candidate-side changes (025 speed, 026 convoys, 027 crossover) were n.s. → the 1-ply evaluation
@@ -575,3 +575,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: every simulated process moved units; rollouts per phase: Spring 83–137 (half), Fall 179–259 (unchanged);
   S3 seeds 11/12 (stand-in 004) → 18/18, tmax 0.455 s.
 - plan: main22: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in 004) vs bot_022.
+- Tier 1 A42: S1 18.00 / S2 15.86±0.61 / S3 14.95±0.84; vs bot_022 −0.10±0.34.
+- Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.07±0.36 (73.8%) / S3 14.94±0.44 (65.9%). vs bot_022: S2 +0.04±0.37,
+  S3 +0.86±0.45, pooled +0.30±0.19 (z=1.6) → REJECT (n.s.).
+- note: three bot_022 variants lean positive but n.s. (026 convoys +0.26, 027 crossover +0.17, 028 two-ply +0.30).
+  Convoys and two-ply target different weaknesses (England; Spring evaluation) → try the combination (bot_029).
