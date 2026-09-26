@@ -183,6 +183,9 @@ Repeat until usage runs out:
 - **No maintenance mode (human request, 27 Sep):** when results plateau, keep generating new bots anyway: try
   genuinely different ideas (new evaluation/score functions, selection rules, opponent models, new families,
   revisits of dormant families). Never idle while CPU is free; the human stops the loop manually.
+- **Best-bots summary (human request, 27 Sep):** end every loop turn with a compact table of the best bots
+  (overall champion, top bots by estimated mark / mean SC with S1–S3 SC and win rates, family champions) from
+  `LEADERBOARD.md`.
 
 1. **Resume.** Read `LEADERBOARD.md`, the last ~5 entries of `JOURNAL.md`, and `BACKLOG.md`.
 2. **Pick a family, then an idea.**

@@ -1,7 +1,7 @@
 # Leaderboard
 
-_Generated 2026-09-26 21:04 AWST by lab/leaderboard.py — do not hand-edit._  
-Freeze in 110.9 h, deadline in 146.9 h.
+_Generated 2026-09-27 07:57 AWST by lab/leaderboard.py — do not hand-edit._  
+Freeze in 100.0 h, deadline in 136.0 h.
 
 **Overall champion:** bot_022  (agent_21.py matches)
 
@@ -16,65 +16,70 @@ Mark = estimated rubric points /15 (per scenario: highest tier reached by win ra
 | 3 | bot_027_search_crossover | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.10±0.29 (73%) 168 → 5 | 14.99±0.37 (62%) 168 → 5 | **15** | 0.487 | 98 | 0 | - |
 | 4 | bot_028_lookahead_twoply | lookahead | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.10±0.24 (73%) 252 → 5 | 14.86±0.33 (67%) 252 → 5 | **15** | 0.491 | 98 | 0 | - |
 | 5 | bot_022_search_hybridrace[HALVING=False] | search | PROMOTED | 18.00±0.00 (100%) 42 → 5 | 15.60±0.73 (74%) 42 → 5 | 15.36±0.74 (69%) 42 → 5 | **15** | 0.490 | 96 | 0 | - |
-| 6 | bot_022_search_hybridrace | search | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 16.17±0.23 (76%) 294 → 5 | 14.71±0.20 (62%) 690 → 5 | **15** | 0.501 | 103 | 0 | 1 |
-| 7 | bot_030_search_buildroll | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.02±0.31 (75%) 168 → 5 | 14.51±0.41 (61%) 168 → 5 | **15** | 0.489 | 97 | 0 | - |
-| 8 | bot_022_search_hybridrace[ACC_GATE=False] | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 16.17±0.30 (73%) 168 → 5 | 14.25±0.42 (58%) 168 → 5 | **15** | 0.487 | 98 | 0 | - |
-| 9 | bot_022_search_hybridrace[OPP_AWARE=False] | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 16.17±0.29 (76%) 168 → 5 | 13.94±0.40 (54%) 168 → 5 | **15** | 0.489 | 98 | 0 | - |
-| 10 | bot_025_search_fastroll | search | REJECTED | 18.00±0.00 (100%) 200 → 5 | 15.91±0.33 (74%) 168 → 5 | 14.15±0.43 (60%) 168 → 5 | **15** | 0.492 | 98 | 0 | 5 |
-| 11 | bot_023_search_springthreat | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 15.82±0.32 (70%) 168 → 5 | 14.08±0.42 (55%) 168 → 5 | **15** | 0.491 | 98 | 0 | - |
-| 12 | bot_024_lookahead_fastroll | lookahead | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 16.09±0.30 (73%) 168 → 5 | 12.96±0.33 (46%) 294 → 5 | **15** | 0.500 | 103 | 0 | 2 |
-| 13 | bot_022_search_hybridrace[TIME_BUDGET=0.5] | search | PROMOTED | 18.00±0.00 (100%) 126 → 5 | 15.74±0.40 (71%) 126 → 5 | 13.06±0.53 (52%) 126 → 5 | **15** | 0.535 | 98 | 0 | - |
-| 14 | bot_021_lookahead_halving | lookahead | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 15.66±0.25 (70%) 319 → 5 | 13.03±0.25 (43%) 506 → 5 | **15** | 0.511 | 106 | 0 | 3 |
-| 15 | bot_020_search_rolloutsel | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 14.75±0.30 (57%) 252 → 5 | 13.16±0.35 (46%) 252 → 5 | **15** | 0.495 | 97 | 0 | 10 |
-| 16 | bot_022_search_hybridrace[LA_CANDS=False] | search | PROMOTED | 18.00±0.00 (100%) 42 → 5 | 13.45±0.84 (43%) 42 → 5* | 13.76±0.80 (48%) 42 → 5* | **15** | 0.481 | 96 | 0 | - |
-| 17 | bot_022_search_hybridrace[ROLLOUT=False] | search | PROMOTED | 18.00±0.00 (100%) 42 → 5 | 13.60±0.83 (48%) 42 → 5* | 12.90±0.92 (43%) 42 → 5* | **15** | 0.401 | 102 | 0 | - |
-| 18 | bot_018_lookahead_strongopp | lookahead | REJECTED | 18.00±0.00 (100%) 168 → 5 | 14.79±0.38 (60%) 168 → 5 | 11.88±0.46 (36%) 168 → 3* | **13** | 0.497 | 98 | 0 | - |
-| 19 | bot_007_lookahead_oppmodel | lookahead | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 14.88±0.27 (57%) 294 → 5 | 11.69±0.24 (34%) 630 → 3 | **13** | 0.504 | 106 | 0 | 7 |
-| 20 | bot_009_adaptive_scenswitch | adaptive | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 15.07±0.35 (61%) 168 → 5 | 11.46±0.46 (32%) 168 → 3 | **13** | 0.496 | 98 | 0 | 14 |
-| 21 | bot_019_adaptive_peaceful | adaptive | REJECTED | 18.00±0.00 (100%) 168 → 5 | 15.16±0.36 (62%) 168 → 5 | 11.08±0.46 (31%) 168 → 3 | **13** | 0.489 | 98 | 0 | - |
-| 22 | bot_016_search_predacc | search | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 13.75±0.34 (52%) 252 → 5* | 11.56±0.37 (33%) 252 → 3 | **13** | 0.408 | 103 | 0 | - |
-| 23 | bot_015_lookahead_defcands | lookahead | REJECTED | 17.99±0.01 (99%) 168 → 5 | 14.29±0.41 (57%) 168 → 5 | 10.70±0.45 (26%) 168 → 3 | **13** | 0.496 | 97 | 0 | - |
-| 24 | bot_004_lookahead_base | lookahead | PROMOTED | 16.21±0.25 (67%) 168 → 5* | 14.86±0.37 (61%) 168 → 5 | 11.09±0.48 (33%) 168 → 3 | **13** | 0.533 | 97 | 0 | - |
-| 25 | bot_008_search_oppaware | search | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 13.12±0.35 (46%) 252 → 5* | 10.38±0.38 (28%) 252 → 3 | **13** | 0.406 | 102 | 0 | 6 |
-| 26 | bot_014_valuemap_strength | valuemap | PROMOTED | 17.57±0.07 (86%) 252 → 5 | 12.46±0.36 (40%) 252 → 3 | 10.82±0.31 (29%) 378 → 3 | **11** | 0.073 | 110 | 0 | 11 |
-| 27 | bot_005_adaptive_base | adaptive | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 12.96±0.38 (48%) 252 → 3* | 9.75±0.40 (26%) 252 → 3 | **11** | 0.046 | 102 | 0 | 4 |
-| 28 | bot_012_greedy_attackmatch | greedy | PROMOTED | 12.29±0.30 (29%) 252 → 3* | 13.56±0.33 (49%) 252 → 5* | 11.53±0.31 (34%) 378 → 3 | **11** | 0.083 | 145 | 0 | 13 |
-| 29 | bot_003_search_base | search | PROMOTED | 11.71±0.27 (23%) 252 → 3* | 13.52±0.34 (49%) 252 → 5* | 11.72±0.24 (37%) 588 → 3 | **11** | 0.403 | 103 | 0 | - |
-| 30 | bot_022_search_hybridrace[HALVE_EVERY=6] | search | PROMOTED | - | 16.05±0.28 (76%) 210 → 5 | 14.72±0.36 (62%) 210 → 5 | **10** | 0.491 | 98 | 0 | - |
-| 31 | bot_011_valuemap_supports | valuemap | PROMOTED | 16.00±0.19 (57%) 252 → 3* | 12.39±0.36 (40%) 252 → 3 | 10.41±0.37 (25%) 252 → 3 | **9** | 0.076 | 107 | 0 | 8 |
-| 32 | bot_017_positional_threatw | positional | PROMOTED | 17.71±0.04 (86%) 252 → 5 | 10.45±0.35 (24%) 252 → 3* | 7.27±0.31 (6%) 252 → 1* | **9** | 0.051 | 107 | 0 | 12 |
-| 33 | bot_010_greedy_dedup | greedy | PROMOTED | 8.57±0.13 (0%) 252 → 1 | 10.84±0.36 (26%) 252 → 3* | 9.42±0.32 (13%) 252 → 3 | **7** | 0.063 | 108 | 0 | - |
-| 34 | bot_006_positional_base | positional | PROMOTED | 12.29±0.25 (14%) 252 → 3 | 8.67±0.32 (9%) 252 → 1 | 6.17±0.26 (3%) 252 → 1* | **5** | 0.058 | 102 | 0 | 9 |
-| 35 | bot_002_valuemap_base | valuemap | PROMOTED | 12.29±0.18 (0%) 252 → 3 | 8.29±0.34 (12%) 252 → 1 | 6.51±0.30 (7%) 252 → 1 | **5** | 0.056 | 102 | 0 | - |
-| 36 | baseline:greedy | - | - | 7.39±0.40 (4%) 49 → 1* | 9.92±0.98 (31%) 49 → 3* | 7.65±0.85 (14%) 49 → 1* | **5** | 0.051 | 101 | 12 | 15 |
-| 37 | bot_013_positional_supadvance | positional | REJECTED | 11.86±0.21 (0%) 252 → 1* | 8.64±0.32 (11%) 252 → 1 | 6.15±0.27 (2%) 252 → 1* | **3** | 0.091 | 108 | 0 | - |
-| 38 | bot_001_greedy_base | greedy | PROMOTED | 6.14±0.16 (0%) 252 → 0 | 7.58±0.31 (8%) 252 → 1 | 6.41±0.19 (3%) 462 → 1 | **2** | 0.074 | 102 | 0 | - |
-| 39 | baseline:attitude | - | - | 6.76±0.24 (0%) 49 → 0 | 1.55±0.26 (0%) 49 → 0 | 1.37±0.23 (0%) 49 → 0 | **0** | 0.079 | 101 | 0 | - |
-| 40 | baseline:random | - | - | 6.55±0.25 (0%) 49 → 0 | 1.55±0.30 (0%) 49 → 0 | 1.37±0.29 (0%) 49 → 0 | **0** | 0.074 | 100 | 0 | - |
-| 41 | baseline:static | - | - | 3.14±0.05 (0%) 49 → 0 | 2.45±0.16 (0%) 49 → 0 | 2.41±0.16 (0%) 49 → 0 | **0** | 0.009 | 100 | 0 | - |
+| 6 | bot_032_search_rivalscore | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.04±0.31 (76%) 168 → 5 | 14.89±0.38 (65%) 168 → 5 | **15** | 0.552 | 97 | 0 | - |
+| 7 | bot_022_search_hybridrace | search | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 16.17±0.23 (76%) 294 → 5 | 14.71±0.20 (62%) 690 → 5 | **15** | 0.501 | 103 | 0 | 1 |
+| 8 | bot_031_search_riskaverse | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.15±0.32 (77%) 168 → 5 | 14.57±0.40 (62%) 168 → 5 | **15** | 0.504 | 97 | 0 | - |
+| 9 | bot_030_search_buildroll | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.02±0.31 (75%) 168 → 5 | 14.51±0.41 (61%) 168 → 5 | **15** | 0.489 | 97 | 0 | - |
+| 10 | bot_022_search_hybridrace[ACC_GATE=False] | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 16.17±0.30 (73%) 168 → 5 | 14.25±0.42 (58%) 168 → 5 | **15** | 0.487 | 98 | 0 | - |
+| 11 | bot_033_search_cbrace | search | RUNNING | 18.00±0.00 (100%) 168 → 5 | 15.89±0.34 (76%) 168 → 5 | 14.47±0.68 (60%) 68 → 5 | **15** | 0.490 | 97 | 0 | - |
+| 12 | bot_022_search_hybridrace[OPP_AWARE=False] | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 16.17±0.29 (76%) 168 → 5 | 13.94±0.40 (54%) 168 → 5 | **15** | 0.489 | 98 | 0 | - |
+| 13 | bot_025_search_fastroll | search | REJECTED | 18.00±0.00 (100%) 200 → 5 | 15.91±0.33 (74%) 168 → 5 | 14.15±0.43 (60%) 168 → 5 | **15** | 0.492 | 98 | 0 | 5 |
+| 14 | bot_023_search_springthreat | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 15.82±0.32 (70%) 168 → 5 | 14.08±0.42 (55%) 168 → 5 | **15** | 0.491 | 98 | 0 | - |
+| 15 | bot_024_lookahead_fastroll | lookahead | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 16.09±0.30 (73%) 168 → 5 | 12.96±0.33 (46%) 294 → 5 | **15** | 0.500 | 103 | 0 | 2 |
+| 16 | bot_022_search_hybridrace[TIME_BUDGET=0.5] | search | PROMOTED | 18.00±0.00 (100%) 126 → 5 | 15.74±0.40 (71%) 126 → 5 | 13.06±0.53 (52%) 126 → 5 | **15** | 0.535 | 98 | 0 | - |
+| 17 | bot_021_lookahead_halving | lookahead | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 15.66±0.25 (70%) 319 → 5 | 13.03±0.25 (43%) 506 → 5 | **15** | 0.511 | 106 | 0 | 3 |
+| 18 | bot_020_search_rolloutsel | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 14.75±0.30 (57%) 252 → 5 | 13.16±0.35 (46%) 252 → 5 | **15** | 0.495 | 97 | 0 | 10 |
+| 19 | bot_022_search_hybridrace[LA_CANDS=False] | search | PROMOTED | 18.00±0.00 (100%) 42 → 5 | 13.45±0.84 (43%) 42 → 5* | 13.76±0.80 (48%) 42 → 5* | **15** | 0.481 | 96 | 0 | - |
+| 20 | bot_022_search_hybridrace[ROLLOUT=False] | search | PROMOTED | 18.00±0.00 (100%) 42 → 5 | 13.60±0.83 (48%) 42 → 5* | 12.90±0.92 (43%) 42 → 5* | **15** | 0.401 | 102 | 0 | - |
+| 21 | bot_018_lookahead_strongopp | lookahead | REJECTED | 18.00±0.00 (100%) 168 → 5 | 14.79±0.38 (60%) 168 → 5 | 11.88±0.46 (36%) 168 → 3* | **13** | 0.497 | 98 | 0 | - |
+| 22 | bot_007_lookahead_oppmodel | lookahead | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 14.88±0.27 (57%) 294 → 5 | 11.69±0.24 (34%) 630 → 3 | **13** | 0.504 | 106 | 0 | 7 |
+| 23 | bot_009_adaptive_scenswitch | adaptive | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 15.07±0.35 (61%) 168 → 5 | 11.46±0.46 (32%) 168 → 3 | **13** | 0.496 | 98 | 0 | 14 |
+| 24 | bot_019_adaptive_peaceful | adaptive | REJECTED | 18.00±0.00 (100%) 168 → 5 | 15.16±0.36 (62%) 168 → 5 | 11.08±0.46 (31%) 168 → 3 | **13** | 0.489 | 98 | 0 | - |
+| 25 | bot_016_search_predacc | search | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 13.75±0.34 (52%) 252 → 5* | 11.56±0.37 (33%) 252 → 3 | **13** | 0.408 | 103 | 0 | - |
+| 26 | bot_015_lookahead_defcands | lookahead | REJECTED | 17.99±0.01 (99%) 168 → 5 | 14.29±0.41 (57%) 168 → 5 | 10.70±0.45 (26%) 168 → 3 | **13** | 0.496 | 97 | 0 | - |
+| 27 | bot_004_lookahead_base | lookahead | PROMOTED | 16.21±0.25 (67%) 168 → 5* | 14.86±0.37 (61%) 168 → 5 | 11.09±0.48 (33%) 168 → 3 | **13** | 0.533 | 97 | 0 | - |
+| 28 | bot_008_search_oppaware | search | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 13.12±0.35 (46%) 252 → 5* | 10.38±0.38 (28%) 252 → 3 | **13** | 0.406 | 102 | 0 | 6 |
+| 29 | bot_014_valuemap_strength | valuemap | PROMOTED | 17.57±0.07 (86%) 252 → 5 | 12.46±0.36 (40%) 252 → 3 | 10.82±0.31 (29%) 378 → 3 | **11** | 0.073 | 110 | 0 | 11 |
+| 30 | bot_005_adaptive_base | adaptive | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 12.96±0.38 (48%) 252 → 3* | 9.75±0.40 (26%) 252 → 3 | **11** | 0.046 | 102 | 0 | 4 |
+| 31 | bot_012_greedy_attackmatch | greedy | PROMOTED | 12.29±0.30 (29%) 252 → 3* | 13.56±0.33 (49%) 252 → 5* | 11.53±0.31 (34%) 378 → 3 | **11** | 0.083 | 145 | 0 | 13 |
+| 32 | bot_003_search_base | search | PROMOTED | 11.71±0.27 (23%) 252 → 3* | 13.52±0.34 (49%) 252 → 5* | 11.72±0.24 (37%) 588 → 3 | **11** | 0.403 | 103 | 0 | - |
+| 33 | bot_022_search_hybridrace[HALVE_EVERY=6] | search | PROMOTED | - | 16.05±0.28 (76%) 210 → 5 | 14.72±0.36 (62%) 210 → 5 | **10** | 0.491 | 98 | 0 | - |
+| 34 | bot_011_valuemap_supports | valuemap | PROMOTED | 16.00±0.19 (57%) 252 → 3* | 12.39±0.36 (40%) 252 → 3 | 10.41±0.37 (25%) 252 → 3 | **9** | 0.076 | 107 | 0 | 8 |
+| 35 | bot_017_positional_threatw | positional | PROMOTED | 17.71±0.04 (86%) 252 → 5 | 10.45±0.35 (24%) 252 → 3* | 7.27±0.31 (6%) 252 → 1* | **9** | 0.051 | 107 | 0 | 12 |
+| 36 | bot_010_greedy_dedup | greedy | PROMOTED | 8.57±0.13 (0%) 252 → 1 | 10.84±0.36 (26%) 252 → 3* | 9.42±0.32 (13%) 252 → 3 | **7** | 0.063 | 108 | 0 | - |
+| 37 | bot_006_positional_base | positional | PROMOTED | 12.29±0.25 (14%) 252 → 3 | 8.67±0.32 (9%) 252 → 1 | 6.17±0.26 (3%) 252 → 1* | **5** | 0.058 | 102 | 0 | 9 |
+| 38 | bot_002_valuemap_base | valuemap | PROMOTED | 12.29±0.18 (0%) 252 → 3 | 8.29±0.34 (12%) 252 → 1 | 6.51±0.30 (7%) 252 → 1 | **5** | 0.056 | 102 | 0 | - |
+| 39 | baseline:greedy | - | - | 7.39±0.40 (4%) 49 → 1* | 9.92±0.98 (31%) 49 → 3* | 7.65±0.85 (14%) 49 → 1* | **5** | 0.051 | 101 | 12 | 15 |
+| 40 | bot_013_positional_supadvance | positional | REJECTED | 11.86±0.21 (0%) 252 → 1* | 8.64±0.32 (11%) 252 → 1 | 6.15±0.27 (2%) 252 → 1* | **3** | 0.091 | 108 | 0 | - |
+| 41 | bot_001_greedy_base | greedy | PROMOTED | 6.14±0.16 (0%) 252 → 0 | 7.58±0.31 (8%) 252 → 1 | 6.41±0.19 (3%) 462 → 1 | **2** | 0.074 | 102 | 0 | - |
+| 42 | baseline:attitude | - | - | 6.76±0.24 (0%) 49 → 0 | 1.55±0.26 (0%) 49 → 0 | 1.37±0.23 (0%) 49 → 0 | **0** | 0.079 | 101 | 0 | - |
+| 43 | baseline:random | - | - | 6.55±0.25 (0%) 49 → 0 | 1.55±0.30 (0%) 49 → 0 | 1.37±0.29 (0%) 49 → 0 | **0** | 0.074 | 100 | 0 | - |
+| 44 | baseline:static | - | - | 3.14±0.05 (0%) 49 → 0 | 2.45±0.16 (0%) 49 → 0 | 2.41±0.16 (0%) 49 → 0 | **0** | 0.009 | 100 | 0 | - |
 
 ## Families
 
 | family | status | iterations (share) | champion | S1 | S2 | S3 | mark | reason |
 |---|---|---|---|---|---|---|---|---|
-| adaptive | DORMANT | 3 (10%) | bot_009 | 5 | 5 | 3 | 13 | 3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC) |
-| greedy | DORMANT | 3 (10%) | bot_012 | 3 | 5 | 3 | 11 | 3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13 |
-| lookahead | ACTIVE | 8 (27%) | bot_024 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
-| positional | DORMANT | 3 (10%) | bot_017 | 5 | 3 | 1 | 9 | 3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC) |
-| search | ACTIVE | 10 (33%) | bot_022 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
-| valuemap | DORMANT | 3 (10%) | bot_014 | 5 | 3 | 3 | 11 | 3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13 |
+| adaptive | DORMANT | 3 (9%) | bot_009 | 5 | 5 | 3 | 13 | 3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC) |
+| bandit | ACTIVE | 1 (3%) | - | - | - | - | - | new |
+| greedy | DORMANT | 3 (9%) | bot_012 | 3 | 5 | 3 | 11 | 3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13 |
+| lookahead | ACTIVE | 8 (23%) | bot_024 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
+| positional | DORMANT | 3 (9%) | bot_017 | 5 | 3 | 1 | 9 | 3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC) |
+| search | ACTIVE | 13 (37%) | bot_022 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
+| valuemap | DORMANT | 4 (11%) | bot_014 | 5 | 3 | 3 | 11 | 3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13 |
 
 **Hall of fame:** bot_009, bot_012, bot_024, bot_017, bot_022, bot_014, bot_007, bot_021  
 **Overall champion history:** bot_001 → bot_003 → bot_004 → bot_007 → bot_021 → bot_022
 
 ## Report coverage: techniques
 
-Distinct techniques measured: 22 (need basic + 3 new).
+Distinct techniques measured: 24 (need basic + 3 new).
 
 | technique tag | first bot | measured effect vs parent |
 |---|---|---|
 | bfs-greedy | bot_001 | basic technique: est. mark 2 (B210: S1 6.14, S2 7.43, S3 6.75) |
 | candidate-crossover | bot_027 | pooled +0.17±0.21 SC vs bot_022 (378 paired, B; n.s.) |
+| competitive-score | bot_032 | pooled +0.12±0.21 SC vs bot_022 (378 paired, B; n.s.) |
 | convoy-candidates | bot_026 | pooled +0.26±0.21 SC vs bot_022 (378 paired, B; n.s.); England seats +0.86±0.78 (36 games) |
 | hybrid-candidate-race | bot_022 | pooled +0.61±0.21 SC vs bot_020 (378 paired, B); S2 +1.31±0.37 (78% wins); S3 14.08 SC / 57% |
 | local-search | bot_003 | pooled +5.91±0.21 SC vs bot_001 (630 paired, B); mark 13 vs 2 |
@@ -84,6 +89,7 @@ Distinct techniques measured: 22 (need basic + 3 new).
 | opponent-classification | bot_005 | S1 100% win (210/210); pooled +1.33±0.27 SC vs bot_003 but S2 −0.82, S3 −1.44 |
 | opponent-model-sampling | bot_007 | pooled +0.75±0.26 SC vs bot_004 (378 paired, B); S1 100% wins (+1.90±0.29), S2/S3 n.s. |
 | prediction-accuracy-gating | bot_016 | pooled +0.75±0.19 SC vs bot_008 (630 paired, B); S2 +0.79±0.39, S3 +1.47±0.41 |
+| risk-averse-selection | bot_031 | pooled -0.07±0.21 SC vs bot_022 (378 paired, B; no effect) |
 | rollout-builds | bot_030 | pooled +0.02±0.21 SC vs bot_022 (378 paired, B; no effect) |
 | rollout-selection | bot_020 | pooled +1.11±0.23 SC vs bot_016 (378 paired, B); S3 +2.41±0.53 (13.57 SC, 49% wins); mark 15 vs 13 |
 | scenario-detection | bot_009 | pooled +1.28±0.24 SC vs bot_005 (378 paired, B); S2 +2.03, S3 +1.80; tie with bot_007 (-0.15±0.23) |
