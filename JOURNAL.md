@@ -632,8 +632,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - State: champion est. 15/15 (S1 100%, S2 16.1 SC / 76%, S3 14.4 SC / 58% vs lookahead stand-in, 14.3–15.6 SC vs 3
   other stand-ins), stress PASS, test.py check PASS. Last 6 variants all n.s. (+0.2–0.4 SC) → low-intensity mode.
 
-## [045] Tuning check: bot_022 with HALVE_EVERY 6 (was 3) — RUNNING
+## [045] Tuning check: bot_022 with HALVE_EVERY 6 (was 3) — DONE
 
 - B126 S2/S3 (stand-in 004): S2 16.22±0.36 (79.4%), S3 15.05±0.45 (65.1%). vs bot_022: S2 +0.19±0.27, S3 +0.97±0.54,
   pooled (S2+S3) +0.58±0.30 (z≈1.9) → extension rule [040] applies: extend to 210 on S2/S3. If significant: new bot
   file (HALVE_EVERY=6 default), S1 check, stress gate, held-out C confirmation, then promotion. Tuning, not a technique.
+- 210 (S2/S3): S2 16.05±0.28 (76.2%), S3 14.72±0.36 (61.9%). vs bot_022: S2 −0.01±0.22, S3 +0.38±0.42, pooled +0.18±0.24
+  → n.s.; the 126-game signal regressed toward zero (as the extension rule is meant to catch). Keep HALVE_EVERY=3.

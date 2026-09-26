@@ -69,3 +69,8 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
   FINAL seeds. Keep these toggles in any later champion.
 - test_21.py: lab is 66 KB now (+ nothing else needed); trim to a self-contained runner (evaluate / compare / ablation
   / stress / tournament) ≤ 100 KB at the freeze.
+
+## freeze compute plan (noted 26 Sep)
+- FINAL eval of the champion: 504/scenario ≈ 1512 games × ~25 s / 3 workers ≈ 3.5 h.
+- Ablations on FINAL seeds at 210/scenario (5 switches: ROLLOUT, LA_CANDS, HALVING, OPP_AWARE, ACC_GATE) ≈ 5 × 630 games
+  ≈ 7.3 h. Start both right at the freeze (Thu 12:00); total ≈ 11 h, done well before the Fri 23:59 deadline.
