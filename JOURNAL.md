@@ -535,8 +535,15 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: bot_024's lead in tournament 1 (11.4 vs 6.9) did not replicate; rankings depend heavily on the field.
   Tournaments give no stable reason to prefer the lookahead line for S4 → keep bot_022 (best in S1–S3).
 
-## [037] Early ablations of the champion (bot_022) — RUNNING
+## [037] Early ablations of the champion (bot_022) — DONE
 
 - purpose: measure each technique's contribution inside the champion before the freeze (FINAL seeds stay reserved)
   and find any component that hurts. Seed set A, n=42, stand-in bot_001 (= bot_022's Tier 1), --set one switch off:
   OPP_AWARE, ACC_GATE, LA_CANDS, HALVING, ROLLOUT. Paired vs bot_022 on A (main19).
+- results (A42 each, paired vs bot_022 A42; S1 18.00/100% in every variant):
+  ROLLOUT=off: S2 13.60 (47.6%), S3 12.90 (42.9%), pooled −1.54±0.36 | LA_CANDS=off: S2 13.45 (42.9%), S3 13.76 (47.6%),
+  pooled −1.30±0.38 | HALVING=off: S2 15.60, S3 15.36, pooled −0.06±0.30 | OPP_AWARE=off: S2 16.57, S3 15.14, pooled
+  +0.20±0.31 | ACC_GATE=off: S2 16.45, S3 15.36, pooled +0.23±0.30.
+- takeaway: inside the hybrid, rollout selection and the lookahead candidates carry the gains; halving and the
+  opponent-model terms of the hill-climb heuristic no longer matter (the rollouts decide). Check OPP_AWARE/ACC_GATE off
+  on B126 (paired with bot_022's B runs) before considering a simpler champion.
