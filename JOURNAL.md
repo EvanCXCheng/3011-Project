@@ -681,3 +681,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - hypothesis: subtracting 0.3 × the strongest rival's SC count after the simulated move rewards taking SCs from the
   leader (win condition, strong Hidden Agent) → S3 wins.
 - plan: queue q1 after bot_031.
+
+## [051] bot_033 search/cbrace — RUNNING
+
+- family: search | parent: bot_022 | tags: confidence-bound-racing
+- hypothesis: dropping a candidate only when its upper bound (mean + 1.0·sd/√n) is below the best lower bound, from
+  round 3 on, keeps close contenders sampled and drops clear losers early → better final choice than fixed halving.
+- plan: queue q2 (after q1).
+- note: human (27 Sep) also invited completely new bots → new family 'bandit' planned (decoupled per-unit UCB over
+  orders, credited from joint rollouts).

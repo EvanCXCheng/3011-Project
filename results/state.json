@@ -287,6 +287,15 @@
    "parent": "bot_022",
    "status": "RUNNING",
    "tags": "competitive-score"
+  },
+  "bot_033": {
+   "created": "2026-09-27T06:17",
+   "family": "search",
+   "file": "bots/bot_033_search_cbrace.py",
+   "note": "",
+   "parent": "bot_022",
+   "status": "RUNNING",
+   "tags": "confidence-bound-racing"
   }
  },
  "families": {
@@ -316,7 +325,7 @@
   },
   "search": {
    "champion": "bot_022",
-   "iterations": 12,
+   "iterations": 13,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -337,7 +346,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 33,
+ "next_bot_id": 34,
  "overall_champions": [
   {
    "bot": "bot_001",
