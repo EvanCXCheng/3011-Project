@@ -706,3 +706,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity: S1/S2/S3 seed 11 → 8/1/18 SC, no errors, tmax 0.48 s. Expected weakness: 2v1 needs a move and a support
   chosen jointly, which independent per-unit bandits find slowly (S1 8 SC in the sanity game).
 - plan: queue q3 (T0 → T1 A42 → T2 B126) vs bot_022; new family → Tier 2 regardless.
+
+## [053] bot_035 valuemap/poolsource — RUNNING (dormant family revisited)
+
+- family: valuemap (revisit) | parent: bot_022 | tags: multi-source-candidates
+- hypothesis: candidate diversity drives bot_022 (LA_CANDS off −1.30); adding the valuemap champion's (bot_014) joint
+  order as a third source lets the rollouts use its 2v1/strength-aware plans when they are better.
+- checks: pool 14–21 per phase incl. the VM candidate; S2/S3 seed 12 sanity below; no errors.
+- plan: queue q4 (after q3).

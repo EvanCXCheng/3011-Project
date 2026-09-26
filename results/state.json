@@ -305,6 +305,15 @@
    "parent": "none",
    "status": "RUNNING",
    "tags": "decoupled-ucb"
+  },
+  "bot_035": {
+   "created": "2026-09-27T07:35",
+   "family": "valuemap",
+   "file": "bots/bot_035_valuemap_poolsource.py",
+   "note": "",
+   "parent": "bot_022",
+   "status": "RUNNING",
+   "tags": "multi-source-candidates"
   }
  },
  "families": {
@@ -346,7 +355,7 @@
   },
   "valuemap": {
    "champion": "bot_014",
-   "iterations": 3,
+   "iterations": 4,
    "reason": "3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13",
    "status": "DORMANT"
   }
@@ -361,7 +370,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 35,
+ "next_bot_id": 36,
  "overall_champions": [
   {
    "bot": "bot_001",
