@@ -606,3 +606,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 
 - Ran test.experiment() unmodified (imports StudentAgent from agent_21, StudentAgent() with no args), repeat_nums=2:
   S1 14/14 wins (18.0 SC every power), S2 14/14 wins. No errors. visualize.py imports the agent the same way.
+
+## [042] Tournament 3 (112 games, fresh seeds offset 200) — DONE
+
+- bot_022 8.78±0.69, bot_021 6.56±0.62, bot_024 5.77±0.53, bot_020 4.41±0.46, bot_014 3.38±0.38, bot_017 2.71±0.34,
+  greedy baseline 2.15±0.31 SC.
+- takeaway: with twice the games, the champion is clearly best in all-bot tables too; tournament 1's bot_024 lead was
+  field noise. No S4-specific mode needed.
