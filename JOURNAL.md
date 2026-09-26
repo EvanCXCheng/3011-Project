@@ -389,3 +389,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_003 = bot_007's) on the spare core; Tier 2 (B126, stand-in bot_003) in main7.
 - Tier 0 clean (tmax 0.481 s). Tier 1 A42: S1 18.00 / S2 15.19±0.73 (64.3%) / S3 12.88±0.94 (47.6%); vs bot_007
   pooled +1.04±0.42 → Tier 2.
+- Tier 2 B126 (stand-in bot_003): S1 18.00 / S2 15.54±0.42 (68.3%) / S3 12.37±0.49 (34.9%) → est. 15.
+  vs bot_007: S2 +0.27±0.43, S3 +1.08±0.52, pooled +0.45±0.23 (z=1.96, just under 2 SE), marks 15 vs 13 → borderline.
+- decision: both bot_020 (+0.39±0.25) and bot_021 (+0.45±0.23) are est. 15 vs bot_007's 13 but sit just under the 2-SE
+  bar on the 126-game fallback. Extend bot_007/020/021 to the standard 210 on S2/S3 (matching stand-ins; S1 saturated
+  at 18 for all three) and re-compare (main8 + spare11).
