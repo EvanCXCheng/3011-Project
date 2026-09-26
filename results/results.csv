@@ -284,3 +284,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-133206_bot_026_search_convoy_tier0,2026-09-26T13:34,bot_026_search_convoy,e298777859,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4519,0,90.0,0,0,0,0
 20260926-133206_bot_026_search_convoy_tier0,2026-09-26T13:34,bot_026_search_convoy,e298777859,tier0,X,2,,3,0,0.6667,17.6667,0.3333,5,True,0.4553,0,94.4,0,0,0,0
 20260926-133206_bot_026_search_convoy_tier0,2026-09-26T13:34,bot_026_search_convoy,e298777859,tier0,X,3,bot_024_lookahead_fastroll,3,0,0.3333,12.6667,3.9299,5,True,0.457,0,97.3,0,0,0,0
+20260926-133436_bot_026_search_convoy_tier1,2026-09-26T13:54,bot_026_search_convoy,e298777859,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4796,0,92.8,0,0,0,0
+20260926-133436_bot_026_search_convoy_tier1,2026-09-26T13:54,bot_026_search_convoy,e298777859,tier1,A,2,,42,0,0.8571,17.0,0.4443,5,False,0.4824,0,97.3,0,0,0,0
+20260926-133436_bot_026_search_convoy_tier1,2026-09-26T13:54,bot_026_search_convoy,e298777859,tier1,A,3,bot_001_greedy_base,42,0,0.6429,15.0238,0.7677,5,False,0.4909,0,97.8,0,0,0,0

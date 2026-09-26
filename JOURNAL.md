@@ -512,6 +512,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: England S2 seed 8 test game: convoys played (e.g. A LON - BEL VIA + F ENG C A LON - BEL); S2 England seeds
   1/8/15/22 → 13/18/18/18 (bot_022: 18/9/14/18); no illegal orders, tmax 0.474 s.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_001) on core 0; Tier 2 (B126, stand-in 004) on cores 1–3 after main16.
+- Tier 0 clean. Tier 1 A42: S1 18.00 / S2 17.00±0.44 (85.7%) / S3 15.02±0.77 (64.3%); vs bot_022 pooled +0.30±0.29 → Tier 2.
 
 ## [035] Held-out + 7-bot tournament (after 26 iterations) — DONE
 
