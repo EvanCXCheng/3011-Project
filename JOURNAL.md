@@ -455,3 +455,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   set_current_phase, which clear the cache) and never order the base itself; verified: copies process orders correctly.
 - Speed-up this enables: set the opponents' sampled orders once per round on a copy, `clear_cache()`, then deep-copy
   it per candidate and set only our orders. Measured (S1901, under load): 2.46 → 1.52 ms per rollout (×1.6).
+
+## [030] bot_024 lookahead/fastroll — RUNNING
+
+- family: lookahead | parent: bot_021 | tags: shared-opponent-rollouts (engine finding [029])
+- hypothesis: set sampled opponent orders once per round (+ clear_cache), deep-copy per candidate → ~1.5x rollouts
+  in the same 0.45 s (test game: ~230 vs ~160 per phase under load) → sharper choices, small S2/S3 gain.
+- checks: all 941 rollouts in a test game moved units (orders applied); S3 seeds 11/12 (stand-in 004) → 18/18, tmax 0.48 s.
+- plan: main13 after the bot_022 extension: Tier 0 → Tier 1 (A, stand-in 003 = bot_021's) → Tier 2 (B126, stand-in 003).

@@ -206,6 +206,15 @@
    "parent": "bot_022",
    "status": "REJECTED",
    "tags": "spring-threat-score"
+  },
+  "bot_024": {
+   "created": "2026-09-26T11:55",
+   "family": "lookahead",
+   "file": "bots/bot_024_lookahead_fastroll.py",
+   "note": "",
+   "parent": "bot_021",
+   "status": "RUNNING",
+   "tags": "shared-opponent-rollouts"
   }
  },
  "families": {
@@ -223,7 +232,7 @@
   },
   "lookahead": {
    "champion": "bot_021",
-   "iterations": 5,
+   "iterations": 6,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -256,7 +265,7 @@
   "bot_004",
   "bot_007"
  ],
- "next_bot_id": 24,
+ "next_bot_id": 25,
  "overall_champions": [
   {
    "bot": "bot_001",
