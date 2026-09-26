@@ -341,7 +341,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   Two lookahead opponent-model tweaks (015, 018) failed; 1-ply rollouts seem saturated → lookahead needs a different
   lever (deeper search / better score) rather than sampling tweaks.
 
-## [022] bot_019 adaptive/peaceful — RUNNING
+## [022] bot_019 adaptive/peaceful — REJECTED
 
 - family: adaptive | parent: bot_009 | tags: provocation-avoidance (adaptive backlog item 3)
 - baseline reading (agent_baselines.py AttitudeAgent): starts FRIENDLY to all; never moves into provinces (units/SCs)
@@ -352,6 +352,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity S2 seeds 11/12/13 → 5/18/12 SC, tmax 0.48 s, no errors.
 - plan: main5 after main4: Tier 0 → Tier 1 (A, stand-in bot_003 = bot_009's) → Tier 2 (B126, stand-in bot_004 = bot_009's).
 - Tier 0 clean. Tier 1 A42: S1 18.00 / S2 15.60±0.64 (64.3%) / S3 9.95±0.99 (28.6%); vs bot_009 pooled −0.19±0.44 → Tier 2.
+- Tier 2 B126 (stand-in bot_004): S1 18.00 / S2 15.02±0.43 (61.9%) / S3 11.46±0.51 (31.7%). vs bot_009: S2 −0.14±0.49,
+  S3 −0.06±0.52, pooled −0.07±0.24 → REJECT (no effect).
+- takeaway: Attitude/Random agents are too weak (≈1.5 SC in S2) for their goodwill to matter; not provoking them
+  neither helps nor hurts. Their SCs are the growth source, so there is nothing to gain from sparing them.
 
 ## [023] S3 re-measure of greedy/valuemap champions — DONE
 
