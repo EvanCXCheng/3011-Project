@@ -651,3 +651,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Tier 1 A42: S1 18.00 / S2 16.29±0.56 / S3 15.33±0.72; vs bot_022 +0.17±0.32.
 - Tier 2 B126 (stand-in 004): S1 18.00 / S2 15.93±0.37 (74.6%) / S3 14.24±0.49 (58.7%). vs bot_022: S2 −0.10±0.41,
   S3 +0.16±0.49, pooled +0.02±0.21 → REJECT (no effect): the distance rule already picks sensible builds.
+
+## [047] Plateau — maintenance mode until the freeze — DONE
+
+- Last five variants of bot_022 (026 convoys, 027 crossover, 028 two-ply, 029 two-ply+convoys, 030 rollout builds)
+  and two tuning checks were all n.s. or worse. Champion bot_022 clears every 5-pt line with margin, passes stress,
+  test.py, robustness (4 stand-ins) and the 112-game tournament.
+- Mode: no new bots unless a genuinely new idea appears; hourly heartbeats. Freeze tasks at Thu 1 Oct 12:00 AWST:
+  FINAL eval (504/scenario), ablations on FINAL seeds (210/scenario, 5 switches), finalise test_21.py, regenerate
+  LLM_PROMPTS.md (tools/export_prompts.py), final size/import checks of agent_21.py and test_21.py.
