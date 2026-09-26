@@ -660,3 +660,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Mode: no new bots unless a genuinely new idea appears; hourly heartbeats. Freeze tasks at Thu 1 Oct 12:00 AWST:
   FINAL eval (504/scenario), ablations on FINAL seeds (210/scenario, 5 switches), finalise test_21.py, regenerate
   LLM_PROMPTS.md (tools/export_prompts.py), final size/import checks of agent_21.py and test_21.py.
+
+## [048] Back to active mode (human request) — DONE
+
+- 27 Sep 04:20: the human asked to keep generating bots rather than idle. CLAUDE.md updated (no maintenance mode).
+- Idea queue (all from champion bot_022, one idea each): 031 risk-averse selection (lower-confidence score instead of
+  mean), 032 competitive rollout score (our SCs relative to the strongest rival), 033 UCB bandit allocation instead of
+  halving, 034 per-power empirical opponent sampling, 035 value-map term in the rollout score.

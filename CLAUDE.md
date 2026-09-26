@@ -180,6 +180,10 @@ The `--standin` default is `auto`, which applies the stand-in rule. For a paired
 
 Repeat until usage runs out:
 
+- **No maintenance mode (human request, 27 Sep):** when results plateau, keep generating new bots anyway: try
+  genuinely different ideas (new evaluation/score functions, selection rules, opponent models, new families,
+  revisits of dormant families). Never idle while CPU is free; the human stops the loop manually.
+
 1. **Resume.** Read `LEADERBOARD.md`, the last ~5 entries of `JOURNAL.md`, and `BACKLOG.md`.
 2. **Pick a family, then an idea.**
    - Until every family has a base bot that passes Tier 1, build the next missing base bot.
