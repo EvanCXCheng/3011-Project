@@ -589,3 +589,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: England test game plays convoys (A WAL - BRE VIA, A CLY - NWY VIA with fleet convoys); rollout path runs;
   S3 seeds 11/12 (stand-in 004) → 18/18, tmax 0.456 s.
 - plan: main23: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in 004) vs bot_022.
+- Tier 1 A42: S1 18.00 / S2 16.57±0.53 (83.3%) / S3 15.90±0.65 (73.8%); vs bot_022 +0.45±0.34.
+- Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.59±0.31 (81.0%) / S3 14.67±0.43 (61.9%). vs bot_022: S2 +0.56±0.44,
+  S3 +0.60±0.48, pooled +0.38±0.22 (z=1.7).
+- extension rule (fixed now, applied to all candidates): a Tier 2 (126) result vs the champion with z ≥ 1.5 is extended
+  to the standard Tier 2 size of 210 on S2/S3 (S1 saturated). Qualify: bot_028 (z=1.6), bot_029 (z=1.7); not bot_026
+  (1.2) or bot_027 (0.8). Caveat: interim look + extension slightly inflates the false-positive rate; any promotion
+  from it will also be checked on held-out seed set C.
