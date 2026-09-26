@@ -581,7 +581,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - note: three bot_022 variants lean positive but n.s. (026 convoys +0.26, 027 crossover +0.17, 028 two-ply +0.30).
   Convoys and two-ply target different weaknesses (England; Spring evaluation) → try the combination (bot_029).
 
-## [040] bot_029 lookahead/twoplyconvoy — RUNNING
+## [040] bot_029 lookahead/twoplyconvoy — REJECTED
 
 - family: lookahead | parent: bot_028 | tags: two-ply-spring + convoy-candidates (combination of two measured ideas)
 - hypothesis: two-ply (+0.30±0.19, mainly S3) and convoys (+0.26±0.21, mainly England) target different weaknesses;
@@ -596,3 +596,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   to the standard Tier 2 size of 210 on S2/S3 (S1 saturated). Qualify: bot_028 (z=1.6), bot_029 (z=1.7); not bot_026
   (1.2) or bot_027 (0.8). Caveat: interim look + extension slightly inflates the false-positive rate; any promotion
   from it will also be checked on held-out seed set C.
+- 210-game extension (S2/S3, stand-in 004; bot_022 at 210): bot_029 S2 16.62±0.24 (81.0%), S3 14.64±0.36 (65.7%);
+  vs bot_022 S2 +0.56±0.31, S3 +0.29±0.41, pooled +0.33±0.20 (z=1.65) → REJECT. bot_028 S2 16.14±0.26 (73.8%),
+  S3 14.84±0.36 (66.2%); vs bot_022 S2 +0.08±0.26, S3 +0.50±0.36, pooled +0.22±0.17 (z=1.3) → REJECT (stays rejected).
+- takeaway: variants of the champion now land at +0.2–0.4 SC, below what 210 paired games can confirm. The champion
+  (est. 15/15) is at diminishing returns; effort shifts to submission checks and freeze preparation.

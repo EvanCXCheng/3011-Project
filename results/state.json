@@ -247,7 +247,7 @@
    "created": "2026-09-26T16:41",
    "family": "lookahead",
    "file": "bots/bot_028_lookahead_twoply.py",
-   "note": "two-ply Spring rollouts: S2 +0.04\u00b10.37, S3 +0.86\u00b10.45, pooled +0.30\u00b10.19 (z=1.6, n.s.)",
+   "note": "two-ply at 210: S2 +0.08\u00b10.26, S3 +0.50\u00b10.36, pooled +0.22\u00b10.17 (n.s.)",
    "parent": "bot_022",
    "status": "REJECTED",
    "tags": "two-ply-spring"
@@ -256,9 +256,9 @@
    "created": "2026-09-26T17:18",
    "family": "lookahead",
    "file": "bots/bot_029_lookahead_twoplyconvoy.py",
-   "note": "",
+   "note": "two-ply + convoys at 210: S2 +0.56\u00b10.31, S3 +0.29\u00b10.41, pooled +0.33\u00b10.20 (z=1.65, n.s.)",
    "parent": "bot_028",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "two-ply-spring,convoy-candidates"
   }
  },

@@ -338,3 +338,7 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-172816_bot_029_lookahead_twoplyconvoy_tier2,2026-09-26T17:54,bot_029_lookahead_twoplyconvoy,fa2f3d8bd0,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4763,0,91.3,0,0,0,0
 20260926-172816_bot_029_lookahead_twoplyconvoy_tier2,2026-09-26T17:54,bot_029_lookahead_twoplyconvoy,fa2f3d8bd0,tier2,B,2,,126,0,0.8095,16.5873,0.3099,5,False,0.487,0,95.6,0,0,0,0
 20260926-172816_bot_029_lookahead_twoplyconvoy_tier2,2026-09-26T17:54,bot_029_lookahead_twoplyconvoy,fa2f3d8bd0,tier2,B,3,bot_004_lookahead_base,126,0,0.619,14.6746,0.4277,5,False,0.5016,0,98.0,0,0,0,0
+20260926-175517_bot_029_lookahead_twoplyconvoy_tier2-ext,2026-09-26T18:10,bot_029_lookahead_twoplyconvoy,fa2f3d8bd0,tier2-ext,B,2,,210,0,0.8095,16.6238,0.2364,5,False,0.4933,0,96.1,0,0,0,0
+20260926-175517_bot_029_lookahead_twoplyconvoy_tier2-ext,2026-09-26T18:10,bot_029_lookahead_twoplyconvoy,fa2f3d8bd0,tier2-ext,B,3,bot_004_lookahead_base,210,0,0.6571,14.6381,0.3621,5,False,0.5016,0,98.0,0,0,0,0
+20260926-181025_bot_028_lookahead_twoply_tier2-ext,2026-09-26T18:25,bot_028_lookahead_twoply,94aae118ee,tier2-ext,B,2,,210,0,0.7381,16.1429,0.2628,5,False,0.4835,0,96.5,0,0,0,0
+20260926-181025_bot_028_lookahead_twoply_tier2-ext,2026-09-26T18:25,bot_028_lookahead_twoply,94aae118ee,tier2-ext,B,3,bot_004_lookahead_base,210,0,0.6619,14.8429,0.3581,5,False,0.4911,0,97.7,0,0,0,0
