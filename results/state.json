@@ -274,18 +274,18 @@
    "created": "2026-09-27T06:16",
    "family": "search",
    "file": "bots/bot_031_search_riskaverse.py",
-   "note": "",
+   "note": "risk-averse selection: T1 +0.70\u00b10.29 but T2 S2 -0.10, S3 -0.12, pooled -0.07\u00b10.21",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "risk-averse-selection"
   },
   "bot_032": {
    "created": "2026-09-27T06:16",
    "family": "search",
    "file": "bots/bot_032_search_rivalscore.py",
-   "note": "",
+   "note": "competitive score: S2 -0.02\u00b10.43, S3 +0.39\u00b10.44, pooled +0.12\u00b10.21",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "competitive-score"
   },
   "bot_033": {
@@ -398,6 +398,10 @@
    "bot": "bot_027",
    "effect": "pooled +0.17\u00b10.21 SC vs bot_022 (378 paired, B; n.s.)"
   },
+  "competitive-score": {
+   "bot": "bot_032",
+   "effect": "pooled +0.12\u00b10.21 SC vs bot_022 (378 paired, B; n.s.)"
+  },
   "convoy-candidates": {
    "bot": "bot_026",
    "effect": "pooled +0.26\u00b10.21 SC vs bot_022 (378 paired, B; n.s.); England seats +0.86\u00b10.78 (36 games)"
@@ -433,6 +437,10 @@
   "prediction-accuracy-gating": {
    "bot": "bot_016",
    "effect": "pooled +0.75\u00b10.19 SC vs bot_008 (630 paired, B); S2 +0.79\u00b10.39, S3 +1.47\u00b10.41"
+  },
+  "risk-averse-selection": {
+   "bot": "bot_031",
+   "effect": "pooled -0.07\u00b10.21 SC vs bot_022 (378 paired, B; no effect)"
   },
   "rollout-builds": {
    "bot": "bot_030",

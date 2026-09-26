@@ -668,19 +668,25 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   mean), 032 competitive rollout score (our SCs relative to the strongest rival), 033 UCB bandit allocation instead of
   halving, 034 per-power empirical opponent sampling, 035 value-map term in the rollout score.
 
-## [049] bot_031 search/riskaverse — RUNNING
+## [049] bot_031 search/riskaverse — REJECTED
 
 - family: search | parent: bot_022 | tags: risk-averse-selection
 - hypothesis: ranking race candidates by mean − 0.3·sd over sampled opponent replies prefers robust orders over
   gambles → fewer SC losses (esp. S3 vs a strong Hidden Agent).
 - plan: queue q1 (T0 → T1 A42 stand-in 001 → T2 B126 stand-in 004) vs bot_022.
 
-## [050] bot_032 search/rivalscore — RUNNING
+## [050] bot_032 search/rivalscore — REJECTED
 
 - family: search | parent: bot_022 | tags: competitive-score
 - hypothesis: subtracting 0.3 × the strongest rival's SC count after the simulated move rewards taking SCs from the
   leader (win condition, strong Hidden Agent) → S3 wins.
 - plan: queue q1 after bot_031.
+- results q1 (T1 A42 stand-in 001 / T2 B126 stand-in 004, paired vs bot_022):
+  bot_031: T1 S2 16.81, S3 16.40 (pooled +0.70±0.29); T2 S2 15.93±0.39 (76.2%), S3 13.96±0.49 (57.1%), pooled −0.07±0.21
+  → REJECT. bot_032: T1 pooled +0.39±0.33; T2 S2 16.01±0.37 (76.2%), S3 14.47±0.46 (61.1%), pooled +0.12±0.21, tmax
+  0.552 s (S1) → REJECT.
+- takeaway: Tier 1 gains keep vanishing at Tier 2. Tier 1's S3 uses the weak bot_001 stand-in; against the lookahead
+  stand-in the differences disappear. Neither the selection rule nor the score's rival term changes outcomes.
 
 ## [051] bot_033 search/cbrace — RUNNING
 
