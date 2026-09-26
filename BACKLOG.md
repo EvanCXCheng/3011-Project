@@ -54,3 +54,9 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
 - lookahead: same idea for rollout sampling (bot_007 S2/S3 flat vs bot_004).
 - adaptive/lookahead: hybrid of adaptive S1 plan and lookahead is bot_009 (queued).
 - greedy: fall priority / home defence on top of bot_012 (S3 still with weak stand-in; re-run S3 with bot_007 stand-in).
+
+## added 26 Sep (review after 23 iterations)
+- S4 / robustness: in the 56-game HoF tournament valuemap bot_014 (7.2 SC) beat bot_022 (6.8) and bot_021 (5.4). Check
+  what the rollout bots assume about strong opponents in all-bot games (classes, sampling mixes); try a 'strong'
+  default when every opponent is unpredictable. Measure with more tournament games before acting (SEs ~0.7).
+- adaptive bot_009 last in the tournament (2.1 SC): check whether its static-scenario switch misfires in bot tables.

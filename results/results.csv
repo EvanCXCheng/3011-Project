@@ -240,3 +240,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-101426_bot_022_search_hybridrace_tier2,2026-09-26T10:43,bot_022_search_hybridrace,b579520529,tier2,B,2,,126,0,0.7778,16.0317,0.3925,5,False,0.4894,0,96.0,0,0,0,0
 20260926-101426_bot_022_search_hybridrace_tier2,2026-09-26T10:43,bot_022_search_hybridrace,b579520529,tier2,B,3,bot_004_lookahead_base,126,0,0.5714,14.0794,0.496,5,False,0.4845,0,97.9,0,0,0,0
 20260926-104350_bot_021_lookahead_halving_tier2-ref,2026-09-26T10:49,bot_021_lookahead_halving,9045a4e98e,tier2-ref,B,3,bot_004_lookahead_base,126,0,0.4603,13.2063,0.5053,5,False,0.4819,0,105.5,0,0,0,0
+20260926-104914_bot_021_lookahead_halving_heldout,2026-09-26T10:56,bot_021_lookahead_halving,9045a4e98e,heldout,C,1,,42,0,1.0,18.0,0.0,5,False,0.4744,0,91.8,0,0,0,0
+20260926-104914_bot_021_lookahead_halving_heldout,2026-09-26T10:56,bot_021_lookahead_halving,9045a4e98e,heldout,C,2,,42,0,0.7381,16.0476,0.6058,5,False,0.4794,0,96.8,0,0,0,0
+20260926-104914_bot_021_lookahead_halving_heldout,2026-09-26T10:56,bot_021_lookahead_halving,9045a4e98e,heldout,C,3,bot_003_search_base,42,0,0.5,13.5714,0.8663,5,False,0.4801,0,96.4,0,0,0,0

@@ -212,8 +212,8 @@
   "adaptive": {
    "champion": "bot_009",
    "iterations": 3,
-   "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
-   "status": "ACTIVE"
+   "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
+   "status": "DORMANT"
   },
   "greedy": {
    "champion": "bot_012",

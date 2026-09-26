@@ -426,3 +426,16 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   simulated Spring move → fewer Fall losses, S2/S3 gain.
 - sanity: S3 (stand-in bot_004) seeds 11–13 → 18/18/18 SC, tmax 0.478 s; rollout path verified (no silent fallback).
 - plan: main12 after main11: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in bot_004); vs bot_022 and bot_021.
+
+## [028] Every-5 review (after 23 iterations) — DONE
+
+- Held-out C (bot_021, n=42, offset 42, stand-in bot_003): S1 18.00 (100%) / S2 16.05±0.61 (73.8%) / S3 13.57±0.87 (50.0%)
+  → consistent with B (15.70 / 12.66 at 210): no overfitting.
+- Tournament (56 games, 6 family champions, rotating seats): 014 valuemap 7.20±0.68, 022 search-hybrid 6.77±0.76,
+  021 lookahead 5.43±0.69, 017 positional 4.80±0.43, 012 greedy 2.83±0.51, 009 adaptive 2.12±0.42 SC.
+  → in all-bot tables the cheap valuemap bot does best; the rollout bots' opponent models (static/greedy/erratic mixes)
+  fit the baseline scenarios, not tables of strong bots. Relevant for Scenario 4 (bonus) only.
+- Family review: adaptive → DORMANT (champion bot_009 est. 13 vs 15; last in tournament). ACTIVE: search (champion
+  bot_022), lookahead (bot_021). DORMANT: greedy, valuemap, positional, adaptive.
+- S1 solved everywhere; S2 ~16 SC / 70–78% wins; S3 13–14 SC / 46–57% wins (vs lookahead stand-in) → all 5-pt lines
+  cleared by 021/022. Remaining work: robustness (timing, unknown Hidden Agent), Scenario 4 behaviour.
