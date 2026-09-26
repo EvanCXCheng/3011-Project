@@ -527,3 +527,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   → in all-bot tables the pure lookahead line (bot_024) is far stronger than the hybrid champion, the opposite of S3
   (bot_024 −0.99 vs bot_022). Scenario 4 (+3 bonus) is bot-vs-bot, so this matters. Next: a second tournament to
   separate the fast-rollout effect (024 vs 025) from the hill-climb candidates (022 vs 021).
+
+## [036] Tournament 2 (field: 024, 025, 022, 021, 014, 020, greedy; 56 games, offset 100) — DONE
+
+- bot_022 7.52±1.00, bot_024 6.21±0.81, bot_020 5.50±0.88, bot_021 5.41±0.73, bot_025 5.27±0.79, bot_014 2.52±0.42,
+  greedy 1.38±0.37 SC.
+- takeaway: bot_024's lead in tournament 1 (11.4 vs 6.9) did not replicate; rankings depend heavily on the field.
+  Tournaments give no stable reason to prefer the lookahead line for S4 → keep bot_022 (best in S1–S3).
