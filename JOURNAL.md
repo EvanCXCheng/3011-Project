@@ -484,3 +484,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 −0.15±0.52, pooled +0.02±0.22 → REJECT (no effect).
 - takeaway: the speed-up helps the pure lookahead line (bot_024 +0.49) but not the hybrid: bot_022 races a smaller,
   stronger pool (hill-climb optima) after 0.15 s of search, so extra rollouts no longer change its choice.
+
+## [032] Champion robustness in S3 (bot_022) — DONE
+
+- S3 B126 with different Hidden Agent stand-ins: Greedy baseline 15.60±0.40 (69.8%); valuemap bot_014 14.34±0.49
+  (61.1%); positional bot_017 15.13±0.44 (69.0%); lookahead bot_004 (main runs, B210) 14.35±0.37 (58.1%).
+  → S3 5-pt lines (>12 SC, >40% wins) cleared against every opponent style tried; no stand-in-specific overfit.
