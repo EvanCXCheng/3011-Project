@@ -351,6 +351,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   while other targets exist → fewer losses in S2/S3.
 - sanity S2 seeds 11/12/13 → 5/18/12 SC, tmax 0.48 s, no errors.
 - plan: main5 after main4: Tier 0 → Tier 1 (A, stand-in bot_003 = bot_009's) → Tier 2 (B126, stand-in bot_004 = bot_009's).
+- Tier 0 clean. Tier 1 A42: S1 18.00 / S2 15.60±0.64 (64.3%) / S3 9.95±0.99 (28.6%); vs bot_009 pooled −0.19±0.44 → Tier 2.
 
 ## [023] S3 re-measure of greedy/valuemap champions — DONE
 
@@ -377,3 +378,5 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   final choice at the same ~200–330 rollouts per phase.
 - sanity: 202–334 rollouts/phase; S2 seeds 11/12 → 18/18 SC, tmax 0.463 s.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_003 = bot_007's) on the spare core; Tier 2 (B126, stand-in bot_003) in main7.
+- Tier 0 clean (tmax 0.481 s). Tier 1 A42: S1 18.00 / S2 15.19±0.73 (64.3%) / S3 12.88±0.94 (47.6%); vs bot_007
+  pooled +1.04±0.42 → Tier 2.
