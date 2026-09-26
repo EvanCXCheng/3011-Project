@@ -202,9 +202,9 @@
    "created": "2026-09-26T10:44",
    "family": "search",
    "file": "bots/bot_023_search_springthreat.py",
-   "note": "",
+   "note": "Spring threat term in rollout score: S2 -0.18\u00b10.37, S3 -0.29\u00b10.52, pooled -0.16\u00b10.21 vs bot_022",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "spring-threat-score"
   }
  },

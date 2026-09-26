@@ -418,7 +418,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   pooled +0.46±0.24 (z=1.9, just under 2 SE), marks 15/15 → extend both to 210 on S2/S3 (spare12, core 0).
 - takeaway: the two candidate sources are complementary: best bot in every scenario so far.
 
-## [027] bot_023 search/springthreat — RUNNING
+## [027] bot_023 search/springthreat — REJECTED
 
 - family: search | parent: bot_022 | tags: spring-threat-score
 - hypothesis: bot_022's Spring rollout score counts occupied SCs but not exposure; Fall losses come from own SCs left
@@ -426,6 +426,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   simulated Spring move → fewer Fall losses, S2/S3 gain.
 - sanity: S3 (stand-in bot_004) seeds 11–13 → 18/18/18 SC, tmax 0.478 s; rollout path verified (no silent fallback).
 - plan: main12 after main11: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in bot_004); vs bot_022 and bot_021.
+- Tier 1 A42: S1 18.00 / S2 15.71±0.69 / S3 14.93±0.79; vs bot_022 pooled −0.16±0.31.
+- Tier 2 B126 (stand-in 004): S1 18.00 / S2 15.85±0.36 (70.6%) / S3 13.79±0.49 (52.4%). vs bot_022: S2 −0.18±0.37,
+  S3 −0.29±0.52, pooled −0.16±0.21 → REJECT.
+- takeaway: the rollouts already see Spring exposure through the sampled opponent moves; an extra heuristic term only
+  biases toward passive garrisons.
 
 ## [028] Every-5 review (after 23 iterations) — DONE
 
