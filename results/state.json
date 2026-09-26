@@ -265,9 +265,9 @@
    "created": "2026-09-26T20:18",
    "family": "search",
    "file": "bots/bot_030_search_buildroll.py",
-   "note": "",
+   "note": "rollout builds: S2 -0.10\u00b10.41, S3 +0.16\u00b10.49, pooled +0.02\u00b10.21 (no effect)",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "rollout-builds"
   }
  },
@@ -391,6 +391,10 @@
   "prediction-accuracy-gating": {
    "bot": "bot_016",
    "effect": "pooled +0.75\u00b10.19 SC vs bot_008 (630 paired, B); S2 +0.79\u00b10.39, S3 +1.47\u00b10.41"
+  },
+  "rollout-builds": {
+   "bot": "bot_030",
+   "effect": "pooled +0.02\u00b10.21 SC vs bot_022 (378 paired, B; no effect)"
   },
   "rollout-selection": {
    "bot": "bot_020",

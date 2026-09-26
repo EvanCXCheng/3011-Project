@@ -640,7 +640,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - 210 (S2/S3): S2 16.05±0.28 (76.2%), S3 14.72±0.36 (61.9%). vs bot_022: S2 −0.01±0.22, S3 +0.38±0.42, pooled +0.18±0.24
   → n.s.; the 126-game signal regressed toward zero (as the extension rule is meant to catch). Keep HALVE_EVERY=3.
 
-## [046] bot_030 search/buildroll — RUNNING
+## [046] bot_030 search/buildroll — REJECTED
 
 - family: search | parent: bot_022 | tags: rollout-builds (adjustment phase was never optimised)
 - hypothesis: Winter builds chosen by simulating up to 8 build sets (rule choice, type flips, next-best site, all
@@ -648,3 +648,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   scoring SC count after Fall beat the distance rule → better army/fleet mix, S2/S3 gain.
 - checks: light Winter game accepts builds and processes to Spring; test game: rollout builds 0.40 s, legal.
 - plan: main29: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in 004) vs bot_022.
+- Tier 1 A42: S1 18.00 / S2 16.29±0.56 / S3 15.33±0.72; vs bot_022 +0.17±0.32.
+- Tier 2 B126 (stand-in 004): S1 18.00 / S2 15.93±0.37 (74.6%) / S3 14.24±0.49 (58.7%). vs bot_022: S2 −0.10±0.41,
+  S3 +0.16±0.49, pooled +0.02±0.21 → REJECT (no effect): the distance rule already picks sensible builds.
