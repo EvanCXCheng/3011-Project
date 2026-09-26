@@ -60,3 +60,12 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
   what the rollout bots assume about strong opponents in all-bot games (classes, sampling mixes); try a 'strong'
   default when every opponent is unpredictable. Measure with more tournament games before acting (SEs ~0.7).
 - adaptive bot_009 last in the tournament (2.1 SC): check whether its static-scenario switch misfires in bot tables.
+
+## freeze preparation (noted 26 Sep)
+- Spec note [7]: the new techniques must be implemented in the submitted code (may be switched off). The champion
+  line (bot_022 → agent_21.py) carries CONFIG toggles for: OPP_AWARE (opponent-aware eval), ACC_GATE (prediction-
+  accuracy gating), ROLLOUT (rollout selection), LA_CANDS + HALVING (hybrid candidate race); basic technique =
+  BFS-greedy distance scoring (lookahead candidate generator / hill-climb start). Freeze ablations: toggle each on
+  FINAL seeds. Keep these toggles in any later champion.
+- test_21.py: lab is 66 KB now (+ nothing else needed); trim to a self-contained runner (evaluate / compare / ablation
+  / stress / tournament) ≤ 100 KB at the freeze.
