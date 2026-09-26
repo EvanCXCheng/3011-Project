@@ -213,7 +213,7 @@
    "file": "bots/bot_024_lookahead_fastroll.py",
    "note": "",
    "parent": "bot_021",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "shared-opponent-rollouts"
   },
   "bot_025": {
@@ -240,7 +240,7 @@
    "status": "DORMANT"
   },
   "lookahead": {
-   "champion": "bot_021",
+   "champion": "bot_024",
    "iterations": 6,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
@@ -267,11 +267,12 @@
  "hall_of_fame": [
   "bot_009",
   "bot_012",
-  "bot_021",
+  "bot_024",
   "bot_017",
   "bot_022",
   "bot_014",
-  "bot_007"
+  "bot_007",
+  "bot_021"
  ],
  "next_bot_id": 26,
  "overall_champions": [
@@ -345,6 +346,10 @@
   "scenario-detection": {
    "bot": "bot_009",
    "effect": "pooled +1.28\u00b10.24 SC vs bot_005 (378 paired, B); S2 +2.03, S3 +1.80; tie with bot_007 (-0.15\u00b10.23)"
+  },
+  "shared-opponent-rollouts": {
+   "bot": "bot_024",
+   "effect": "pooled +0.49\u00b10.21 SC vs bot_021 (378 paired, B); S2 +0.63\u00b10.36, S3 +0.85\u00b10.52; ~1.5x rollouts"
   },
   "strength-aware-values": {
    "bot": "bot_014",

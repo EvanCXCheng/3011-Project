@@ -460,7 +460,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Speed-up this enables: set the opponents' sampled orders once per round on a copy, `clear_cache()`, then deep-copy
   it per candidate and set only our orders. Measured (S1901, under load): 2.46 → 1.52 ms per rollout (×1.6).
 
-## [030] bot_024 lookahead/fastroll — RUNNING
+## [030] bot_024 lookahead/fastroll — PROMOTED
 
 - family: lookahead | parent: bot_021 | tags: shared-opponent-rollouts (engine finding [029])
 - hypothesis: set sampled opponent orders once per round (+ clear_cache), deep-copy per candidate → ~1.5x rollouts
@@ -468,6 +468,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: all 941 rollouts in a test game moved units (orders applied); S3 seeds 11/12 (stand-in 004) → 18/18, tmax 0.48 s.
 - plan: main13 after the bot_022 extension: Tier 0 → Tier 1 (A, stand-in 003 = bot_021's) → Tier 2 (B126, stand-in 003).
 - Tier 0 clean. Tier 1 A42: S1 18.00 / S2 15.83±0.59 (71.4%) / S3 11.79±0.94 (33.3%); vs bot_021 pooled −0.15±0.37 → Tier 2.
+- Tier 2 B126 (stand-in 003): S1 18.00 / S2 16.17±0.35 (73.0%) / S3 13.21±0.50 (50.8%) → est. 15. vs bot_021:
+  S2 +0.63±0.36, S3 +0.85±0.52, pooled +0.49±0.21 → PROMOTE → lookahead champion (overall comparison with bot_022
+  needs matching S3 stand-ins; the same change on bot_022 is bot_025).
+- takeaway: more rollouts per move still pay off, so rollout count is a binding constraint.
 
 ## [031] bot_025 search/fastroll — RUNNING
 
