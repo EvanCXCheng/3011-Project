@@ -414,6 +414,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Tier 2 B126 (stand-in bot_004): S1 18.00 / S2 16.03±0.39 (77.8%) / S3 14.08±0.50 (57.1%) → est. 15. tmax 0.489 s.
   vs bot_020: S2 +1.31±0.37, S3 +0.51±0.50, pooled +0.61±0.21 → PROMOTE → search champion.
   vs bot_007: S2 +0.76±0.45, S3 +2.22±0.58, pooled +0.99±0.25. vs bot_021 (overall): pending 021 S3 ref with stand-in 004.
+- ref bot_021 S3 (stand-in 004, B126): 13.21±0.51 (46.0%). bot_022 vs bot_021: S2 +0.49±0.49, S3 +0.87±0.51,
+  pooled +0.46±0.24 (z=1.9, just under 2 SE), marks 15/15 → extend both to 210 on S2/S3 (spare12, core 0).
 - takeaway: the two candidate sources are complementary: best bot in every scenario so far.
 
 ## [027] bot_023 search/springthreat — RUNNING
