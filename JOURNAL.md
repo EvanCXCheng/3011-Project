@@ -614,8 +614,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: with twice the games, the champion is clearly best in all-bot tables too; tournament 1's bot_024 lead was
   field noise. No S4-specific mode needed.
 
-## [043] Tuning check: bot_022 with TIME_BUDGET 0.5 — RUNNING
+## [043] Tuning check: bot_022 with TIME_BUDGET 0.5 — DONE
 
 - CLAUDE.md allows stopping the search at 0.5 s; bot_022 uses 0.45. Test --set TIME_BUDGET=0.5 on B126 (stand-in 004),
   paired with bot_022. Parameter tuning only (not a technique). If it helps: new bot file + stress gate (tmax must stay
   < 0.6 s serial, < 0.8 s at ×4).
+- result B126: S1 18.00 / S2 15.74±0.40 (70.6%) / S3 13.06±0.53 (51.6%), tmax 0.535 s. vs bot_022: S2 −0.29±0.40,
+  S3 −1.02±0.46, pooled −0.44±0.20 (z≈−2.2) → keep 0.45 s. Possible cause: more rounds → more halvings, so the race
+  narrows to MIN_ALIVE candidates on few samples; longer budgets need a matching HALVE_EVERY. Not pursued (tuning).
