@@ -534,3 +534,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   greedy 1.38±0.37 SC.
 - takeaway: bot_024's lead in tournament 1 (11.4 vs 6.9) did not replicate; rankings depend heavily on the field.
   Tournaments give no stable reason to prefer the lookahead line for S4 → keep bot_022 (best in S1–S3).
+
+## [037] Early ablations of the champion (bot_022) — RUNNING
+
+- purpose: measure each technique's contribution inside the champion before the freeze (FINAL seeds stay reserved)
+  and find any component that hurts. Seed set A, n=42, stand-in bot_001 (= bot_022's Tier 1), --set one switch off:
+  OPP_AWARE, ACC_GATE, LA_CANDS, HALVING, ROLLOUT. Paired vs bot_022 on A (main19).
