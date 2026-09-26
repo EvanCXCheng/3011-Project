@@ -472,6 +472,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S2 +0.63±0.36, S3 +0.85±0.52, pooled +0.49±0.21 → PROMOTE → lookahead champion (overall comparison with bot_022
   needs matching S3 stand-ins; the same change on bot_022 is bot_025).
 - takeaway: more rollouts per move still pay off, so rollout count is a binding constraint.
+- cross-check vs overall champion (S3 stand-in 004, B126): bot_024 S3 13.09±0.50 (45.2%). vs bot_022: S2 +0.14±0.43,
+  S3 −0.99±0.52, pooled −0.28±0.23 → bot_022 stays overall champion (hybrid candidates matter more than rollout count).
 
 ## [031] bot_025 search/fastroll — REJECTED
 

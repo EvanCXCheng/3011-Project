@@ -277,3 +277,4 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-125949_bot_022_search_hybridrace_robust,2026-09-26T13:08,bot_022_search_hybridrace,b579520529,robust,B,3,baseline:greedy,126,0,0.6984,15.5952,0.4007,5,False,0.483,0,96.5,0,0,0,0
 20260926-130819_bot_022_search_hybridrace_robust,2026-09-26T13:16,bot_022_search_hybridrace,b579520529,robust,B,3,bot_014_valuemap_strength,126,0,0.6111,14.3413,0.4906,5,False,0.4873,0,96.4,0,0,0,0
 20260926-131649_bot_022_search_hybridrace_robust,2026-09-26T13:25,bot_022_search_hybridrace,b579520529,robust,B,3,bot_017_positional_threatw,126,0,0.6905,15.1349,0.4417,5,False,0.4941,0,96.8,0,0,0,0
+20260926-123750_bot_024_lookahead_fastroll_tier2-ref,2026-09-26T13:28,bot_024_lookahead_fastroll,a382b7a1ca,tier2-ref,B,3,bot_004_lookahead_base,126,0,0.4524,13.0873,0.5003,5,False,0.5001,0,103.2,0,0,0,0
