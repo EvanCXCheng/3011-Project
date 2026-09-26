@@ -324,7 +324,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Overall picture: S1 solved (100%) by 005/007/008/009; S2 ≈ 15 SC / ~60% wins (5 pts); S3 ≈ 11.5 SC / ~35% (3 pts,
   5 pts needs >12 SC or >40% wins). S3 is where the remaining marks are.
 
-## [021] bot_018 lookahead/strongopp — RUNNING
+## [021] bot_018 lookahead/strongopp — REJECTED
 
 - family: lookahead | parent: bot_007 | tags: adversarial-sampling (+ bot_016's hit-rate classes)
 - hypothesis: bot_007 labels a strong opponent 'erratic' (move-direction rule) and samples it as mostly random, so
@@ -335,6 +335,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   bot_008 (search, S2 44.8%) for Tier 2 and a matching bot_007 S3 reference. Deviation noted.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_003 = bot_007's) on the spare core; Tier 2 (B126, stand-in bot_008) + ref in main4.
 - Tier 0 clean. Tier 1 A42: S1 18.00 / S2 14.83±0.79 (61.9%) / S3 11.45±0.93 (28.6%); vs bot_007 pooled +0.44±0.40 → Tier 2.
+- Tier 2 B126 (stand-in bot_008): S1 18.00 / S2 14.77±0.43 (58.7%) / S3 12.02±0.54 (38.9%). Ref bot_007 S3 with
+  stand-in bot_008: 12.22±0.50 (34.1%). vs bot_007: S2 −0.50±0.45, S3 −0.21±0.54, pooled −0.24±0.23 → REJECT.
+- takeaway: modelling strong opponents as attackers in 1-ply rollouts makes play more cautious without saving SCs.
+  Two lookahead opponent-model tweaks (015, 018) failed; 1-ply rollouts seem saturated → lookahead needs a different
+  lever (deeper search / better score) rather than sampling tweaks.
 
 ## [022] bot_019 adaptive/peaceful — RUNNING
 

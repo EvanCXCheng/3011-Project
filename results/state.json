@@ -157,9 +157,9 @@
    "created": "2026-09-26T06:42",
    "family": "lookahead",
    "file": "bots/bot_018_lookahead_strongopp.py",
-   "note": "",
+   "note": "hit-rate classes + adversarial sampling of strong powers: S2 -0.50\u00b10.45, S3 -0.21\u00b10.54, pooled -0.24\u00b10.23 vs bot_007",
    "parent": "bot_007",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "adversarial-sampling"
   },
   "bot_019": {
