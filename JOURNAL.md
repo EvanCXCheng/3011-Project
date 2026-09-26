@@ -690,3 +690,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: queue q2 (after q1).
 - note: human (27 Sep) also invited completely new bots → new family 'bandit' planned (decoupled per-unit UCB over
   orders, credited from joint rollouts).
+
+## [052] bot_034 bandit/base — RUNNING (new family 'bandit')
+
+- family: bandit (new; human invited completely new bots) | parent: none | tags: decoupled-ucb, combinatorial-bandit
+- hypothesis: decoupled per-unit UCB1 bandits over each unit's orders (hold, top-10 greedy moves, supports of own
+  units), credited from joint 1-ply rollouts vs class-sampled opponents (~300–400 rollouts/phase, opponent sample shared
+  by batches of 4), find coordinated orders without a hand-made candidate generator.
+- sanity: S1/S2/S3 seed 11 → 8/1/18 SC, no errors, tmax 0.48 s. Expected weakness: 2v1 needs a move and a support
+  chosen jointly, which independent per-unit bandits find slowly (S1 8 SC in the sanity game).
+- plan: queue q3 (T0 → T1 A42 → T2 B126) vs bot_022; new family → Tier 2 regardless.

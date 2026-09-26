@@ -296,6 +296,15 @@
    "parent": "bot_022",
    "status": "RUNNING",
    "tags": "confidence-bound-racing"
+  },
+  "bot_034": {
+   "created": "2026-09-27T06:18",
+   "family": "bandit",
+   "file": "bots/bot_034_bandit_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "decoupled-ucb"
   }
  },
  "families": {
@@ -304,6 +313,12 @@
    "iterations": 3,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
+  },
+  "bandit": {
+   "champion": null,
+   "iterations": 1,
+   "reason": "new",
+   "status": "ACTIVE"
   },
   "greedy": {
    "champion": "bot_012",
@@ -346,7 +361,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 34,
+ "next_bot_id": 35,
  "overall_champions": [
   {
    "bot": "bot_001",
