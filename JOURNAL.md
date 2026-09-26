@@ -580,3 +580,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 +0.86±0.45, pooled +0.30±0.19 (z=1.6) → REJECT (n.s.).
 - note: three bot_022 variants lean positive but n.s. (026 convoys +0.26, 027 crossover +0.17, 028 two-ply +0.30).
   Convoys and two-ply target different weaknesses (England; Spring evaluation) → try the combination (bot_029).
+
+## [040] bot_029 lookahead/twoplyconvoy — RUNNING
+
+- family: lookahead | parent: bot_028 | tags: two-ply-spring + convoy-candidates (combination of two measured ideas)
+- hypothesis: two-ply (+0.30±0.19, mainly S3) and convoys (+0.26±0.21, mainly England) target different weaknesses;
+  combined they should reach a significant gain over bot_022.
+- checks: England test game plays convoys (A WAL - BRE VIA, A CLY - NWY VIA with fleet convoys); rollout path runs;
+  S3 seeds 11/12 (stand-in 004) → 18/18, tmax 0.456 s.
+- plan: main23: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in 004) vs bot_022.
