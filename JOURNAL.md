@@ -565,3 +565,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 +0.41±0.54, pooled +0.17±0.21 → REJECT (n.s.).
 - takeaway: recombined children are rarely better than their parents under 1-ply rollouts; the race is near its
   ceiling for this evaluation. Further gains need a different evaluation (deeper lookahead) rather than more candidates.
+
+## [039] bot_028 lookahead/twoply — RUNNING
+
+- family: lookahead | parent: bot_022 (hybrid lineage; the change is a lookahead idea) | tags: two-ply-spring
+- hypothesis: three candidate-side changes (025 speed, 026 convoys, 027 crossover) were n.s. → the 1-ply evaluation
+  is the ceiling. In Spring, extend each rollout by a greedy Fall reply of every non-static power (dislodged units
+  disband) and score SC ownership after Fall instead of the Spring occupancy heuristic → better Spring moves.
+- checks: every simulated process moved units; rollouts per phase: Spring 83–137 (half), Fall 179–259 (unchanged);
+  S3 seeds 11/12 (stand-in 004) → 18/18, tmax 0.455 s.
+- plan: main22: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in 004) vs bot_022.
