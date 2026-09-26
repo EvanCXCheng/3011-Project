@@ -229,9 +229,9 @@
    "created": "2026-09-26T13:29",
    "family": "search",
    "file": "bots/bot_026_search_convoy.py",
-   "note": "",
+   "note": "convoy candidates: S2 +0.23\u00b10.42, S3 +0.56\u00b10.47, pooled +0.26\u00b10.21 (n.s.); England +0.86\u00b10.78",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "convoy-candidates"
   }
  },
@@ -315,6 +315,10 @@
   "bfs-greedy": {
    "bot": "bot_001",
    "effect": "basic technique: est. mark 2 (B210: S1 6.14, S2 7.43, S3 6.75)"
+  },
+  "convoy-candidates": {
+   "bot": "bot_026",
+   "effect": "pooled +0.26\u00b10.21 SC vs bot_022 (378 paired, B; n.s.); England seats +0.86\u00b10.78 (36 games)"
   },
   "hybrid-candidate-race": {
    "bot": "bot_022",

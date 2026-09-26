@@ -502,7 +502,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - Smoke-tested: eval n=1 (S1/S2/S3 18 SC, slowest 0.457 s), ablate ROLLOUT on S2, tournament 1 game.
 - Freeze: re-check the ablate default keys against the final champion's CONFIG toggles, run FINAL eval/ablations.
 
-## [034] bot_026 search/convoy — RUNNING
+## [034] bot_026 search/convoy — REJECTED
 
 - family: search | parent: bot_022 | tags: convoy-candidates (greedy backlog item 9, never tried)
 - analysis (lab/analyze.py bot_022): weakest seats S3 AUS 11.4 (46%), ENG 13.1 (35%), TUR 14.9 (49%); S2 ENG 42% wins
@@ -513,6 +513,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   1/8/15/22 → 13/18/18/18 (bot_022: 18/9/14/18); no illegal orders, tmax 0.474 s.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_001) on core 0; Tier 2 (B126, stand-in 004) on cores 1–3 after main16.
 - Tier 0 clean. Tier 1 A42: S1 18.00 / S2 17.00±0.44 (85.7%) / S3 15.02±0.77 (64.3%); vs bot_022 pooled +0.30±0.29 → Tier 2.
+- Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.26±0.35 (77.8%) / S3 14.63±0.50 (66.7%). vs bot_022: S2 +0.23±0.42,
+  S3 +0.56±0.47, pooled +0.26±0.21 (z≈1.2) → REJECT. Per power (S2+S3, 36 games each): ENG +0.86±0.78 (wins 17 vs 13),
+  AUS +1.11±1.12, ITA −0.25±1.15, TUR −0.75±0.83.
+- decision: not extended to 210; extensions were used only at z≈1.9–2.0, and extending only promising-looking bots
+  would bias verdicts (optional stopping). Convoys stay available as a measured technique (neutral/positive trend).
 
 ## [035] Held-out + 7-bot tournament (after 26 iterations) — DONE
 
