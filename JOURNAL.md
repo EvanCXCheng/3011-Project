@@ -379,7 +379,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   although its est. mark is 15 vs 13 (S3 crosses both 5-pt lines). Revisit after bot_021's Tier 2.
 - takeaway: heuristic local search as the candidate generator + engine rollouts to choose is the best S3 bot so far.
 
-## [025] bot_021 lookahead/halving — RUNNING
+## [025] bot_021 lookahead/halving — PROMOTED
 
 - family: lookahead | parent: bot_007 | tags: successive-halving
 - hypothesis: after two failed opponent-model tweaks (015, 018), change how the rollout budget is spent: 24 candidates
@@ -394,6 +394,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - decision: both bot_020 (+0.39±0.25) and bot_021 (+0.45±0.23) are est. 15 vs bot_007's 13 but sit just under the 2-SE
   bar on the 126-game fallback. Extend bot_007/020/021 to the standard 210 on S2/S3 (matching stand-ins; S1 saturated
   at 18 for all three) and re-compare (main8 + spare11).
+- 210-game results (B; S1 126 all 18.00): bot_007 S2 14.96±0.32 (57.1%), S3 (stand-in 003) 11.49±0.41 (31.4%);
+  bot_021 S2 15.70±0.31 (70.0%), S3 (003) 12.66±0.38 (39.5%); bot_020 S2 14.69±0.33 (57.6%), S3 (004) 13.18±0.38 (46.2%).
+- bot_021 vs bot_007 (546 paired): S2 +0.75±0.34, S3 +1.17±0.41, pooled +0.74±0.21, marks 15 vs 13 → PROMOTE.
+  stress (core 0, bot_022 eval pinned to cores 1–3): ×3.5, tmax 0.526 s, overshoot 0.076 s → PASS →
+  lookahead champion + OVERALL CHAMPION (agent_21.py).
+- bot_020 vs bot_007 (546 paired): S2 −0.27±0.39, S3 +1.27±0.43, pooled +0.39±0.22 → stays search champion only.
+- takeaway: racing more candidates beats spreading rollouts evenly; S3 now ≥12 SC (5 pts on SC) for 021 and 020.
 
 ## [026] bot_022 search/hybridrace — RUNNING
 

@@ -186,7 +186,7 @@
    "file": "bots/bot_021_lookahead_halving.py",
    "note": "",
    "parent": "bot_007",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "successive-halving"
   },
   "bot_022": {
@@ -213,7 +213,7 @@
    "status": "DORMANT"
   },
   "lookahead": {
-   "champion": "bot_007",
+   "champion": "bot_021",
    "iterations": 5,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
@@ -240,12 +240,12 @@
  "hall_of_fame": [
   "bot_009",
   "bot_012",
-  "bot_007",
+  "bot_021",
   "bot_017",
   "bot_020",
   "bot_014",
-  "bot_003",
-  "bot_004"
+  "bot_004",
+  "bot_007"
  ],
  "next_bot_id": 23,
  "overall_champions": [
@@ -264,6 +264,10 @@
   {
    "bot": "bot_007",
    "date": "2026-09-26T04:40"
+  },
+  {
+   "bot": "bot_021",
+   "date": "2026-09-26T10:05"
   }
  ],
  "standin_rotation": 0,
@@ -311,6 +315,10 @@
   "strength-aware-values": {
    "bot": "bot_014",
    "effect": "pooled +0.74\u00b10.18 SC vs bot_011 (630 paired, B); S1 +1.57\u00b10.22 (86% wins), S3 +0.87\u00b10.34"
+  },
+  "successive-halving": {
+   "bot": "bot_021",
+   "effect": "pooled +0.74\u00b10.21 SC vs bot_007 (546 paired, B, S2/S3 at 210); S2 +0.75\u00b10.34 (70% wins), S3 +1.17\u00b10.41; mark 15 vs 13"
   },
   "supported-attack-matching": {
    "bot": "bot_012",

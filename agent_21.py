@@ -1,6 +1,11 @@
-"""bot_007 — family: lookahead — parent: bot_004
+"""bot_021 — family: lookahead — parent: bot_007
 
-Change vs bot_004 (one idea): opponent orders in the rollouts are sampled from a per-power model learned from the
+Change vs bot_007 (one idea): successive halving of the rollout budget. bot_007 spreads ~200 rollouts evenly over 10
+candidates. Here 24 candidates are generated and raced: all survivors are simulated against the same opponent sample
+each round, and every HALVE_EVERY rounds the worse half is dropped (never below MIN_ALIVE). More candidates are
+considered, and the close contenders get most of the samples.
+
+bot_007 change vs bot_004: opponent orders in the rollouts are sampled from a per-power model learned from the
 order history (static / greedy / erratic / unknown, as in the adaptive family's classifier) instead of one fixed mix.
 Static powers always hold; greedy powers mostly make their greedy move; erratic ones mostly random.
 
@@ -12,7 +17,7 @@ Parent hypothesis: simulating candidate order sets one move deep beats choosing 
      score the outcome (SCs held and occupied, units kept, distance to unowned SCs) and keep the best mean.
 Engine note: copying the real game costs ~8 ms late in the game (history), a light copy ~0.3 ms.
 
-Technique tags: one-ply-simulation, opponent-sampling, light-game-copy, opponent-model-sampling
+Technique tags: one-ply-simulation, opponent-sampling, light-game-copy, opponent-model-sampling, successive-halving
 """
 import copy
 import random
@@ -26,7 +31,10 @@ from agent_baselines import Agent
 
 CONFIG = {
     'TIME_BUDGET': 0.45,     # s per get_actions call (simulation stops here)
-    'N_CAND': 10,            # candidate joint orders
+    'N_CAND': 24,            # candidate joint orders (bot_007: 10)
+    'HALVING': True,         # False = uniform allocation as bot_007 (use with N_CAND=10 to reproduce it)
+    'HALVE_EVERY': 3,        # rounds between halvings
+    'MIN_ALIVE': 3,          # stop halving at this many candidates
     'P_PERTURB': 0.3,        # per-unit probability of deviating from the greedy order in a perturbed candidate
     'P_SUPPORT': 0.5,        # when deviating, chance to pick a support of an own move (if any)
     'OPP_HOLD': 0.4,         # opponent model: hold probability
@@ -141,7 +149,7 @@ def light_game(game):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_007_lookahead_oppmodel'):
+    def __init__(self, agent_name='bot_021_lookahead_halving'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -400,26 +408,33 @@ class StudentAgent(Agent):
         totals = [0.0] * len(cands)
         n_eval = 0
         cand_orders = [[c[i] for i in sorted(c)] for c in cands]
+        alive = list(range(len(cand_orders)))
+        since_halve = 0
         while time.perf_counter() - t0 < budget:
             opp = sample_opponents()
             round_scores = []
-            for co in cand_orders:
+            for k in alive:
                 if time.perf_counter() - t0 > budget:
                     break
                 g = copy.deepcopy(base_game)
                 for p, lst in opp.items():
                     g.set_orders(p, lst)
-                g.set_orders(me, co)
+                g.set_orders(me, cand_orders[k])
                 g.process()
                 round_scores.append(score(g))
-            if len(round_scores) < len(cand_orders):
-                break   # partial round: discard so every candidate has the same samples
-            for k, v in enumerate(round_scores):
+            if len(round_scores) < len(alive):
+                break   # partial round: discard so every survivor has the same samples
+            for k, v in zip(alive, round_scores):
                 totals[k] += v
             n_eval += 1
+            since_halve += 1
+            if CONFIG['HALVING'] and since_halve >= CONFIG['HALVE_EVERY'] and len(alive) > CONFIG['MIN_ALIVE']:
+                alive.sort(key=lambda k: -totals[k])
+                alive = alive[:max(CONFIG['MIN_ALIVE'], (len(alive) + 1) // 2)]
+                since_halve = 0
         if n_eval == 0:
             return fallback
-        best = max(range(len(cands)), key=lambda k: totals[k])
+        best = max(alive, key=lambda k: totals[k])
         return cand_orders[best]
 
     # --------------------------------------------------------------------------------------------------------

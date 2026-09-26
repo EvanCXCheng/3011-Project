@@ -224,3 +224,9 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-091218_bot_021_lookahead_halving_tier2,2026-09-26T09:24,bot_021_lookahead_halving,9045a4e98e,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4826,0,93.9,0,0,0,0
 20260926-091218_bot_021_lookahead_halving_tier2,2026-09-26T09:24,bot_021_lookahead_halving,9045a4e98e,tier2,B,2,,126,0,0.6825,15.5397,0.4177,5,False,0.486,0,99.7,0,0,0,0
 20260926-091218_bot_021_lookahead_halving_tier2,2026-09-26T09:24,bot_021_lookahead_halving,9045a4e98e,tier2,B,3,bot_003_search_base,126,0,0.3492,12.3651,0.4902,5,True,0.5114,0,97.6,0,0,0,0
+20260926-092535_bot_021_lookahead_halving_tier2-ext,2026-09-26T09:38,bot_021_lookahead_halving,9045a4e98e,tier2-ext,B,2,,210,0,0.7,15.7048,0.3075,5,False,0.4936,0,99.7,0,0,0,0
+20260926-092535_bot_021_lookahead_halving_tier2-ext,2026-09-26T09:38,bot_021_lookahead_halving,9045a4e98e,tier2-ext,B,3,bot_003_search_base,210,0,0.3952,12.6571,0.3836,5,True,0.5114,0,97.6,0,0,0,0
+20260926-092535_bot_007_lookahead_oppmodel_tier2-ext,2026-09-26T09:43,bot_007_lookahead_oppmodel,4d26548789,tier2-ext,B,2,,210,0,0.5714,14.9571,0.3164,5,False,0.4894,0,106.5,0,0,0,0
+20260926-093850_bot_007_lookahead_oppmodel_tier2-ext,2026-09-26T09:46,bot_007_lookahead_oppmodel,4d26548789,tier2-ext,B,3,bot_003_search_base,210,0,0.3143,11.4905,0.408,3,False,0.4901,0,97.7,0,0,0,0
+20260926-094612_bot_020_search_rolloutsel_tier2-ext,2026-09-26T10:04,bot_020_search_rolloutsel,f5338bf295,tier2-ext,B,2,,210,0,0.5762,14.6905,0.3326,5,False,0.4954,0,96.7,0,0,0,0
+20260926-094612_bot_020_search_rolloutsel_tier2-ext,2026-09-26T10:04,bot_020_search_rolloutsel,f5338bf295,tier2-ext,B,3,bot_004_lookahead_base,210,0,0.4619,13.181,0.3826,5,False,0.4871,0,97.4,0,0,0,0
