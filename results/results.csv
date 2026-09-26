@@ -253,3 +253,5 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-112436_bot_023_search_springthreat_tier2,2026-09-26T11:53,bot_023_search_springthreat,a2b2d27ac2,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4792,0,91.4,0,0,0,0
 20260926-112436_bot_023_search_springthreat_tier2,2026-09-26T11:53,bot_023_search_springthreat,a2b2d27ac2,tier2,B,2,,126,0,0.7063,15.8492,0.3634,5,False,0.4891,0,96.6,0,0,0,0
 20260926-112436_bot_023_search_springthreat_tier2,2026-09-26T11:53,bot_023_search_springthreat,a2b2d27ac2,tier2,B,3,bot_004_lookahead_base,126,0,0.5238,13.7937,0.4915,5,False,0.4909,0,97.8,0,0,0,0
+20260926-115356_bot_022_search_hybridrace_tier2-ext,2026-09-26T12:01,bot_022_search_hybridrace,b579520529,tier2-ext,B,2,,210,0,0.7571,16.0619,0.2818,5,False,0.4894,0,101.8,0,0,0,0
+20260926-115356_bot_022_search_hybridrace_tier2-ext,2026-09-26T12:01,bot_022_search_hybridrace,b579520529,tier2-ext,B,3,bot_004_lookahead_base,210,0,0.581,14.3476,0.3694,5,False,0.5009,0,103.1,0,0,0,0

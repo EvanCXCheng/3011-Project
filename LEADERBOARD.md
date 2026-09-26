@@ -1,9 +1,9 @@
 # Leaderboard
 
-_Generated 2026-09-26 11:15 AWST by lab/leaderboard.py — do not hand-edit._  
-Freeze in 120.7 h, deadline in 156.7 h.
+_Generated 2026-09-26 12:02 AWST by lab/leaderboard.py — do not hand-edit._  
+Freeze in 120.0 h, deadline in 155.9 h.
 
-**Overall champion:** bot_021  (agent_21.py matches)
+**Overall champion:** bot_022  (agent_21.py matches)
 
 ## Bots
 
@@ -11,46 +11,47 @@ Mark = estimated rubric points /15 (per scenario: highest tier reached by win ra
 
 | # | bot | family | status | S1 sc (win%) n | S2 sc (win%) n | S3 sc (win%) n | mark | tmax s | mem MB | issues | tourn |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | bot_022_search_hybridrace | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 16.00±0.33 (76%) 168 → 5 | 14.36±0.41 (59%) 168 → 5 | **15** | 0.489 | 98 | 0 | 2 |
-| 2 | bot_021_lookahead_halving | lookahead | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 15.66±0.25 (70%) 319 → 5 | 12.96±0.26 (43%) 478 → 5 | **15** | 0.511 | 106 | 0 | 4 |
-| 3 | bot_020_search_rolloutsel | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 14.75±0.30 (57%) 252 → 5 | 13.16±0.35 (46%) 252 → 5 | **15** | 0.495 | 97 | 0 | - |
-| 4 | bot_018_lookahead_strongopp | lookahead | REJECTED | 18.00±0.00 (100%) 168 → 5 | 14.79±0.38 (60%) 168 → 5 | 11.88±0.46 (36%) 168 → 3* | **13** | 0.497 | 98 | 0 | - |
-| 5 | bot_007_lookahead_oppmodel | lookahead | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 14.88±0.27 (57%) 294 → 5 | 11.69±0.24 (34%) 630 → 3 | **13** | 0.504 | 106 | 0 | 6 |
-| 6 | bot_009_adaptive_scenswitch | adaptive | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 15.07±0.35 (61%) 168 → 5 | 11.46±0.46 (32%) 168 → 3 | **13** | 0.496 | 98 | 0 | 11 |
-| 7 | bot_019_adaptive_peaceful | adaptive | REJECTED | 18.00±0.00 (100%) 168 → 5 | 15.16±0.36 (62%) 168 → 5 | 11.08±0.46 (31%) 168 → 3 | **13** | 0.489 | 98 | 0 | - |
-| 8 | bot_016_search_predacc | search | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 13.75±0.34 (52%) 252 → 5* | 11.56±0.37 (33%) 252 → 3 | **13** | 0.408 | 103 | 0 | - |
-| 9 | bot_015_lookahead_defcands | lookahead | REJECTED | 17.99±0.01 (99%) 168 → 5 | 14.29±0.41 (57%) 168 → 5 | 10.70±0.45 (26%) 168 → 3 | **13** | 0.496 | 97 | 0 | - |
-| 10 | bot_004_lookahead_base | lookahead | PROMOTED | 16.21±0.25 (67%) 168 → 5* | 14.86±0.37 (61%) 168 → 5 | 11.09±0.48 (33%) 168 → 3 | **13** | 0.533 | 97 | 0 | - |
-| 11 | bot_008_search_oppaware | search | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 13.12±0.35 (46%) 252 → 5* | 10.38±0.38 (28%) 252 → 3 | **13** | 0.406 | 102 | 0 | 5 |
-| 12 | bot_014_valuemap_strength | valuemap | PROMOTED | 17.57±0.07 (86%) 252 → 5 | 12.46±0.36 (40%) 252 → 3 | 10.82±0.31 (29%) 378 → 3 | **11** | 0.073 | 110 | 0 | 1 |
-| 13 | bot_005_adaptive_base | adaptive | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 12.96±0.38 (48%) 252 → 3* | 9.75±0.40 (26%) 252 → 3 | **11** | 0.046 | 102 | 0 | 3 |
-| 14 | bot_012_greedy_attackmatch | greedy | PROMOTED | 12.29±0.30 (29%) 252 → 3* | 13.56±0.33 (49%) 252 → 5* | 11.53±0.31 (34%) 378 → 3 | **11** | 0.083 | 145 | 0 | 10 |
-| 15 | bot_003_search_base | search | PROMOTED | 11.71±0.27 (23%) 252 → 3* | 13.52±0.34 (49%) 252 → 5* | 11.72±0.24 (37%) 588 → 3 | **11** | 0.403 | 103 | 0 | - |
-| 16 | bot_011_valuemap_supports | valuemap | PROMOTED | 16.00±0.19 (57%) 252 → 3* | 12.39±0.36 (40%) 252 → 3 | 10.41±0.37 (25%) 252 → 3 | **9** | 0.076 | 107 | 0 | 8 |
-| 17 | bot_017_positional_threatw | positional | PROMOTED | 17.71±0.04 (86%) 252 → 5 | 10.45±0.35 (24%) 252 → 3* | 7.27±0.31 (6%) 252 → 1* | **9** | 0.051 | 107 | 0 | 7 |
-| 18 | bot_010_greedy_dedup | greedy | PROMOTED | 8.57±0.13 (0%) 252 → 1 | 10.84±0.36 (26%) 252 → 3* | 9.42±0.32 (13%) 252 → 3 | **7** | 0.063 | 108 | 0 | - |
-| 19 | bot_006_positional_base | positional | PROMOTED | 12.29±0.25 (14%) 252 → 3 | 8.67±0.32 (9%) 252 → 1 | 6.17±0.26 (3%) 252 → 1* | **5** | 0.058 | 102 | 0 | 9 |
-| 20 | bot_002_valuemap_base | valuemap | PROMOTED | 12.29±0.18 (0%) 252 → 3 | 8.29±0.34 (12%) 252 → 1 | 6.51±0.30 (7%) 252 → 1 | **5** | 0.056 | 102 | 0 | - |
-| 21 | baseline:greedy | - | - | 7.39±0.40 (4%) 49 → 1* | 9.92±0.98 (31%) 49 → 3* | 7.65±0.85 (14%) 49 → 1* | **5** | 0.051 | 101 | 12 | - |
-| 22 | bot_013_positional_supadvance | positional | REJECTED | 11.86±0.21 (0%) 252 → 1* | 8.64±0.32 (11%) 252 → 1 | 6.15±0.27 (2%) 252 → 1* | **3** | 0.091 | 108 | 0 | - |
-| 23 | bot_001_greedy_base | greedy | PROMOTED | 6.14±0.16 (0%) 252 → 0 | 7.58±0.31 (8%) 252 → 1 | 6.41±0.19 (3%) 462 → 1 | **2** | 0.074 | 102 | 0 | - |
-| 24 | baseline:attitude | - | - | 6.76±0.24 (0%) 49 → 0 | 1.55±0.26 (0%) 49 → 0 | 1.37±0.23 (0%) 49 → 0 | **0** | 0.079 | 101 | 0 | - |
-| 25 | baseline:random | - | - | 6.55±0.25 (0%) 49 → 0 | 1.55±0.30 (0%) 49 → 0 | 1.37±0.29 (0%) 49 → 0 | **0** | 0.074 | 100 | 0 | - |
-| 26 | baseline:static | - | - | 3.14±0.05 (0%) 49 → 0 | 2.45±0.16 (0%) 49 → 0 | 2.41±0.16 (0%) 49 → 0 | **0** | 0.009 | 100 | 0 | - |
+| 1 | bot_022_search_hybridrace | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 16.04±0.26 (75%) 252 → 5 | 14.51±0.31 (59%) 270 → 5 | **15** | 0.501 | 103 | 0 | 2 |
+| 2 | bot_023_search_springthreat | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 15.82±0.32 (70%) 168 → 5 | 14.08±0.42 (55%) 168 → 5 | **15** | 0.491 | 98 | 0 | - |
+| 3 | bot_021_lookahead_halving | lookahead | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 15.66±0.25 (70%) 319 → 5 | 13.03±0.25 (43%) 506 → 5 | **15** | 0.511 | 106 | 0 | 4 |
+| 4 | bot_020_search_rolloutsel | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 14.75±0.30 (57%) 252 → 5 | 13.16±0.35 (46%) 252 → 5 | **15** | 0.495 | 97 | 0 | - |
+| 5 | bot_018_lookahead_strongopp | lookahead | REJECTED | 18.00±0.00 (100%) 168 → 5 | 14.79±0.38 (60%) 168 → 5 | 11.88±0.46 (36%) 168 → 3* | **13** | 0.497 | 98 | 0 | - |
+| 6 | bot_007_lookahead_oppmodel | lookahead | PROMOTED | 18.00±0.00 (100%) 210 → 5 | 14.88±0.27 (57%) 294 → 5 | 11.69±0.24 (34%) 630 → 3 | **13** | 0.504 | 106 | 0 | 6 |
+| 7 | bot_009_adaptive_scenswitch | adaptive | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 15.07±0.35 (61%) 168 → 5 | 11.46±0.46 (32%) 168 → 3 | **13** | 0.496 | 98 | 0 | 11 |
+| 8 | bot_019_adaptive_peaceful | adaptive | REJECTED | 18.00±0.00 (100%) 168 → 5 | 15.16±0.36 (62%) 168 → 5 | 11.08±0.46 (31%) 168 → 3 | **13** | 0.489 | 98 | 0 | - |
+| 9 | bot_016_search_predacc | search | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 13.75±0.34 (52%) 252 → 5* | 11.56±0.37 (33%) 252 → 3 | **13** | 0.408 | 103 | 0 | - |
+| 10 | bot_015_lookahead_defcands | lookahead | REJECTED | 17.99±0.01 (99%) 168 → 5 | 14.29±0.41 (57%) 168 → 5 | 10.70±0.45 (26%) 168 → 3 | **13** | 0.496 | 97 | 0 | - |
+| 11 | bot_004_lookahead_base | lookahead | PROMOTED | 16.21±0.25 (67%) 168 → 5* | 14.86±0.37 (61%) 168 → 5 | 11.09±0.48 (33%) 168 → 3 | **13** | 0.533 | 97 | 0 | - |
+| 12 | bot_008_search_oppaware | search | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 13.12±0.35 (46%) 252 → 5* | 10.38±0.38 (28%) 252 → 3 | **13** | 0.406 | 102 | 0 | 5 |
+| 13 | bot_014_valuemap_strength | valuemap | PROMOTED | 17.57±0.07 (86%) 252 → 5 | 12.46±0.36 (40%) 252 → 3 | 10.82±0.31 (29%) 378 → 3 | **11** | 0.073 | 110 | 0 | 1 |
+| 14 | bot_005_adaptive_base | adaptive | PROMOTED | 18.00±0.00 (100%) 252 → 5 | 12.96±0.38 (48%) 252 → 3* | 9.75±0.40 (26%) 252 → 3 | **11** | 0.046 | 102 | 0 | 3 |
+| 15 | bot_012_greedy_attackmatch | greedy | PROMOTED | 12.29±0.30 (29%) 252 → 3* | 13.56±0.33 (49%) 252 → 5* | 11.53±0.31 (34%) 378 → 3 | **11** | 0.083 | 145 | 0 | 10 |
+| 16 | bot_003_search_base | search | PROMOTED | 11.71±0.27 (23%) 252 → 3* | 13.52±0.34 (49%) 252 → 5* | 11.72±0.24 (37%) 588 → 3 | **11** | 0.403 | 103 | 0 | - |
+| 17 | bot_011_valuemap_supports | valuemap | PROMOTED | 16.00±0.19 (57%) 252 → 3* | 12.39±0.36 (40%) 252 → 3 | 10.41±0.37 (25%) 252 → 3 | **9** | 0.076 | 107 | 0 | 8 |
+| 18 | bot_017_positional_threatw | positional | PROMOTED | 17.71±0.04 (86%) 252 → 5 | 10.45±0.35 (24%) 252 → 3* | 7.27±0.31 (6%) 252 → 1* | **9** | 0.051 | 107 | 0 | 7 |
+| 19 | bot_010_greedy_dedup | greedy | PROMOTED | 8.57±0.13 (0%) 252 → 1 | 10.84±0.36 (26%) 252 → 3* | 9.42±0.32 (13%) 252 → 3 | **7** | 0.063 | 108 | 0 | - |
+| 20 | bot_006_positional_base | positional | PROMOTED | 12.29±0.25 (14%) 252 → 3 | 8.67±0.32 (9%) 252 → 1 | 6.17±0.26 (3%) 252 → 1* | **5** | 0.058 | 102 | 0 | 9 |
+| 21 | bot_002_valuemap_base | valuemap | PROMOTED | 12.29±0.18 (0%) 252 → 3 | 8.29±0.34 (12%) 252 → 1 | 6.51±0.30 (7%) 252 → 1 | **5** | 0.056 | 102 | 0 | - |
+| 22 | baseline:greedy | - | - | 7.39±0.40 (4%) 49 → 1* | 9.92±0.98 (31%) 49 → 3* | 7.65±0.85 (14%) 49 → 1* | **5** | 0.051 | 101 | 12 | - |
+| 23 | bot_013_positional_supadvance | positional | REJECTED | 11.86±0.21 (0%) 252 → 1* | 8.64±0.32 (11%) 252 → 1 | 6.15±0.27 (2%) 252 → 1* | **3** | 0.091 | 108 | 0 | - |
+| 24 | bot_001_greedy_base | greedy | PROMOTED | 6.14±0.16 (0%) 252 → 0 | 7.58±0.31 (8%) 252 → 1 | 6.41±0.19 (3%) 462 → 1 | **2** | 0.074 | 102 | 0 | - |
+| 25 | baseline:attitude | - | - | 6.76±0.24 (0%) 49 → 0 | 1.55±0.26 (0%) 49 → 0 | 1.37±0.23 (0%) 49 → 0 | **0** | 0.079 | 101 | 0 | - |
+| 26 | baseline:random | - | - | 6.55±0.25 (0%) 49 → 0 | 1.55±0.30 (0%) 49 → 0 | 1.37±0.29 (0%) 49 → 0 | **0** | 0.074 | 100 | 0 | - |
+| 27 | baseline:static | - | - | 3.14±0.05 (0%) 49 → 0 | 2.45±0.16 (0%) 49 → 0 | 2.41±0.16 (0%) 49 → 0 | **0** | 0.009 | 100 | 0 | - |
 
 ## Families
 
 | family | status | iterations (share) | champion | S1 | S2 | S3 | mark | reason |
 |---|---|---|---|---|---|---|---|---|
-| adaptive | DORMANT | 3 (13%) | bot_009 | 5 | 5 | 3 | 13 | 3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC) |
-| greedy | DORMANT | 3 (13%) | bot_012 | 3 | 5 | 3 | 11 | 3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13 |
-| lookahead | ACTIVE | 5 (22%) | bot_021 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
-| positional | DORMANT | 3 (13%) | bot_017 | 5 | 3 | 1 | 9 | 3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC) |
-| search | ACTIVE | 6 (26%) | bot_022 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
-| valuemap | DORMANT | 3 (13%) | bot_014 | 5 | 3 | 3 | 11 | 3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13 |
+| adaptive | DORMANT | 3 (12%) | bot_009 | 5 | 5 | 3 | 13 | 3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC) |
+| greedy | DORMANT | 3 (12%) | bot_012 | 3 | 5 | 3 | 11 | 3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13 |
+| lookahead | ACTIVE | 6 (25%) | bot_021 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
+| positional | DORMANT | 3 (12%) | bot_017 | 5 | 3 | 1 | 9 | 3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC) |
+| search | ACTIVE | 6 (25%) | bot_022 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
+| valuemap | DORMANT | 3 (12%) | bot_014 | 5 | 3 | 3 | 11 | 3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13 |
 
-**Hall of fame:** bot_009, bot_012, bot_021, bot_017, bot_022, bot_014, bot_004, bot_007  
-**Overall champion history:** bot_001 → bot_003 → bot_004 → bot_007 → bot_021
+**Hall of fame:** bot_009, bot_012, bot_021, bot_017, bot_022, bot_014, bot_007  
+**Overall champion history:** bot_001 → bot_003 → bot_004 → bot_007 → bot_021 → bot_022
 
 ## Report coverage: techniques
 
@@ -76,13 +77,13 @@ Distinct techniques measured: 17 (need basic + 3 new).
 | threat-weighted-safety | bot_017 | pooled +2.75±0.19 SC vs bot_006 (630 paired, B); S1 +5.43, S2 +1.72, S3 +1.11; mark 9 vs 5 |
 | value-map | bot_002 | pooled +2.20±0.20 SC vs bot_001 (630 paired, B); S1 +6.14±0.20 |
 
-## Champion bot_021 by power (mean SC / win%)
+## Champion bot_022 by power (mean SC / win%)
 
 | scenario | AUSTRIA | ENGLAND | FRANCE | GERMANY | ITALY | RUSSIA | TURKEY |
 |---|---|---|---|---|---|---|---|
 | S1 | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% |
-| S2 | 13.7 / 63% | 14.0 / 35% | 17.2 / 87% | 17.0 / 87% | 15.3 / 73% | 16.9 / 89% | 15.6 / 57% |
-| S3 | 10.3 / 35% | 12.1 / 17% | 14.8 / 64% | 13.0 / 46% | 13.0 / 40% | 14.9 / 72% | 12.6 / 28% |
+| S2 | 13.9 / 64% | 13.8 / 42% | 17.8 / 97% | 16.8 / 81% | 16.3 / 78% | 17.9 / 97% | 15.8 / 67% |
+| S3 | 11.1 / 38% | 13.1 / 29% | 16.8 / 84% | 14.4 / 66% | 14.3 / 54% | 16.6 / 90% | 15.3 / 49% |
 
 ## Tournament (stand-in for Scenario 4)
 

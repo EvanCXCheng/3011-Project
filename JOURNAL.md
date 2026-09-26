@@ -416,6 +416,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs bot_007: S2 +0.76±0.45, S3 +2.22±0.58, pooled +0.99±0.25. vs bot_021 (overall): pending 021 S3 ref with stand-in 004.
 - ref bot_021 S3 (stand-in 004, B126): 13.21±0.51 (46.0%). bot_022 vs bot_021: S2 +0.49±0.49, S3 +0.87±0.51,
   pooled +0.46±0.24 (z=1.9, just under 2 SE), marks 15/15 → extend both to 210 on S2/S3 (spare12, core 0).
+- 210-game results (stand-in 004): bot_022 S2 16.06±0.28 (75.7%), S3 14.35±0.37 (58.1%); bot_021 S3 13.29±0.38 (45.2%).
+  bot_022 vs bot_021 (546 paired): S2 +0.36±0.33, S3 +1.06±0.37, pooled +0.54±0.19 → PROMOTE.
+  stress (core 0; main13 pinned to 1–3; redundant spare12 copy stopped): ×4.14, tmax 0.539 s, overshoot 0.089 s → PASS
+  → OVERALL CHAMPION (agent_21.py).
 - takeaway: the two candidate sources are complementary: best bot in every scenario so far.
 
 ## [027] bot_023 search/springthreat — REJECTED
