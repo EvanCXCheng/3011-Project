@@ -368,3 +368,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: main6 after main5: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_016's) → Tier 2 (B126 fallback, stand-in bot_004).
 - Tier 0 clean (tmax 0.454 s). Tier 1 A42 (spare core): S1 18.00 / S2 15.02±0.73 (54.8%) / S3 13.05±0.91 (45.2%);
   vs bot_016 S2 +1.67±0.76, S3 +0.76±0.73, pooled +0.81±0.35 → Tier 2 (S1 part on the spare core, rest in main6).
+
+## [025] bot_021 lookahead/halving — RUNNING
+
+- family: lookahead | parent: bot_007 | tags: successive-halving
+- hypothesis: after two failed opponent-model tweaks (015, 018), change how the rollout budget is spent: 24 candidates
+  (bot_007: 10) raced with common opponent samples, dropping the worse half every 3 rounds (min 3 alive) → better
+  final choice at the same ~200–330 rollouts per phase.
+- sanity: 202–334 rollouts/phase; S2 seeds 11/12 → 18/18 SC, tmax 0.463 s.
+- plan: Tier 0 + Tier 1 (A, stand-in bot_003 = bot_007's) on the spare core; Tier 2 (B126, stand-in bot_003) in main7.
