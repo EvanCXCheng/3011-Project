@@ -622,3 +622,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - result B126: S1 18.00 / S2 15.74±0.40 (70.6%) / S3 13.06±0.53 (51.6%), tmax 0.535 s. vs bot_022: S2 −0.29±0.40,
   S3 −1.02±0.46, pooled −0.44±0.20 (z≈−2.2) → keep 0.45 s. Possible cause: more rounds → more halvings, so the race
   narrows to MIN_ALIVE candidates on few samples; longer budgets need a matching HALVE_EVERY. Not pursued (tuning).
+
+## [044] Every-5 review (after bots 024–029) — DONE
+
+- Held-out: bot_022 on C (offset 84) done in [035]; tournaments 2 and 3 done ([036], [042]); failure analysis of
+  bot_022 in [034] (weak seats AUS/ENG/TUR; convoys tried in bot_026).
+- Family review: search ACTIVE (champion bot_022, overall), lookahead ACTIVE (champion bot_024; lost to bot_022 in S3
+  and in tournament 3). greedy/valuemap/positional/adaptive stay DORMANT (≥3 iters, est. 9–13 vs 15).
+- State: champion est. 15/15 (S1 100%, S2 16.1 SC / 76%, S3 14.4 SC / 58% vs lookahead stand-in, 14.3–15.6 SC vs 3
+  other stand-ins), stress PASS, test.py check PASS. Last 6 variants all n.s. (+0.2–0.4 SC) → low-intensity mode.
