@@ -512,3 +512,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: England S2 seed 8 test game: convoys played (e.g. A LON - BEL VIA + F ENG C A LON - BEL); S2 England seeds
   1/8/15/22 → 13/18/18/18 (bot_022: 18/9/14/18); no illegal orders, tmax 0.474 s.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_001) on core 0; Tier 2 (B126, stand-in 004) on cores 1–3 after main16.
+
+## [035] Held-out + 7-bot tournament (after 26 iterations) — DONE
+
+- Held-out C (bot_022, n=42, offset 84, stand-in 003): S1 18.00 / S2 16.95±0.40 (81.0%) / S3 13.19±0.89 (47.6%) → consistent.
+- Tournament (56 games; 024, 022, 014, 020, 017, 012, greedy baseline; rotating seats): bot_024 11.36±0.87,
+  bot_022 6.89±0.85, bot_014 4.21±0.68, bot_020 3.98±0.64, bot_017 3.71±0.44, bot_012 2.07±0.42, greedy 1.54±0.27 SC.
+  → in all-bot tables the pure lookahead line (bot_024) is far stronger than the hybrid champion, the opposite of S3
+  (bot_024 −0.99 vs bot_022). Scenario 4 (+3 bonus) is bot-vs-bot, so this matters. Next: a second tournament to
+  separate the fast-rollout effect (024 vs 025) from the hill-climb candidates (022 vs 021).

@@ -278,3 +278,9 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-130819_bot_022_search_hybridrace_robust,2026-09-26T13:16,bot_022_search_hybridrace,b579520529,robust,B,3,bot_014_valuemap_strength,126,0,0.6111,14.3413,0.4906,5,False,0.4873,0,96.4,0,0,0,0
 20260926-131649_bot_022_search_hybridrace_robust,2026-09-26T13:25,bot_022_search_hybridrace,b579520529,robust,B,3,bot_017_positional_threatw,126,0,0.6905,15.1349,0.4417,5,False,0.4941,0,96.8,0,0,0,0
 20260926-123750_bot_024_lookahead_fastroll_tier2-ref,2026-09-26T13:28,bot_024_lookahead_fastroll,a382b7a1ca,tier2-ref,B,3,bot_004_lookahead_base,126,0,0.4524,13.0873,0.5003,5,False,0.5001,0,103.2,0,0,0,0
+20260926-132558_bot_022_search_hybridrace_heldout,2026-09-26T13:33,bot_022_search_hybridrace,b579520529,heldout,C,1,,42,0,1.0,18.0,0.0,5,False,0.4718,0,90.7,0,0,0,0
+20260926-132558_bot_022_search_hybridrace_heldout,2026-09-26T13:33,bot_022_search_hybridrace,b579520529,heldout,C,2,,42,0,0.8095,16.9524,0.4032,5,False,0.4811,0,96.2,0,0,0,0
+20260926-132558_bot_022_search_hybridrace_heldout,2026-09-26T13:33,bot_022_search_hybridrace,b579520529,heldout,C,3,bot_003_search_base,42,0,0.4762,13.1905,0.8947,5,True,0.4837,0,97.0,0,0,0,0
+20260926-133206_bot_026_search_convoy_tier0,2026-09-26T13:34,bot_026_search_convoy,e298777859,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4519,0,90.0,0,0,0,0
+20260926-133206_bot_026_search_convoy_tier0,2026-09-26T13:34,bot_026_search_convoy,e298777859,tier0,X,2,,3,0,0.6667,17.6667,0.3333,5,True,0.4553,0,94.4,0,0,0,0
+20260926-133206_bot_026_search_convoy_tier0,2026-09-26T13:34,bot_026_search_convoy,e298777859,tier0,X,3,bot_024_lookahead_fastroll,3,0,0.3333,12.6667,3.9299,5,True,0.457,0,97.3,0,0,0,0
