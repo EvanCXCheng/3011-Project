@@ -269,6 +269,24 @@
    "parent": "bot_022",
    "status": "REJECTED",
    "tags": "rollout-builds"
+  },
+  "bot_031": {
+   "created": "2026-09-27T06:16",
+   "family": "search",
+   "file": "bots/bot_031_search_riskaverse.py",
+   "note": "",
+   "parent": "bot_022",
+   "status": "RUNNING",
+   "tags": "risk-averse-selection"
+  },
+  "bot_032": {
+   "created": "2026-09-27T06:16",
+   "family": "search",
+   "file": "bots/bot_032_search_rivalscore.py",
+   "note": "",
+   "parent": "bot_022",
+   "status": "RUNNING",
+   "tags": "competitive-score"
   }
  },
  "families": {
@@ -298,7 +316,7 @@
   },
   "search": {
    "champion": "bot_022",
-   "iterations": 10,
+   "iterations": 12,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -319,7 +337,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 31,
+ "next_bot_id": 33,
  "overall_champions": [
   {
    "bot": "bot_001",
