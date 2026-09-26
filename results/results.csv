@@ -311,3 +311,12 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-153443_bot_022_search_hybridrace_ablation,2026-09-26T16:03,bot_022_search_hybridrace[ACC_GATE=False],b579520529,ablation,B,1,,126,0,1.0,18.0,0.0,5,False,0.4766,0,91.0,0,0,0,0
 20260926-153443_bot_022_search_hybridrace_ablation,2026-09-26T16:03,bot_022_search_hybridrace[ACC_GATE=False],b579520529,ablation,B,2,,126,0,0.7143,16.0794,0.3443,5,False,0.4791,0,95.9,0,0,0,0
 20260926-153443_bot_022_search_hybridrace_ablation,2026-09-26T16:03,bot_022_search_hybridrace[ACC_GATE=False],b579520529,ablation,B,3,bot_004_lookahead_base,126,0,0.5556,13.881,0.4992,5,False,0.4866,0,98.0,0,0,0,0
+20260926-160534_bot_027_search_crossover_tier0,2026-09-26T16:07,bot_027_search_crossover,285db04ae2,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4517,0,90.6,0,0,0,0
+20260926-160534_bot_027_search_crossover_tier0,2026-09-26T16:07,bot_027_search_crossover,285db04ae2,tier0,X,2,,3,0,0.6667,16.0,2.0,5,True,0.453,0,93.0,0,0,0,0
+20260926-160534_bot_027_search_crossover_tier0,2026-09-26T16:07,bot_027_search_crossover,285db04ae2,tier0,X,3,bot_024_lookahead_fastroll,3,0,0.3333,8.3333,5.0442,3,True,0.4672,0,94.3,0,0,0,0
+20260926-160712_bot_027_search_crossover_tier1,2026-09-26T16:13,bot_027_search_crossover,285db04ae2,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4749,0,90.8,0,0,0,0
+20260926-160712_bot_027_search_crossover_tier1,2026-09-26T16:13,bot_027_search_crossover,285db04ae2,tier1,A,2,,42,0,0.7143,15.9524,0.5892,5,False,0.487,0,95.6,0,0,0,0
+20260926-160712_bot_027_search_crossover_tier1,2026-09-26T16:13,bot_027_search_crossover,285db04ae2,tier1,A,3,bot_001_greedy_base,42,0,0.7619,16.5,0.4651,5,False,0.4795,0,95.8,0,0,0,0
+20260926-161358_bot_027_search_crossover_tier2,2026-09-26T16:40,bot_027_search_crossover,285db04ae2,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4783,0,91.8,0,0,0,0
+20260926-161358_bot_027_search_crossover_tier2,2026-09-26T16:40,bot_027_search_crossover,285db04ae2,tier2,B,2,,126,0,0.7381,16.1429,0.3374,5,False,0.4819,0,96.1,0,0,0,0
+20260926-161358_bot_027_search_crossover_tier2,2026-09-26T16:40,bot_027_search_crossover,285db04ae2,tier2,B,3,bot_004_lookahead_base,126,0,0.5794,14.4921,0.464,5,False,0.4866,0,98.2,0,0,0,0

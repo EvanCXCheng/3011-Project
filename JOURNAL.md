@@ -551,7 +551,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   ACC_GATE=off S2 +0.05±0.40, S3 −0.20±0.48, pooled −0.05±0.21. With A (+0.20, +0.23): both neutral inside the hybrid
   → keep bot_022 unchanged (no simpler champion).
 
-## [038] bot_027 search/crossover — RUNNING
+## [038] bot_027 search/crossover — REJECTED
 
 - family: search | parent: bot_022 | tags: candidate-crossover (genetic-algorithm-style recombination in the race)
 - hypothesis: ablations show candidate quality drives bot_022 (LA_CANDS off −1.30, ROLLOUT off −1.54). After the first
@@ -560,3 +560,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: 2–6 children per race, occasionally picked; no illegal orders; S3 seeds 11/12 (stand-in 004) → 18/18 SC,
   tmax 0.468 s.
 - plan: main21: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in 004) vs bot_022.
+- Tier 1 A42: S1 18.00 / S2 15.95±0.59 (71.4%) / S3 16.50±0.47 (76.2%); vs bot_022 pooled +0.44±0.33.
+- Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.14±0.34 (73.8%) / S3 14.49±0.46 (57.9%). vs bot_022: S2 +0.11±0.34,
+  S3 +0.41±0.54, pooled +0.17±0.21 → REJECT (n.s.).
+- takeaway: recombined children are rarely better than their parents under 1-ply rollouts; the race is near its
+  ceiling for this evaluation. Further gains need a different evaluation (deeper lookahead) rather than more candidates.
