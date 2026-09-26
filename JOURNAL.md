@@ -601,3 +601,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 14.84±0.36 (66.2%); vs bot_022 S2 +0.08±0.26, S3 +0.50±0.36, pooled +0.22±0.17 (z=1.3) → REJECT (stays rejected).
 - takeaway: variants of the champion now land at +0.2–0.4 SC, below what 210 paired games can confirm. The champion
   (est. 15/15) is at diminishing returns; effort shifts to submission checks and freeze preparation.
+
+## [041] Submission check: agent_21.py under the course test.py — DONE
+
+- Ran test.experiment() unmodified (imports StudentAgent from agent_21, StudentAgent() with no args), repeat_nums=2:
+  S1 14/14 wins (18.0 SC every power), S2 14/14 wins. No errors. visualize.py imports the agent the same way.
