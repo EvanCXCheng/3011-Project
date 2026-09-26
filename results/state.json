@@ -195,7 +195,7 @@
    "file": "bots/bot_022_search_hybridrace.py",
    "note": "",
    "parent": "bot_020",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "hybrid-candidate-race"
   }
  },
@@ -225,7 +225,7 @@
    "status": "DORMANT"
   },
   "search": {
-   "champion": "bot_020",
+   "champion": "bot_022",
    "iterations": 5,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
@@ -242,7 +242,7 @@
   "bot_012",
   "bot_021",
   "bot_017",
-  "bot_020",
+  "bot_022",
   "bot_014",
   "bot_004",
   "bot_007"
@@ -275,6 +275,10 @@
   "bfs-greedy": {
    "bot": "bot_001",
    "effect": "basic technique: est. mark 2 (B210: S1 6.14, S2 7.43, S3 6.75)"
+  },
+  "hybrid-candidate-race": {
+   "bot": "bot_022",
+   "effect": "pooled +0.61\u00b10.21 SC vs bot_020 (378 paired, B); S2 +1.31\u00b10.37 (78% wins); S3 14.08 SC / 57%"
   },
   "local-search": {
    "bot": "bot_003",

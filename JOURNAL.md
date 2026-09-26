@@ -402,7 +402,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_020 vs bot_007 (546 paired): S2 −0.27±0.39, S3 +1.27±0.43, pooled +0.39±0.22 → stays search champion only.
 - takeaway: racing more candidates beats spreading rollouts evenly; S3 now ≥12 SC (5 pts on SC) for 021 and 020.
 
-## [026] bot_022 search/hybridrace — RUNNING
+## [026] bot_022 search/hybridrace — PROMOTED
 
 - family: search | parent: bot_020 | tags: hybrid-candidate-race (combines bot_020 and bot_021)
 - hypothesis: bot_020 gains in S3 (+1.71 vs bot_007) and bot_021 in S2 (69% wins). One pool = top-8 hill-climbing
@@ -410,3 +410,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   common opponent samples → keeps both gains.
 - sanity: pool 13–20 candidates per phase; S2/S3 seeds 11–12 → 18/18/18/18 SC, tmax 0.46 s.
 - plan: main9 after main8: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_020's) → Tier 2 (B126, stand-in bot_004 = bot_020's).
+- Tier 0 clean. Tier 1 A42: S1 18.00 / S2 15.90±0.62 (71.4%) / S3 15.21±0.71 (64.3%); vs bot_020 pooled +1.02±0.35.
+- Tier 2 B126 (stand-in bot_004): S1 18.00 / S2 16.03±0.39 (77.8%) / S3 14.08±0.50 (57.1%) → est. 15. tmax 0.489 s.
+  vs bot_020: S2 +1.31±0.37, S3 +0.51±0.50, pooled +0.61±0.21 → PROMOTE → search champion.
+  vs bot_007: S2 +0.76±0.45, S3 +2.22±0.58, pooled +0.99±0.25. vs bot_021 (overall): pending 021 S3 ref with stand-in 004.
+- takeaway: the two candidate sources are complementary: best bot in every scenario so far.

@@ -230,3 +230,12 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260926-093850_bot_007_lookahead_oppmodel_tier2-ext,2026-09-26T09:46,bot_007_lookahead_oppmodel,4d26548789,tier2-ext,B,3,bot_003_search_base,210,0,0.3143,11.4905,0.408,3,False,0.4901,0,97.7,0,0,0,0
 20260926-094612_bot_020_search_rolloutsel_tier2-ext,2026-09-26T10:04,bot_020_search_rolloutsel,f5338bf295,tier2-ext,B,2,,210,0,0.5762,14.6905,0.3326,5,False,0.4954,0,96.7,0,0,0,0
 20260926-094612_bot_020_search_rolloutsel_tier2-ext,2026-09-26T10:04,bot_020_search_rolloutsel,f5338bf295,tier2-ext,B,3,bot_004_lookahead_base,210,0,0.4619,13.181,0.3826,5,False,0.4871,0,97.4,0,0,0,0
+20260926-100424_bot_022_search_hybridrace_tier0,2026-09-26T10:07,bot_022_search_hybridrace,b579520529,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4523,0,90.1,0,0,0,0
+20260926-100424_bot_022_search_hybridrace_tier0,2026-09-26T10:07,bot_022_search_hybridrace,b579520529,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4661,0,94.4,0,0,0,0
+20260926-100424_bot_022_search_hybridrace_tier0,2026-09-26T10:07,bot_022_search_hybridrace,b579520529,tier0,X,3,bot_004_lookahead_base,3,0,0.3333,14.3333,1.8559,5,True,0.4637,0,97.4,0,0,0,0
+20260926-100706_bot_022_search_hybridrace_tier1,2026-09-26T10:14,bot_022_search_hybridrace,b579520529,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4682,0,90.4,0,0,0,0
+20260926-100706_bot_022_search_hybridrace_tier1,2026-09-26T10:14,bot_022_search_hybridrace,b579520529,tier1,A,2,,42,0,0.7143,15.9048,0.6208,5,False,0.4803,0,97.0,0,0,0,0
+20260926-100706_bot_022_search_hybridrace_tier1,2026-09-26T10:14,bot_022_search_hybridrace,b579520529,tier1,A,3,bot_001_greedy_base,42,0,0.6429,15.2143,0.7112,5,False,0.4743,0,96.5,0,0,0,0
+20260926-101426_bot_022_search_hybridrace_tier2,2026-09-26T10:43,bot_022_search_hybridrace,b579520529,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4754,0,91.6,0,0,0,0
+20260926-101426_bot_022_search_hybridrace_tier2,2026-09-26T10:43,bot_022_search_hybridrace,b579520529,tier2,B,2,,126,0,0.7778,16.0317,0.3925,5,False,0.4894,0,96.0,0,0,0,0
+20260926-101426_bot_022_search_hybridrace_tier2,2026-09-26T10:43,bot_022_search_hybridrace,b579520529,tier2,B,3,bot_004_lookahead_base,126,0,0.5714,14.0794,0.496,5,False,0.4845,0,97.9,0,0,0,0
