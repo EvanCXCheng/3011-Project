@@ -490,3 +490,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - S3 B126 with different Hidden Agent stand-ins: Greedy baseline 15.60±0.40 (69.8%); valuemap bot_014 14.34±0.49
   (61.1%); positional bot_017 15.13±0.44 (69.0%); lookahead bot_004 (main runs, B210) 14.35±0.37 (58.1%).
   → S3 5-pt lines (>12 SC, >40% wins) cleared against every opponent style tried; no stand-in-specific overfit.
+
+## [033] test_21.py draft — DONE
+
+- Self-contained experiments file (20 KB): eval (scenarios 1–3, seed-paired, instrumented seat: timeout_decorator 1 s,
+  timing, legality, desync; 512 MB RLIMIT_AS per worker), compare (paired diffs), ablate (CONFIG switches off one at a
+  time vs the full agent), stress (games pinned to one core), tournament, summary. Uses only game.py,
+  agent_baselines.py, diplomacy, numpy, timeout_decorator + stdlib; writes results_21.jsonl.
+- Smoke-tested: eval n=1 (S1/S2/S3 18 SC, slowest 0.457 s), ablate ROLLOUT on S2, tournament 1 game.
+- Freeze: re-check the ablate default keys against the final champion's CONFIG toggles, run FINAL eval/ablations.
