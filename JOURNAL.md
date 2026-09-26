@@ -550,3 +550,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - B126 check (stand-in 004, paired with bot_022): OPP_AWARE=off S2 +0.01±0.40, S3 −0.54±0.43, pooled −0.18±0.20;
   ACC_GATE=off S2 +0.05±0.40, S3 −0.20±0.48, pooled −0.05±0.21. With A (+0.20, +0.23): both neutral inside the hybrid
   → keep bot_022 unchanged (no simpler champion).
+
+## [038] bot_027 search/crossover — RUNNING
+
+- family: search | parent: bot_022 | tags: candidate-crossover (genetic-algorithm-style recombination in the race)
+- hypothesis: ablations show candidate quality drives bot_022 (LA_CANDS off −1.30, ROLLOUT off −1.54). After the first
+  halving, recombining the top-6 survivors unit by unit (support consistency repaired) adds up to 6 children that can
+  beat both parents → S2/S3 gain.
+- checks: 2–6 children per race, occasionally picked; no illegal orders; S3 seeds 11/12 (stand-in 004) → 18/18 SC,
+  tmax 0.468 s.
+- plan: main21: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in 004) vs bot_022.
