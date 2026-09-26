@@ -215,6 +215,15 @@
    "parent": "bot_021",
    "status": "RUNNING",
    "tags": "shared-opponent-rollouts"
+  },
+  "bot_025": {
+   "created": "2026-09-26T12:02",
+   "family": "search",
+   "file": "bots/bot_025_search_fastroll.py",
+   "note": "",
+   "parent": "bot_022",
+   "status": "RUNNING",
+   "tags": "shared-opponent-rollouts"
   }
  },
  "families": {
@@ -244,7 +253,7 @@
   },
   "search": {
    "champion": "bot_022",
-   "iterations": 6,
+   "iterations": 7,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -264,7 +273,7 @@
   "bot_014",
   "bot_007"
  ],
- "next_bot_id": 25,
+ "next_bot_id": 26,
  "overall_champions": [
   {
    "bot": "bot_001",

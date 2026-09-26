@@ -467,3 +467,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   in the same 0.45 s (test game: ~230 vs ~160 per phase under load) → sharper choices, small S2/S3 gain.
 - checks: all 941 rollouts in a test game moved units (orders applied); S3 seeds 11/12 (stand-in 004) → 18/18, tmax 0.48 s.
 - plan: main13 after the bot_022 extension: Tier 0 → Tier 1 (A, stand-in 003 = bot_021's) → Tier 2 (B126, stand-in 003).
+
+## [031] bot_025 search/fastroll — RUNNING
+
+- family: search | parent: bot_022 (overall champion) | tags: shared-opponent-rollouts (same change as bot_024)
+- hypothesis: ~1.5x rollouts in the race → small S2/S3 gain for the champion line.
+- checks: 1543/1543 test rollouts moved units; S3 seeds 11/12 (stand-in 004) → 18/16 SC, tmax 0.453 s.
+- plan: Tier 0 + Tier 1 (A, stand-in bot_001 = bot_022's) on core 0 (spare13); Tier 2 (B126, stand-in 004) in main14.
