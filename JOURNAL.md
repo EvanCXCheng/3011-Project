@@ -415,3 +415,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs bot_020: S2 +1.31±0.37, S3 +0.51±0.50, pooled +0.61±0.21 → PROMOTE → search champion.
   vs bot_007: S2 +0.76±0.45, S3 +2.22±0.58, pooled +0.99±0.25. vs bot_021 (overall): pending 021 S3 ref with stand-in 004.
 - takeaway: the two candidate sources are complementary: best bot in every scenario so far.
+
+## [027] bot_023 search/springthreat — RUNNING
+
+- family: search | parent: bot_022 | tags: spring-threat-score
+- hypothesis: bot_022's Spring rollout score counts occupied SCs but not exposure; Fall losses come from own SCs left
+  empty next to enemy units. Charging 0.3 per own SC left empty and reachable by a non-static enemy unit after a
+  simulated Spring move → fewer Fall losses, S2/S3 gain.
+- sanity: S3 (stand-in bot_004) seeds 11–13 → 18/18/18 SC, tmax 0.478 s; rollout path verified (no silent fallback).
+- plan: main12 after main11: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in bot_004); vs bot_022 and bot_021.
