@@ -473,10 +473,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   needs matching S3 stand-ins; the same change on bot_022 is bot_025).
 - takeaway: more rollouts per move still pay off, so rollout count is a binding constraint.
 
-## [031] bot_025 search/fastroll — RUNNING
+## [031] bot_025 search/fastroll — REJECTED
 
 - family: search | parent: bot_022 (overall champion) | tags: shared-opponent-rollouts (same change as bot_024)
 - hypothesis: ~1.5x rollouts in the race → small S2/S3 gain for the champion line.
 - checks: 1543/1543 test rollouts moved units; S3 seeds 11/12 (stand-in 004) → 18/16 SC, tmax 0.453 s.
 - plan: Tier 0 + Tier 1 (A, stand-in bot_001 = bot_022's) on core 0 (spare13); Tier 2 (B126, stand-in 004) in main14.
 - Tier 0 clean. Tier 1 A42: S1 18.00 / S2 14.90±0.87 (73.8%) / S3 14.81±0.77 (64.3%); vs bot_022 pooled −0.47±0.39 → Tier 2.
+- Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.25±0.34 (74.6%) / S3 13.93±0.52 (57.9%). vs bot_022: S2 +0.21±0.42,
+  S3 −0.15±0.52, pooled +0.02±0.22 → REJECT (no effect).
+- takeaway: the speed-up helps the pure lookahead line (bot_024 +0.49) but not the hybrid: bot_022 races a smaller,
+  stronger pool (hill-climb optima) after 0.15 s of search, so extra rollouts no longer change its choice.
