@@ -394,3 +394,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - decision: both bot_020 (+0.39±0.25) and bot_021 (+0.45±0.23) are est. 15 vs bot_007's 13 but sit just under the 2-SE
   bar on the 126-game fallback. Extend bot_007/020/021 to the standard 210 on S2/S3 (matching stand-ins; S1 saturated
   at 18 for all three) and re-compare (main8 + spare11).
+
+## [026] bot_022 search/hybridrace — RUNNING
+
+- family: search | parent: bot_020 | tags: hybrid-candidate-race (combines bot_020 and bot_021)
+- hypothesis: bot_020 gains in S3 (+1.71 vs bot_007) and bot_021 in S2 (69% wins). One pool = top-8 hill-climbing
+  optima (0.15 s) + 12 lookahead candidates (greedy + perturbations with supports), raced by successive halving with
+  common opponent samples → keeps both gains.
+- sanity: pool 13–20 candidates per phase; S2/S3 seeds 11–12 → 18/18/18/18 SC, tmax 0.46 s.
+- plan: main9 after main8: Tier 0 → Tier 1 (A, stand-in bot_001 = bot_020's) → Tier 2 (B126, stand-in bot_004 = bot_020's).
