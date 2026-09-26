@@ -444,3 +444,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   bot_022), lookahead (bot_021). DORMANT: greedy, valuemap, positional, adaptive.
 - S1 solved everywhere; S2 ~16 SC / 70–78% wins; S3 13–14 SC / 46–57% wins (vs lookahead stand-in) → all 5-pt lines
   cleared by 021/022. Remaining work: robustness (timing, unknown Hidden Agent), Scenario 4 behaviour.
+
+## [029] Engine finding: deepcopy and the unit-owner cache — DONE
+
+- `copy.deepcopy(Game)` (engine `Game.__deepcopy__`) deep-copies `_unit_owner_cache` separately from `powers`, so a copy
+  whose source had the cache built maps units to Power objects that are not the copy's own. `set_orders` then fails
+  `owner is not power` → 'UNORDERABLE UNIT', silently dropped under IGNORE_ERRORS, and `process` treats all units as
+  holding. The cache is built by set_orders/process/_unit_owner and by a fresh Game(); `clear_cache()` resets it.
+- Our rollout bots (004 onward) are NOT affected: they deep-copy a light game (Game() + set_units/set_centers/
+  set_current_phase, which clear the cache) and never order the base itself; verified: copies process orders correctly.
+- Speed-up this enables: set the opponents' sampled orders once per round on a copy, `clear_cache()`, then deep-copy
+  it per candidate and set only our orders. Measured (S1901, under load): 2.46 → 1.52 ms per rollout (×1.6).

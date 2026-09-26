@@ -340,6 +340,9 @@ and the overshoot past the bot's `TIME_BUDGET` (summary in `results/logs/stress_
 - Verified notes (JOURNAL [000]): orderable locations are 3-letter base names (`STP` for `F STP/SC`), but the orders
   use the full coast. Adjustments offer `WAIVE`. The rules include `IGNORE_ERRORS`, so illegal orders are silently
   voided, which is why the lab checks them. The game ends as soon as someone has 18 SCs.
+- Verified (JOURNAL [029]): `copy.deepcopy(game)` copies the unit-owner cache separately from the Power objects, so once
+  that cache has been built (any `set_orders`, `process`, or a fresh `Game()`), orders on the copy fail the owner identity
+  check and are silently dropped (`IGNORE_ERRORS`). Call `game.clear_cache()` on the source before deep-copying it.
 - `game.copy_game(game)` (in `game.py`) is the cheap deep copy used by the harness; bots may use the same
   `to_saved_game_format` / `from_saved_game_format` approach themselves.
 
