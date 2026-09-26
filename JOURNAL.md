@@ -639,3 +639,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   file (HALVE_EVERY=6 default), S1 check, stress gate, held-out C confirmation, then promotion. Tuning, not a technique.
 - 210 (S2/S3): S2 16.05±0.28 (76.2%), S3 14.72±0.36 (61.9%). vs bot_022: S2 −0.01±0.22, S3 +0.38±0.42, pooled +0.18±0.24
   → n.s.; the 126-game signal regressed toward zero (as the extension rule is meant to catch). Keep HALVE_EVERY=3.
+
+## [046] bot_030 search/buildroll — RUNNING
+
+- family: search | parent: bot_022 | tags: rollout-builds (adjustment phase was never optimised)
+- hypothesis: Winter builds chosen by simulating up to 8 build sets (rule choice, type flips, next-best site, all
+  armies, all fleets) through the next Spring+Fall (greedy steps; opponents by class; common random numbers) and
+  scoring SC count after Fall beat the distance rule → better army/fleet mix, S2/S3 gain.
+- checks: light Winter game accepts builds and processes to Spring; test game: rollout builds 0.40 s, legal.
+- plan: main29: Tier 0 → Tier 1 (A, stand-in bot_001) → Tier 2 (B126, stand-in 004) vs bot_022.
