@@ -57,7 +57,8 @@ def main():
         lines = open(m).read().splitlines()
         pid = int(lines[0]) if lines and lines[0].isdigit() else -1
         log = m[:-8] + '.log'
-        tail = open(log).read().splitlines()[-1] if os.path.exists(log) else ''
+        lines_log = open(log).read().splitlines() if os.path.exists(log) else []
+        tail = lines_log[-1] if lines_log else ''
         print(f"eval {'RUNNING' if pid_alive(pid) else 'DEAD (stale marker)'}: {os.path.basename(m)[:-8]} | {tail}")
 
 
