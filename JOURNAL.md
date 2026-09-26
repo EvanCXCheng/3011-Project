@@ -613,3 +613,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   greedy baseline 2.15±0.31 SC.
 - takeaway: with twice the games, the champion is clearly best in all-bot tables too; tournament 1's bot_024 lead was
   field noise. No S4-specific mode needed.
+
+## [043] Tuning check: bot_022 with TIME_BUDGET 0.5 — RUNNING
+
+- CLAUDE.md allows stopping the search at 0.5 s; bot_022 uses 0.45. Test --set TIME_BUDGET=0.5 on B126 (stand-in 004),
+  paired with bot_022. Parameter tuning only (not a technique). If it helps: new bot file + stress gate (tmax must stay
+  < 0.6 s serial, < 0.8 s at ×4).
