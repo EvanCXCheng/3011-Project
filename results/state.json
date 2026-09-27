@@ -391,9 +391,9 @@
    "created": "2026-09-27T08:53",
    "family": "search",
    "file": "bots/bot_044_search_empmix.py",
-   "note": "",
+   "note": "per-power empirical opponent mix: S2 -0.13\u00b10.39, S3 +0.36\u00b10.46, pooled +0.07\u00b10.20 (n.s.)",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "empirical-opponent-mix"
   },
   "bot_045": {
@@ -542,6 +542,10 @@
   "decoupled-ucb": {
    "bot": "bot_034",
    "effect": "new family base: S1 7.73 (0%), S2 13.29 (43.7%), S3 9.50 (19.0%) B126; est 9; vs bot_022 pooled -5.87\u00b10.28"
+  },
+  "empirical-opponent-mix": {
+   "bot": "bot_044",
+   "effect": "pooled +0.07\u00b10.20 SC vs bot_022 (378 paired, B; n.s.)"
   },
   "home-defence": {
    "bot": "bot_037",

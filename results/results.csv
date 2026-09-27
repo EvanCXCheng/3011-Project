@@ -484,3 +484,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260927-112655_bot_044_search_empmix_tier1,2026-09-27T11:33,bot_044_search_empmix,fa70f86eed,tier1,A,2,,42,0,0.7143,16.619,0.443,5,False,0.4785,0,96.1,0,0,0,0
 20260927-112655_bot_044_search_empmix_tier1,2026-09-27T11:33,bot_044_search_empmix,fa70f86eed,tier1,A,3,bot_001_greedy_base,42,0,0.6905,15.7381,0.6635,5,False,0.4832,0,96.1,0,0,0,0
 20260927-111250_bot_040_archetype_aggressive_strongstandin,2026-09-27T11:53,bot_040_archetype_aggressive,de30952954,strongstandin,B,3,bot_004_lookahead_base,210,0,0.4857,12.4143,0.4482,5,True,0.0337,0,105.6,0,0,0,0
+20260927-113342_bot_044_search_empmix_tier2,2026-09-27T12:01,bot_044_search_empmix,fa70f86eed,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.478,0,91.1,0,0,0,0
+20260927-113342_bot_044_search_empmix_tier2,2026-09-27T12:01,bot_044_search_empmix,fa70f86eed,tier2,B,2,,126,0,0.7302,15.8968,0.3725,5,False,0.4854,0,95.3,0,0,0,0
+20260927-113342_bot_044_search_empmix_tier2,2026-09-27T12:01,bot_044_search_empmix,fa70f86eed,tier2,B,3,bot_004_lookahead_base,126,0,0.5714,14.4365,0.4654,5,False,0.4939,0,96.5,0,0,0,0

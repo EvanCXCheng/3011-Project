@@ -763,7 +763,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   greedy (0.86), Attitude → erratic (0.18), Random → erratic (0.10). → vs other groups' agents bot_022 will treat almost
   every competent bot with one cautious model (30/20/50 mix, worst-case threat): robust but not style-exploiting.
 
-## [057] bot_044 search/empmix — RUNNING
+## [057] bot_044 search/empmix — REJECTED
 
 - family: search | parent: bot_022 | tags: empirical-opponent-mix
 - hypothesis: blending each opponent's class mix with its own observed hold / greedy-hit / other rates (weight
@@ -824,3 +824,5 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_040 S3 vs strong stand-in (bot_004, B210): 12.41±0.45 (48.6%). Paired vs bot_022: S1 0, S2 −0.15±0.39,
   S3 −1.93±0.41, pooled −0.80±0.22. → aggression ties the champion against the baselines but loses clearly against a
   strong Hidden Agent; simulation pays where it matters (S3). bot_040 still est. 15 (S3 just > 12): fast strong sparring bot.
+- bot_044 Tier 2 B126 (stand-in 004): S1 18.00 / S2 15.90±0.37 (73.0%) / S3 14.44±0.47 (57.1%). vs bot_022: S2 −0.13±0.39,
+  S3 +0.36±0.46, pooled +0.07±0.20 → REJECT: per-power sampling rates do not beat the class mixes.
