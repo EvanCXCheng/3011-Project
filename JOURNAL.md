@@ -1150,3 +1150,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   Sanity S1/S2/S3 seeds 4/12: 18/18, 18/18, 13/18; tmax 0.456 s; no errors.
 - plan: queue q40: T0, T1 A42 vs bot_045, S3 B126 vs stand-ins 040/024, T2 B126 (004) vs bot_045 and bot_070.
   FAST_RES False = bot_070 (ablation switch for the report).
+
+## [092] bot_072 evolution/fastga — RUNNING
+
+- parent bot_065 | tags: own-fast-resolver, genetic-algorithm (human asked to keep the evolution line going). bot_065's
+  GA fitness rollouts moved onto bot_071's resolver (+ the [090] map fix it needs). Resolver copy validated 660/660.
+- generations per movement phase (Turkey vs six bot_040s, loaded machine): 3.4 → 138; rollouts 125 → 4,447.
+  Sanity S2/S3 seeds 5/13: 18/18/18/18, tmax 0.463 s, no errors.
+- plan: queue q41: T0, T1 A42 vs bot_045, S3 B126 vs stand-ins 040/024, T2 B126 (004) vs bot_045 and bot_065.

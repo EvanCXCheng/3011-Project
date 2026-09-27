@@ -638,6 +638,15 @@
    "parent": "bot_070",
    "status": "RUNNING",
    "tags": "own-fast-resolver"
+  },
+  "bot_072": {
+   "created": "2026-09-28T07:06",
+   "family": "evolution",
+   "file": "bots/bot_072_evolution_fastga.py",
+   "note": "",
+   "parent": "bot_065",
+   "status": "RUNNING",
+   "tags": "own-fast-resolver,genetic-algorithm"
   }
  },
  "families": {
@@ -667,7 +676,7 @@
   },
   "evolution": {
    "champion": "bot_065",
-   "iterations": 5,
+   "iterations": 6,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -716,7 +725,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 72,
+ "next_bot_id": 73,
  "overall_champions": [
   {
    "bot": "bot_001",

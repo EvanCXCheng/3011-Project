@@ -737,3 +737,4 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-064838_bot_069_adaptive_oppsupport_tier1,2026-09-28T06:55,bot_069_adaptive_oppsupport,840d8c44b8,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.481,0,91.0,0,0,0,0
 20260928-064838_bot_069_adaptive_oppsupport_tier1,2026-09-28T06:55,bot_069_adaptive_oppsupport,840d8c44b8,tier1,A,2,,42,0,0.881,17.5952,0.196,5,False,0.4891,0,95.4,0,0,0,0
 20260928-064838_bot_069_adaptive_oppsupport_tier1,2026-09-28T06:55,bot_069_adaptive_oppsupport,840d8c44b8,tier1,A,3,bot_001_greedy_base,42,0,0.8333,17.1905,0.3291,5,False,0.4933,0,95.7,0,0,0,0
+20260928-065503_bot_069_adaptive_oppsupport_sparring,2026-09-28T07:02,bot_069_adaptive_oppsupport,840d8c44b8,sparring,B,3,bot_040_archetype_aggressive,126,0,0.6111,14.6984,0.4365,5,False,0.4921,0,96.9,0,0,0,0
