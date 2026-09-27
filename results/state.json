@@ -528,7 +528,7 @@
    "file": "bots/bot_059_evolution_base.py",
    "note": "",
    "parent": "none",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "genetic-algorithm"
   },
   "bot_060": {
@@ -537,7 +537,7 @@
    "file": "bots/bot_060_ensemble_vote.py",
    "note": "",
    "parent": "none",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "ensemble-voting"
   }
  },
@@ -561,13 +561,13 @@
    "status": "DORMANT"
   },
   "ensemble": {
-   "champion": null,
+   "champion": "bot_060",
    "iterations": 1,
    "reason": "new",
    "status": "ACTIVE"
   },
   "evolution": {
-   "champion": null,
+   "champion": "bot_059",
    "iterations": 1,
    "reason": "new",
    "status": "ACTIVE"
@@ -607,6 +607,8 @@
   "bot_009",
   "bot_040",
   "bot_036",
+  "bot_060",
+  "bot_059",
   "bot_012",
   "bot_024",
   "bot_017",
@@ -683,6 +685,14 @@
   "empirical-opponent-mix": {
    "bot": "bot_044",
    "effect": "pooled +0.07\u00b10.20 SC vs bot_022 (378 paired, B; n.s.)"
+  },
+  "ensemble-voting": {
+   "bot": "bot_060",
+   "effect": "new family, rule-only ~40 ms: S2 16.33 (80.2%), S3 12.94 (47.6%) B126; est 15; vs bot_045 pooled -0.93\u00b10.25"
+  },
+  "genetic-algorithm": {
+   "bot": "bot_059",
+   "effect": "new family: S2 15.56 (68.3%), S3 11.98 (38.9%) B126; est 13; vs bot_045 pooled -1.51\u00b10.24"
   },
   "home-defence": {
    "bot": "bot_037",

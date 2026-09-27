@@ -991,7 +991,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_058 Tier 2 B126: S2 17.13±0.24 (88.1%) / S3 14.98±0.44 (68.3%); vs bot_045 S2 +0.40, S3 −0.35, pooled +0.02±0.21
   → REJECT: rollout count is not the bottleneck for bot_045 either.
 
-## [078] New families: evolution (bot_059), ensemble (bot_060) — RUNNING
+## [078] New families: evolution (bot_059), ensemble (bot_060) — PROMOTED (family champions, bootstrap)
 
 - bot_059 evolution/base (new family, genetic-algorithm): population of 12 joint plans (greedy plan + mutations),
   per generation all plans vs the same 2 fresh opponent samples (shared-opponent copies), keep the better half by
@@ -1001,3 +1001,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   bot_040, valuemap bot_014-style, greedy no-bounce); ties aggressive > valuemap > greedy; support repair. No
   simulation, ~2 ms/move. All three voters verified. Sanity S1/S2/S3 seed 12 → 18/18/18.
 - plan: queue q27, both vs bot_045 for reference (T1 bot_001, T2 bot_004 B126); new families → Tier 2 regardless.
+- bot_059 Tier 2 B126 (stand-in 004): S1 18.00 / S2 15.56±0.40 (68.3%) / S3 11.98±0.53 (38.9%) → est. 13. vs bot_045
+  S2 −1.17, S3 −3.34, pooled −1.51±0.24 → evolution family champion (bootstrap). GA over whole plans is clearly weaker
+  than hill-climb + candidate race within 0.45 s.
+- bot_060 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.33±0.38 (80.2%) / S3 12.94±0.53 (47.6%) → est. 15, ~40 ms/move,
+  no simulation. vs bot_045 S2 −0.40, S3 −2.39, pooled −0.93±0.25; vs bot_040 (same seeds) S2 +0.14, S3 +0.83, pooled
+  +0.33±0.23 → ensemble family champion; the strongest pure rule bot so far (a fast fallback design and a strong
+  S4 sparring partner).
