@@ -571,9 +571,9 @@
    "created": "2026-09-28T02:54",
    "family": "evolution",
    "file": "bots/bot_064_evolution_twoply.py",
-   "note": "",
+   "note": "two-ply GA fitness: halves evaluations; pooled -0.30\u00b10.23 vs bot_062 (-0.63 vs bot_045)",
    "parent": "bot_062",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "two-ply-spring"
   }
  },

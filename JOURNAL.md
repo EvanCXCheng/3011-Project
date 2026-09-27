@@ -1035,10 +1035,18 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   plans is what makes evolution competitive.
 - bot_062 vs champion bot_045 (same seeds): S2 −0.04±0.36, S3 −0.94±0.49, pooled −0.33±0.20 → not overall.
 
-## [082] bot_064 evolution/twoply — RUNNING
+## [082] bot_064 evolution/twoply — REJECTED
 
 - parent bot_062 | tags: two-ply-spring (GA fitness in Spring = SC ownership after a greedy Fall reply; LOO showed two-ply
   worth ≈0.5 SC inside bot_045). Sanity S2/S3 seed 13 → 18/7. plan: queue q31 vs bot_062 (T1 bot_001, T2 bot_004 B126).
 - bot_063 Tier 2 B126 (stand-in 004): S1 10.43±0.40 (14.3%) / S2 14.06±0.47 (54.8%) / S3 12.01±0.55 (39.7%); vs bot_060
   S1 −7.57, S2 −2.26, S3 −0.93, pooled −3.59±0.32 → REJECT: the medoid is the most 'typical' plan, usually a cautious one
   without supported attacks (fatal in S1). Ensemble family: 3 iterations (060/061/063), champion bot_060 (est. 15) → ACTIVE.
+- bot_064 Tier 2 B126: S2 16.28±0.34 (77.8%) / S3 13.90±0.50 (56.3%); vs bot_062 S2 −0.41, S3 −0.49, pooled −0.30±0.23
+  (vs bot_045 −0.63±0.23) → REJECT: the GA needs many fitness evaluations; two-ply halves them. Evolution family:
+  3 iterations (059/062/064), champion bot_062 (est. 15) → ACTIVE.
+
+## [083] Tournament with the new families (112 games) — RUNNING
+
+- field: bot_045 (champion), bot_062 (evolution), bot_060 (ensemble), bot_024 (lookahead), bot_040 (aggressive),
+  bot_038 (valuemap), bot_036 (bandit); rotating seats, offset 400. Queue q32.
