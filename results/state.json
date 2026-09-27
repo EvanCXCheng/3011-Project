@@ -436,18 +436,18 @@
    "created": "2026-09-27T13:54",
    "family": "search",
    "file": "bots/bot_049_search_stackseason.py",
-   "note": "",
+   "note": "season valuemap candidate on bot_045: pooled +0.02\u00b10.20 (no effect)",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "season-weights"
   },
   "bot_050": {
    "created": "2026-09-27T13:54",
    "family": "search",
    "file": "bots/bot_050_search_stackagg.py",
-   "note": "",
+   "note": "aggressive candidate on bot_045: pooled -0.03\u00b10.20 (no effect)",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "multi-source-candidates"
   }
  },

@@ -849,7 +849,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_047 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.19±0.35 (77.0%) / S3 14.44±0.47 (61.9%). vs bot_022: S2 +0.16±0.38,
   S3 +0.36±0.46, pooled +0.17±0.20 → REJECT (n.s.; the race already covers most of what the aggressive plan offers).
 
-## [065] Refinements on the new champion: bot_049, bot_050 — RUNNING
+## [065] Refinements on the new champion: bot_049, bot_050 — REJECTED
 
 - bot_049 search/stackseason (parent bot_045): valuemap candidate uses bot_038's season weights (bot_038 beat bot_014
   by +1.02 stand-alone).
@@ -869,3 +869,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_048 Tier 2 B126 (stand-in 004): S1 14.13±0.42 (54.0%) / S2 14.91±0.39 (57.1%) / S3 11.75±0.49 (32.5%). vs bot_036:
   S1 +2.37±0.43, S2 −0.43±0.36, S3 −0.58±0.53, pooled +0.46±0.26 → REJECT (n.s.). The S1 gain is real; S2/S3 within
   noise. Not extended: the extension rule targets champion challengers, and bandit is a dormant sparring family.
+- bot_049 Tier 2 B126: S2 16.92±0.29 (88.1%) / S3 15.21±0.43 (68.3%); vs bot_045 S2 +0.19, S3 −0.12, pooled +0.02±0.20.
+- bot_050 Tier 2 B126: S2 16.99±0.27 (88.1%) / S3 14.98±0.45 (68.3%); vs bot_045 S2 +0.26, S3 −0.34, pooled −0.03±0.20.
+  → both neutral: the champion's pool already covers these plans. (tmax 0.523–0.529 s in S2, possibly host load.)
+
+## [067] Scenario 4 sparring evaluation (champion bot_045 vs the style field) — RUNNING
+
+- field (one champion per family = seven styles): 045 champion, 024 lookahead, 038 valuemap, 012 greedy, 017 positional,
+  036 bandit, 040 aggressive archetype.
+- (1) tournament, 112 games, rotating seats, offset 300; (2) bot_045 S3 B126 with each of the six other styles as the
+  Hidden Agent stand-in. Queue q16. Re-run at the freeze if the champion changes.
