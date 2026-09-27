@@ -1016,7 +1016,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   can pick a bad mix (Turkey, seed 13). Evaluated as is (fast rule bot) to measure it.
 - plan: queue q28 vs bot_060 (T1 bot_001, T2 bot_004 B126).
 
-## [080] bot_062 evolution/seeded — RUNNING
+## [080] bot_062 evolution/seeded — PROMOTED (evolution family champion)
 
 - parent bot_059 | tags: genetic-algorithm, seeded-population. Initial population also holds the plans of three rule
   planners (aggressive, valuemap, greedy no-bounce), genes extended where needed.
@@ -1030,3 +1030,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 
 - parent bot_061 | tags: plan-level-consensus. Play the whole proposal that agrees most with the others (medoid) —
   keeps each plan coherent. Sanity S1 12/13 → 18/8, S2 → 18/18, S3 → 5/7. plan: queue q30 vs bot_060 (T1 001, T2 004).
+- bot_062 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.69±0.29 (82.5%) / S3 14.39±0.47 (57.9%) → est. 15. vs bot_059:
+  S2 +1.13±0.33, S3 +2.40±0.55, pooled +1.18±0.22 → PROMOTE → evolution champion. Seeding the GA with rule planners'
+  plans is what makes evolution competitive.

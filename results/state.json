@@ -555,7 +555,7 @@
    "file": "bots/bot_062_evolution_seeded.py",
    "note": "",
    "parent": "bot_059",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "genetic-algorithm"
   },
   "bot_063": {
@@ -594,7 +594,7 @@
    "status": "ACTIVE"
   },
   "evolution": {
-   "champion": "bot_059",
+   "champion": "bot_062",
    "iterations": 2,
    "reason": "new",
    "status": "ACTIVE"
@@ -635,7 +635,7 @@
   "bot_040",
   "bot_036",
   "bot_060",
-  "bot_059",
+  "bot_062",
   "bot_012",
   "bot_024",
   "bot_017",
@@ -792,6 +792,10 @@
   "season-weights": {
    "bot": "bot_038",
    "effect": "pooled +1.02\u00b10.17 SC vs bot_014 (630 paired, B); S1 18.00 (100%), S2 13.83, S3 12.32 (weak stand-in)"
+  },
+  "seeded-population": {
+   "bot": "bot_062",
+   "effect": "pooled +1.18\u00b10.22 SC vs bot_059 (378 paired, B); S2 +1.13, S3 +2.40; est 15"
   },
   "shared-opponent-rollouts": {
    "bot": "bot_024",
