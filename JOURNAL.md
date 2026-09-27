@@ -700,7 +700,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - note: human (27 Sep) also invited completely new bots → new family 'bandit' planned (decoupled per-unit UCB over
   orders, credited from joint rollouts).
 
-## [052] bot_034 bandit/base — RUNNING (new family 'bandit')
+## [052] bot_034 bandit/base — PROMOTED (bandit family champion, bootstrap)
 
 - family: bandit (new; human invited completely new bots) | parent: none | tags: decoupled-ucb, combinatorial-bandit
 - hypothesis: decoupled per-unit UCB1 bandits over each unit's orders (hold, top-10 greedy moves, supports of own
@@ -709,6 +709,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity: S1/S2/S3 seed 11 → 8/1/18 SC, no errors, tmax 0.48 s. Expected weakness: 2v1 needs a move and a support
   chosen jointly, which independent per-unit bandits find slowly (S1 8 SC in the sanity game).
 - plan: queue q3 (T0 → T1 A42 → T2 B126) vs bot_022; new family → Tier 2 regardless.
+- Tier 1 A42: S1 8.07±0.27 (0%) / S2 13.10±0.85 (45.2%) / S3 12.24±0.88 (40.5%, weak stand-in 001).
+- Tier 2 B126 (stand-in 004): S1 7.73±0.15 (0%) / S2 13.29±0.47 (43.7%) / S3 9.50±0.50 (19.0%) → est. 9.
+  vs bot_022: −10.27 / −2.75 / −4.58, pooled −5.87±0.28. Bootstrap → bandit family champion.
+- takeaway: as predicted, independent per-unit bandits cannot coordinate 2v1 (S1 0 wins, stalls at ~8 SC like the
+  plain greedy bots); S2 is decent (13.3). bot_036 (pair arms) targets exactly this.
 
 ## [053] bot_035 valuemap/poolsource — RUNNING (dormant family revisited)
 

@@ -391,3 +391,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260927-081410_bot_034_bandit_base_tier1,2026-09-27T08:25,bot_034_bandit_base,5c0fb3a442,tier1,A,1,,42,0,0.0,8.0714,0.267,1,False,0.4786,0,92.0,0,0,0,0
 20260927-081410_bot_034_bandit_base_tier1,2026-09-27T08:25,bot_034_bandit_base,5c0fb3a442,tier1,A,2,,42,0,0.4524,13.0952,0.8539,5,True,0.4787,0,95.0,0,0,0,0
 20260927-081410_bot_034_bandit_base_tier1,2026-09-27T08:25,bot_034_bandit_base,5c0fb3a442,tier1,A,3,bot_001_greedy_base,42,0,0.4048,12.2381,0.8781,5,True,0.4834,0,95.9,0,0,0,0
+20260927-082516_bot_034_bandit_base_tier2,2026-09-27T09:06,bot_034_bandit_base,5c0fb3a442,tier2,B,1,,126,0,0.0,7.7302,0.1522,1,False,0.5015,0,92.0,0,0,0,0
+20260927-082516_bot_034_bandit_base_tier2,2026-09-27T09:06,bot_034_bandit_base,5c0fb3a442,tier2,B,2,,126,0,0.4365,13.2857,0.4707,5,True,0.4964,0,96.1,0,0,0,0
+20260927-082516_bot_034_bandit_base_tier2,2026-09-27T09:06,bot_034_bandit_base,5c0fb3a442,tier2,B,3,bot_004_lookahead_base,126,0,0.1905,9.5,0.4982,3,True,0.5071,0,96.8,0,0,0,0

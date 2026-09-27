@@ -303,7 +303,7 @@
    "file": "bots/bot_034_bandit_base.py",
    "note": "",
    "parent": "none",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "decoupled-ucb"
   },
   "bot_035": {
@@ -411,7 +411,7 @@
    "status": "ACTIVE"
   },
   "bandit": {
-   "champion": null,
+   "champion": "bot_034",
    "iterations": 2,
    "reason": "new",
    "status": "ACTIVE"
@@ -449,6 +449,7 @@
  },
  "hall_of_fame": [
   "bot_009",
+  "bot_034",
   "bot_012",
   "bot_024",
   "bot_017",
@@ -505,6 +506,10 @@
   "convoy-candidates": {
    "bot": "bot_026",
    "effect": "pooled +0.26\u00b10.21 SC vs bot_022 (378 paired, B; n.s.); England seats +0.86\u00b10.78 (36 games)"
+  },
+  "decoupled-ucb": {
+   "bot": "bot_034",
+   "effect": "new family base: S1 7.73 (0%), S2 13.29 (43.7%), S3 9.50 (19.0%) B126; est 9; vs bot_022 pooled -5.87\u00b10.28"
   },
   "hybrid-candidate-race": {
    "bot": "bot_022",
