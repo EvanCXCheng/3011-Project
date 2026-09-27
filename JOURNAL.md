@@ -725,3 +725,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   enemy-held target SC, supported by unit Y"; Y's order is overridden and not credited) make 2v1 attacks one draw.
 - sanity: S1 seeds 11/12 → 8/18 SC, S2 11/12 → 4/18 SC, no errors, ~500 rollouts/phase.
 - plan: queue q5 (after q4).
+
+## [055] Sparring field, round 1 (human request) — RUNNING
+
+- bot_037 greedy/homedef (parent bot_012, rule-based): hold / support-hold / garrison own SCs that an *active* enemy
+  (one that has ever ordered a move) can enter, before attack matching. First version garrisoned against static units
+  (S1 seed 12: 11 SC) → restricted to active powers (then 18). Sanity S2 seeds 12/13 → 8/7 SC.
+- bot_038 valuemap/season (parent bot_014, rule-based): Fall SC values ×1.5 with 2 diffusion passes, Spring full 6.
+  Sanity S1 18/18, S2 18/3, S3 13/18.
+- plan: queue q6 (queue_family.sh): 037 vs bot_012 (T1 greedy, T2 bot_001 B210); 038 vs bot_014 (T1/T2 bot_001, B210).

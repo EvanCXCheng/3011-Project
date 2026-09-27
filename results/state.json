@@ -323,6 +323,24 @@
    "parent": "bot_034",
    "status": "RUNNING",
    "tags": "pair-arms"
+  },
+  "bot_037": {
+   "created": "2026-09-27T08:40",
+   "family": "greedy",
+   "file": "bots/bot_037_greedy_homedef.py",
+   "note": "",
+   "parent": "bot_012",
+   "status": "RUNNING",
+   "tags": "home-defence"
+  },
+  "bot_038": {
+   "created": "2026-09-27T08:40",
+   "family": "valuemap",
+   "file": "bots/bot_038_valuemap_season.py",
+   "note": "",
+   "parent": "bot_014",
+   "status": "RUNNING",
+   "tags": "season-weights"
   }
  },
  "families": {
@@ -340,7 +358,7 @@
   },
   "greedy": {
    "champion": "bot_012",
-   "iterations": 3,
+   "iterations": 4,
    "reason": "3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13",
    "status": "DORMANT"
   },
@@ -364,7 +382,7 @@
   },
   "valuemap": {
    "champion": "bot_014",
-   "iterations": 4,
+   "iterations": 5,
    "reason": "3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13",
    "status": "DORMANT"
   }
@@ -379,7 +397,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 37,
+ "next_bot_id": 39,
  "overall_champions": [
   {
    "bot": "bot_001",
