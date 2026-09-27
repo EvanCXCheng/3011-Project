@@ -544,9 +544,9 @@
    "created": "2026-09-28T02:05",
    "family": "ensemble",
    "file": "bots/bot_061_ensemble_vote4.py",
-   "note": "",
+   "note": "4 voters: per-unit mixing on 2-2 ties breaks coordination; pooled -1.22\u00b10.30 vs bot_060 (S1/S2 -1.71)",
    "parent": "bot_060",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "ensemble-voting"
   },
   "bot_062": {
@@ -557,6 +557,15 @@
    "parent": "bot_059",
    "status": "RUNNING",
    "tags": "genetic-algorithm"
+  },
+  "bot_063": {
+   "created": "2026-09-28T02:18",
+   "family": "ensemble",
+   "file": "bots/bot_063_ensemble_medoid.py",
+   "note": "",
+   "parent": "bot_061",
+   "status": "RUNNING",
+   "tags": "plan-level-consensus"
   }
  },
  "families": {
@@ -580,7 +589,7 @@
   },
   "ensemble": {
    "champion": "bot_060",
-   "iterations": 2,
+   "iterations": 3,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -635,7 +644,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 63,
+ "next_bot_id": 64,
  "overall_champions": [
   {
    "bot": "bot_001",

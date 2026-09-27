@@ -667,3 +667,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-020721_bot_061_ensemble_vote4_tier1,2026-09-28T02:07,bot_061_ensemble_vote4,65a9f72c58,tier1,A,1,,42,0,0.8571,16.2857,0.6558,5,True,0.0457,0,131.6,0,0,0,0
 20260928-020721_bot_061_ensemble_vote4_tier1,2026-09-28T02:07,bot_061_ensemble_vote4,65a9f72c58,tier1,A,2,,42,0,0.6429,15.119,0.6928,5,False,0.0087,0,134.6,0,0,0,0
 20260928-020721_bot_061_ensemble_vote4_tier1,2026-09-28T02:07,bot_061_ensemble_vote4,65a9f72c58,tier1,A,3,bot_001_greedy_base,42,0,0.4762,12.6905,0.9636,5,True,0.0458,0,135.9,0,0,0,0
+20260928-020754_bot_061_ensemble_vote4_tier2,2026-09-28T02:17,bot_061_ensemble_vote4,65a9f72c58,tier2,B,1,,126,0,0.8571,16.2857,0.3756,5,True,0.0727,0,132.3,0,0,0,0
+20260928-020754_bot_061_ensemble_vote4_tier2,2026-09-28T02:17,bot_061_ensemble_vote4,65a9f72c58,tier2,B,2,,126,0,0.6508,14.6111,0.4805,5,False,0.0535,0,134.6,0,0,0,0
+20260928-020754_bot_061_ensemble_vote4_tier2,2026-09-28T02:17,bot_061_ensemble_vote4,65a9f72c58,tier2,B,3,bot_004_lookahead_base,126,0,0.5317,12.7063,0.5727,5,False,0.0444,0,131.6,0,0,0,0
