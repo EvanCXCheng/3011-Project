@@ -856,3 +856,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_050 search/stackagg (parent bot_045): + bot_040's aggressive plan as a race candidate (+0.17 on bot_022 in 047).
 - checks: both generators return legal plans; S3 seed 12 (stand-in 004) → 18/18, tmax ≤ 0.466 s.
 - plan: queue q15 (queue_family.sh) vs bot_045 (T1 bot_001, T2 bot_004 B126).
+
+## [066] bot_045 confirmation — DONE
+
+- B 210 (S2/S3, stand-in 004): S2 16.60±0.25 (82.4%), S3 15.15±0.35 (69.0%); vs bot_022 S2 +0.53±0.33, S3 +0.80±0.41,
+  pooled +0.51±0.20.
+- Held-out C (n=126, offset 200, stand-in 004; neither bot selected on these seeds): bot_045 S2 16.79±0.26 (81.0%),
+  S3 14.86±0.48 (69.0%); bot_022 S2 15.59±0.39 (69.8%), S3 13.12±0.54 (52.4%); paired diff S2 +1.21±0.41,
+  S3 +1.74±0.60, pooled +0.98±0.24 (z≈4) → promotion confirmed on unseen seeds.
+- test.py (course script, S2, repeat 1): runs cleanly, 71% wins.
+- takeaway: several individually non-significant ideas targeting different weaknesses combined into a clear gain.

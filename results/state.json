@@ -648,7 +648,7 @@
   },
   "stacked-near-misses": {
    "bot": "bot_045",
-   "effect": "pooled +0.65\u00b10.21 SC vs bot_022 (378 paired, B126); S2 +0.70\u00b10.41 (85.7% wins), S3 +1.25\u00b10.48 (69.8%)"
+   "effect": "B210: pooled +0.51\u00b10.20 vs bot_022; held-out C126: +0.98\u00b10.24 (S2 +1.21, S3 +1.74)"
   },
   "strength-aware-values": {
    "bot": "bot_014",

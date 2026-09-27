@@ -514,3 +514,11 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260927-132716_bot_047_search_aggcand_tier2,2026-09-27T13:53,bot_047_search_aggcand,bb4b47b586,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4745,0,90.7,0,0,0,0
 20260927-132716_bot_047_search_aggcand_tier2,2026-09-27T13:53,bot_047_search_aggcand,bb4b47b586,tier2,B,2,,126,0,0.7698,16.1905,0.3451,5,False,0.4813,0,96.2,0,0,0,0
 20260927-132716_bot_047_search_aggcand_tier2,2026-09-27T13:53,bot_047_search_aggcand,bb4b47b586,tier2,B,3,bot_004_lookahead_base,126,0,0.619,14.4365,0.4716,5,False,0.4957,0,97.0,0,0,0,0
+20260927-135339_bot_045_search_stack_tier2-ext,2026-09-27T14:08,bot_045_search_stack,d9e994d594,tier2-ext,B,2,,210,0,0.8238,16.5952,0.2464,5,False,0.4963,0,95.5,0,0,0,0
+20260927-135339_bot_045_search_stack_tier2-ext,2026-09-27T14:08,bot_045_search_stack,d9e994d594,tier2-ext,B,3,bot_004_lookahead_base,210,0,0.6905,15.1524,0.3481,5,False,0.49,0,96.9,0,0,0,0
+20260927-140814_bot_045_search_stack_heldout-conf,2026-09-27T14:34,bot_045_search_stack,d9e994d594,heldout-conf,C,1,,126,0,1.0,18.0,0.0,5,False,0.4816,0,91.1,0,0,0,0
+20260927-140814_bot_045_search_stack_heldout-conf,2026-09-27T14:34,bot_045_search_stack,d9e994d594,heldout-conf,C,2,,126,0,0.8095,16.7937,0.26,5,False,0.486,0,95.8,0,0,0,0
+20260927-140814_bot_045_search_stack_heldout-conf,2026-09-27T14:34,bot_045_search_stack,d9e994d594,heldout-conf,C,3,bot_004_lookahead_base,126,0,0.6905,14.8571,0.4778,5,False,0.4941,0,97.0,0,0,0,0
+20260927-143403_bot_022_search_hybridrace_heldout-conf,2026-09-27T15:01,bot_022_search_hybridrace,b579520529,heldout-conf,C,1,,126,0,1.0,18.0,0.0,5,False,0.4769,0,90.6,0,0,0,0
+20260927-143403_bot_022_search_hybridrace_heldout-conf,2026-09-27T15:01,bot_022_search_hybridrace,b579520529,heldout-conf,C,2,,126,0,0.6984,15.5873,0.3878,5,False,0.4828,0,96.1,0,0,0,0
+20260927-143403_bot_022_search_hybridrace_heldout-conf,2026-09-27T15:01,bot_022_search_hybridrace,b579520529,heldout-conf,C,3,bot_004_lookahead_base,126,0,0.5238,13.119,0.5421,5,False,0.4974,0,96.6,0,0,0,0
