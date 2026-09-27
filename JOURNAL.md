@@ -831,3 +831,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   stress (core 0; queue pinned to 1–3): ×4.16, tmax 0.543 s, overshoot 0.093 → PASS → OVERALL CHAMPION (agent_21.py).
 - caveat: combining earlier near-misses is a garden-of-forking-paths risk → confirmation queued: 210-game extension
   (S2/S3) and held-out C (n=126, fresh offset) vs bot_022, plus a test.py check of the new agent_21.py.
+
+## [063] Shared with the group — DONE
+
+- 27 Sep: human (away, remote control) asked for a PR so the group can see the work. `gh` is not installed (and
+  CLAUDE.md forbids installing extra tools), so the local main was pushed to a new remote branch `lab/progress` and a
+  pre-filled GitHub compare link was given to open the PR. Remote `main` was not touched. Pushing is otherwise still
+  local-only per CLAUDE.md; this push was an explicit human request.
