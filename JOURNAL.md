@@ -726,13 +726,16 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 14.63±0.45 (62.7%); vs bot_022 S2 +0.44±0.33, S3 +0.55±0.47, pooled +0.33±0.19 (z≈1.7) → extension rule [040]:
   extend to 210 on S2/S3 (core 0, 1 worker).
 
-## [054] bot_036 bandit/pairs — RUNNING
+## [054] bot_036 bandit/pairs — PROMOTED
 
 - family: bandit | parent: bot_034 | tags: pair-arms
 - hypothesis: independent per-unit bandits rarely draw a move and its support together. Pair arms ("move into an
   enemy-held target SC, supported by unit Y"; Y's order is overridden and not credited) make 2v1 attacks one draw.
 - sanity: S1 seeds 11/12 → 8/18 SC, S2 11/12 → 4/18 SC, no errors, ~500 rollouts/phase.
 - plan: queue q5 (after q4).
+- Tier 2 B126 (stand-in 004): S1 11.75±0.40 (15.1%) / S2 15.34±0.36 (60.3%) / S3 12.33±0.48 (34.9%) → est. 11.
+  vs bot_034: S1 +4.02±0.35, S2 +2.06±0.40, S3 +2.83±0.56, pooled +2.97±0.26 → PROMOTE → bandit champion.
+  vs bot_022: pooled −2.89±0.28. S1 still stalls (~12 SC): units do not gather next to static holders.
 
 ## [055] Sparring field, round 1 (human request) — RUNNING
 
@@ -777,3 +780,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   none significant alone. Stacking the two best (029: two-ply + convoys; 035: valuemap candidate) tests additivity.
 - checks: pool 16–21, VM candidate picked in a test game; S3 seeds 12/13 → 18/6 SC, tmax 0.472 s.
 - plan: queue q10 (queue_bots.sh vs bot_022; extension rule applies).
+
+## [059] bot_046 bandit/staticprior — RUNNING
+
+- family: bandit | parent: bot_036 | tags: holder-aware-priors
+- hypothesis: priors that encode static holders (unsupported move into one −6, pair arm against one +4, move ending
+  next to a static-held target SC +1) let the bandits set up 2v1 in S1 (bot_036: 11.75 SC, 15% wins).
+- sanity S1 seeds 11–14 → 18/18/9/7 SC, no errors.
+- plan: queue q11 vs bot_036 (T1 bot_001, T2 bot_004 B126).

@@ -321,7 +321,7 @@
    "file": "bots/bot_036_bandit_pairs.py",
    "note": "",
    "parent": "bot_034",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "pair-arms"
   },
   "bot_037": {
@@ -404,6 +404,15 @@
    "parent": "bot_029",
    "status": "RUNNING",
    "tags": "stacked-near-misses"
+  },
+  "bot_046": {
+   "created": "2026-09-27T10:36",
+   "family": "bandit",
+   "file": "bots/bot_046_bandit_staticprior.py",
+   "note": "",
+   "parent": "bot_036",
+   "status": "RUNNING",
+   "tags": "holder-aware-priors"
   }
  },
  "families": {
@@ -420,8 +429,8 @@
    "status": "ACTIVE"
   },
   "bandit": {
-   "champion": "bot_034",
-   "iterations": 2,
+   "champion": "bot_036",
+   "iterations": 3,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -458,7 +467,7 @@
  },
  "hall_of_fame": [
   "bot_009",
-  "bot_034",
+  "bot_036",
   "bot_012",
   "bot_024",
   "bot_017",
@@ -467,7 +476,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 46,
+ "next_bot_id": 47,
  "overall_champions": [
   {
    "bot": "bot_001",
@@ -551,6 +560,10 @@
   "opponent-model-sampling": {
    "bot": "bot_007",
    "effect": "pooled +0.75\u00b10.26 SC vs bot_004 (378 paired, B); S1 100% wins (+1.90\u00b10.29), S2/S3 n.s."
+  },
+  "pair-arms": {
+   "bot": "bot_036",
+   "effect": "pooled +2.97\u00b10.26 SC vs bot_034 (378 paired, B); S1 +4.02, S2 +2.06, S3 +2.83; est 11 vs 9"
   },
   "prediction-accuracy-gating": {
    "bot": "bot_016",
