@@ -463,10 +463,28 @@
    "created": "2026-09-27T20:41",
    "family": "search",
    "file": "bots/bot_052_search_stack2.py",
-   "note": "",
+   "note": "stacking round 2 (SB 0.10 + crossover + rival term): S2 +0.17, S3 -0.45, pooled -0.09\u00b10.21 vs bot_045",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "stacked-near-misses"
+  },
+  "bot_053": {
+   "created": "2026-09-27T21:16",
+   "family": "archetype",
+   "file": "bots/bot_053_archetype_balanced.py",
+   "note": "",
+   "parent": "bot_040",
+   "status": "RUNNING",
+   "tags": "archetype-balanced"
+  },
+  "bot_054": {
+   "created": "2026-09-27T21:16",
+   "family": "lookahead",
+   "file": "bots/bot_054_lookahead_twoply.py",
+   "note": "",
+   "parent": "bot_024",
+   "status": "RUNNING",
+   "tags": "two-ply-spring"
   }
  },
  "families": {
@@ -478,7 +496,7 @@
   },
   "archetype": {
    "champion": "bot_040",
-   "iterations": 3,
+   "iterations": 4,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -496,7 +514,7 @@
   },
   "lookahead": {
    "champion": "bot_024",
-   "iterations": 8,
+   "iterations": 9,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -531,7 +549,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 53,
+ "next_bot_id": 55,
  "overall_champions": [
   {
    "bot": "bot_001",

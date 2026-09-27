@@ -910,7 +910,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - SEARCH_BUDGET=0.1 at 210 (S2/S3, stand-in 004): S2 17.06±0.21 (88.6%), S3 15.26±0.33 (69.0%); vs bot_045 S2 +0.46±0.26,
   S3 +0.11±0.32, pooled +0.29±0.21 (z≈1.4) → n.s.; keep 0.15.
 
-## [070] bot_052 search/stack2 — RUNNING
+## [070] bot_052 search/stack2 — REJECTED
 
 - family: search | parent: bot_045 | tags: stacked-near-misses (round 2)
 - stack: SEARCH_BUDGET 0.10 (+0.29±0.21 on 045 at 210) + candidate crossover (027: +0.17 on 022) + competitive rival
@@ -918,3 +918,16 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   is not convoying in the child).
 - checks: pool 15–27 with children, a child picked in a test game; S3 seeds 12/13 → 18/18, tmax 0.454 s.
 - plan: queue q20 vs bot_045 (T1 bot_001, T2 bot_004 B126); extension rule applies.
+- bot_052 Tier 2 B126 (stand-in 004): S2 16.90±0.28 (84.1%) / S3 14.87±0.44 (63.5%); vs bot_045 S2 +0.17±0.36,
+  S3 −0.45±0.52, pooled −0.09±0.21 → REJECT. Stacking round 2 fails: these smaller effects were mostly noise.
+- search family at 38% of iterations (cap 40%) → next bots from other families.
+
+## [071] bot_053 archetype/balanced, bot_054 lookahead/twoply — RUNNING
+
+- bot_053 (parent bot_040): new STYLE 'balanced' = aggressive targeting and all-in supported attacks + hold threatened
+  own SCs against active enemies (support-hold with 2+ adjacent). Question: does minimal defence close bot_040's S3 gap
+  (−1.93 vs the champion against a strong stand-in)? Sanity S1/S2/S3 seed 12 → 18/18/18, 1–3 ms per move.
+- bot_054 (parent bot_024): bot_028's two-ply Spring rollouts on the pure lookahead line. All 1152 test rollouts moved
+  units; S3 seeds 12/13 (stand-in 003) → 18/2.
+- plan: queue q21: 053 vs bot_040 (T1 greedy, T2 bot_004 B210, the stand-in that exposed bot_040), 054 vs bot_024
+  (T1/T2 bot_003, B126).
