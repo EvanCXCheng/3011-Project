@@ -598,9 +598,9 @@
    "created": "2026-09-28T05:42",
    "family": "adaptive",
    "file": "bots/bot_067_adaptive_seataware.py",
-   "note": "",
+   "note": "seat-aware score: central seats -0.60\u00b10.58, others +0.38\u00b10.33 (identical code = noise); pooled -0.03\u00b10.21",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "seat-aware-score"
   }
  },

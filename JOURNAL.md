@@ -1084,9 +1084,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_066 Tier 2 B126: S2 17.04±0.28 (88.9%) / S3 14.36±0.49 (62.7%); vs bot_065 S2 −0.13, S3 −1.24, pooled −0.46±0.19
   → REJECT: racing first discards plans the GA could recombine usefully.
 
-## [087] bot_067 adaptive/seataware — RUNNING
+## [087] bot_067 adaptive/seataware — REJECTED
 
 - parent bot_045 | tags: seat-aware-score. Central seats (AUS/GER/ITA): +0.5 extra cost per own SC lost in the rollout
   outcome, unit weight 1.0 (vs 0.6). Found while writing it: with two-ply Spring bot_045 never uses R_W_LOST (Spring is
   always scored on post-Fall ownership), so a lost own SC cost exactly as much as a gained one.
 - checks: rollout path ok (Austria seat); S3 Austria seeds 7/14 → 6/18. plan: queue q36 vs bot_045 (T1 001, T2 004).
+- bot_067 Tier 2 B126: S2 16.81±0.27 (82.5%) / S3 15.17±0.44 (69.8%); vs bot_045 pooled −0.03±0.21 → REJECT.
+  By seat (S2+S3): central (AUS/GER/ITA, changed code) −0.60±0.58; other seats (identical code to bot_045) +0.38±0.33 —
+  i.e. run-to-run noise alone produces ≈ ±0.35 SC differences on 126 games (useful calibration for the report).
