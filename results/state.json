@@ -472,19 +472,28 @@
    "created": "2026-09-27T21:16",
    "family": "archetype",
    "file": "bots/bot_053_archetype_balanced.py",
-   "note": "",
+   "note": "balanced archetype: defence cripples aggression; pooled -3.03\u00b10.23 vs bot_040 (S2 10.8)",
    "parent": "bot_040",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "archetype-balanced"
   },
   "bot_054": {
    "created": "2026-09-27T21:16",
    "family": "lookahead",
    "file": "bots/bot_054_lookahead_twoply.py",
-   "note": "",
+   "note": "two-ply Spring on pure lookahead: pooled -0.01\u00b10.24 vs bot_024",
    "parent": "bot_024",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "two-ply-spring"
+  },
+  "bot_055": {
+   "created": "2026-09-27T22:12",
+   "family": "search",
+   "file": "bots/bot_055_search_openings.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "opening-book-candidates"
   }
  },
  "families": {
@@ -526,7 +535,7 @@
   },
   "search": {
    "champion": "bot_045",
-   "iterations": 20,
+   "iterations": 21,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -549,7 +558,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 55,
+ "next_bot_id": 56,
  "overall_champions": [
   {
    "bot": "bot_001",

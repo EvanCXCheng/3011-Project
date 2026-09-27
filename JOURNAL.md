@@ -922,7 +922,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 −0.45±0.52, pooled −0.09±0.21 → REJECT. Stacking round 2 fails: these smaller effects were mostly noise.
 - search family at 38% of iterations (cap 40%) → next bots from other families.
 
-## [071] bot_053 archetype/balanced, bot_054 lookahead/twoply — RUNNING
+## [071] bot_053 archetype/balanced, bot_054 lookahead/twoply — REJECTED
 
 - bot_053 (parent bot_040): new STYLE 'balanced' = aggressive targeting and all-in supported attacks + hold threatened
   own SCs against active enemies (support-hold with 2+ adjacent). Question: does minimal defence close bot_040's S3 gap
@@ -931,3 +931,21 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   units; S3 seeds 12/13 (stand-in 003) → 18/2.
 - plan: queue q21: 053 vs bot_040 (T1 greedy, T2 bot_004 B210, the stand-in that exposed bot_040), 054 vs bot_024
   (T1/T2 bot_003, B126).
+- bot_053 Tier 2 B210 (stand-in 004): S1 18.00 / S2 10.83±0.42 (29.5%) / S3 8.40±0.39 (13.8%); vs bot_040 S2 −5.09, S3 −4.02,
+  pooled −3.03±0.23 → REJECT: tying units to defence cripples the aggressive style (same lesson as bot_037).
+- bot_054 Tier 2 B126 (stand-in 003): S2 16.67±0.30 (81.0%) / S3 12.70±0.50 (42.1%); vs bot_024 S2 +0.49, S3 −0.52,
+  pooled −0.01±0.24 → REJECT: two-ply only paid off inside the hybrid stack.
+
+## [072] Failure analysis of bot_045 in S3 — DONE
+
+- S3 (all stand-ins, n=1137): 777 wins; non-wins ≥14 SC 65, 8–13 SC 141, <8 SC 154 → losses are mostly early collapses,
+  not near-misses. In collapses the Hidden-Agent stand-in ends strongest in 104/154 (Greedy 50). By power: Austria
+  92/162 wins, Turkey 87/162, England 96/162, Germany 107/163 vs France 142/162, Russia 145/163.
+- defence-based fixes have failed repeatedly (015, 023, 037, 053) → try a different lever: opening quality (bot_055).
+
+## [073] bot_055 search/openings — RUNNING
+
+- family: search | parent: bot_045 | tags: opening-book-candidates (search 21/56 iterations = 37.5%, under the cap)
+- three standard S1901 openings per power (published opening theory; our transcription, all legal) added to the first
+  race. Check: they enter the pool (Austria picked a book opening; Germany/England preferred generated plans).
+- plan: queue q22 vs bot_045 (T1 bot_001, T2 bot_004 B126).
