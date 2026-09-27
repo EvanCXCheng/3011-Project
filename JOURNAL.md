@@ -970,3 +970,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: queue q24 vs bot_045 (T1 bot_001, T2 bot_004 B126).
 - bot_057 Tier 2 B126 (stand-in 004): S2 17.19±0.26 (89.7%) / S3 15.35±0.42 (70.6%); vs bot_045 S2 +0.46±0.38,
   S3 +0.02±0.46, pooled +0.16±0.20 → REJECT (n.s.).
+
+## [076] Leave-one-out ablation of the champion's stack (bot_045) — RUNNING
+
+- The last eight bot_045 variants all landed within ±0.2 SC (noise band). Report-relevant question instead: how much
+  does each stacked part contribute inside bot_045? --set TWO_PLY=false / CONVOYS=false / VM_CANDS=false on B126 S2/S3
+  (stand-in 004), paired with bot_045. Queue q25.
