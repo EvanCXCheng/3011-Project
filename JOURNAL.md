@@ -688,12 +688,15 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: Tier 1 gains keep vanishing at Tier 2. Tier 1's S3 uses the weak bot_001 stand-in; against the lookahead
   stand-in the differences disappear. Neither the selection rule nor the score's rival term changes outcomes.
 
-## [051] bot_033 search/cbrace — RUNNING
+## [051] bot_033 search/cbrace — REJECTED
 
 - family: search | parent: bot_022 | tags: confidence-bound-racing
 - hypothesis: dropping a candidate only when its upper bound (mean + 1.0·sd/√n) is below the best lower bound, from
   round 3 on, keeps close contenders sampled and drops clear losers early → better final choice than fixed halving.
 - plan: queue q2 (after q1).
+- Tier 2 B126 (stand-in 004): S1 18.00 / S2 15.77±0.40 (74.6%) / S3 13.90±0.50 (55.6%). vs bot_022: S2 −0.26±0.48,
+  S3 −0.18±0.53, pooled −0.15±0.24 → REJECT. The allocation rule (halving vs confidence bounds) does not matter,
+  consistent with the HALVING ablation (neutral).
 - note: human (27 Sep) also invited completely new bots → new family 'bandit' planned (decoupled per-unit UCB over
   orders, credited from joint rollouts).
 

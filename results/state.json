@@ -292,9 +292,9 @@
    "created": "2026-09-27T06:17",
    "family": "search",
    "file": "bots/bot_033_search_cbrace.py",
-   "note": "",
+   "note": "confidence-bound racing: S2 -0.26\u00b10.48, S3 -0.18\u00b10.53, pooled -0.15\u00b10.24",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "confidence-bound-racing"
   },
   "bot_034": {
@@ -410,6 +410,10 @@
   "competitive-score": {
    "bot": "bot_032",
    "effect": "pooled +0.12\u00b10.21 SC vs bot_022 (378 paired, B; n.s.)"
+  },
+  "confidence-bound-racing": {
+   "bot": "bot_033",
+   "effect": "pooled -0.15\u00b10.24 SC vs bot_022 (378 paired, B; n.s.)"
   },
   "convoy-candidates": {
    "bot": "bot_026",
