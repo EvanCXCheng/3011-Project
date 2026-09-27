@@ -1094,7 +1094,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   By seat (S2+S3): central (AUS/GER/ITA, changed code) −0.60±0.58; other seats (identical code to bot_045) +0.38±0.33 —
   i.e. run-to-run noise alone produces ≈ ±0.35 SC differences on 126 games (useful calibration for the report).
 
-## [088] bot_068 lookahead/riskaverse — RUNNING
+## [088] bot_068 lookahead/riskaverse — REJECTED
 
 - parent bot_045 | tags: risk-averse-selection. Race ranks candidates (halving + final pick) by mean − 0.5·sd of their
   rollout scores instead of the mean (RISK toggle). Target: S3 early collapses next to a strong opponent.
@@ -1102,3 +1102,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   T2 B126 (stand-in 004), compare vs bot_045.
 - side work: tools/export_prompts.py now drops <task-notification>/compaction/interrupt turns and keeps /loop prompts
   (dry run: 40 entries, 0 notifications).
+- Tier 0 X3 clean (tmax 0.473 s). Tier 1 A42 (stand-in 001): S1 18.00 / S2 16.14±0.67 (78.6%) / S3 16.76±0.53 (85.7%);
+  vs bot_045 S2 −1.48±0.67, S3 −0.52±0.58, pooled −0.67±0.30 (< −2 SE) → REJECT at Tier 1; Tier 2 stopped early
+  (partial raw games kept). Takeaway: penalising outcome spread favours passive plans; bot_045's mean is the better
+  criterion. Risk aversion, if any, belongs in the S3/S4 opponent model, not the selection rule.
+- human direction (28 Sep): next priorities are (a) a fast own move resolver for rollouts, validated against the
+  engine, and (b) S4 fixes vs the styles bot_045 is weakest against (aggressive bot_040, lookahead bot_024).

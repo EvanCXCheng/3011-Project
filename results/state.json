@@ -607,9 +607,9 @@
    "created": "2026-09-28T06:21",
    "family": "lookahead",
    "file": "bots/bot_068_lookahead_riskaverse.py",
-   "note": "",
+   "note": "risk-averse race (mean-0.5sd): T1 A42 vs bot_045 -0.67\u00b10.30, S2 -1.48; too passive",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "risk-averse-selection"
   }
  },

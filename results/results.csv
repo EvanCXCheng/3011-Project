@@ -725,3 +725,9 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-055203_bot_067_adaptive_seataware_tier2,2026-09-28T06:18,bot_067_adaptive_seataware,611b340d94,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4755,0,90.8,0,0,0,0
 20260928-055203_bot_067_adaptive_seataware_tier2,2026-09-28T06:18,bot_067_adaptive_seataware,611b340d94,tier2,B,2,,126,0,0.8254,16.8095,0.2732,5,False,0.4952,0,95.9,0,0,0,0
 20260928-055203_bot_067_adaptive_seataware_tier2,2026-09-28T06:18,bot_067_adaptive_seataware,611b340d94,tier2,B,3,bot_004_lookahead_base,126,0,0.6984,15.1667,0.4376,5,False,0.4949,0,96.7,0,0,0,0
+20260928-062245_bot_068_lookahead_riskaverse_tier0,2026-09-28T06:24,bot_068_lookahead_riskaverse,857c4d8001,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4525,0,156.4,0,0,0,0
+20260928-062245_bot_068_lookahead_riskaverse_tier0,2026-09-28T06:24,bot_068_lookahead_riskaverse,857c4d8001,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4566,0,156.4,0,0,0,0
+20260928-062245_bot_068_lookahead_riskaverse_tier0,2026-09-28T06:24,bot_068_lookahead_riskaverse,857c4d8001,tier0,X,3,bot_065_evolution_poolga,3,0,0.3333,8.6667,4.7022,3,True,0.4727,0,156.4,0,0,0,0
+20260928-062452_bot_068_lookahead_riskaverse_tier1,2026-09-28T06:31,bot_068_lookahead_riskaverse,857c4d8001,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4747,0,90.0,0,0,0,0
+20260928-062452_bot_068_lookahead_riskaverse_tier1,2026-09-28T06:31,bot_068_lookahead_riskaverse,857c4d8001,tier1,A,2,,42,0,0.7857,16.1429,0.6744,5,False,0.4818,0,94.7,0,0,0,0
+20260928-062452_bot_068_lookahead_riskaverse_tier1,2026-09-28T06:31,bot_068_lookahead_riskaverse,857c4d8001,tier1,A,3,bot_001_greedy_base,42,0,0.8571,16.7619,0.5332,5,False,0.4839,0,95.7,0,0,0,0
