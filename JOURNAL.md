@@ -773,7 +773,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_035 210 extension (S2/S3, stand-in 004): S2 16.48±0.23 (76.2%), S3 14.70±0.35 (63.3%); vs bot_022 S2 +0.41±0.27,
   S3 +0.36±0.37, pooled +0.30±0.17 (z=1.76) → REJECT (n.s.).
 
-## [058] bot_045 search/stack — RUNNING
+## [058] bot_045 search/stack — PROMOTED (overall champion)
 
 - family: search | parent: bot_029 (+ bot_035's valuemap candidate) | tags: stacked-near-misses
 - motivation: four independent changes each land at ≈ +0.2–0.35 SC vs bot_022 at 210 games (026, 028, 029, 035),
@@ -826,3 +826,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   strong Hidden Agent; simulation pays where it matters (S3). bot_040 still est. 15 (S3 just > 12): fast strong sparring bot.
 - bot_044 Tier 2 B126 (stand-in 004): S1 18.00 / S2 15.90±0.37 (73.0%) / S3 14.44±0.47 (57.1%). vs bot_022: S2 −0.13±0.39,
   S3 +0.36±0.46, pooled +0.07±0.20 → REJECT: per-power sampling rates do not beat the class mixes.
+- bot_045 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.73±0.31 (85.7%) / S3 15.33±0.44 (69.8%) → est. 15.
+  vs bot_022: S2 +0.70±0.41, S3 +1.25±0.48, pooled +0.65±0.21 (z≈3.1) → PROMOTE. The separate ≈+0.3 gains add up.
+  stress (core 0; queue pinned to 1–3): ×4.16, tmax 0.543 s, overshoot 0.093 → PASS → OVERALL CHAMPION (agent_21.py).
+- caveat: combining earlier near-misses is a garden-of-forking-paths risk → confirmation queued: 210-game extension
+  (S2/S3) and held-out C (n=126, fresh offset) vs bot_022, plus a test.py check of the new agent_21.py.
