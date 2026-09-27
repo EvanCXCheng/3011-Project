@@ -952,9 +952,19 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_055 Tier 2 B126 (stand-in 004): S2 16.96±0.28 (86.5%) / S3 15.29±0.43 (68.3%); vs bot_045 S2 +0.23, S3 −0.03,
   pooled +0.07±0.21 → REJECT: the race already finds sound openings.
 
-## [074] bot_056 greedy/convoy — RUNNING (dormant family, style-pure)
+## [074] bot_056 greedy/convoy — REJECTED (dormant family, style-pure)
 
 - family: greedy | parent: bot_012 | tags: convoys (greedy backlog item 9)
 - armies that cannot approach any target over land take the VIA move whose landing is closest to a target, with every
   fleet of ours that can convoy it ordered to convoy (multi-fleet chains work: A CLY - DEN VIA with F NTH + F NWG).
 - sanity England S2 seeds 1/8 → 14/10 SC, no errors. plan: queue q23 vs bot_012 (T1 greedy, T2 bot_001 B210).
+- bot_056 Tier 2 B210 (stand-in 001): S1 12.29 (28.6%) / S2 14.09±0.36 (53.8%) / S3 12.15±0.39 (38.1%); vs bot_012 S1 0,
+  S2 +0.60±0.33, S3 +0.07±0.36, pooled +0.22±0.16 → REJECT (n.s.; England +0.21±0.36 over 90 games).
+
+## [075] bot_057 adaptive/vulture — RUNNING (adaptive family revisited)
+
+- parent bot_045 | tags: vulture-candidate. A power is 'weakened' if a third power stands on one of its SCs, ≥2 other
+  (not ours) units are adjacent to its SCs, or it owns fewer SCs than at the start of the year. One extra race
+  candidate = greedy plan aimed only at weakened powers' SCs.
+- checks: 4–12 vulture target SCs per phase in a random-opponent test game; S3 seeds 12/13 (stand-in 004) → 18/12 SC.
+- plan: queue q24 vs bot_045 (T1 bot_001, T2 bot_004 B126).

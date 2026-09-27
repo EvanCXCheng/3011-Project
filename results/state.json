@@ -499,16 +499,25 @@
    "created": "2026-09-27T22:46",
    "family": "greedy",
    "file": "bots/bot_056_greedy_convoy.py",
-   "note": "",
+   "note": "greedy convoys: S2 +0.60\u00b10.33, S3 +0.07, pooled +0.22\u00b10.16 vs bot_012 (England +0.21\u00b10.36)",
    "parent": "bot_012",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "convoys"
+  },
+  "bot_057": {
+   "created": "2026-09-27T22:52",
+   "family": "adaptive",
+   "file": "bots/bot_057_adaptive_vulture.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "vulture-candidate"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_009",
-   "iterations": 4,
+   "iterations": 5,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
   },
@@ -567,7 +576,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 57,
+ "next_bot_id": 58,
  "overall_champions": [
   {
    "bot": "bot_001",
@@ -623,6 +632,10 @@
   "convoy-candidates": {
    "bot": "bot_026",
    "effect": "pooled +0.26\u00b10.21 SC vs bot_022 (378 paired, B; n.s.); England seats +0.86\u00b10.78 (36 games)"
+  },
+  "convoys": {
+   "bot": "bot_056",
+   "effect": "rule greedy: pooled +0.22\u00b10.16 SC vs bot_012 (630 paired, B; n.s.)"
   },
   "decoupled-ucb": {
    "bot": "bot_034",
