@@ -1,0 +1,682 @@
+{
+ "bots": {
+  "bot_001": {
+   "created": "2026-09-26T01:32",
+   "family": "greedy",
+   "file": "bots/bot_001_greedy_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "bfs-greedy"
+  },
+  "bot_002": {
+   "created": "2026-09-26T01:34",
+   "family": "valuemap",
+   "file": "bots/bot_002_valuemap_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "value-map,value-diffusion"
+  },
+  "bot_003": {
+   "created": "2026-09-26T01:37",
+   "family": "search",
+   "file": "bots/bot_003_search_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "local-search,hill-climbing,heuristic-eval"
+  },
+  "bot_004": {
+   "created": "2026-09-26T01:39",
+   "family": "lookahead",
+   "file": "bots/bot_004_lookahead_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "one-ply-simulation,opponent-sampling,light-game-copy"
+  },
+  "bot_005": {
+   "created": "2026-09-26T01:52",
+   "family": "adaptive",
+   "file": "bots/bot_005_adaptive_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "opponent-classification,opponent-prediction"
+  },
+  "bot_006": {
+   "created": "2026-09-26T01:54",
+   "family": "positional",
+   "file": "bots/bot_006_positional_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "target-power-selection,strength-gated-moves,home-garrison"
+  },
+  "bot_007": {
+   "created": "2026-09-26T02:22",
+   "family": "lookahead",
+   "file": "bots/bot_007_lookahead_oppmodel.py",
+   "note": "",
+   "parent": "bot_004",
+   "status": "PROMOTED",
+   "tags": "opponent-model-sampling"
+  },
+  "bot_008": {
+   "created": "2026-09-26T02:24",
+   "family": "search",
+   "file": "bots/bot_008_search_oppaware.py",
+   "note": "",
+   "parent": "bot_003",
+   "status": "PROMOTED",
+   "tags": "opponent-aware-eval"
+  },
+  "bot_009": {
+   "created": "2026-09-26T03:36",
+   "family": "adaptive",
+   "file": "bots/bot_009_adaptive_scenswitch.py",
+   "note": "",
+   "parent": "bot_005",
+   "status": "PROMOTED",
+   "tags": "scenario-detection,hybrid-switch"
+  },
+  "bot_010": {
+   "created": "2026-09-26T03:37",
+   "family": "greedy",
+   "file": "bots/bot_010_greedy_dedup.py",
+   "note": "",
+   "parent": "bot_001",
+   "status": "PROMOTED",
+   "tags": "no-self-bounce"
+  },
+  "bot_011": {
+   "created": "2026-09-26T03:41",
+   "family": "valuemap",
+   "file": "bots/bot_011_valuemap_supports.py",
+   "note": "",
+   "parent": "bot_002",
+   "status": "PROMOTED",
+   "tags": "supported-attacks"
+  },
+  "bot_012": {
+   "created": "2026-09-26T03:50",
+   "family": "greedy",
+   "file": "bots/bot_012_greedy_attackmatch.py",
+   "note": "",
+   "parent": "bot_010",
+   "status": "PROMOTED",
+   "tags": "supported-attack-matching"
+  },
+  "bot_013": {
+   "created": "2026-09-26T03:51",
+   "family": "positional",
+   "file": "bots/bot_013_positional_supadvance.py",
+   "note": "committing supporters for gated advances: S1 -0.43\u00b10.07, S2/S3 \u00b10; pooled -0.12\u00b10.14 vs bot_006",
+   "parent": "bot_006",
+   "status": "REJECTED",
+   "tags": "supported-advance"
+  },
+  "bot_014": {
+   "created": "2026-09-26T04:02",
+   "family": "valuemap",
+   "file": "bots/bot_014_valuemap_strength.py",
+   "note": "",
+   "parent": "bot_011",
+   "status": "PROMOTED",
+   "tags": "strength-aware-values"
+  },
+  "bot_015": {
+   "created": "2026-09-26T04:14",
+   "family": "lookahead",
+   "file": "bots/bot_015_lookahead_defcands.py",
+   "note": "defensive candidates (support-holds, garrison): S2 -0.88\u00b10.43, S3 \u00b10; pooled -0.30\u00b10.22 vs bot_007",
+   "parent": "bot_007",
+   "status": "REJECTED",
+   "tags": "defensive-candidates"
+  },
+  "bot_016": {
+   "created": "2026-09-26T04:40",
+   "family": "search",
+   "file": "bots/bot_016_search_predacc.py",
+   "note": "",
+   "parent": "bot_008",
+   "status": "PROMOTED",
+   "tags": "prediction-accuracy-gating"
+  },
+  "bot_017": {
+   "created": "2026-09-26T05:22",
+   "family": "positional",
+   "file": "bots/bot_017_positional_threatw.py",
+   "note": "",
+   "parent": "bot_006",
+   "status": "PROMOTED",
+   "tags": "threat-weighted-safety"
+  },
+  "bot_018": {
+   "created": "2026-09-26T06:42",
+   "family": "lookahead",
+   "file": "bots/bot_018_lookahead_strongopp.py",
+   "note": "hit-rate classes + adversarial sampling of strong powers: S2 -0.50\u00b10.45, S3 -0.21\u00b10.54, pooled -0.24\u00b10.23 vs bot_007",
+   "parent": "bot_007",
+   "status": "REJECTED",
+   "tags": "adversarial-sampling"
+  },
+  "bot_019": {
+   "created": "2026-09-26T07:02",
+   "family": "adaptive",
+   "file": "bots/bot_019_adaptive_peaceful.py",
+   "note": "provocation avoidance (0.3 per move into never-hostile erratic powers): S2 -0.14\u00b10.49, S3 -0.06\u00b10.52, pooled -0.07\u00b10.24 vs bot_009",
+   "parent": "bot_009",
+   "status": "REJECTED",
+   "tags": "provocation-avoidance"
+  },
+  "bot_020": {
+   "created": "2026-09-26T07:28",
+   "family": "search",
+   "file": "bots/bot_020_search_rolloutsel.py",
+   "note": "",
+   "parent": "bot_016",
+   "status": "PROMOTED",
+   "tags": "rollout-selection"
+  },
+  "bot_021": {
+   "created": "2026-09-26T08:07",
+   "family": "lookahead",
+   "file": "bots/bot_021_lookahead_halving.py",
+   "note": "",
+   "parent": "bot_007",
+   "status": "PROMOTED",
+   "tags": "successive-halving"
+  },
+  "bot_022": {
+   "created": "2026-09-26T09:25",
+   "family": "search",
+   "file": "bots/bot_022_search_hybridrace.py",
+   "note": "",
+   "parent": "bot_020",
+   "status": "PROMOTED",
+   "tags": "hybrid-candidate-race"
+  },
+  "bot_023": {
+   "created": "2026-09-26T10:44",
+   "family": "search",
+   "file": "bots/bot_023_search_springthreat.py",
+   "note": "Spring threat term in rollout score: S2 -0.18\u00b10.37, S3 -0.29\u00b10.52, pooled -0.16\u00b10.21 vs bot_022",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "spring-threat-score"
+  },
+  "bot_024": {
+   "created": "2026-09-26T11:55",
+   "family": "lookahead",
+   "file": "bots/bot_024_lookahead_fastroll.py",
+   "note": "",
+   "parent": "bot_021",
+   "status": "PROMOTED",
+   "tags": "shared-opponent-rollouts"
+  },
+  "bot_025": {
+   "created": "2026-09-26T12:02",
+   "family": "search",
+   "file": "bots/bot_025_search_fastroll.py",
+   "note": "shared-opponent rollouts on bot_022: S2 +0.21\u00b10.42, S3 -0.15\u00b10.52, pooled +0.02\u00b10.22 (no effect)",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "shared-opponent-rollouts"
+  },
+  "bot_026": {
+   "created": "2026-09-26T13:29",
+   "family": "search",
+   "file": "bots/bot_026_search_convoy.py",
+   "note": "convoy candidates: S2 +0.23\u00b10.42, S3 +0.56\u00b10.47, pooled +0.26\u00b10.21 (n.s.); England +0.86\u00b10.78",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "convoy-candidates"
+  },
+  "bot_027": {
+   "created": "2026-09-26T16:03",
+   "family": "search",
+   "file": "bots/bot_027_search_crossover.py",
+   "note": "candidate crossover in the race: S2 +0.11\u00b10.34, S3 +0.41\u00b10.54, pooled +0.17\u00b10.21 (n.s.)",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "candidate-crossover"
+  },
+  "bot_028": {
+   "created": "2026-09-26T16:41",
+   "family": "lookahead",
+   "file": "bots/bot_028_lookahead_twoply.py",
+   "note": "two-ply at 210: S2 +0.08\u00b10.26, S3 +0.50\u00b10.36, pooled +0.22\u00b10.17 (n.s.)",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "two-ply-spring"
+  },
+  "bot_029": {
+   "created": "2026-09-26T17:18",
+   "family": "lookahead",
+   "file": "bots/bot_029_lookahead_twoplyconvoy.py",
+   "note": "two-ply + convoys at 210: S2 +0.56\u00b10.31, S3 +0.29\u00b10.41, pooled +0.33\u00b10.20 (z=1.65, n.s.)",
+   "parent": "bot_028",
+   "status": "REJECTED",
+   "tags": "two-ply-spring,convoy-candidates"
+  },
+  "bot_030": {
+   "created": "2026-09-26T20:18",
+   "family": "search",
+   "file": "bots/bot_030_search_buildroll.py",
+   "note": "rollout builds: S2 -0.10\u00b10.41, S3 +0.16\u00b10.49, pooled +0.02\u00b10.21 (no effect)",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "rollout-builds"
+  },
+  "bot_031": {
+   "created": "2026-09-27T06:16",
+   "family": "search",
+   "file": "bots/bot_031_search_riskaverse.py",
+   "note": "risk-averse selection: T1 +0.70\u00b10.29 but T2 S2 -0.10, S3 -0.12, pooled -0.07\u00b10.21",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "risk-averse-selection"
+  },
+  "bot_032": {
+   "created": "2026-09-27T06:16",
+   "family": "search",
+   "file": "bots/bot_032_search_rivalscore.py",
+   "note": "competitive score: S2 -0.02\u00b10.43, S3 +0.39\u00b10.44, pooled +0.12\u00b10.21",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "competitive-score"
+  },
+  "bot_033": {
+   "created": "2026-09-27T06:17",
+   "family": "search",
+   "file": "bots/bot_033_search_cbrace.py",
+   "note": "confidence-bound racing: S2 -0.26\u00b10.48, S3 -0.18\u00b10.53, pooled -0.15\u00b10.24",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "confidence-bound-racing"
+  },
+  "bot_034": {
+   "created": "2026-09-27T06:18",
+   "family": "bandit",
+   "file": "bots/bot_034_bandit_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "decoupled-ucb"
+  },
+  "bot_035": {
+   "created": "2026-09-27T07:35",
+   "family": "valuemap",
+   "file": "bots/bot_035_valuemap_poolsource.py",
+   "note": "valuemap candidates in bot_022's race: 210 S2 +0.41\u00b10.27, S3 +0.36\u00b10.37, pooled +0.30\u00b10.17 (z=1.76, n.s.)",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "multi-source-candidates"
+  },
+  "bot_036": {
+   "created": "2026-09-27T08:11",
+   "family": "bandit",
+   "file": "bots/bot_036_bandit_pairs.py",
+   "note": "",
+   "parent": "bot_034",
+   "status": "PROMOTED",
+   "tags": "pair-arms"
+  },
+  "bot_037": {
+   "created": "2026-09-27T08:40",
+   "family": "greedy",
+   "file": "bots/bot_037_greedy_homedef.py",
+   "note": "home defence (rule): S1 \u00b10, S2/S3 down; pooled -2.41\u00b10.19 vs bot_012 (too many units tied to garrisons)",
+   "parent": "bot_012",
+   "status": "REJECTED",
+   "tags": "home-defence"
+  },
+  "bot_038": {
+   "created": "2026-09-27T08:40",
+   "family": "valuemap",
+   "file": "bots/bot_038_valuemap_season.py",
+   "note": "",
+   "parent": "bot_014",
+   "status": "PROMOTED",
+   "tags": "season-weights"
+  },
+  "bot_039": {
+   "created": "2026-09-27T08:41",
+   "family": "positional",
+   "file": "bots/bot_039_positional_frontline.py",
+   "note": "front consolidation: pooled +0.05\u00b10.20 vs bot_017 (no effect)",
+   "parent": "bot_017",
+   "status": "REJECTED",
+   "tags": "front-consolidation"
+  },
+  "bot_040": {
+   "created": "2026-09-27T08:42",
+   "family": "archetype",
+   "file": "bots/bot_040_archetype_aggressive.py",
+   "note": "",
+   "parent": "none",
+   "status": "PROMOTED",
+   "tags": "archetype-aggressive"
+  },
+  "bot_041": {
+   "created": "2026-09-27T08:42",
+   "family": "archetype",
+   "file": "bots/bot_041_archetype_turtle.py",
+   "note": "turtle archetype (sparring): S1 14.3 (0%), S2 6.5, S3 5.8",
+   "parent": "bot_040",
+   "status": "REJECTED",
+   "tags": "archetype-turtle"
+  },
+  "bot_042": {
+   "created": "2026-09-27T08:42",
+   "family": "archetype",
+   "file": "bots/bot_042_archetype_opportunist.py",
+   "note": "opportunist archetype (sparring): S1 17.6 (81%), S2 8.1, S3 7.3",
+   "parent": "bot_040",
+   "status": "REJECTED",
+   "tags": "archetype-opportunist"
+  },
+  "bot_043": {
+   "created": "2026-09-27T08:43",
+   "family": "adaptive",
+   "file": "bots/bot_043_adaptive_hitrate.py",
+   "note": "style-pure adaptive with hit-rate classes: pooled -0.03\u00b10.23 vs bot_005 (no effect)",
+   "parent": "bot_005",
+   "status": "REJECTED",
+   "tags": "prediction-accuracy-gating"
+  },
+  "bot_044": {
+   "created": "2026-09-27T08:53",
+   "family": "search",
+   "file": "bots/bot_044_search_empmix.py",
+   "note": "per-power empirical opponent mix: S2 -0.13\u00b10.39, S3 +0.36\u00b10.46, pooled +0.07\u00b10.20 (n.s.)",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "empirical-opponent-mix"
+  },
+  "bot_045": {
+   "created": "2026-09-27T10:30",
+   "family": "search",
+   "file": "bots/bot_045_search_stack.py",
+   "note": "",
+   "parent": "bot_029",
+   "status": "PROMOTED",
+   "tags": "stacked-near-misses"
+  },
+  "bot_046": {
+   "created": "2026-09-27T10:36",
+   "family": "bandit",
+   "file": "bots/bot_046_bandit_staticprior.py",
+   "note": "holder-aware priors: S1 +2.48\u00b10.43 but S2 -0.89, S3 -0.92; pooled +0.22\u00b10.29 vs bot_036",
+   "parent": "bot_036",
+   "status": "REJECTED",
+   "tags": "holder-aware-priors"
+  },
+  "bot_047": {
+   "created": "2026-09-27T11:13",
+   "family": "search",
+   "file": "bots/bot_047_search_aggcand.py",
+   "note": "aggressive plan as candidate: S2 +0.16\u00b10.38, S3 +0.36\u00b10.46, pooled +0.17\u00b10.20 vs bot_022 (n.s.)",
+   "parent": "bot_022",
+   "status": "REJECTED",
+   "tags": "multi-source-candidates"
+  },
+  "bot_048": {
+   "created": "2026-09-27T13:20",
+   "family": "bandit",
+   "file": "bots/bot_048_bandit_s1switch.py",
+   "note": "S1-only holder priors: S1 +2.37\u00b10.43 (54% wins), S2 -0.43, S3 -0.58 (noise); pooled +0.46\u00b10.26 vs bot_036 (n.s.)",
+   "parent": "bot_046",
+   "status": "REJECTED",
+   "tags": "scenario-detection"
+  },
+  "bot_049": {
+   "created": "2026-09-27T13:54",
+   "family": "search",
+   "file": "bots/bot_049_search_stackseason.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "season-weights"
+  },
+  "bot_050": {
+   "created": "2026-09-27T13:54",
+   "family": "search",
+   "file": "bots/bot_050_search_stackagg.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "multi-source-candidates"
+  }
+ },
+ "families": {
+  "adaptive": {
+   "champion": "bot_009",
+   "iterations": 4,
+   "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
+   "status": "DORMANT"
+  },
+  "archetype": {
+   "champion": "bot_040",
+   "iterations": 3,
+   "reason": "new",
+   "status": "ACTIVE"
+  },
+  "bandit": {
+   "champion": "bot_036",
+   "iterations": 4,
+   "reason": "3 iters (034/036/046); champion bot_036 est 11 vs overall 15",
+   "status": "DORMANT"
+  },
+  "greedy": {
+   "champion": "bot_012",
+   "iterations": 4,
+   "reason": "3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13",
+   "status": "DORMANT"
+  },
+  "lookahead": {
+   "champion": "bot_024",
+   "iterations": 8,
+   "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
+   "status": "ACTIVE"
+  },
+  "positional": {
+   "champion": "bot_017",
+   "iterations": 4,
+   "reason": "3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC)",
+   "status": "DORMANT"
+  },
+  "search": {
+   "champion": "bot_045",
+   "iterations": 18,
+   "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
+   "status": "ACTIVE"
+  },
+  "valuemap": {
+   "champion": "bot_038",
+   "iterations": 5,
+   "reason": "3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13",
+   "status": "DORMANT"
+  }
+ },
+ "hall_of_fame": [
+  "bot_009",
+  "bot_040",
+  "bot_036",
+  "bot_012",
+  "bot_024",
+  "bot_017",
+  "bot_045",
+  "bot_038",
+  "bot_021",
+  "bot_022"
+ ],
+ "next_bot_id": 51,
+ "overall_champions": [
+  {
+   "bot": "bot_001",
+   "date": "2026-09-26T01:34"
+  },
+  {
+   "bot": "bot_003",
+   "date": "2026-09-26T02:21"
+  },
+  {
+   "bot": "bot_004",
+   "date": "2026-09-26T03:35"
+  },
+  {
+   "bot": "bot_007",
+   "date": "2026-09-26T04:40"
+  },
+  {
+   "bot": "bot_021",
+   "date": "2026-09-26T10:05"
+  },
+  {
+   "bot": "bot_022",
+   "date": "2026-09-26T12:02"
+  },
+  {
+   "bot": "bot_045",
+   "date": "2026-09-27T12:35"
+  }
+ ],
+ "standin_rotation": 0,
+ "techniques": {
+  "archetype-aggressive": {
+   "bot": "bot_040",
+   "effect": "rule bot, 40 ms: S1 18.00 (100%), S2 15.91 (76.7%) = bot_022 (S2 paired -0.15\u00b10.39); S3 15.94 vs weak stand-in"
+  },
+  "bfs-greedy": {
+   "bot": "bot_001",
+   "effect": "basic technique: est. mark 2 (B210: S1 6.14, S2 7.43, S3 6.75)"
+  },
+  "candidate-crossover": {
+   "bot": "bot_027",
+   "effect": "pooled +0.17\u00b10.21 SC vs bot_022 (378 paired, B; n.s.)"
+  },
+  "competitive-score": {
+   "bot": "bot_032",
+   "effect": "pooled +0.12\u00b10.21 SC vs bot_022 (378 paired, B; n.s.)"
+  },
+  "confidence-bound-racing": {
+   "bot": "bot_033",
+   "effect": "pooled -0.15\u00b10.24 SC vs bot_022 (378 paired, B; n.s.)"
+  },
+  "convoy-candidates": {
+   "bot": "bot_026",
+   "effect": "pooled +0.26\u00b10.21 SC vs bot_022 (378 paired, B; n.s.); England seats +0.86\u00b10.78 (36 games)"
+  },
+  "decoupled-ucb": {
+   "bot": "bot_034",
+   "effect": "new family base: S1 7.73 (0%), S2 13.29 (43.7%), S3 9.50 (19.0%) B126; est 9; vs bot_022 pooled -5.87\u00b10.28"
+  },
+  "empirical-opponent-mix": {
+   "bot": "bot_044",
+   "effect": "pooled +0.07\u00b10.20 SC vs bot_022 (378 paired, B; n.s.)"
+  },
+  "home-defence": {
+   "bot": "bot_037",
+   "effect": "pooled -2.41\u00b10.19 SC vs bot_012 (630 paired, B)"
+  },
+  "hybrid-candidate-race": {
+   "bot": "bot_022",
+   "effect": "pooled +0.61\u00b10.21 SC vs bot_020 (378 paired, B); S2 +1.31\u00b10.37 (78% wins); S3 14.08 SC / 57%"
+  },
+  "local-search": {
+   "bot": "bot_003",
+   "effect": "pooled +5.91\u00b10.21 SC vs bot_001 (630 paired, B); mark 13 vs 2"
+  },
+  "multi-source-candidates": {
+   "bot": "bot_035",
+   "effect": "pooled +0.30\u00b10.17 SC vs bot_022 (546 paired, B, S2/S3 at 210; n.s.)"
+  },
+  "no-self-bounce": {
+   "bot": "bot_010",
+   "effect": "pooled +2.85\u00b10.16 SC vs bot_001 (630 paired, B); mark 7 vs 2"
+  },
+  "one-ply-simulation": {
+   "bot": "bot_004",
+   "effect": "pooled +2.16\u00b10.31 SC vs bot_003 (378 paired, B); mark 13 vs 11; S1 +4.31\u00b10.44"
+  },
+  "opponent-aware-eval": {
+   "bot": "bot_008",
+   "effect": "pooled +1.49\u00b10.24 SC vs bot_003 (630 paired, B); S1 +6.24\u00b10.30 (100% wins) but S3 \u22121.23\u00b10.39"
+  },
+  "opponent-classification": {
+   "bot": "bot_005",
+   "effect": "S1 100% win (210/210); pooled +1.33\u00b10.27 SC vs bot_003 but S2 \u22120.82, S3 \u22121.44"
+  },
+  "opponent-model-sampling": {
+   "bot": "bot_007",
+   "effect": "pooled +0.75\u00b10.26 SC vs bot_004 (378 paired, B); S1 100% wins (+1.90\u00b10.29), S2/S3 n.s."
+  },
+  "pair-arms": {
+   "bot": "bot_036",
+   "effect": "pooled +2.97\u00b10.26 SC vs bot_034 (378 paired, B); S1 +4.02, S2 +2.06, S3 +2.83; est 11 vs 9"
+  },
+  "prediction-accuracy-gating": {
+   "bot": "bot_016",
+   "effect": "pooled +0.75\u00b10.19 SC vs bot_008 (630 paired, B); S2 +0.79\u00b10.39, S3 +1.47\u00b10.41"
+  },
+  "risk-averse-selection": {
+   "bot": "bot_031",
+   "effect": "pooled -0.07\u00b10.21 SC vs bot_022 (378 paired, B; no effect)"
+  },
+  "rollout-builds": {
+   "bot": "bot_030",
+   "effect": "pooled +0.02\u00b10.21 SC vs bot_022 (378 paired, B; no effect)"
+  },
+  "rollout-selection": {
+   "bot": "bot_020",
+   "effect": "pooled +1.11\u00b10.23 SC vs bot_016 (378 paired, B); S3 +2.41\u00b10.53 (13.57 SC, 49% wins); mark 15 vs 13"
+  },
+  "scenario-detection": {
+   "bot": "bot_009",
+   "effect": "pooled +1.28\u00b10.24 SC vs bot_005 (378 paired, B); S2 +2.03, S3 +1.80; tie with bot_007 (-0.15\u00b10.23)"
+  },
+  "season-weights": {
+   "bot": "bot_038",
+   "effect": "pooled +1.02\u00b10.17 SC vs bot_014 (630 paired, B); S1 18.00 (100%), S2 13.83, S3 12.32 (weak stand-in)"
+  },
+  "shared-opponent-rollouts": {
+   "bot": "bot_024",
+   "effect": "pooled +0.49\u00b10.21 SC vs bot_021 (378 paired, B); S2 +0.63\u00b10.36, S3 +0.85\u00b10.52; ~1.5x rollouts"
+  },
+  "stacked-near-misses": {
+   "bot": "bot_045",
+   "effect": "B210: pooled +0.51\u00b10.20 vs bot_022; held-out C126: +0.98\u00b10.24 (S2 +1.21, S3 +1.74)"
+  },
+  "strength-aware-values": {
+   "bot": "bot_014",
+   "effect": "pooled +0.74\u00b10.18 SC vs bot_011 (630 paired, B); S1 +1.57\u00b10.22 (86% wins), S3 +0.87\u00b10.34"
+  },
+  "successive-halving": {
+   "bot": "bot_021",
+   "effect": "pooled +0.74\u00b10.21 SC vs bot_007 (546 paired, B, S2/S3 at 210); S2 +0.75\u00b10.34 (70% wins), S3 +1.17\u00b10.41; mark 15 vs 13"
+  },
+  "supported-attack-matching": {
+   "bot": "bot_012",
+   "effect": "pooled +3.00\u00b10.19 SC vs bot_010 (630 paired, B); S1 +3.71, S2 +2.57, S3 +2.70; mark 13 vs 7"
+  },
+  "supported-attacks": {
+   "bot": "bot_011",
+   "effect": "pooled +3.97\u00b10.17 SC vs bot_002 (630 paired, B); S1 +3.71, S2 +4.24, S3 +3.97; mark 9 vs 5"
+  },
+  "threat-weighted-safety": {
+   "bot": "bot_017",
+   "effect": "pooled +2.75\u00b10.19 SC vs bot_006 (630 paired, B); S1 +5.43, S2 +1.72, S3 +1.11; mark 9 vs 5"
+  },
+  "two-ply-spring": {
+   "bot": "bot_028",
+   "effect": "pooled +0.30\u00b10.19 SC vs bot_022 (378 paired, B; n.s.); S3 +0.86\u00b10.45 (65.9% vs 57.1% wins)"
+  },
+  "value-map": {
+   "bot": "bot_002",
+   "effect": "pooled +2.20\u00b10.20 SC vs bot_001 (630 paired, B); S1 +6.14\u00b10.20"
+  }
+ }
+}

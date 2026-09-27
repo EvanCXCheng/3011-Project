@@ -1,20 +1,9 @@
-"""bot_045 — family: search — parent: bot_029 (+ bot_035's valuemap candidate)
+"""bot_033 — family: search — parent: bot_022
 
-Change vs bot_029 (one idea, stacking two measured near-misses against the champion bot_022): adds bot_035's valuemap
-candidate (bot_014's joint order) to bot_029's race (two-ply Spring rollouts + convoy candidates). Each was about
-+0.3 SC vs bot_022 at 210 games (029 +0.33±0.20, 035 +0.30±0.17) and they target different weaknesses (Spring
-evaluation / England / candidate diversity); this tests whether the gains add up.
-
-bot_029 notes (parent):
-
-Change vs bot_028: adds bot_026's convoy candidates (both ideas measured separately against bot_022: two-ply
-+0.30±0.19, convoys +0.26±0.21; they target different weaknesses, so this tests whether they add up).
-
-bot_028 change vs bot_022: two-ply rollouts in Spring. After the simulated Spring move, every power plays a cheap
-Fall reply (each unit steps to the neighbour closest to its power's nearest unowned SC; static powers hold;
-dislodged units disband), and the rollout is scored on SC ownership after Fall, when ownership actually changes.
-bot_022 scored Spring positions with a heuristic (occupied SCs x 0.5). Fall phases stay one-ply. Costs roughly
-2x per rollout, so fewer samples per candidate.
+Change vs bot_022 (one idea): confidence-bound racing instead of fixed halving. After each round of common opponent
+samples (from round MIN_ROUNDS on), a candidate is dropped when its upper bound mean + C*sd/sqrt(n) falls below the
+best lower bound mean - C*sd/sqrt(n). Clear losers go early, close contenders keep sampling (bot_022 halves every 3
+rounds regardless of how close the candidates are).
 
 bot_022 notes (parent):
 
@@ -56,9 +45,10 @@ greedy rules miss. The evaluation estimates, for each move, a success probabilit
 scores expected unit positions (unowned SC captured, distance to the nearest unowned SC) and penalises own SCs left
 open to adjacent enemies. Search: coordinate-ascent hill climbing with random restarts until the time budget.
 
-Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates
+Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, confidence-bound-racing
 """
 import copy
+import math
 import random
 import time
 import zlib
@@ -77,13 +67,9 @@ CONFIG = {
     'N_LA': 12,              # lookahead-style candidates (greedy + perturbations)
     'P_PERTURB': 0.3, 'P_SUPPORT': 0.5,
     'HALVING': True, 'HALVE_EVERY': 3, 'MIN_ALIVE': 3,
-    'TWO_PLY': True,         # False = no two-ply Spring rollouts
-    'CONVOYS': True,         # False = no convoy candidates
-    'VM_CANDS': True,        # False = bot_029 (no valuemap candidate)
-    'W_NEUTRAL': 10.0, 'W_ENEMY': 7.0, 'W_DEFEND': 5.0, 'DIFF_ITERS': 6, 'DIFF_MAX': 0.6, 'DIFF_SUM': 0.05,
-    'SUPPORTS': True, 'STRENGTH': True, 'OCC_FACTOR': 0.15, 'COMP': 0.0,
-    'P_CONVOY': 0.4,         # chance a perturbed candidate also carries one random convoy
-    'N_CONVOY_CANDS': 3,     # dedicated candidates: greedy + the best convoy of one army
+    'CB_RACE': True,         # False = bot_022 fixed halving
+    'CB_C': 1.0,             # width of the confidence bounds (in standard errors)
+    'MIN_ROUNDS': 3,         # rounds before any candidate may be dropped
     # opponent sampling mixes (hold, random); the rest is the greedy move
     'MIX': {'greedy': (0.1, 0.0), 'strong': (0.3, 0.2), 'erratic': (0.3, 0.5), 'unknown': (0.4, 0.1)},
     'R_W_SC': 1.0, 'R_W_OCC_SPRING': 0.5, 'R_W_UNIT': 0.6, 'R_W_DIST': 0.05, 'R_W_LOST': 1.0,
@@ -207,7 +193,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_045_search_stack'):
+    def __init__(self, agent_name='bot_033_search_cbrace'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -598,13 +584,6 @@ class StudentAgent(Agent):
                         cand_orders.append(c)
             except Exception:
                 pass
-        if CONFIG['VM_CANDS']:
-            try:
-                vm = self._vm_movement(possible, locs, self._vm_value_map(), t0)
-                if vm and tuple(sorted(vm)) not in {tuple(sorted(c)) for c in cand_orders}:
-                    cand_orders.append(vm)
-            except Exception:
-                pass
         try:
             k = self._rollout_select(possible, cand_orders, t0, targets)
             return cand_orders[k]
@@ -642,40 +621,6 @@ class StudentAgent(Agent):
         fall = g0.get_current_phase().startswith('F')
         own_before = set(g0.get_power(me).centers)
         tg = targets
-        two = CONFIG['TWO_PLY'] and not fall
-        ply2 = {}
-        if two:
-            for p, pw in g0.powers.items():
-                if p != me and self._classify(p) == 'static':
-                    continue
-                own = set(pw.centers)
-                ply2[p] = [sc for sc in info['scs'] if sc not in own]
-        adj = info['adj']
-
-        def fall_reply(g):
-            """Advance a simulated Spring result through a greedy Fall move of every non-static power."""
-            if g.phase_type == 'R':
-                g.process()                       # no retreat orders: dislodged units disband
-            if g.phase_type != 'M':
-                return
-            for p, ptg in ply2.items():
-                pw = g.powers.get(p)
-                if pw is None or not pw.units:
-                    continue
-                lst = []
-                for u in pw.units:
-                    t, loc = _unit_split(u)
-                    here = self._near(t, loc, ptg)
-                    best, bd = None, here
-                    for n in adj[t].get(loc, ()):
-                        d = self._near(t, n, ptg)
-                        if d < bd:
-                            best, bd = n, d
-                    if best is not None:
-                        lst.append(f'{t} {loc} - {best}')
-                if lst:
-                    g.set_orders(p, lst)
-            g.process()
 
         def sample():
             out = {}
@@ -701,7 +646,7 @@ class StudentAgent(Agent):
             sc_ = CONFIG['R_W_UNIT'] * len(my_units)
             for t, loc in my_units:
                 sc_ -= CONFIG['R_W_DIST'] * min(self._near(t, loc, tg), 20)
-            if fall or two:
+            if fall:
                 owned = set(own_before)
                 for c in info['scs']:
                     o = occ.get(c)
@@ -716,6 +661,7 @@ class StudentAgent(Agent):
             return sc_
 
         totals = [0.0] * len(cand_orders)
+        sq = [0.0] * len(cand_orders)
         n_eval = 0
         alive = list(range(len(cand_orders)))
         since = 0
@@ -730,162 +676,30 @@ class StudentAgent(Agent):
                     g.set_orders(p, lst)
                 g.set_orders(me, cand_orders[k])
                 g.process()
-                if two:
-                    fall_reply(g)
                 rs.append(score(g))
             if len(rs) < len(alive):
                 break
             for k, v in zip(alive, rs):
                 totals[k] += v
+                sq[k] += v * v
             n_eval += 1
             since += 1
-            if CONFIG['HALVING'] and since >= CONFIG['HALVE_EVERY'] and len(alive) > CONFIG['MIN_ALIVE']:
+            if CONFIG['CB_RACE']:
+                if n_eval >= CONFIG['MIN_ROUNDS'] and len(alive) > 1:
+                    half = {}
+                    for k in alive:
+                        m = totals[k] / n_eval
+                        sd = math.sqrt(max(0.0, sq[k] / n_eval - m * m))
+                        half[k] = (m, CONFIG['CB_C'] * sd / math.sqrt(n_eval))
+                    best_lb = max(m - h for m, h in half.values())
+                    alive = [k for k in alive if half[k][0] + half[k][1] >= best_lb]
+            elif CONFIG['HALVING'] and since >= CONFIG['HALVE_EVERY'] and len(alive) > CONFIG['MIN_ALIVE']:
                 alive.sort(key=lambda k: (-totals[k], k))
                 alive = alive[:max(CONFIG['MIN_ALIVE'], (len(alive) + 1) // 2)]
                 since = 0
         if n_eval == 0:
             return 0
         return max(alive, key=lambda k: (totals[k], -k))
-
-    # valuemap candidate generator (ported from bot_014)
-    def _vm_value_map(self):
-        """values[t][loc] for t in 'A','F'."""
-        info = self.info
-        me = self.power_name
-        owner = {}
-        enemy_units = []
-        for p, power in self.game.powers.items():
-            for c in power.centers:
-                owner[c] = p
-            if p != me:
-                for u in power.units:
-                    enemy_units.append(_unit_split(u))
-        threat = {}
-        for t, loc in enemy_units:
-            for prov in info['reach'][t].get(loc, ()):
-                threat[prov] = threat.get(prov, 0) + 1
-        base = {}
-        for prov in sorted({_base(l.upper()) for l in self.game.map.locs}):
-            v = 0.0
-            if prov in info['scset']:
-                o = owner.get(prov)
-                if o is None:
-                    v = CONFIG['W_NEUTRAL']
-                elif o != me:
-                    v = CONFIG['W_ENEMY']
-                else:
-                    v = CONFIG['W_DEFEND'] * threat.get(prov, 0)
-            base[prov] = v
-        values = {}
-        for t in ('A', 'F'):
-            adj = info['adj'][t]
-            b = {l: base[_base(l)] for l in adj}
-            v = dict(b)
-            for _ in range(CONFIG['DIFF_ITERS']):
-                nv = {}
-                for l, nbrs in adj.items():
-                    if nbrs:
-                        vals = [v[n] for n in nbrs]
-                        nv[l] = b[l] + CONFIG['DIFF_MAX'] * max(vals) + CONFIG['DIFF_SUM'] * sum(vals)
-                    else:
-                        nv[l] = b[l]
-                v = nv
-            values[t] = v
-        return values
-
-    def _vm_movement(self, possible, locs, values, t0):
-        me = self.power_name
-        g = self.game
-        enemy_occ, enemy_reach = set(), {}
-        for p, pw in g.powers.items():
-            if p == me:
-                continue
-            for u in pw.units:
-                t, loc = _unit_split(u)
-                enemy_occ.add(_base(loc))
-                for prov in self.info['reach'][t].get(loc, ()):
-                    enemy_reach[prov] = enemy_reach.get(prov, 0) + 1
-        own_scs = set(g.get_power(me).centers)
-        # parse our options once
-        mv, sup = {}, {}          # base -> {dest_prov: order}; base -> {(src_prov, dest_prov): order}
-        for base in locs:
-            mv[base], sup[base] = {}, {}
-            for o in possible.get(base) or []:
-                tok = o.split()
-                if len(tok) >= 4 and tok[2] == '-' and tok[-1] != 'VIA':
-                    ut = tok[0]
-                    d = _base(tok[3])
-                    if d not in mv[base] or values[ut].get(tok[3], 0.0) > values[ut].get(mv[base][d].split()[3], 0.0):
-                        mv[base][d] = o
-                elif len(tok) >= 7 and tok[2] == 'S' and tok[5] == '-':
-                    sup[base][(_base(tok[4]), _base(tok[6]))] = o
-        fixed, taken, orders = set(), set(), []
-        moving_to = {}
-        if CONFIG['SUPPORTS']:
-            scs = self.info['scset']
-            targets = [prov for prov in enemy_occ if prov in scs and prov not in own_scs]
-
-            def tval(prov):
-                return max(values['A'].get(prov, 0.0), values['F'].get(prov, 0.0))
-            for prov in sorted(targets, key=lambda x: (-tval(x), x)):
-                for a in sorted(b for b in locs if b not in fixed and prov in mv[b]):
-                    sups = [b for b in locs if b != a and b not in fixed and (a, prov) in sup[b]]
-                    if sups:
-                        s_ = sups[0]
-                        orders.append(mv[a][prov])
-                        orders.append(sup[s_][(a, prov)])
-                        fixed.update((a, s_))
-                        taken.update((prov, s_))
-                        moving_to[a] = prov
-                        break
-        cands = []
-        for base in locs:
-            if base in fixed:
-                continue
-            for o in possible.get(base) or []:
-                ut, loc, kind, dest = parse_order(o)
-                if kind == 'H':
-                    target = loc
-                elif kind == '-' and dest is not None and not o.endswith('VIA'):
-                    target = dest
-                else:
-                    continue
-                val = values[ut].get(target, 0.0)
-                if CONFIG['STRENGTH'] and kind == '-':
-                    tp = _base(target)
-                    if tp in enemy_occ:
-                        val *= CONFIG['OCC_FACTOR']
-                    else:
-                        val /= 1.0 + CONFIG['COMP'] * enemy_reach.get(tp, 0)
-                # small preference for holding on ties, deterministic order otherwise
-                cands.append((-val, 0 if kind == 'H' else 1, o, base, _base(target)))
-        cands.sort()
-        done = set(fixed)
-        chosen = {}
-        for _, _, o, base, prov in cands:
-            if base in done or prov in taken:
-                continue
-            done.add(base)
-            taken.add(prov)
-            chosen[base] = o
-            if o.split()[2] == '-':
-                moving_to[base] = prov
-            if time.perf_counter() - t0 > CONFIG['TIME_BUDGET']:
-                break
-        if CONFIG['SUPPORTS']:
-            for base, o in list(chosen.items()):
-                if o.split()[2] != 'H' or base in own_scs:
-                    continue
-                best, best_s = None, 0
-                for a, prov in moving_to.items():
-                    if (a, prov) in sup[base]:
-                        s_ = enemy_reach.get(prov, 0) + (2 if prov in enemy_occ else 0)
-                        if s_ > best_s:
-                            best, best_s = sup[base][(a, prov)], s_
-                if best is not None:
-                    chosen[base] = best
-        return orders + list(chosen.values())
-
 
     # --------------------------------------------------------------------------------------------------------
     def _la_candidates(self, possible, locs, targets, rng):
@@ -926,55 +740,8 @@ class StudentAgent(Agent):
                 if len(tok) >= 7 and tok[2] == 'S' and tok[5] == '-' and _base(tok[4]) in my_provs:
                     lst.append(o)
             sup_opts.append(lst)
-        # convoy options: (army index, VIA order, [(fleet index, convoy order)], score)
-        conv = []
-        if CONFIG['CONVOYS']:
-            idx = {b: i for i, b in enumerate(units)}
-            for i, b in enumerate(units):
-                for o in possible.get(b) or []:
-                    tok = o.split()
-                    if len(tok) != 5 or tok[2] != '-' or tok[-1] != 'VIA' or tok[0] != 'A':
-                        continue
-                    src, dst = tok[1], tok[3]
-                    here = self._near('A', src, targets)
-                    there = self._near('A', dst, targets)
-                    if not (_base(dst) in tset or there < here):
-                        continue
-                    want = f'A {src} - {dst}'
-                    fl = []
-                    for j, fb in enumerate(units):
-                        if j == i:
-                            continue
-                        for fo in possible.get(fb) or []:
-                            if ' C ' in fo and fo.endswith(want):
-                                fl.append((j, fo))
-                                break
-                    if fl:
-                        conv.append((i, o, fl, (3.0 if _base(dst) in tset else 0.0) - min(there, 20)))
-            conv.sort(key=lambda x: (-x[3], x[1]))
-
-        def with_convoy(c, cv):
-            i, o, fl, _ = cv
-            c[i] = o
-            for j, fo in fl:
-                c[j] = fo
-
         out = [[greedy[i] for i in sorted(greedy)]]
         seen = {tuple(sorted(out[0]))}
-        used_armies = set()
-        for cv in conv:
-            if len(used_armies) >= CONFIG['N_CONVOY_CANDS']:
-                break
-            if cv[0] in used_armies:
-                continue
-            used_armies.add(cv[0])
-            c = dict(greedy)
-            with_convoy(c, cv)
-            lst = [c[i] for i in sorted(c)]
-            key = tuple(sorted(lst))
-            if key not in seen:
-                seen.add(key)
-                out.append(lst)
         tries = 0
         while len(out) < CONFIG['N_LA'] and tries < CONFIG['N_LA'] * 5:
             tries += 1
@@ -996,8 +763,6 @@ class StudentAgent(Agent):
                             c[j] = mv
                         else:
                             c[i] = greedy.get(i, c[i])
-            if conv and rng.random() < CONFIG['P_CONVOY']:
-                with_convoy(c, rng.choice(conv))
             lst = [c[i] for i in sorted(c)]
             key = tuple(sorted(lst))
             if key not in seen:

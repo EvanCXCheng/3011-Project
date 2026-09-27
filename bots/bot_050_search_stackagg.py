@@ -1,4 +1,9 @@
-"""bot_045 — family: search — parent: bot_029 (+ bot_035's valuemap candidate)
+"""bot_050 — family: search — parent: bot_045 (+ bot_047's aggressive candidate)
+
+Change vs bot_045 (one idea): adds the aggressive archetype's plan (bot_040, via bot_047: +0.17±0.20 on bot_022) as
+one more race candidate, testing whether another small independent gain stacks on the champion.
+
+bot_045 notes (parent):
 
 Change vs bot_029 (one idea, stacking two measured near-misses against the champion bot_022): adds bot_035's valuemap
 candidate (bot_014's joint order) to bot_029's race (two-ply Spring rollouts + convoy candidates). Each was about
@@ -56,7 +61,7 @@ greedy rules miss. The evaluation estimates, for each move, a success probabilit
 scores expected unit positions (unowned SC captured, distance to the nearest unowned SC) and penalises own SCs left
 open to adjacent enemies. Search: coordinate-ascent hill climbing with random restarts until the time budget.
 
-Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates
+Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates, aggressive-candidate
 """
 import copy
 import random
@@ -80,6 +85,8 @@ CONFIG = {
     'TWO_PLY': True,         # False = no two-ply Spring rollouts
     'CONVOYS': True,         # False = no convoy candidates
     'VM_CANDS': True,        # False = bot_029 (no valuemap candidate)
+    'AG_CANDS': True,        # False = bot_045
+    'AG_STYLE': 'aggressive', 'AG_TURTLE_RANGE': 2,
     'W_NEUTRAL': 10.0, 'W_ENEMY': 7.0, 'W_DEFEND': 5.0, 'DIFF_ITERS': 6, 'DIFF_MAX': 0.6, 'DIFF_SUM': 0.05,
     'SUPPORTS': True, 'STRENGTH': True, 'OCC_FACTOR': 0.15, 'COMP': 0.0,
     'P_CONVOY': 0.4,         # chance a perturbed candidate also carries one random convoy
@@ -207,7 +214,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_045_search_stack'):
+    def __init__(self, agent_name='bot_050_search_stackagg'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -598,6 +605,13 @@ class StudentAgent(Agent):
                         cand_orders.append(c)
             except Exception:
                 pass
+        if CONFIG['AG_CANDS']:
+            try:
+                ag = self._ag_movement(possible, locs)
+                if ag and tuple(sorted(ag)) not in {tuple(sorted(c)) for c in cand_orders}:
+                    cand_orders.append(ag)
+            except Exception:
+                pass
         if CONFIG['VM_CANDS']:
             try:
                 vm = self._vm_movement(possible, locs, self._vm_value_map(), t0)
@@ -885,6 +899,161 @@ class StudentAgent(Agent):
                 if best is not None:
                     chosen[base] = best
         return orders + list(chosen.values())
+
+
+    # aggressive-archetype candidate generator (ported from bot_040)
+    def _ag_active_powers(self):
+        g = self.game
+        act = set()
+        for ph in g.order_history.keys():
+            for p, olist in g.order_history[ph].items():
+                if p != self.power_name and any(' - ' in o for o in olist or []):
+                    act.add(p)
+        return act
+
+    def _ag_target_priority(self):
+        """{sc: priority}; higher first."""
+        g = self.game
+        me = self.power_name
+        style = CONFIG['AG_STYLE']
+        owner = {c: p for p, pw in g.powers.items() for c in pw.centers}
+        my_units = [u.lstrip('*').split()[:2] for u in g.get_power(me).units]
+        pri = {}
+        victim = None
+        if style == 'opportunist':
+            best = None
+            for p, pw in g.powers.items():
+                if p == me or not pw.centers:
+                    continue
+                ds = [min((self.info['scdist'][t].get(l, {}).get(c, INF) for t, l in my_units), default=INF)
+                      for c in pw.centers]
+                sc_ = len(pw.units) + 0.5 * sum(min(d, 15) for d in ds) / len(ds)
+                if best is None or sc_ < best:
+                    best, victim = sc_, p
+        for c in self.info['scs']:
+            o = owner.get(c)
+            if o == me:
+                continue
+            if style == 'aggressive':
+                pri[c] = 2 if o is not None else 1
+            elif style == 'turtle':
+                if o is None and min((self._near(t, l, [c]) for t, l in my_units), default=INF) <= CONFIG['AG_TURTLE_RANGE']:
+                    pri[c] = 1
+            else:
+                pri[c] = 2 if o == victim else (1 if o is None else 0)
+        return {c: v for c, v in pri.items() if v > 0}
+
+    def _ag_movement(self, possible, locs):
+        g = self.game
+        me = self.power_name
+        style = CONFIG['AG_STYLE']
+        adj = self.info['adj']
+        own = set(g.get_power(me).centers)
+        pri = self._ag_target_priority()
+        targets = list(pri)
+        active = self._ag_active_powers()
+        enemy_occ, enemy_adj = {}, {}
+        for p, pw in g.powers.items():
+            if p == me:
+                continue
+            for u in pw.units:
+                t, loc = u.lstrip('*').split()[:2]
+                enemy_occ[loc.split('/')[0]] = p
+                if p in active:
+                    for n in adj[t].get(loc, ()):
+                        b = n.split('/')[0]
+                        enemy_adj[b] = enemy_adj.get(b, 0) + 1
+        U = {}
+        for b in locs:
+            opts = possible.get(b) or []
+            if not opts:
+                continue
+            u = {'hold': None, 'moves': {}, 'sup': {}, 'suph': {}, 't': opts[0].split()[0], 'loc': opts[0].split()[1]}
+            for o in opts:
+                tok = o.split()
+                if len(tok) < 3:
+                    continue
+                if tok[2] == 'H':
+                    u['hold'] = o
+                elif tok[2] == '-' and tok[-1] != 'VIA':
+                    u['moves'].setdefault(tok[3].split('/')[0], o)
+                elif tok[2] == 'S' and len(tok) >= 7 and tok[5] == '-':
+                    u['sup'][(tok[4].split('/')[0], tok[6].split('/')[0])] = o
+                elif tok[2] == 'S':
+                    u['suph'][tok[4].split('/')[0]] = o
+            U[b] = u
+        orders, taken, moving = {}, set(), {}
+        # 1. defence
+        if style != 'aggressive':
+            thr = sorted((c for c in own if enemy_adj.get(c, 0) > 0), key=lambda c: -enemy_adj[c])
+            for c in thr:
+                if c in U and c not in orders:
+                    orders[c] = U[c]['hold']
+                    taken.add(c)
+                    if style == 'turtle' and enemy_adj[c] >= 2:
+                        for b, u in U.items():
+                            if b not in orders and c in u['suph']:
+                                orders[b] = u['suph'][c]
+                                taken.add(b)
+                                break
+                elif c not in U and style == 'turtle':
+                    for b, u in U.items():
+                        if b not in orders and c in u['moves'] and not (b in own and enemy_adj.get(b, 0) > 0):
+                            orders[b] = u['moves'][c]
+                            taken |= {b, c}
+                            moving[b] = c
+                            break
+        # 2. supported attacks on enemy-occupied targets
+        need = {'aggressive': 1, 'opportunist': 1, 'turtle': 2}[style]
+        for c in sorted((c for c in pri if c in enemy_occ), key=lambda c: -pri[c]):
+            if c in taken:
+                continue
+            for a in sorted(b for b in U if b not in orders and c in U[b]['moves']):
+                sups = [b for b in U if b != a and b not in orders and (a, c) in U[b]['sup']]
+                if len(sups) >= need:
+                    use = sups if style == 'aggressive' else sups[:need]
+                    orders[a] = U[a]['moves'][c]
+                    moving[a] = c
+                    taken |= {a, c}
+                    for b in use:
+                        orders[b] = U[b]['sup'][(a, c)]
+                        taken.add(b)
+                    break
+        # 3. step toward targets by priority, then distance; one unit per province
+        cand = []
+        for b, u in U.items():
+            if b in orders:
+                continue
+            here = self._near(u['t'], u['loc'], targets)
+            stay = 0.0
+            if b in pri and b not in enemy_occ:
+                stay = 3.0 * pri[b]
+            cand.append((-(stay - min(here, 30)), 1, b, None, b))
+            for dprov, o in u['moves'].items():
+                if dprov in U or (dprov in enemy_occ):
+                    continue
+                d = self._near(u['t'], o.split()[3], targets)
+                s = -min(d, 30) + (2.0 * pri[dprov] if dprov in pri else 0.0)
+                cand.append((-s, 0, b, o, dprov))
+        cand.sort(key=lambda x: (x[0], x[1], x[2], x[3] or ''))
+        for _, is_hold, b, o, dprov in cand:
+            if b in orders or dprov in taken:
+                continue
+            if is_hold:
+                orders[b] = U[b]['hold']
+            else:
+                orders[b] = o
+                moving[b] = dprov
+            taken.add(dprov)
+        # 4. idle units support our moves
+        for b, u in U.items():
+            if orders.get(b) != u['hold'] or (b in own and enemy_adj.get(b, 0) > 0 and style != 'aggressive'):
+                continue
+            for a, dprov in moving.items():
+                if (a, dprov) in u['sup']:
+                    orders[b] = u['sup'][(a, dprov)]
+                    break
+        return [o for o in orders.values() if o]
 
 
     # --------------------------------------------------------------------------------------------------------

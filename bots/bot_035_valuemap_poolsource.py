@@ -1,20 +1,10 @@
-"""bot_045 — family: search — parent: bot_029 (+ bot_035's valuemap candidate)
+"""bot_035 — family: valuemap (revisited) — parent: bot_022
 
-Change vs bot_029 (one idea, stacking two measured near-misses against the champion bot_022): adds bot_035's valuemap
-candidate (bot_014's joint order) to bot_029's race (two-ply Spring rollouts + convoy candidates). Each was about
-+0.3 SC vs bot_022 at 210 games (029 +0.33±0.20, 035 +0.30±0.17) and they target different weaknesses (Spring
-evaluation / England / candidate diversity); this tests whether the gains add up.
-
-bot_029 notes (parent):
-
-Change vs bot_028: adds bot_026's convoy candidates (both ideas measured separately against bot_022: two-ply
-+0.30±0.19, convoys +0.26±0.21; they target different weaknesses, so this tests whether they add up).
-
-bot_028 change vs bot_022: two-ply rollouts in Spring. After the simulated Spring move, every power plays a cheap
-Fall reply (each unit steps to the neighbour closest to its power's nearest unowned SC; static powers hold;
-dislodged units disband), and the rollout is scored on SC ownership after Fall, when ownership actually changes.
-bot_022 scored Spring positions with a heuristic (occupied SCs x 0.5). Fall phases stay one-ply. Costs roughly
-2x per rollout, so fewer samples per candidate.
+Change vs bot_022 (one idea): a third candidate source. The ablations showed candidate diversity drives bot_022
+(lookahead candidates alone were worth +1.3 SC). The joint order of the valuemap champion bot_014 (diffused province
+values, 2v1 supported attacks on occupied SCs, strength-aware destination values; 86% S1 wins on its own) is added
+to the race pool next to the hill-climbing optima and the lookahead candidates; the rollouts decide.
+Valuemap idea credit: DumbBot-style province values (see bot_002); code ported from our bot_014.
 
 bot_022 notes (parent):
 
@@ -56,7 +46,7 @@ greedy rules miss. The evaluation estimates, for each move, a success probabilit
 scores expected unit positions (unowned SC captured, distance to the nearest unowned SC) and penalises own SCs left
 open to adjacent enemies. Search: coordinate-ascent hill climbing with random restarts until the time budget.
 
-Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates
+Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, multi-source-candidates
 """
 import copy
 import random
@@ -77,13 +67,10 @@ CONFIG = {
     'N_LA': 12,              # lookahead-style candidates (greedy + perturbations)
     'P_PERTURB': 0.3, 'P_SUPPORT': 0.5,
     'HALVING': True, 'HALVE_EVERY': 3, 'MIN_ALIVE': 3,
-    'TWO_PLY': True,         # False = no two-ply Spring rollouts
-    'CONVOYS': True,         # False = no convoy candidates
-    'VM_CANDS': True,        # False = bot_029 (no valuemap candidate)
+    'VM_CANDS': True,        # False = bot_022 (no valuemap candidate)
+    # valuemap generator (bot_014)
     'W_NEUTRAL': 10.0, 'W_ENEMY': 7.0, 'W_DEFEND': 5.0, 'DIFF_ITERS': 6, 'DIFF_MAX': 0.6, 'DIFF_SUM': 0.05,
     'SUPPORTS': True, 'STRENGTH': True, 'OCC_FACTOR': 0.15, 'COMP': 0.0,
-    'P_CONVOY': 0.4,         # chance a perturbed candidate also carries one random convoy
-    'N_CONVOY_CANDS': 3,     # dedicated candidates: greedy + the best convoy of one army
     # opponent sampling mixes (hold, random); the rest is the greedy move
     'MIX': {'greedy': (0.1, 0.0), 'strong': (0.3, 0.2), 'erratic': (0.3, 0.5), 'unknown': (0.4, 0.1)},
     'R_W_SC': 1.0, 'R_W_OCC_SPRING': 0.5, 'R_W_UNIT': 0.6, 'R_W_DIST': 0.05, 'R_W_LOST': 1.0,
@@ -207,7 +194,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_045_search_stack'):
+    def __init__(self, agent_name='bot_035_valuemap_poolsource'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -642,40 +629,6 @@ class StudentAgent(Agent):
         fall = g0.get_current_phase().startswith('F')
         own_before = set(g0.get_power(me).centers)
         tg = targets
-        two = CONFIG['TWO_PLY'] and not fall
-        ply2 = {}
-        if two:
-            for p, pw in g0.powers.items():
-                if p != me and self._classify(p) == 'static':
-                    continue
-                own = set(pw.centers)
-                ply2[p] = [sc for sc in info['scs'] if sc not in own]
-        adj = info['adj']
-
-        def fall_reply(g):
-            """Advance a simulated Spring result through a greedy Fall move of every non-static power."""
-            if g.phase_type == 'R':
-                g.process()                       # no retreat orders: dislodged units disband
-            if g.phase_type != 'M':
-                return
-            for p, ptg in ply2.items():
-                pw = g.powers.get(p)
-                if pw is None or not pw.units:
-                    continue
-                lst = []
-                for u in pw.units:
-                    t, loc = _unit_split(u)
-                    here = self._near(t, loc, ptg)
-                    best, bd = None, here
-                    for n in adj[t].get(loc, ()):
-                        d = self._near(t, n, ptg)
-                        if d < bd:
-                            best, bd = n, d
-                    if best is not None:
-                        lst.append(f'{t} {loc} - {best}')
-                if lst:
-                    g.set_orders(p, lst)
-            g.process()
 
         def sample():
             out = {}
@@ -701,7 +654,7 @@ class StudentAgent(Agent):
             sc_ = CONFIG['R_W_UNIT'] * len(my_units)
             for t, loc in my_units:
                 sc_ -= CONFIG['R_W_DIST'] * min(self._near(t, loc, tg), 20)
-            if fall or two:
+            if fall:
                 owned = set(own_before)
                 for c in info['scs']:
                     o = occ.get(c)
@@ -730,8 +683,6 @@ class StudentAgent(Agent):
                     g.set_orders(p, lst)
                 g.set_orders(me, cand_orders[k])
                 g.process()
-                if two:
-                    fall_reply(g)
                 rs.append(score(g))
             if len(rs) < len(alive):
                 break
@@ -747,6 +698,7 @@ class StudentAgent(Agent):
             return 0
         return max(alive, key=lambda k: (totals[k], -k))
 
+    # --------------------------------------------------------------------------------------------------------
     # valuemap candidate generator (ported from bot_014)
     def _vm_value_map(self):
         """values[t][loc] for t in 'A','F'."""
@@ -926,55 +878,8 @@ class StudentAgent(Agent):
                 if len(tok) >= 7 and tok[2] == 'S' and tok[5] == '-' and _base(tok[4]) in my_provs:
                     lst.append(o)
             sup_opts.append(lst)
-        # convoy options: (army index, VIA order, [(fleet index, convoy order)], score)
-        conv = []
-        if CONFIG['CONVOYS']:
-            idx = {b: i for i, b in enumerate(units)}
-            for i, b in enumerate(units):
-                for o in possible.get(b) or []:
-                    tok = o.split()
-                    if len(tok) != 5 or tok[2] != '-' or tok[-1] != 'VIA' or tok[0] != 'A':
-                        continue
-                    src, dst = tok[1], tok[3]
-                    here = self._near('A', src, targets)
-                    there = self._near('A', dst, targets)
-                    if not (_base(dst) in tset or there < here):
-                        continue
-                    want = f'A {src} - {dst}'
-                    fl = []
-                    for j, fb in enumerate(units):
-                        if j == i:
-                            continue
-                        for fo in possible.get(fb) or []:
-                            if ' C ' in fo and fo.endswith(want):
-                                fl.append((j, fo))
-                                break
-                    if fl:
-                        conv.append((i, o, fl, (3.0 if _base(dst) in tset else 0.0) - min(there, 20)))
-            conv.sort(key=lambda x: (-x[3], x[1]))
-
-        def with_convoy(c, cv):
-            i, o, fl, _ = cv
-            c[i] = o
-            for j, fo in fl:
-                c[j] = fo
-
         out = [[greedy[i] for i in sorted(greedy)]]
         seen = {tuple(sorted(out[0]))}
-        used_armies = set()
-        for cv in conv:
-            if len(used_armies) >= CONFIG['N_CONVOY_CANDS']:
-                break
-            if cv[0] in used_armies:
-                continue
-            used_armies.add(cv[0])
-            c = dict(greedy)
-            with_convoy(c, cv)
-            lst = [c[i] for i in sorted(c)]
-            key = tuple(sorted(lst))
-            if key not in seen:
-                seen.add(key)
-                out.append(lst)
         tries = 0
         while len(out) < CONFIG['N_LA'] and tries < CONFIG['N_LA'] * 5:
             tries += 1
@@ -996,8 +901,6 @@ class StudentAgent(Agent):
                             c[j] = mv
                         else:
                             c[i] = greedy.get(i, c[i])
-            if conv and rng.random() < CONFIG['P_CONVOY']:
-                with_convoy(c, rng.choice(conv))
             lst = [c[i] for i in sorted(c)]
             key = tuple(sorted(lst))
             if key not in seen:

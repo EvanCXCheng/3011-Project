@@ -1,4 +1,9 @@
-"""bot_045 — family: search — parent: bot_029 (+ bot_035's valuemap candidate)
+"""bot_049 — family: search — parent: bot_045
+
+Change vs bot_045 (one idea): the valuemap candidate uses bot_038's season-dependent value map (Fall: SC values x1.5,
+2 diffusion passes; Spring: full diffusion), which beat bot_014's map by +1.02 SC as a stand-alone bot.
+
+bot_045 notes (parent):
 
 Change vs bot_029 (one idea, stacking two measured near-misses against the champion bot_022): adds bot_035's valuemap
 candidate (bot_014's joint order) to bot_029's race (two-ply Spring rollouts + convoy candidates). Each was about
@@ -56,7 +61,7 @@ greedy rules miss. The evaluation estimates, for each move, a success probabilit
 scores expected unit positions (unowned SC captured, distance to the nearest unowned SC) and penalises own SCs left
 open to adjacent enemies. Search: coordinate-ascent hill climbing with random restarts until the time budget.
 
-Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates
+Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates, season-weights
 """
 import copy
 import random
@@ -80,6 +85,7 @@ CONFIG = {
     'TWO_PLY': True,         # False = no two-ply Spring rollouts
     'CONVOYS': True,         # False = no convoy candidates
     'VM_CANDS': True,        # False = bot_029 (no valuemap candidate)
+    'SEASON': True, 'FALL_SC_MULT': 1.5, 'FALL_DIFF_ITERS': 2,
     'W_NEUTRAL': 10.0, 'W_ENEMY': 7.0, 'W_DEFEND': 5.0, 'DIFF_ITERS': 6, 'DIFF_MAX': 0.6, 'DIFF_SUM': 0.05,
     'SUPPORTS': True, 'STRENGTH': True, 'OCC_FACTOR': 0.15, 'COMP': 0.0,
     'P_CONVOY': 0.4,         # chance a perturbed candidate also carries one random convoy
@@ -207,7 +213,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_045_search_stack'):
+    def __init__(self, agent_name='bot_049_search_stackseason'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -776,12 +782,18 @@ class StudentAgent(Agent):
                 else:
                     v = CONFIG['W_DEFEND'] * threat.get(prov, 0)
             base[prov] = v
+        fall = CONFIG['SEASON'] and self.game.get_current_phase().startswith('F')
+        if fall:
+            for prov in base:
+                if prov in info['scset']:
+                    base[prov] *= CONFIG['FALL_SC_MULT']
+        iters = CONFIG['FALL_DIFF_ITERS'] if fall else CONFIG['DIFF_ITERS']
         values = {}
         for t in ('A', 'F'):
             adj = info['adj'][t]
             b = {l: base[_base(l)] for l in adj}
             v = dict(b)
-            for _ in range(CONFIG['DIFF_ITERS']):
+            for _ in range(iters):
                 nv = {}
                 for l, nbrs in adj.items():
                     if nbrs:
