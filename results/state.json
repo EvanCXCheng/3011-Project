@@ -418,9 +418,9 @@
    "created": "2026-09-27T11:13",
    "family": "search",
    "file": "bots/bot_047_search_aggcand.py",
-   "note": "",
+   "note": "aggressive plan as candidate: S2 +0.16\u00b10.38, S3 +0.36\u00b10.46, pooled +0.17\u00b10.20 vs bot_022 (n.s.)",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "multi-source-candidates"
   },
   "bot_048": {

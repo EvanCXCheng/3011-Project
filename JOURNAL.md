@@ -811,7 +811,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: against the provided baselines, relentless supported aggression is nearly as good as the simulation
   champion. Ideas: bot_040's plan as a candidate in bot_022's race; bot_040 is a key S4 sparring partner.
 
-## [062] bot_047 search/aggcand — RUNNING
+## [062] bot_047 search/aggcand — REJECTED
 
 - family: search | parent: bot_022 | tags: multi-source-candidates (aggressive archetype plan)
 - hypothesis: bot_040's all-out aggressive plan ties bot_022 in S2; adding it to bot_022's race lets the rollouts use
@@ -846,3 +846,5 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 
 - parent bot_046 | tags: scenario-detection. Holder-aware priors only when every opponent with units is static.
 - plan: queue q14 vs bot_036 (T1 bot_001, T2 bot_004 B126).
+- bot_047 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.19±0.35 (77.0%) / S3 14.44±0.47 (61.9%). vs bot_022: S2 +0.16±0.38,
+  S3 +0.36±0.46, pooled +0.17±0.20 → REJECT (n.s.; the race already covers most of what the aggressive plan offers).
