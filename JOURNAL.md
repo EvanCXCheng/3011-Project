@@ -1064,7 +1064,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs baselines but last in the strong-bot tournament), archetype (bot_040, sparring). DORMANT: greedy, valuemap,
   positional, adaptive, bandit.
 
-## [085] bot_065 evolution/poolga — RUNNING
+## [085] bot_065 evolution/poolga — PROMOTED (evolution family champion)
 
 - family: evolution | parent: bot_045 (code) / bot_062 (idea) | tags: genetic-algorithm, seeded-population
 - GA replaces bot_045's halving race: population = bot_045's candidate pool (hill-climb optima, lookahead candidates,
@@ -1072,3 +1072,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   (two-ply in Spring), keep the better half, refill by uniform crossover + 10% mutation with support/convoy repair.
 - checks: rollout path verified (evolved plan appended and returned each move); S3 seeds 12/13 → 18/18, tmax 0.455 s.
 - plan: queue q34 vs bot_045 (T1 bot_001, T2 bot_004 B126).
+- bot_065 Tier 2 B126 (stand-in 004): S1 18.00 / S2 17.17±0.23 (88.1%) / S3 15.60±0.39 (70.6%) — best S2/S3 on these
+  seeds so far. vs bot_045 S2 +0.44±0.29, S3 +0.27±0.50, pooled +0.24±0.19 (z≈1.3 < 1.5: no extension) → not overall.
+  vs bot_062 S2 +0.48, S3 +1.21, pooled +0.56±0.19 → PROMOTE → evolution family champion.
