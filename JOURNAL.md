@@ -722,6 +722,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   order as a third source lets the rollouts use its 2v1/strength-aware plans when they are better.
 - checks: pool 14–21 per phase incl. the VM candidate; S2/S3 seed 12 sanity below; no errors.
 - plan: queue q4 (after q3).
+- Tier 1 A42: pooled +0.15±0.33 vs bot_022. Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.48±0.30 (77.0%) /
+  S3 14.63±0.45 (62.7%); vs bot_022 S2 +0.44±0.33, S3 +0.55±0.47, pooled +0.33±0.19 (z≈1.7) → extension rule [040]:
+  extend to 210 on S2/S3 (core 0, 1 worker).
 
 ## [054] bot_036 bandit/pairs — RUNNING
 
