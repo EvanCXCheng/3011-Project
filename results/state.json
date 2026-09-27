@@ -566,6 +566,15 @@
    "parent": "bot_061",
    "status": "RUNNING",
    "tags": "plan-level-consensus"
+  },
+  "bot_064": {
+   "created": "2026-09-28T02:54",
+   "family": "evolution",
+   "file": "bots/bot_064_evolution_twoply.py",
+   "note": "",
+   "parent": "bot_062",
+   "status": "RUNNING",
+   "tags": "two-ply-spring"
   }
  },
  "families": {
@@ -595,7 +604,7 @@
   },
   "evolution": {
    "champion": "bot_062",
-   "iterations": 2,
+   "iterations": 3,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -644,7 +653,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 64,
+ "next_bot_id": 65,
  "overall_champions": [
   {
    "bot": "bot_001",

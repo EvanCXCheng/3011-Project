@@ -1033,3 +1033,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_062 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.69±0.29 (82.5%) / S3 14.39±0.47 (57.9%) → est. 15. vs bot_059:
   S2 +1.13±0.33, S3 +2.40±0.55, pooled +1.18±0.22 → PROMOTE → evolution champion. Seeding the GA with rule planners'
   plans is what makes evolution competitive.
+- bot_062 vs champion bot_045 (same seeds): S2 −0.04±0.36, S3 −0.94±0.49, pooled −0.33±0.20 → not overall.
+
+## [082] bot_064 evolution/twoply — RUNNING
+
+- parent bot_062 | tags: two-ply-spring (GA fitness in Spring = SC ownership after a greedy Fall reply; LOO showed two-ply
+  worth ≈0.5 SC inside bot_045). Sanity S2/S3 seed 13 → 18/7. plan: queue q31 vs bot_062 (T1 bot_001, T2 bot_004 B126).
