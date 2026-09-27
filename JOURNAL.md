@@ -734,3 +734,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_038 valuemap/season (parent bot_014, rule-based): Fall SC values ×1.5 with 2 diffusion passes, Spring full 6.
   Sanity S1 18/18, S2 18/3, S3 13/18.
 - plan: queue q6 (queue_family.sh): 037 vs bot_012 (T1 greedy, T2 bot_001 B210); 038 vs bot_014 (T1/T2 bot_001, B210).
+- bot_039 positional/frontline (parent bot_017, rule-based): idle rear units outside enemy reach step toward the
+  nearest enemy-owned SC. Sanity S1 18/16, S2 8/6, S3 12/1.
+- new family 'archetype' (human permission): one fresh rule engine, three styles as separate bots —
+  bot_040 aggressive (enemy SCs first, all supporters into attacks, no defence), bot_041 turtle (garrison +
+  support-hold first, neutral SCs within 2 only, 3v1 attacks), bot_042 opportunist (weakest reachable power's SCs).
+  Sanity S1/S2 seed 12: 040 18/18, 041 16/9, 042 18/5; tmax ≤ 3 ms, no errors.
+- plan: queue q7: 039 vs bot_017 (T1/T2 bot_004, B126); 040–042 vs bot_012 for reference (T1 greedy, T2 bot_001, B210).

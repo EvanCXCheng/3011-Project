@@ -341,6 +341,42 @@
    "parent": "bot_014",
    "status": "RUNNING",
    "tags": "season-weights"
+  },
+  "bot_039": {
+   "created": "2026-09-27T08:41",
+   "family": "positional",
+   "file": "bots/bot_039_positional_frontline.py",
+   "note": "",
+   "parent": "bot_017",
+   "status": "RUNNING",
+   "tags": "front-consolidation"
+  },
+  "bot_040": {
+   "created": "2026-09-27T08:42",
+   "family": "archetype",
+   "file": "bots/bot_040_archetype_aggressive.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "archetype-aggressive"
+  },
+  "bot_041": {
+   "created": "2026-09-27T08:42",
+   "family": "archetype",
+   "file": "bots/bot_041_archetype_turtle.py",
+   "note": "",
+   "parent": "bot_040",
+   "status": "RUNNING",
+   "tags": "archetype-turtle"
+  },
+  "bot_042": {
+   "created": "2026-09-27T08:42",
+   "family": "archetype",
+   "file": "bots/bot_042_archetype_opportunist.py",
+   "note": "",
+   "parent": "bot_040",
+   "status": "RUNNING",
+   "tags": "archetype-opportunist"
   }
  },
  "families": {
@@ -349,6 +385,12 @@
    "iterations": 3,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
+  },
+  "archetype": {
+   "champion": null,
+   "iterations": 3,
+   "reason": "new",
+   "status": "ACTIVE"
   },
   "bandit": {
    "champion": null,
@@ -370,7 +412,7 @@
   },
   "positional": {
    "champion": "bot_017",
-   "iterations": 3,
+   "iterations": 4,
    "reason": "3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC)",
    "status": "DORMANT"
   },
@@ -397,7 +439,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 39,
+ "next_bot_id": 43,
  "overall_champions": [
   {
    "bot": "bot_001",

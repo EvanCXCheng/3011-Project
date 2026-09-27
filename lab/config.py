@@ -54,7 +54,7 @@ RUBRIC = {
     3: [(1, 0.02, 7), (3, 0.20, 9), (5, 0.40, 12)],
 }
 
-FAMILIES = ['greedy', 'valuemap', 'search', 'lookahead', 'adaptive', 'positional', 'bandit']
+FAMILIES = ['greedy', 'valuemap', 'search', 'lookahead', 'adaptive', 'positional', 'bandit', 'archetype']
 FAMILY_CAP = 0.40
 FAMILY_MIN_ITERS = 3
 
