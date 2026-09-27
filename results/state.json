@@ -548,6 +548,15 @@
    "parent": "bot_060",
    "status": "RUNNING",
    "tags": "ensemble-voting"
+  },
+  "bot_062": {
+   "created": "2026-09-28T02:06",
+   "family": "evolution",
+   "file": "bots/bot_062_evolution_seeded.py",
+   "note": "",
+   "parent": "bot_059",
+   "status": "RUNNING",
+   "tags": "genetic-algorithm"
   }
  },
  "families": {
@@ -577,7 +586,7 @@
   },
   "evolution": {
    "champion": "bot_059",
-   "iterations": 1,
+   "iterations": 2,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -626,7 +635,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 62,
+ "next_bot_id": 63,
  "overall_champions": [
   {
    "bot": "bot_001",

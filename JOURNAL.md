@@ -1015,3 +1015,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity: S1 seeds 13/14/15 → 6/18/18 (bot_060: 18/18/18): with four voters 2–2 ties become common and the tie-break
   can pick a bad mix (Turkey, seed 13). Evaluated as is (fast rule bot) to measure it.
 - plan: queue q28 vs bot_060 (T1 bot_001, T2 bot_004 B126).
+
+## [080] bot_062 evolution/seeded — RUNNING
+
+- parent bot_059 | tags: genetic-algorithm, seeded-population. Initial population also holds the plans of three rule
+  planners (aggressive, valuemap, greedy no-bounce), genes extended where needed.
+- bug caught before evaluation: the copied greedy planner read CONFIG['CONVOYS'] (missing) → that seed was silently
+  skipped. Fixed (keys added, convoys off). A check over all 62 bot files found no other missing CONFIG keys.
+- sanity S1/S2/S3 seed 13 → 18/18/8 SC, tmax 0.465 s. plan: queue q29 vs bot_059 (T1 bot_001, T2 bot_004 B126).
