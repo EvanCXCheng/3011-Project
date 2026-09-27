@@ -1056,3 +1056,19 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - family review pending one measurement: bot_038 S3 vs a strong stand-in (only measured vs bot_001 so far) → q33.
 - test_21.py: default ablation keys updated for the new champion's switches (ROLLOUT, LA_CANDS, VM_CANDS, TWO_PLY,
   CONVOYS, HALVING, ACC_GATE, OPP_AWARE); all present in agent_21.py; smoke-tested (ablate TWO_PLY, 1 game). 20 KB.
+
+## [084] Family review (after bots 045–064) — DONE
+
+- bot_038 S3 vs strong stand-in (bot_004, B126): 11.00±0.55 (34.9%) → est. 13 (S3 3 pts) → valuemap DORMANT.
+- ACTIVE: search (champion bot_045), lookahead (bot_024, est 15), evolution (bot_062, est 15), ensemble (bot_060, est 15
+  vs baselines but last in the strong-bot tournament), archetype (bot_040, sparring). DORMANT: greedy, valuemap,
+  positional, adaptive, bandit.
+
+## [085] bot_065 evolution/poolga — RUNNING
+
+- family: evolution | parent: bot_045 (code) / bot_062 (idea) | tags: genetic-algorithm, seeded-population
+- GA replaces bot_045's halving race: population = bot_045's candidate pool (hill-climb optima, lookahead candidates,
+  valuemap plan, convoys); genes = each unit's orders seen in the pool + hold; per generation 2 shared opponent samples
+  (two-ply in Spring), keep the better half, refill by uniform crossover + 10% mutation with support/convoy repair.
+- checks: rollout path verified (evolved plan appended and returned each move); S3 seeds 12/13 → 18/18, tmax 0.455 s.
+- plan: queue q34 vs bot_045 (T1 bot_001, T2 bot_004 B126).

@@ -697,3 +697,4 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-031431_bot_064_evolution_twoply_tier2,2026-09-28T03:43,bot_064_evolution_twoply,956644c29f,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4757,0,90.0,0,0,0,0
 20260928-031431_bot_064_evolution_twoply_tier2,2026-09-28T03:43,bot_064_evolution_twoply,956644c29f,tier2,B,2,,126,0,0.7778,16.2778,0.3434,5,False,0.4842,0,95.7,0,0,0,0
 20260928-031431_bot_064_evolution_twoply_tier2,2026-09-28T03:43,bot_064_evolution_twoply,956644c29f,tier2,B,3,bot_004_lookahead_base,126,0,0.5635,13.8968,0.5005,5,False,0.4923,0,97.4,0,0,0,0
+20260928-041954_bot_038_valuemap_season_strongstandin,2026-09-28T04:29,bot_038_valuemap_season,2d6f5b792d,strongstandin,B,3,bot_004_lookahead_base,126,0,0.3492,11.0,0.5537,3,False,0.0364,0,96.9,0,0,0,0

@@ -575,6 +575,15 @@
    "parent": "bot_062",
    "status": "REJECTED",
    "tags": "two-ply-spring"
+  },
+  "bot_065": {
+   "created": "2026-09-28T04:29",
+   "family": "evolution",
+   "file": "bots/bot_065_evolution_poolga.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "genetic-algorithm,seeded-population"
   }
  },
  "families": {
@@ -604,7 +613,7 @@
   },
   "evolution": {
    "champion": "bot_062",
-   "iterations": 3,
+   "iterations": 4,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -635,7 +644,7 @@
   "valuemap": {
    "champion": "bot_038",
    "iterations": 5,
-   "reason": "3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13",
+   "reason": "champion bot_038 est 13 vs strong stand-in (S3 11.00, 34.9%) vs overall 15",
    "status": "DORMANT"
   }
  },
@@ -653,7 +662,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 65,
+ "next_bot_id": 66,
  "overall_champions": [
   {
    "bot": "bot_001",
