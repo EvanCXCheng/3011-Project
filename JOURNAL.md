@@ -890,3 +890,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - The rollout score weights and pool sizes were set in bot_004/020/022 and never tuned. --set variants on B126 S2/S3
   (stand-in 004), paired with bot_045: R_W_UNIT=1.0 (0.6), R_W_DIST=0.1 (0.05), N_LA=20 (12), SEARCH_BUDGET=0.10 (0.15).
   Extension rule applies (z ≥ 1.5 → 210); a winner becomes a new bot file (tuning, not a technique). Queue q17.
+
+## [069] bot_051 search/policyopp — RUNNING
+
+- family: search | parent: bot_045 | tags: policy-opponent-model
+- motivation: [067] hardest Hidden-Agent styles are aggressive (13.75) and lookahead (13.97). 'strong' powers are
+  sampled from a fixed mix; now, per rollout round, a strong power plays with p=0.5 the orders our aggressive rule
+  engine (bot_040) would give as that power (computed once per turn from its point of view).
+- check: in a 1901–1904 test game, 24/24 policy predictions computed for the 3 opponents classed strong.
+- plan: queue q18 vs bot_045 (T1 bot_001, T2 bot_004 B126); also re-run its S3 vs bot_040 and bot_024 if promising.

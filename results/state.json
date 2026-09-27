@@ -449,6 +449,15 @@
    "parent": "bot_045",
    "status": "REJECTED",
    "tags": "multi-source-candidates"
+  },
+  "bot_051": {
+   "created": "2026-09-27T18:24",
+   "family": "search",
+   "file": "bots/bot_051_search_policyopp.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "policy-opponent-model"
   }
  },
  "families": {
@@ -490,7 +499,7 @@
   },
   "search": {
    "champion": "bot_045",
-   "iterations": 18,
+   "iterations": 19,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -513,7 +522,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 51,
+ "next_bot_id": 52,
  "overall_champions": [
   {
    "bot": "bot_001",
