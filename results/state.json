@@ -611,12 +611,21 @@
    "parent": "bot_045",
    "status": "REJECTED",
    "tags": "risk-averse-selection"
+  },
+  "bot_069": {
+   "created": "2026-09-28T06:44",
+   "family": "adaptive",
+   "file": "bots/bot_069_adaptive_oppsupport.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "coordinated-opponent-model"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_009",
-   "iterations": 6,
+   "iterations": 7,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
   },
@@ -689,7 +698,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 69,
+ "next_bot_id": 70,
  "overall_champions": [
   {
    "bot": "bot_001",

@@ -1108,3 +1108,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   criterion. Risk aversion, if any, belongs in the S3/S4 opponent model, not the selection rule.
 - human direction (28 Sep): next priorities are (a) a fast own move resolver for rollouts, validated against the
   engine, and (b) S4 fixes vs the styles bot_045 is weakest against (aggressive bot_040, lookahead bot_024).
+
+## [089] bot_069 adaptive/oppsupport — RUNNING
+
+- parent bot_045 | tags: coordinated-opponent-model (S4 priority, human direction 28 Sep). Rollout sampling: for
+  opponents classified 'strong', a sampled holder supports one of its power's sampled moves when legal (p 0.8).
+  bot_045 samples units independently, so sampled attacks were almost never supported; the aggressive and lookahead
+  styles (hardest Hidden Agents in [067]) do support attacks.
+- checks: support string format matches the engine; instrumented 10-phase game vs bot_040 field: 290 coordinated
+  rounds, 39 supports added. S3 seeds 7/8/9 vs stand-in 040: 4/8/18 (bot_045: 1/18/4) — noise, no errors.
+- plan: queue q38: T0 X3; T1 A42 (001) vs bot_045; S3 B126 with stand-ins 040 and 024 (bot_045 refs from [067]);
+  T2 B126 (004) vs bot_045.
