@@ -555,3 +555,11 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260927-175312_bot_045_search_stack_sparring,2026-09-27T18:01,bot_045_search_stack,d9e994d594,sparring,B,3,bot_017_positional_threatw,126,0,0.7619,15.9127,0.4032,5,False,0.4946,0,95.6,0,0,0,0
 20260927-180103_bot_045_search_stack_sparring,2026-09-27T18:16,bot_045_search_stack,d9e994d594,sparring,B,3,bot_036_bandit_pairs,126,0,0.6905,15.0476,0.4521,5,False,0.4888,0,97.7,0,0,0,0
 20260927-181601_bot_045_search_stack_sparring,2026-09-27T18:23,bot_045_search_stack,d9e994d594,sparring,B,3,bot_040_archetype_aggressive,126,0,0.5952,13.754,0.5197,5,False,0.481,0,96.6,0,0,0,0
+20260927-182414_bot_045_search_stack_tuning,2026-09-27T18:46,bot_045_search_stack[R_W_UNIT=1.0],d9e994d594,tuning,B,2,,126,0,0.8889,17.2381,0.2198,5,False,0.4726,0,96.1,0,0,0,0
+20260927-182414_bot_045_search_stack_tuning,2026-09-27T18:46,bot_045_search_stack[R_W_UNIT=1.0],d9e994d594,tuning,B,3,bot_004_lookahead_base,126,0,0.6587,14.7857,0.4628,5,False,0.4863,0,97.4,0,0,0,0
+20260927-184604_bot_045_search_stack_tuning,2026-09-27T19:08,bot_045_search_stack[R_W_DIST=0.1],d9e994d594,tuning,B,2,,126,0,0.873,17.2063,0.2212,5,False,0.487,0,95.8,0,0,0,0
+20260927-184604_bot_045_search_stack_tuning,2026-09-27T19:08,bot_045_search_stack[R_W_DIST=0.1],d9e994d594,tuning,B,3,bot_004_lookahead_base,126,0,0.627,14.6429,0.459,5,False,0.4853,0,97.2,0,0,0,0
+20260927-190802_bot_045_search_stack_tuning,2026-09-27T19:29,bot_045_search_stack[N_LA=20],d9e994d594,tuning,B,2,,126,0,0.8571,17.1111,0.2324,5,False,0.4867,0,96.3,0,0,0,0
+20260927-190802_bot_045_search_stack_tuning,2026-09-27T19:29,bot_045_search_stack[N_LA=20],d9e994d594,tuning,B,3,bot_004_lookahead_base,126,0,0.6508,14.9444,0.4536,5,False,0.4874,0,96.6,0,0,0,0
+20260927-192925_bot_045_search_stack_tuning,2026-09-27T19:51,bot_045_search_stack[SEARCH_BUDGET=0.1],d9e994d594,tuning,B,2,,126,0,0.9206,17.3651,0.223,5,False,0.4805,0,94.9,0,0,0,0
+20260927-192925_bot_045_search_stack_tuning,2026-09-27T19:51,bot_045_search_stack[SEARCH_BUDGET=0.1],d9e994d594,tuning,B,3,bot_004_lookahead_base,126,0,0.7222,15.6825,0.3867,5,False,0.4873,0,96.9,0,0,0,0

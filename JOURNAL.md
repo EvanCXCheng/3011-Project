@@ -885,7 +885,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   (71.4%), vs 036 bandit 15.05±0.45 (69.0%), vs 038 valuemap 14.89±0.46 (67.5%), vs 024 lookahead 13.97±0.50 (57.9%),
   vs 040 aggressive 13.75±0.52 (59.5%). All above the S3 5-pt lines; hardest: aggressive and lookahead opponents.
 
-## [068] Tuning sweep on bot_045 — RUNNING
+## [068] Tuning sweep on bot_045 — DONE
 
 - The rollout score weights and pool sizes were set in bot_004/020/022 and never tuned. --set variants on B126 S2/S3
   (stand-in 004), paired with bot_045: R_W_UNIT=1.0 (0.6), R_W_DIST=0.1 (0.05), N_LA=20 (12), SEARCH_BUDGET=0.10 (0.15).
@@ -899,3 +899,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   engine (bot_040) would give as that power (computed once per turn from its point of view).
 - check: in a 1901–1904 test game, 24/24 policy predictions computed for the 3 opponents classed strong.
 - plan: queue q18 vs bot_045 (T1 bot_001, T2 bot_004 B126); also re-run its S3 vs bot_040 and bot_024 if promising.
+- results (B126 S2/S3 vs bot_045): R_W_UNIT=1.0 S2 +0.51 S3 −0.54 pooled −0.02±0.27; R_W_DIST=0.1 +0.48/−0.68, −0.10±0.31;
+  N_LA=20 +0.38/−0.38, 0.00±0.28; SEARCH_BUDGET=0.1 S2 17.37 (92.1%) +0.63, S3 15.68 (72.2%) +0.36, pooled +0.50±0.26
+  (z≈1.9) → extension rule: SEARCH_BUDGET=0.1 to 210 on S2/S3 (queued after bot_051).
+- note: all four variants are +0.4–0.6 in S2 → bot_045's own B126 S2 (16.73) was probably on the low side; the 210
+  comparison uses its 210-game S2 (16.60).
