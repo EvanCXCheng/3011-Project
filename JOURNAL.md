@@ -819,3 +819,5 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: generator returns legal plans (e.g. S1901 France: A MAR - SPA, F BRE - ENG, A PAR - BUR); S2 seeds 12/13 →
   18/10 SC, no errors.
 - plan: queue q12 (queue_bots.sh vs bot_022).
+- bot_043 adaptive/hitrate (B126, stand-in 004): S1 18.00 (100%) / S2 12.87±0.49 (42.9%) / S3 9.87±0.52 (19.8%);
+  vs bot_005 pooled −0.03±0.23 → REJECTED (no effect): the rule plan does not use the finer threat model much.

@@ -382,9 +382,9 @@
    "created": "2026-09-27T08:43",
    "family": "adaptive",
    "file": "bots/bot_043_adaptive_hitrate.py",
-   "note": "",
+   "note": "style-pure adaptive with hit-rate classes: pooled -0.03\u00b10.23 vs bot_005 (no effect)",
    "parent": "bot_005",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "prediction-accuracy-gating"
   },
   "bot_044": {
