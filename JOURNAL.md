@@ -842,7 +842,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs bot_036: S1 +2.48±0.43, S2 −0.89±0.39, S3 −0.92±0.59, pooled +0.22±0.29 → REJECT (trade-off).
   Family review: bandit → DORMANT (3 iters, est. 11 vs 15).
 
-## [064] bot_048 bandit/s1switch — RUNNING (dormant family revisited: clear fix)
+## [064] bot_048 bandit/s1switch — REJECTED (dormant family revisited: clear fix)
 
 - parent bot_046 | tags: scenario-detection. Holder-aware priors only when every opponent with units is static.
 - plan: queue q14 vs bot_036 (T1 bot_001, T2 bot_004 B126).
@@ -866,3 +866,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 +1.74±0.60, pooled +0.98±0.24 (z≈4) → promotion confirmed on unseen seeds.
 - test.py (course script, S2, repeat 1): runs cleanly, 71% wins.
 - takeaway: several individually non-significant ideas targeting different weaknesses combined into a clear gain.
+- bot_048 Tier 2 B126 (stand-in 004): S1 14.13±0.42 (54.0%) / S2 14.91±0.39 (57.1%) / S3 11.75±0.49 (32.5%). vs bot_036:
+  S1 +2.37±0.43, S2 −0.43±0.36, S3 −0.58±0.53, pooled +0.46±0.26 → REJECT (n.s.). The S1 gain is real; S2/S3 within
+  noise. Not extended: the extension rule targets champion challengers, and bandit is a dormant sparring family.

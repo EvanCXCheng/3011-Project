@@ -427,9 +427,9 @@
    "created": "2026-09-27T13:20",
    "family": "bandit",
    "file": "bots/bot_048_bandit_s1switch.py",
-   "note": "",
+   "note": "S1-only holder priors: S1 +2.37\u00b10.43 (54% wins), S2 -0.43, S3 -0.58 (noise); pooled +0.46\u00b10.26 vs bot_036 (n.s.)",
    "parent": "bot_046",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "scenario-detection"
   },
   "bot_049": {
