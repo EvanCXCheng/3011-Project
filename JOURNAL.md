@@ -983,8 +983,21 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: all three parts help inside the stack (consistent with additivity); valuemap candidate matters most (S3),
   then two-ply Spring, convoys least. Report: leave-one-out table next to the one-at-a-time results (026/028/035).
 
-## [077] bot_058 search/stackfast — RUNNING
+## [077] bot_058 search/stackfast — REJECTED
 
 - parent bot_045 | tags: shared-opponent-rollouts. Two-ply halves Spring rollouts, so the ×1.5 speed-up (neutral on
   bot_022 in 025) may matter here. Check: 1583/1586 processes moved units (the rest are retreat steps in the two-ply
   reply); S3 seeds 12/13 → 18/7. plan: queue q26 vs bot_045 (T1 bot_001, T2 bot_004 B126).
+- bot_058 Tier 2 B126: S2 17.13±0.24 (88.1%) / S3 14.98±0.44 (68.3%); vs bot_045 S2 +0.40, S3 −0.35, pooled +0.02±0.21
+  → REJECT: rollout count is not the bottleneck for bot_045 either.
+
+## [078] New families: evolution (bot_059), ensemble (bot_060) — RUNNING
+
+- bot_059 evolution/base (new family, genetic-algorithm): population of 12 joint plans (greedy plan + mutations),
+  per generation all plans vs the same 2 fresh opponent samples (shared-opponent copies), keep the better half by
+  running mean fitness, refill by uniform crossover + 15% per-unit mutation, until 0.45 s; play the best mean.
+  Sanity S1/S2/S3 seed 12 → 18/18/18, tmax 0.453 s.
+- bot_060 ensemble/vote (new family, ensemble-voting): per-unit majority vote of three rule planners (aggressive
+  bot_040, valuemap bot_014-style, greedy no-bounce); ties aggressive > valuemap > greedy; support repair. No
+  simulation, ~2 ms/move. All three voters verified. Sanity S1/S2/S3 seed 12 → 18/18/18.
+- plan: queue q27, both vs bot_045 for reference (T1 bot_001, T2 bot_004 B126); new families → Tier 2 regardless.

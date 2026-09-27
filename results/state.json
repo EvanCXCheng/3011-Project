@@ -517,10 +517,28 @@
    "created": "2026-09-28T00:35",
    "family": "search",
    "file": "bots/bot_058_search_stackfast.py",
-   "note": "",
+   "note": "shared-opponent rollouts on bot_045: S2 +0.40, S3 -0.35, pooled +0.02\u00b10.21",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "shared-opponent-rollouts"
+  },
+  "bot_059": {
+   "created": "2026-09-28T01:10",
+   "family": "evolution",
+   "file": "bots/bot_059_evolution_base.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "genetic-algorithm"
+  },
+  "bot_060": {
+   "created": "2026-09-28T01:10",
+   "family": "ensemble",
+   "file": "bots/bot_060_ensemble_vote.py",
+   "note": "",
+   "parent": "none",
+   "status": "RUNNING",
+   "tags": "ensemble-voting"
   }
  },
  "families": {
@@ -541,6 +559,18 @@
    "iterations": 4,
    "reason": "3 iters (034/036/046); champion bot_036 est 11 vs overall 15",
    "status": "DORMANT"
+  },
+  "ensemble": {
+   "champion": null,
+   "iterations": 1,
+   "reason": "new",
+   "status": "ACTIVE"
+  },
+  "evolution": {
+   "champion": null,
+   "iterations": 1,
+   "reason": "new",
+   "status": "ACTIVE"
   },
   "greedy": {
    "champion": "bot_012",
@@ -585,7 +615,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 59,
+ "next_bot_id": 61,
  "overall_champions": [
   {
    "bot": "bot_001",
