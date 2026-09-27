@@ -386,6 +386,15 @@
    "parent": "bot_005",
    "status": "RUNNING",
    "tags": "prediction-accuracy-gating"
+  },
+  "bot_044": {
+   "created": "2026-09-27T08:53",
+   "family": "search",
+   "file": "bots/bot_044_search_empmix.py",
+   "note": "",
+   "parent": "bot_022",
+   "status": "RUNNING",
+   "tags": "empirical-opponent-mix"
   }
  },
  "families": {
@@ -427,7 +436,7 @@
   },
   "search": {
    "champion": "bot_022",
-   "iterations": 13,
+   "iterations": 14,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -448,7 +457,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 44,
+ "next_bot_id": 45,
  "overall_champions": [
   {
    "bot": "bot_001",

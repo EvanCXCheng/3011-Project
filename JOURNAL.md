@@ -744,3 +744,18 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_043 adaptive/hitrate (parent bot_005, style-pure rules): hit-rate opponent classes (≥0.85 greedy, ≥0.4 strong,
   else erratic); 'strong' units threaten every adjacent province and probably hold (0.85). Sanity S1 18/18, S2 16/9,
   S3 18/2 (stand-in 004). plan: queue q8 vs bot_005 (T1 bot_003, T2 bot_004, B126).
+
+## [056] Classifier check vs differently styled bots — DONE
+
+- bot_022 in AUSTRIA vs six of our styles (to S1908): all → 'strong': bot_012 hit 0.71 hold 0.00, bot_014 0.47/0.30,
+  bot_040 0.62/0.06, bot_041 0.40/0.07, bot_042 0.49/0.44, bot_024 0.68/0.00. With baselines in the field: Greedy →
+  greedy (0.86), Attitude → erratic (0.18), Random → erratic (0.10). → vs other groups' agents bot_022 will treat almost
+  every competent bot with one cautious model (30/20/50 mix, worst-case threat): robust but not style-exploiting.
+
+## [057] bot_044 search/empmix — RUNNING
+
+- family: search | parent: bot_022 | tags: empirical-opponent-mix
+- hypothesis: blending each opponent's class mix with its own observed hold / greedy-hit / other rates (weight
+  n/(n+10)) fits the varied 'strong' styles ([056]) better → gains vs varied opponents (S3, S4).
+- checks: rollout path runs; S3 seeds 12/13 (stand-in 004) → 18/7, tmax 0.454 s.
+- plan: queue q9 (queue_bots.sh vs bot_022); also include it in the final style tournament.
