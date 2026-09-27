@@ -346,9 +346,9 @@
    "created": "2026-09-27T08:41",
    "family": "positional",
    "file": "bots/bot_039_positional_frontline.py",
-   "note": "",
+   "note": "front consolidation: pooled +0.05\u00b10.20 vs bot_017 (no effect)",
    "parent": "bot_017",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "front-consolidation"
   },
   "bot_040": {
@@ -357,25 +357,25 @@
    "file": "bots/bot_040_archetype_aggressive.py",
    "note": "",
    "parent": "none",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "archetype-aggressive"
   },
   "bot_041": {
    "created": "2026-09-27T08:42",
    "family": "archetype",
    "file": "bots/bot_041_archetype_turtle.py",
-   "note": "",
+   "note": "turtle archetype (sparring): S1 14.3 (0%), S2 6.5, S3 5.8",
    "parent": "bot_040",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "archetype-turtle"
   },
   "bot_042": {
    "created": "2026-09-27T08:42",
    "family": "archetype",
    "file": "bots/bot_042_archetype_opportunist.py",
-   "note": "",
+   "note": "opportunist archetype (sparring): S1 17.6 (81%), S2 8.1, S3 7.3",
    "parent": "bot_040",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "archetype-opportunist"
   },
   "bot_043": {
@@ -423,7 +423,7 @@
    "status": "DORMANT"
   },
   "archetype": {
-   "champion": null,
+   "champion": "bot_040",
    "iterations": 3,
    "reason": "new",
    "status": "ACTIVE"
@@ -467,6 +467,7 @@
  },
  "hall_of_fame": [
   "bot_009",
+  "bot_040",
   "bot_036",
   "bot_012",
   "bot_024",
@@ -505,6 +506,10 @@
  ],
  "standin_rotation": 0,
  "techniques": {
+  "archetype-aggressive": {
+   "bot": "bot_040",
+   "effect": "rule bot, 40 ms: S1 18.00 (100%), S2 15.91 (76.7%) = bot_022 (S2 paired -0.15\u00b10.39); S3 15.94 vs weak stand-in"
+  },
   "bfs-greedy": {
    "bot": "bot_001",
    "effect": "basic technique: est. mark 2 (B210: S1 6.14, S2 7.43, S3 6.75)"

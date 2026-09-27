@@ -797,3 +797,16 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   (54.8%) / S3 12.32±0.41 (40.0%) → est. 15 (S3 vs weak stand-in). vs bot_014 pooled +1.02±0.17 → PROMOTED → valuemap
   champion. A 35–55 ms rule bot at est. 15: strong sparring partner and a fast fallback design. S3 to be re-measured
   with a strong stand-in for the final field.
+
+## [061] Sparring field round 1 results: bots 039–042 — DONE
+
+- bot_039 positional/frontline: Tier 2 B126 (stand-in 004): S1 17.71 (85.7%) / S2 10.48±0.48 (24.6%) / S3 7.82±0.44 (9.5%);
+  vs bot_017 pooled +0.05±0.20 → REJECTED (no effect).
+- bot_040 archetype aggressive (B210, stand-in 001): S1 18.00 (100%) / S2 15.91±0.31 (76.7%) / S3 15.94±0.30 (77.1%);
+  vs bot_012 pooled +4.00±0.23. **Paired vs bot_022 (S1+S2): S1 0, S2 −0.15±0.39 → statistically tied with the
+  champion against the baseline mix**, at 40 ms per move. → archetype family champion. S3 vs a strong stand-in
+  (bot_004, B210) running on core 0 for a paired S3 comparison.
+- bot_041 turtle: S1 14.29 (0%) / S2 6.53 / S3 5.76 — passive by design (sparring only).
+- bot_042 opportunist: S1 17.59 (81.4%) / S2 8.08 / S3 7.29 — focusing one victim leaves it exposed.
+- takeaway: against the provided baselines, relentless supported aggression is nearly as good as the simulation
+  champion. Ideas: bot_040's plan as a candidate in bot_022's race; bot_040 is a key S4 sparring partner.
