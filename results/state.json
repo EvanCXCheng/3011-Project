@@ -508,9 +508,9 @@
    "created": "2026-09-27T22:52",
    "family": "adaptive",
    "file": "bots/bot_057_adaptive_vulture.py",
-   "note": "",
+   "note": "vulture candidate: S2 +0.46\u00b10.38, S3 +0.02, pooled +0.16\u00b10.20 vs bot_045",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "vulture-candidate"
   }
  },
@@ -752,6 +752,10 @@
   "value-map": {
    "bot": "bot_002",
    "effect": "pooled +2.20\u00b10.20 SC vs bot_001 (630 paired, B); S1 +6.14\u00b10.20"
+  },
+  "vulture-candidate": {
+   "bot": "bot_057",
+   "effect": "pooled +0.16\u00b10.20 SC vs bot_045 (378 paired, B; n.s.)"
   }
  }
 }

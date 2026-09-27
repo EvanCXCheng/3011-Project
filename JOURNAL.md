@@ -961,10 +961,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_056 Tier 2 B210 (stand-in 001): S1 12.29 (28.6%) / S2 14.09±0.36 (53.8%) / S3 12.15±0.39 (38.1%); vs bot_012 S1 0,
   S2 +0.60±0.33, S3 +0.07±0.36, pooled +0.22±0.16 → REJECT (n.s.; England +0.21±0.36 over 90 games).
 
-## [075] bot_057 adaptive/vulture — RUNNING (adaptive family revisited)
+## [075] bot_057 adaptive/vulture — REJECTED (adaptive family revisited)
 
 - parent bot_045 | tags: vulture-candidate. A power is 'weakened' if a third power stands on one of its SCs, ≥2 other
   (not ours) units are adjacent to its SCs, or it owns fewer SCs than at the start of the year. One extra race
   candidate = greedy plan aimed only at weakened powers' SCs.
 - checks: 4–12 vulture target SCs per phase in a random-opponent test game; S3 seeds 12/13 (stand-in 004) → 18/12 SC.
 - plan: queue q24 vs bot_045 (T1 bot_001, T2 bot_004 B126).
+- bot_057 Tier 2 B126 (stand-in 004): S2 17.19±0.26 (89.7%) / S3 15.35±0.42 (70.6%); vs bot_045 S2 +0.46±0.38,
+  S3 +0.02±0.46, pooled +0.16±0.20 → REJECT (n.s.).

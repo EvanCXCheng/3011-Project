@@ -619,3 +619,12 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260927-224851_bot_056_greedy_convoy_tier2,2026-09-27T22:51,bot_056_greedy_convoy,27ad4f9e7d,tier2,B,1,,210,0,0.2857,12.2857,0.328,3,True,0.0527,0,132.8,0,0,0,0
 20260927-224851_bot_056_greedy_convoy_tier2,2026-09-27T22:51,bot_056_greedy_convoy,27ad4f9e7d,tier2,B,2,,210,0,0.5381,14.0857,0.3575,5,False,0.0538,0,135.5,0,0,0,0
 20260927-224851_bot_056_greedy_convoy_tier2,2026-09-27T22:51,bot_056_greedy_convoy,27ad4f9e7d,tier2,B,3,bot_001_greedy_base,210,0,0.381,12.1476,0.3935,5,True,0.0542,0,134.5,0,0,0,0
+20260927-225311_bot_057_adaptive_vulture_tier0,2026-09-27T22:55,bot_057_adaptive_vulture,95c121ce38,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4524,0,138.2,0,0,0,0
+20260927-225311_bot_057_adaptive_vulture_tier0,2026-09-27T22:55,bot_057_adaptive_vulture,95c121ce38,tier0,X,2,,3,0,0.6667,17.3333,0.6667,5,True,0.4668,0,138.2,0,0,0,0
+20260927-225311_bot_057_adaptive_vulture_tier0,2026-09-27T22:55,bot_057_adaptive_vulture,95c121ce38,tier0,X,3,bot_045_search_stack,3,0,0.3333,14.0,2.0817,5,True,0.4657,0,138.2,0,0,0,0
+20260927-225514_bot_057_adaptive_vulture_tier1,2026-09-27T23:01,bot_057_adaptive_vulture,95c121ce38,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4757,0,89.9,0,0,0,0
+20260927-225514_bot_057_adaptive_vulture_tier1,2026-09-27T23:01,bot_057_adaptive_vulture,95c121ce38,tier1,A,2,,42,0,0.9048,17.3333,0.4028,5,False,0.4821,0,94.4,0,0,0,0
+20260927-225514_bot_057_adaptive_vulture_tier1,2026-09-27T23:01,bot_057_adaptive_vulture,95c121ce38,tier1,A,3,bot_001_greedy_base,42,0,0.8333,16.4524,0.6593,5,False,0.4751,0,95.5,0,0,0,0
+20260927-230131_bot_057_adaptive_vulture_tier2,2026-09-27T23:27,bot_057_adaptive_vulture,95c121ce38,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4759,0,90.5,0,0,0,0
+20260927-230131_bot_057_adaptive_vulture_tier2,2026-09-27T23:27,bot_057_adaptive_vulture,95c121ce38,tier2,B,2,,126,0,0.8968,17.1905,0.2579,5,False,0.4815,0,96.0,0,0,0,0
+20260927-230131_bot_057_adaptive_vulture_tier2,2026-09-27T23:27,bot_057_adaptive_vulture,95c121ce38,tier2,B,3,bot_004_lookahead_base,126,0,0.7063,15.3492,0.42,5,False,0.4917,0,96.9,0,0,0,0
