@@ -781,7 +781,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: pool 16–21, VM candidate picked in a test game; S3 seeds 12/13 → 18/6 SC, tmax 0.472 s.
 - plan: queue q10 (queue_bots.sh vs bot_022; extension rule applies).
 
-## [059] bot_046 bandit/staticprior — RUNNING
+## [059] bot_046 bandit/staticprior — REJECTED
 
 - family: bandit | parent: bot_036 | tags: holder-aware-priors
 - hypothesis: priors that encode static holders (unsupported move into one −6, pair arm against one +4, move ending
@@ -838,3 +838,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   CLAUDE.md forbids installing extra tools), so the local main was pushed to a new remote branch `lab/progress` and a
   pre-filled GitHub compare link was given to open the PR. Remote `main` was not touched. Pushing is otherwise still
   local-only per CLAUDE.md; this push was an explicit human request.
+- bot_046 Tier 2 B126 (stand-in 004): S1 14.24±0.42 (54.8%) / S2 14.45±0.43 (54.8%) / S3 11.41±0.56 (35.7%).
+  vs bot_036: S1 +2.48±0.43, S2 −0.89±0.39, S3 −0.92±0.59, pooled +0.22±0.29 → REJECT (trade-off).
+  Family review: bandit → DORMANT (3 iters, est. 11 vs 15).
+
+## [064] bot_048 bandit/s1switch — RUNNING (dormant family revisited: clear fix)
+
+- parent bot_046 | tags: scenario-detection. Holder-aware priors only when every opponent with units is static.
+- plan: queue q14 vs bot_036 (T1 bot_001, T2 bot_004 B126).

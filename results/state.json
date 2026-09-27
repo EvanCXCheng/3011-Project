@@ -409,9 +409,9 @@
    "created": "2026-09-27T10:36",
    "family": "bandit",
    "file": "bots/bot_046_bandit_staticprior.py",
-   "note": "",
+   "note": "holder-aware priors: S1 +2.48\u00b10.43 but S2 -0.89, S3 -0.92; pooled +0.22\u00b10.29 vs bot_036",
    "parent": "bot_036",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "holder-aware-priors"
   },
   "bot_047": {
@@ -422,6 +422,15 @@
    "parent": "bot_022",
    "status": "RUNNING",
    "tags": "multi-source-candidates"
+  },
+  "bot_048": {
+   "created": "2026-09-27T13:20",
+   "family": "bandit",
+   "file": "bots/bot_048_bandit_s1switch.py",
+   "note": "",
+   "parent": "bot_046",
+   "status": "RUNNING",
+   "tags": "scenario-detection"
   }
  },
  "families": {
@@ -439,9 +448,9 @@
   },
   "bandit": {
    "champion": "bot_036",
-   "iterations": 3,
-   "reason": "new",
-   "status": "ACTIVE"
+   "iterations": 4,
+   "reason": "3 iters (034/036/046); champion bot_036 est 11 vs overall 15",
+   "status": "DORMANT"
   },
   "greedy": {
    "champion": "bot_012",
@@ -486,7 +495,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 48,
+ "next_bot_id": 49,
  "overall_champions": [
   {
    "bot": "bot_001",
