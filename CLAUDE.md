@@ -183,6 +183,12 @@ Repeat until usage runs out:
 - **No maintenance mode (human request, 27 Sep):** when results plateau, keep generating new bots anyway: try
   genuinely different ideas (new evaluation/score functions, selection rules, opponent models, new families,
   revisits of dormant families). Never idle while CPU is free; the human stops the loop manually.
+- **Sparring field for Scenario 4 (human request, 27 Sep):** strengthen every family *within its own style* (no
+  rollout machinery copied into rule-based families, so styles stay distinct), plus archetype bots (aggressive,
+  turtle, opportunist). Near the freeze: final tournament of the champion vs the strongest bot of every style,
+  champion-vs-six-styles tables, and S3 with each style as the Hidden Agent stand-in. A style-pure bot may join the
+  field even if it does not beat a hybrid family champion.
+- **New families (human permission, 27 Sep):** at the start of any queue, new families may be added when promising.
 - **Best-bots summary (human request, 27 Sep):** end every loop turn with a compact table of the best bots
   (overall champion, top bots by estimated mark / mean SC with S1–S3 SC and win rates, family champions) from
   `LEADERBOARD.md`.

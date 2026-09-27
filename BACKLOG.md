@@ -74,3 +74,15 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
 - FINAL eval of the champion: 504/scenario ≈ 1512 games × ~25 s / 3 workers ≈ 3.5 h.
 - Ablations on FINAL seeds at 210/scenario (5 switches: ROLLOUT, LA_CANDS, HALVING, OPP_AWARE, ACC_GATE) ≈ 5 × 630 games
   ≈ 7.3 h. Start both right at the freeze (Thu 12:00); total ≈ 11 h, done well before the Fri 23:59 deadline.
+
+## sparring field plan (human request, 27 Sep) — style-preserving iterations
+- greedy (from bot_012): home defence — hold/support-hold own SCs threatened by adjacent enemies (backlog item 6).
+- valuemap (from bot_014): season-dependent weights (Fall: occupy SCs; Spring: position) (backlog item 4).
+- positional (from bot_017): front consolidation — rear units move toward the front line instead of idling.
+- adaptive, style-pure (from bot_005): exact prediction of predictable (greedy-class) neighbours: garrison exactly
+  their predicted targets, attack the provinces they vacate.
+- archetype family (new): aggressive (max-support attacks on the nearest enemy SC, no defence), turtle (hold/defend
+  all SCs, expand only with safe 2v1), opportunist (attack the weakest reachable power first).
+- bandit: third iteration after 034/036 results.
+- final (before freeze): tournament champion vs strongest bot of each style (rotating seats, 112+ games); champion in
+  one seat vs six different styles; S3 with each style as the Hidden Agent stand-in.
