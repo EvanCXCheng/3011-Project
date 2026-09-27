@@ -86,3 +86,12 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
 - bandit: third iteration after 034/036 results.
 - final (before freeze): tournament champion vs strongest bot of each style (rotating seats, 112+ games); champion in
   one seat vs six different styles; S3 with each style as the Hidden Agent stand-in.
+
+## added 28 Sep (own resolver + S4 priority, human direction)
+- lookahead (after bot_071): spend the ×34 rollouts: bigger candidate pool (TOP_K 8→20, N_LA 12→30), later halving
+  (HALVE_EVERY up), MIN_ALIVE up; deeper two-ply (Fall → next Spring via a greedy reply; builds skipped).
+- lookahead: rollouts as the hill-climb evaluation itself (resolver fast enough for ~50 samples per neighbour?).
+- S4: opponent reply model with coordinated supports (bot_069) re-tested on the resolver bot, where sampling noise
+  is much lower.
+- all families: the split-coast army adjacency fix ([090]) applies to every copied map_info; style-pure sparring bots
+  (012/014/017/038/040) could get the fix before the final style tournament (bug fix, not a strategy change).
