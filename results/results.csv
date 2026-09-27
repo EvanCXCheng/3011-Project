@@ -420,3 +420,15 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260927-103636_bot_037_greedy_homedef_tier1,2026-09-27T10:37,bot_037_greedy_homedef,021ecda553,tier1,A,1,,42,0,0.2857,12.2857,0.7406,3,True,0.0523,0,131.7,0,0,0,0
 20260927-103636_bot_037_greedy_homedef_tier1,2026-09-27T10:37,bot_037_greedy_homedef,021ecda553,tier1,A,2,,42,0,0.2143,10.8571,0.8565,3,True,0.0496,0,134.7,0,0,0,0
 20260927-103636_bot_037_greedy_homedef_tier1,2026-09-27T10:37,bot_037_greedy_homedef,021ecda553,tier1,A,3,baseline:greedy,42,0,0.0714,9.381,0.7658,3,True,0.0463,0,134.7,0,0,0,0
+20260927-103717_bot_037_greedy_homedef_tier2,2026-09-27T10:40,bot_037_greedy_homedef,021ecda553,tier2,B,1,,210,0,0.2857,12.2857,0.328,3,True,0.0514,0,132.6,0,0,0,0
+20260927-103717_bot_037_greedy_homedef_tier2,2026-09-27T10:40,bot_037_greedy_homedef,021ecda553,tier2,B,2,,210,0,0.1714,9.8048,0.3792,1,True,0.0368,0,134.8,0,0,0,0
+20260927-103717_bot_037_greedy_homedef_tier2,2026-09-27T10:40,bot_037_greedy_homedef,021ecda553,tier2,B,3,bot_001_greedy_base,210,0,0.0952,8.5381,0.3272,1,False,0.0588,0,134.8,0,0,0,0
+20260927-104024_bot_038_valuemap_season_tier0,2026-09-27T10:41,bot_038_valuemap_season,2d6f5b792d,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.0027,0,99.1,0,0,0,0
+20260927-104024_bot_038_valuemap_season_tier0,2026-09-27T10:41,bot_038_valuemap_season,2d6f5b792d,tier0,X,2,,3,0,0.6667,15.3333,2.6667,5,True,0.0032,0,99.1,0,0,0,0
+20260927-104024_bot_038_valuemap_season_tier0,2026-09-27T10:41,bot_038_valuemap_season,2d6f5b792d,tier0,X,3,bot_022_search_hybridrace,3,0,0.0,7.0,0.5774,0,True,0.0031,0,99.1,0,0,0,0
+20260927-104107_bot_038_valuemap_season_tier1,2026-09-27T10:41,bot_038_valuemap_season,2d6f5b792d,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.0396,0,95.6,0,0,0,0
+20260927-104107_bot_038_valuemap_season_tier1,2026-09-27T10:41,bot_038_valuemap_season,2d6f5b792d,tier1,A,2,,42,0,0.5714,14.5952,0.7689,5,True,0.0061,0,99.6,0,0,0,0
+20260927-104107_bot_038_valuemap_season_tier1,2026-09-27T10:41,bot_038_valuemap_season,2d6f5b792d,tier1,A,3,bot_001_greedy_base,42,0,0.3571,11.6905,0.9286,3,True,0.0041,0,100.1,0,0,0,0
+20260927-104139_bot_038_valuemap_season_tier2,2026-09-27T10:44,bot_038_valuemap_season,2d6f5b792d,tier2,B,1,,210,0,1.0,18.0,0.0,5,False,0.0551,0,96.9,0,0,0,0
+20260927-104139_bot_038_valuemap_season_tier2,2026-09-27T10:44,bot_038_valuemap_season,2d6f5b792d,tier2,B,2,,210,0,0.5476,13.8286,0.3836,5,False,0.0355,0,101.9,0,0,0,0
+20260927-104139_bot_038_valuemap_season_tier2,2026-09-27T10:44,bot_038_valuemap_season,2d6f5b792d,tier2,B,3,bot_001_greedy_base,210,0,0.4,12.319,0.4093,5,True,0.0457,0,101.1,0,0,0,0

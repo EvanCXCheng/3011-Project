@@ -788,3 +788,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   next to a static-held target SC +1) let the bandits set up 2v1 in S1 (bot_036: 11.75 SC, 15% wins).
 - sanity S1 seeds 11–14 → 18/18/9/7 SC, no errors.
 - plan: queue q11 vs bot_036 (T1 bot_001, T2 bot_004 B126).
+
+## [060] Sparring field round 1 results: bot_037, bot_038 — DONE
+
+- bot_037 greedy/homedef: Tier 2 B210 (stand-in 001): S1 12.29±0.33 (28.6%) / S2 9.80±0.38 (17.1%) / S3 8.54±0.33
+  (9.5%) → est. 5. vs bot_012 pooled −2.41±0.19 → REJECTED: garrisoning every threatened SC ties down too many units.
+- bot_038 valuemap/season: Tier 1 +0.60±0.33 vs bot_014. Tier 2 B210 (stand-in 001): S1 18.00 (100%) / S2 13.83±0.38
+  (54.8%) / S3 12.32±0.41 (40.0%) → est. 15 (S3 vs weak stand-in). vs bot_014 pooled +1.02±0.17 → PROMOTED → valuemap
+  champion. A 35–55 ms rule bot at est. 15: strong sparring partner and a fast fallback design. S3 to be re-measured
+  with a strong stand-in for the final field.

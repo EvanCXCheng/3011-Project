@@ -328,9 +328,9 @@
    "created": "2026-09-27T08:40",
    "family": "greedy",
    "file": "bots/bot_037_greedy_homedef.py",
-   "note": "",
+   "note": "home defence (rule): S1 \u00b10, S2/S3 down; pooled -2.41\u00b10.19 vs bot_012 (too many units tied to garrisons)",
    "parent": "bot_012",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "home-defence"
   },
   "bot_038": {
@@ -339,7 +339,7 @@
    "file": "bots/bot_038_valuemap_season.py",
    "note": "",
    "parent": "bot_014",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "season-weights"
   },
   "bot_039": {
@@ -459,7 +459,7 @@
    "status": "ACTIVE"
   },
   "valuemap": {
-   "champion": "bot_014",
+   "champion": "bot_038",
    "iterations": 5,
    "reason": "3 iters; champion bot_014 est 11 (S3 9.88 vs strong stand-in bot_008) vs overall 13",
    "status": "DORMANT"
@@ -472,7 +472,7 @@
   "bot_024",
   "bot_017",
   "bot_022",
-  "bot_014",
+  "bot_038",
   "bot_007",
   "bot_021"
  ],
@@ -529,6 +529,10 @@
    "bot": "bot_034",
    "effect": "new family base: S1 7.73 (0%), S2 13.29 (43.7%), S3 9.50 (19.0%) B126; est 9; vs bot_022 pooled -5.87\u00b10.28"
   },
+  "home-defence": {
+   "bot": "bot_037",
+   "effect": "pooled -2.41\u00b10.19 SC vs bot_012 (630 paired, B)"
+  },
   "hybrid-candidate-race": {
    "bot": "bot_022",
    "effect": "pooled +0.61\u00b10.21 SC vs bot_020 (378 paired, B); S2 +1.31\u00b10.37 (78% wins); S3 14.08 SC / 57%"
@@ -584,6 +588,10 @@
   "scenario-detection": {
    "bot": "bot_009",
    "effect": "pooled +1.28\u00b10.24 SC vs bot_005 (378 paired, B); S2 +2.03, S3 +1.80; tie with bot_007 (-0.15\u00b10.23)"
+  },
+  "season-weights": {
+   "bot": "bot_038",
+   "effect": "pooled +1.02\u00b10.17 SC vs bot_014 (630 paired, B); S1 18.00 (100%), S2 13.83, S3 12.32 (weak stand-in)"
   },
   "shared-opponent-rollouts": {
    "bot": "bot_024",
