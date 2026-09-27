@@ -685,3 +685,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-025419_bot_063_ensemble_medoid_tier1,2026-09-28T02:54,bot_063_ensemble_medoid,45335b508d,tier1,A,1,,42,0,0.1429,10.4286,0.7027,1,False,0.0472,0,131.6,0,0,0,0
 20260928-025419_bot_063_ensemble_medoid_tier1,2026-09-28T02:54,bot_063_ensemble_medoid,45335b508d,tier1,A,2,,42,0,0.5952,15.0476,0.7148,5,False,0.0435,0,134.1,0,0,0,0
 20260928-025419_bot_063_ensemble_medoid_tier1,2026-09-28T02:54,bot_063_ensemble_medoid,45335b508d,tier1,A,3,bot_001_greedy_base,42,0,0.3333,12.5238,0.861,5,True,0.0566,0,136.6,0,0,0,0
+20260928-025456_bot_063_ensemble_medoid_tier2,2026-09-28T03:05,bot_063_ensemble_medoid,45335b508d,tier2,B,1,,126,0,0.1429,10.4286,0.4024,1,False,0.0514,0,132.4,0,0,0,0
+20260928-025456_bot_063_ensemble_medoid_tier2,2026-09-28T03:05,bot_063_ensemble_medoid,45335b508d,tier2,B,2,,126,0,0.5476,14.0635,0.475,5,False,0.0554,0,135.5,0,0,0,0
+20260928-025456_bot_063_ensemble_medoid_tier2,2026-09-28T03:05,bot_063_ensemble_medoid,45335b508d,tier2,B,3,bot_004_lookahead_base,126,0,0.3968,12.0079,0.5507,5,True,0.0413,0,133.3,0,0,0,0

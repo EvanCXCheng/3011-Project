@@ -1026,7 +1026,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_061 Tier 2 B126 (stand-in 004): S1 16.29±0.38 (85.7%) / S2 14.61±0.48 (65.1%) / S3 12.71±0.57 (53.2%); vs bot_060
   S1 −1.71, S2 −1.71, S3 −0.23, pooled −1.22±0.30 → REJECT: per-unit mixing on 2–2 ties breaks plan coordination.
 
-## [081] bot_063 ensemble/medoid — RUNNING
+## [081] bot_063 ensemble/medoid — REJECTED
 
 - parent bot_061 | tags: plan-level-consensus. Play the whole proposal that agrees most with the others (medoid) —
   keeps each plan coherent. Sanity S1 12/13 → 18/8, S2 → 18/18, S3 → 5/7. plan: queue q30 vs bot_060 (T1 001, T2 004).
@@ -1039,3 +1039,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 
 - parent bot_062 | tags: two-ply-spring (GA fitness in Spring = SC ownership after a greedy Fall reply; LOO showed two-ply
   worth ≈0.5 SC inside bot_045). Sanity S2/S3 seed 13 → 18/7. plan: queue q31 vs bot_062 (T1 bot_001, T2 bot_004 B126).
+- bot_063 Tier 2 B126 (stand-in 004): S1 10.43±0.40 (14.3%) / S2 14.06±0.47 (54.8%) / S3 12.01±0.55 (39.7%); vs bot_060
+  S1 −7.57, S2 −2.26, S3 −0.93, pooled −3.59±0.32 → REJECT: the medoid is the most 'typical' plan, usually a cautious one
+  without supported attacks (fatal in S1). Ensemble family: 3 iterations (060/061/063), champion bot_060 (est. 15) → ACTIVE.

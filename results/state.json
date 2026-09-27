@@ -562,9 +562,9 @@
    "created": "2026-09-28T02:18",
    "family": "ensemble",
    "file": "bots/bot_063_ensemble_medoid.py",
-   "note": "",
+   "note": "plan-level medoid: picks cautious 'typical' plans, S1 10.43 (14%); pooled -3.59\u00b10.32 vs bot_060",
    "parent": "bot_061",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "plan-level-consensus"
   },
   "bot_064": {
