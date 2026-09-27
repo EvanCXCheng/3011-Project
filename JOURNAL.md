@@ -717,3 +717,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   order as a third source lets the rollouts use its 2v1/strength-aware plans when they are better.
 - checks: pool 14–21 per phase incl. the VM candidate; S2/S3 seed 12 sanity below; no errors.
 - plan: queue q4 (after q3).
+
+## [054] bot_036 bandit/pairs — RUNNING
+
+- family: bandit | parent: bot_034 | tags: pair-arms
+- hypothesis: independent per-unit bandits rarely draw a move and its support together. Pair arms ("move into an
+  enemy-held target SC, supported by unit Y"; Y's order is overridden and not credited) make 2v1 attacks one draw.
+- sanity: S1 seeds 11/12 → 8/18 SC, S2 11/12 → 4/18 SC, no errors, ~500 rollouts/phase.
+- plan: queue q5 (after q4).

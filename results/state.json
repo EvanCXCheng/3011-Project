@@ -314,6 +314,15 @@
    "parent": "bot_022",
    "status": "RUNNING",
    "tags": "multi-source-candidates"
+  },
+  "bot_036": {
+   "created": "2026-09-27T08:11",
+   "family": "bandit",
+   "file": "bots/bot_036_bandit_pairs.py",
+   "note": "",
+   "parent": "bot_034",
+   "status": "RUNNING",
+   "tags": "pair-arms"
   }
  },
  "families": {
@@ -325,7 +334,7 @@
   },
   "bandit": {
    "champion": null,
-   "iterations": 1,
+   "iterations": 2,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -370,7 +379,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 36,
+ "next_bot_id": 37,
  "overall_champions": [
   {
    "bot": "bot_001",
