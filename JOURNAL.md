@@ -848,3 +848,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: queue q14 vs bot_036 (T1 bot_001, T2 bot_004 B126).
 - bot_047 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.19±0.35 (77.0%) / S3 14.44±0.47 (61.9%). vs bot_022: S2 +0.16±0.38,
   S3 +0.36±0.46, pooled +0.17±0.20 → REJECT (n.s.; the race already covers most of what the aggressive plan offers).
+
+## [065] Refinements on the new champion: bot_049, bot_050 — RUNNING
+
+- bot_049 search/stackseason (parent bot_045): valuemap candidate uses bot_038's season weights (bot_038 beat bot_014
+  by +1.02 stand-alone).
+- bot_050 search/stackagg (parent bot_045): + bot_040's aggressive plan as a race candidate (+0.17 on bot_022 in 047).
+- checks: both generators return legal plans; S3 seed 12 (stand-in 004) → 18/18, tmax ≤ 0.466 s.
+- plan: queue q15 (queue_family.sh) vs bot_045 (T1 bot_001, T2 bot_004 B126).

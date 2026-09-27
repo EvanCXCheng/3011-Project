@@ -431,6 +431,24 @@
    "parent": "bot_046",
    "status": "RUNNING",
    "tags": "scenario-detection"
+  },
+  "bot_049": {
+   "created": "2026-09-27T13:54",
+   "family": "search",
+   "file": "bots/bot_049_search_stackseason.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "season-weights"
+  },
+  "bot_050": {
+   "created": "2026-09-27T13:54",
+   "family": "search",
+   "file": "bots/bot_050_search_stackagg.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "multi-source-candidates"
   }
  },
  "families": {
@@ -472,7 +490,7 @@
   },
   "search": {
    "champion": "bot_045",
-   "iterations": 16,
+   "iterations": 18,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -495,7 +513,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 49,
+ "next_bot_id": 51,
  "overall_champions": [
   {
    "bot": "bot_001",
