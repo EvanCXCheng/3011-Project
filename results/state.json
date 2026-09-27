@@ -616,9 +616,9 @@
    "created": "2026-09-28T06:44",
    "family": "adaptive",
    "file": "bots/bot_069_adaptive_oppsupport.py",
-   "note": "",
+   "note": "coordinated opponent supports: B126 pooled +0.17\u00b10.19 vs 045; S3 vs aggressive +0.94\u00b10.47, vs 004 -0.61",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "coordinated-opponent-model"
   },
   "bot_070": {

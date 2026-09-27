@@ -1109,7 +1109,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - human direction (28 Sep): next priorities are (a) a fast own move resolver for rollouts, validated against the
   engine, and (b) S4 fixes vs the styles bot_045 is weakest against (aggressive bot_040, lookahead bot_024).
 
-## [089] bot_069 adaptive/oppsupport — RUNNING
+## [089] bot_069 adaptive/oppsupport — REJECTED
 
 - parent bot_045 | tags: coordinated-opponent-model (S4 priority, human direction 28 Sep). Rollout sampling: for
   opponents classified 'strong', a sampled holder supports one of its power's sampled moves when legal (p 0.8).
@@ -1158,3 +1158,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - generations per movement phase (Turkey vs six bot_040s, loaded machine): 3.4 → 138; rollouts 125 → 4,447.
   Sanity S2/S3 seeds 5/13: 18/18/18/18, tmax 0.463 s, no errors.
 - plan: queue q41: T0, T1 A42 vs bot_045, S3 B126 vs stand-ins 040/024, T2 B126 (004) vs bot_045 and bot_065.
+
+- bot_069 results (appended after [092]): Tier 0 clean. T1 A42 vs bot_045 pooled −0.04±0.17. T2 B126 (004): S1 18.00 /
+  S2 17.36±0.19 (89.7%) / S3 14.37±0.46 (57.9%). Paired vs bot_045 by S3 stand-in (lab/by_standin.py, new):
+  vs 040 aggressive 14.70, +0.94±0.47; vs 024 lookahead 14.21, +0.25±0.56; vs 004 14.37, −0.61±0.47. S2 +0.63±0.34.
+  compare (S3 pooled over the three stand-ins): pooled +0.17±0.19 → REJECT (below 2 SE).
+- takeaway: modelling supported opponent attacks helps against the aggressive style (the S4 weak spot, z≈2.0) and in
+  S2, but not against bot_004. Retest on the resolver line, where rollout noise is far lower (backlog).
