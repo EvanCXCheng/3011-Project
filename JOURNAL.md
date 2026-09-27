@@ -1131,3 +1131,22 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_070 = bot_045 + fixed map_info (base names for army neighbours, lower-case key fallback); verified 0 missing /
   0 extra links for armies and fleets vs map.abuts. Sanity S2 seeds 1/2/13: 18/18/11, tmax 0.458 s, no errors.
 - plan: queue q39 (after q38): same protocol as bot_069 (T0, T1 A42, S3 vs 040/024 B126, T2 B126 vs bot_045).
+
+## [091] bot_071 lookahead/fastres — RUNNING
+
+- parent bot_070 (map fix needed: the resolver's convoy/adjacency test uses army reach) | tags: own-fast-resolver
+  (human priority, 28 Sep). Own movement resolver replaces engine copies in the rollouts: move decisions resolved
+  recursively with guess-and-check for cycles (circular movement succeeds; convoy paradox: convoyed moves fail);
+  supports/cuts incl. the "attack from the supported-into province cuts only by dislodging" rule; head-to-head,
+  prevent strength, own-unit dislodgement ban; convoy routes with dislodged fleets removed.
+- validation (lab/validate_resolver.py, new): random games to 1912 with structured random orders (moves; supports of
+  chosen moves 80%; convoys of chosen VIA moves). Engine conventions found and matched: (1) VIA with no convoy route
+  to an adjacent province moves overland; (2) an adjacent army move is convoyed when its own power orders a convoy
+  route; (3) own-power supports DO count against an own unit for explicit VIA / non-adjacent attacks (land attacks:
+  not); (4) coast-specific supports must name the move's coast. Result: identical unit positions in 14,080/14,080
+  movement phases (8 seeds) + 2,640/2,640 with the code as pasted in the bot; ~42 us vs ~600 us per engine.process.
+  Dislodged lists differ in ~2/1760 phases only in reporting (units with no retreat removed at once), positions same.
+- rollouts per movement phase (France vs six bot_040s, loaded machine): 131 (engine) → 4,461 (resolver), ×34.
+  Sanity S1/S2/S3 seeds 4/12: 18/18, 18/18, 13/18; tmax 0.456 s; no errors.
+- plan: queue q40: T0, T1 A42 vs bot_045, S3 B126 vs stand-ins 040/024, T2 B126 (004) vs bot_045 and bot_070.
+  FAST_RES False = bot_070 (ablation switch for the report).

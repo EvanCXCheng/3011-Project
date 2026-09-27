@@ -629,6 +629,15 @@
    "parent": "bot_045",
    "status": "RUNNING",
    "tags": "split-coast-army-adjacency-fix"
+  },
+  "bot_071": {
+   "created": "2026-09-28T06:57",
+   "family": "lookahead",
+   "file": "bots/bot_071_lookahead_fastres.py",
+   "note": "",
+   "parent": "bot_070",
+   "status": "RUNNING",
+   "tags": "own-fast-resolver"
   }
  },
  "families": {
@@ -670,7 +679,7 @@
   },
   "lookahead": {
    "champion": "bot_024",
-   "iterations": 10,
+   "iterations": 11,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -707,7 +716,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 71,
+ "next_bot_id": 72,
  "overall_champions": [
   {
    "bot": "bot_001",

@@ -3,9 +3,9 @@
   .venv/bin/python lab/validate_resolver.py --module bots/bot_070_x.py [--games 40] [--seed 1] [--show 3]
 
 The module must define parse_mo(order, reach_a) and resolve_moves(units, orders, reach_f); map reach comes from its
-map_info(game) (or bot_045's when the module has none). Orders are drawn with a structured random policy (moves,
+map_info(game) (or bot_070's, the fixed map, when the module has none). Orders are drawn with a structured random policy (moves,
 supports of chosen moves, holds, convoys of chosen VIA moves) so supports, cuts, bounces, swaps and convoys all occur.
-Prints the agreement rate over movement phases and the time per resolution vs the engine's process().
+Prints the agreement rate (resulting unit positions) over movement phases and the time per resolution vs the engine's process().
 """
 import argparse
 import importlib.util
@@ -93,12 +93,13 @@ def main():
     ap.add_argument('--show', type=int, default=3)
     a = ap.parse_args()
     mod = load(a.module, 'resmod')
-    mi = mod.map_info if hasattr(mod, 'map_info') else load(os.path.join(ROOT, 'bots/bot_045_search_stack.py'),
+    mi = mod.map_info if hasattr(mod, 'map_info') else load(os.path.join(ROOT, 'bots/bot_070_search_mapfix.py'),
                                                              'b045').map_info
     rng = random.Random(a.seed)
     n = bad = 0
     t_ours = t_eng = 0.0
     shown = 0
+    lost_only = 0
     for gi in range(a.games):
         game = Game()
         info = mi(game)
@@ -126,7 +127,9 @@ def main():
             eng_lost = {u.split()[1].split('/')[0] for pw in game.powers.values() for u in pw.units if u.startswith('*')}
             eng_lost |= {u.split()[1].split('/')[0] for pw in game.powers.values() for u in pw.retreats}
             n += 1
-            if eng != ours or eng_lost != lost:
+            if eng_lost != lost and eng == ours:
+                lost_only += 1
+            if eng != ours:
                 bad += 1
                 if shown < a.show:
                     shown += 1
@@ -141,7 +144,8 @@ def main():
                             if any(x.split('/')[0] in rel for x in o.split()):
                                 print('   ', p, o)
     print(f'movement phases {n}: agree {n - bad} ({100.0 * (n - bad) / max(n, 1):.1f}%) | '
-          f'ours {1e6 * t_ours / max(n, 1):.0f} us/phase vs engine process {1e6 * t_eng / max(n, 1):.0f} us/phase')
+          f'ours {1e6 * t_ours / max(n, 1):.0f} us/phase vs engine process {1e6 * t_eng / max(n, 1):.0f} us/phase | '
+          f'same units, different dislodged list (no-retreat units removed at once): {lost_only}')
 
 
 if __name__ == '__main__':
