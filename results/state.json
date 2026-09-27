@@ -620,6 +620,15 @@
    "parent": "bot_045",
    "status": "RUNNING",
    "tags": "coordinated-opponent-model"
+  },
+  "bot_070": {
+   "created": "2026-09-28T06:50",
+   "family": "search",
+   "file": "bots/bot_070_search_mapfix.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "split-coast-army-adjacency-fix"
   }
  },
  "families": {
@@ -673,7 +682,7 @@
   },
   "search": {
    "champion": "bot_045",
-   "iterations": 22,
+   "iterations": 23,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -698,7 +707,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 70,
+ "next_bot_id": 71,
  "overall_champions": [
   {
    "bot": "bot_001",

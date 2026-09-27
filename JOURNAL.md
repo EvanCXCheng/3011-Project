@@ -1119,3 +1119,15 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   rounds, 39 supports added. S3 seeds 7/8/9 vs stand-in 040: 4/8/18 (bot_045: 1/18/4) — noise, no errors.
 - plan: queue q38: T0 X3; T1 A42 (001) vs bot_045; S3 B126 with stand-ins 040 and 024 (bot_045 refs from [067]);
   T2 B126 (004) vs bot_045.
+
+## [090] Found bug: army adjacency at split-coast provinces (all bots) — bot_070 search/mapfix RUNNING
+
+- Found while validating an own resolver: map_info (copied into every bot since bot_001) built army neighbours from
+  map.loc_abut, which lists coast-qualified names ('SPA/SC', 'BUL/EC', 'STP/NC') and keys SPA/BUL/STP in lower case.
+  20 army links were missing vs map.abuts (MAR/GAS/POR-SPA, CON/GRE/RUM/SER-BUL, FIN/LVN/MOS/NWY-STP, both ways);
+  SPA/BUL/STP had no army neighbours at all. Fleet adjacency was correct. Effect: army BFS distances treated three
+  SCs as unreachable (or far), armies there as stuck, and greedy predictions of opponents' armies were wrong nearby.
+  Engine-side results (rollouts, legality) were never affected: orders always come from the engine's possible orders.
+- bot_070 = bot_045 + fixed map_info (base names for army neighbours, lower-case key fallback); verified 0 missing /
+  0 extra links for armies and fleets vs map.abuts. Sanity S2 seeds 1/2/13: 18/18/11, tmax 0.458 s, no errors.
+- plan: queue q39 (after q38): same protocol as bot_069 (T0, T1 A42, S3 vs 040/024 B126, T2 B126 vs bot_045).
