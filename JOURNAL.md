@@ -873,9 +873,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_050 Tier 2 B126: S2 16.99±0.27 (88.1%) / S3 14.98±0.45 (68.3%); vs bot_045 S2 +0.26, S3 −0.34, pooled −0.03±0.20.
   → both neutral: the champion's pool already covers these plans. (tmax 0.523–0.529 s in S2, possibly host load.)
 
-## [067] Scenario 4 sparring evaluation (champion bot_045 vs the style field) — RUNNING
+## [067] Scenario 4 sparring evaluation (champion bot_045 vs the style field) — DONE
 
 - field (one champion per family = seven styles): 045 champion, 024 lookahead, 038 valuemap, 012 greedy, 017 positional,
   036 bandit, 040 aggressive archetype.
 - (1) tournament, 112 games, rotating seats, offset 300; (2) bot_045 S3 B126 with each of the six other styles as the
   Hidden Agent stand-in. Queue q16. Re-run at the freeze if the champion changes.
+- Tournament (112 games, 7 styles, rotating seats): bot_045 10.19±0.69, bot_024 5.14±0.51, bot_036 4.88±0.56,
+  bot_040 4.16±0.52, bot_038 3.29±0.39, bot_017 3.22±0.34, bot_012 2.65±0.44 SC → champion scores 2x the next style.
+- bot_045 S3 (B126) with each style as the Hidden Agent: vs 017 positional 15.91±0.40 (76.2%), vs 012 greedy 15.68±0.38
+  (71.4%), vs 036 bandit 15.05±0.45 (69.0%), vs 038 valuemap 14.89±0.46 (67.5%), vs 024 lookahead 13.97±0.50 (57.9%),
+  vs 040 aggressive 13.75±0.52 (59.5%). All above the S3 5-pt lines; hardest: aggressive and lookahead opponents.

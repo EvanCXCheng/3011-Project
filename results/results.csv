@@ -549,3 +549,9 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260927-162956_bot_050_search_stackagg_tier2,2026-09-27T16:55,bot_050_search_stackagg,fa8fba6a47,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4845,0,90.0,0,0,0,0
 20260927-162956_bot_050_search_stackagg_tier2,2026-09-27T16:55,bot_050_search_stackagg,fa8fba6a47,tier2,B,2,,126,0,0.881,16.9921,0.271,5,False,0.5231,0,95.4,0,0,0,0
 20260927-162956_bot_050_search_stackagg_tier2,2026-09-27T16:55,bot_050_search_stackagg,fa8fba6a47,tier2,B,3,bot_004_lookahead_base,126,0,0.6825,14.9841,0.4496,5,False,0.4951,0,96.5,0,0,0,0
+20260927-172313_bot_045_search_stack_sparring,2026-09-27T17:37,bot_045_search_stack,d9e994d594,sparring,B,3,bot_024_lookahead_fastroll,126,0,0.5794,13.9683,0.4971,5,False,0.4861,0,97.2,0,0,0,0
+20260927-173729_bot_045_search_stack_sparring,2026-09-27T17:45,bot_045_search_stack,d9e994d594,sparring,B,3,bot_038_valuemap_season,126,0,0.6746,14.8889,0.46,5,False,0.4807,0,96.0,0,0,0,0
+20260927-174510_bot_045_search_stack_sparring,2026-09-27T17:53,bot_045_search_stack,d9e994d594,sparring,B,3,bot_012_greedy_attackmatch,126,0,0.7143,15.6825,0.3799,5,False,0.4845,0,130.6,0,0,0,0
+20260927-175312_bot_045_search_stack_sparring,2026-09-27T18:01,bot_045_search_stack,d9e994d594,sparring,B,3,bot_017_positional_threatw,126,0,0.7619,15.9127,0.4032,5,False,0.4946,0,95.6,0,0,0,0
+20260927-180103_bot_045_search_stack_sparring,2026-09-27T18:16,bot_045_search_stack,d9e994d594,sparring,B,3,bot_036_bandit_pairs,126,0,0.6905,15.0476,0.4521,5,False,0.4888,0,97.7,0,0,0,0
+20260927-181601_bot_045_search_stack_sparring,2026-09-27T18:23,bot_045_search_stack,d9e994d594,sparring,B,3,bot_040_archetype_aggressive,126,0,0.5952,13.754,0.5197,5,False,0.481,0,96.6,0,0,0,0
