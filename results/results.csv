@@ -572,3 +572,5 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260927-195919_bot_051_search_policyopp_tier2,2026-09-27T20:26,bot_051_search_policyopp,3607d883b3,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4827,0,91.0,0,0,0,0
 20260927-195919_bot_051_search_policyopp_tier2,2026-09-27T20:26,bot_051_search_policyopp,3607d883b3,tier2,B,2,,126,0,0.8571,17.1111,0.2266,5,False,0.4879,0,95.8,0,0,0,0
 20260927-195919_bot_051_search_policyopp_tier2,2026-09-27T20:26,bot_051_search_policyopp,3607d883b3,tier2,B,3,bot_004_lookahead_base,126,0,0.619,14.7778,0.4435,5,False,0.4875,0,97.1,0,0,0,0
+20260927-202608_bot_045_search_stack_tuning,2026-09-27T20:40,bot_045_search_stack[SEARCH_BUDGET=0.1],d9e994d594,tuning,B,2,,210,0,0.8857,17.0571,0.2075,5,False,0.5034,0,95.7,0,0,0,0
+20260927-202608_bot_045_search_stack_tuning,2026-09-27T20:40,bot_045_search_stack[SEARCH_BUDGET=0.1],d9e994d594,tuning,B,3,bot_004_lookahead_base,210,0,0.6905,15.2619,0.3287,5,False,0.4873,0,97.0,0,0,0,0

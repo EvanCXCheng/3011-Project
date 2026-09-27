@@ -907,3 +907,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_051 Tier 2 B126 (stand-in 004): S1 18.00 / S2 17.11±0.23 (85.7%) / S3 14.78±0.44 (61.9%). vs bot_045: S2 +0.38±0.24,
   S3 −0.55±0.48, pooled −0.06±0.18 → REJECT: predicting a strong (lookahead) opponent with an aggressive rule policy
   misleads the rollouts as much as it helps.
+- SEARCH_BUDGET=0.1 at 210 (S2/S3, stand-in 004): S2 17.06±0.21 (88.6%), S3 15.26±0.33 (69.0%); vs bot_045 S2 +0.46±0.26,
+  S3 +0.11±0.32, pooled +0.29±0.21 (z≈1.4) → n.s.; keep 0.15.
+
+## [070] bot_052 search/stack2 — RUNNING
+
+- family: search | parent: bot_045 | tags: stacked-near-misses (round 2)
+- stack: SEARCH_BUDGET 0.10 (+0.29±0.21 on 045 at 210) + candidate crossover (027: +0.17 on 022) + competitive rival
+  score term (032: +0.12 on 022). Crossover also keeps convoy orders consistent (fleet convoy → hold if its army
+  is not convoying in the child).
+- checks: pool 15–27 with children, a child picked in a test game; S3 seeds 12/13 → 18/18, tmax 0.454 s.
+- plan: queue q20 vs bot_045 (T1 bot_001, T2 bot_004 B126); extension rule applies.
