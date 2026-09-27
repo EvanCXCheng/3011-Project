@@ -737,7 +737,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs bot_034: S1 +4.02±0.35, S2 +2.06±0.40, S3 +2.83±0.56, pooled +2.97±0.26 → PROMOTE → bandit champion.
   vs bot_022: pooled −2.89±0.28. S1 still stalls (~12 SC): units do not gather next to static holders.
 
-## [055] Sparring field, round 1 (human request) — RUNNING
+## [055] Sparring field, round 1 (human request) — DONE (results in [060], [061])
 
 - bot_037 greedy/homedef (parent bot_012, rule-based): hold / support-hold / garrison own SCs that an *active* enemy
   (one that has ever ordered a move) can enter, before attack matching. First version garrisoned against static units
@@ -1093,3 +1093,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_067 Tier 2 B126: S2 16.81±0.27 (82.5%) / S3 15.17±0.44 (69.8%); vs bot_045 pooled −0.03±0.21 → REJECT.
   By seat (S2+S3): central (AUS/GER/ITA, changed code) −0.60±0.58; other seats (identical code to bot_045) +0.38±0.33 —
   i.e. run-to-run noise alone produces ≈ ±0.35 SC differences on 126 games (useful calibration for the report).
+
+## [088] bot_068 lookahead/riskaverse — RUNNING
+
+- parent bot_045 | tags: risk-averse-selection. Race ranks candidates (halving + final pick) by mean − 0.5·sd of their
+  rollout scores instead of the mean (RISK toggle). Target: S3 early collapses next to a strong opponent.
+- sanity S3 seed 7 (Austria): 12 SC, tmax 0.46 s, no errors. plan: queue q37 T0 X3, T1 A42 (stand-in 001),
+  T2 B126 (stand-in 004), compare vs bot_045.
+- side work: tools/export_prompts.py now drops <task-notification>/compaction/interrupt turns and keeps /loop prompts
+  (dry run: 40 entries, 0 notifications).

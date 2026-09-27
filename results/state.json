@@ -602,6 +602,15 @@
    "parent": "bot_045",
    "status": "REJECTED",
    "tags": "seat-aware-score"
+  },
+  "bot_068": {
+   "created": "2026-09-28T06:21",
+   "family": "lookahead",
+   "file": "bots/bot_068_lookahead_riskaverse.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "risk-averse-selection"
   }
  },
  "families": {
@@ -643,7 +652,7 @@
   },
   "lookahead": {
    "champion": "bot_024",
-   "iterations": 9,
+   "iterations": 10,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -680,7 +689,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 68,
+ "next_bot_id": 69,
  "overall_champions": [
   {
    "bot": "bot_001",
