@@ -891,7 +891,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   (stand-in 004), paired with bot_045: R_W_UNIT=1.0 (0.6), R_W_DIST=0.1 (0.05), N_LA=20 (12), SEARCH_BUDGET=0.10 (0.15).
   Extension rule applies (z ≥ 1.5 → 210); a winner becomes a new bot file (tuning, not a technique). Queue q17.
 
-## [069] bot_051 search/policyopp — RUNNING
+## [069] bot_051 search/policyopp — REJECTED
 
 - family: search | parent: bot_045 | tags: policy-opponent-model
 - motivation: [067] hardest Hidden-Agent styles are aggressive (13.75) and lookahead (13.97). 'strong' powers are
@@ -904,3 +904,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   (z≈1.9) → extension rule: SEARCH_BUDGET=0.1 to 210 on S2/S3 (queued after bot_051).
 - note: all four variants are +0.4–0.6 in S2 → bot_045's own B126 S2 (16.73) was probably on the low side; the 210
   comparison uses its 210-game S2 (16.60).
+- bot_051 Tier 2 B126 (stand-in 004): S1 18.00 / S2 17.11±0.23 (85.7%) / S3 14.78±0.44 (61.9%). vs bot_045: S2 +0.38±0.24,
+  S3 −0.55±0.48, pooled −0.06±0.18 → REJECT: predicting a strong (lookahead) opponent with an aggressive rule policy
+  misleads the rollouts as much as it helps.
