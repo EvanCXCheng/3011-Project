@@ -1046,7 +1046,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   (vs bot_045 −0.63±0.23) → REJECT: the GA needs many fitness evaluations; two-ply halves them. Evolution family:
   3 iterations (059/062/064), champion bot_062 (est. 15) → ACTIVE.
 
-## [083] Tournament with the new families (112 games) — RUNNING
+## [083] Tournament with the new families (112 games) — DONE
 
 - field: bot_045 (champion), bot_062 (evolution), bot_060 (ensemble), bot_024 (lookahead), bot_040 (aggressive),
   bot_038 (valuemap), bot_036 (bandit); rotating seats, offset 400. Queue q32.
+- bot_045 8.46±0.69, bot_062 6.54±0.66, bot_024 5.33±0.51, bot_040 4.44±0.58, bot_036 3.78±0.43, bot_038 2.56±0.27,
+  bot_060 2.29±0.41 SC. Champion first again; seeded GA second. The ensemble (est. 15 vs the baseline mix) finishes last
+  among strong bots: pure rule planners do well against weak opponents only.
+- family review pending one measurement: bot_038 S3 vs a strong stand-in (only measured vs bot_001 so far) → q33.
