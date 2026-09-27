@@ -715,7 +715,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: as predicted, independent per-unit bandits cannot coordinate 2v1 (S1 0 wins, stalls at ~8 SC like the
   plain greedy bots); S2 is decent (13.3). bot_036 (pair arms) targets exactly this.
 
-## [053] bot_035 valuemap/poolsource — RUNNING (dormant family revisited)
+## [053] bot_035 valuemap/poolsource — REJECTED (dormant family revisited)
 
 - family: valuemap (revisit) | parent: bot_022 | tags: multi-source-candidates
 - hypothesis: candidate diversity drives bot_022 (LA_CANDS off −1.30); adding the valuemap champion's (bot_014) joint
@@ -767,3 +767,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   n/(n+10)) fits the varied 'strong' styles ([056]) better → gains vs varied opponents (S3, S4).
 - checks: rollout path runs; S3 seeds 12/13 (stand-in 004) → 18/7, tmax 0.454 s.
 - plan: queue q9 (queue_bots.sh vs bot_022); also include it in the final style tournament.
+- bot_035 210 extension (S2/S3, stand-in 004): S2 16.48±0.23 (76.2%), S3 14.70±0.35 (63.3%); vs bot_022 S2 +0.41±0.27,
+  S3 +0.36±0.37, pooled +0.30±0.17 (z=1.76) → REJECT (n.s.).
+
+## [058] bot_045 search/stack — RUNNING
+
+- family: search | parent: bot_029 (+ bot_035's valuemap candidate) | tags: stacked-near-misses
+- motivation: four independent changes each land at ≈ +0.2–0.35 SC vs bot_022 at 210 games (026, 028, 029, 035),
+  none significant alone. Stacking the two best (029: two-ply + convoys; 035: valuemap candidate) tests additivity.
+- checks: pool 16–21, VM candidate picked in a test game; S3 seeds 12/13 → 18/6 SC, tmax 0.472 s.
+- plan: queue q10 (queue_bots.sh vs bot_022; extension rule applies).

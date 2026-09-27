@@ -310,9 +310,9 @@
    "created": "2026-09-27T07:35",
    "family": "valuemap",
    "file": "bots/bot_035_valuemap_poolsource.py",
-   "note": "",
+   "note": "valuemap candidates in bot_022's race: 210 S2 +0.41\u00b10.27, S3 +0.36\u00b10.37, pooled +0.30\u00b10.17 (z=1.76, n.s.)",
    "parent": "bot_022",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "multi-source-candidates"
   },
   "bot_036": {
@@ -395,6 +395,15 @@
    "parent": "bot_022",
    "status": "RUNNING",
    "tags": "empirical-opponent-mix"
+  },
+  "bot_045": {
+   "created": "2026-09-27T10:30",
+   "family": "search",
+   "file": "bots/bot_045_search_stack.py",
+   "note": "",
+   "parent": "bot_029",
+   "status": "RUNNING",
+   "tags": "stacked-near-misses"
   }
  },
  "families": {
@@ -436,7 +445,7 @@
   },
   "search": {
    "champion": "bot_022",
-   "iterations": 14,
+   "iterations": 15,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -458,7 +467,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 45,
+ "next_bot_id": 46,
  "overall_champions": [
   {
    "bot": "bot_001",
@@ -518,6 +527,10 @@
   "local-search": {
    "bot": "bot_003",
    "effect": "pooled +5.91\u00b10.21 SC vs bot_001 (630 paired, B); mark 13 vs 2"
+  },
+  "multi-source-candidates": {
+   "bot": "bot_035",
+   "effect": "pooled +0.30\u00b10.17 SC vs bot_022 (546 paired, B, S2/S3 at 210; n.s.)"
   },
   "no-self-bounce": {
    "bot": "bot_010",
