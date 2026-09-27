@@ -971,8 +971,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_057 Tier 2 B126 (stand-in 004): S2 17.19±0.26 (89.7%) / S3 15.35±0.42 (70.6%); vs bot_045 S2 +0.46±0.38,
   S3 +0.02±0.46, pooled +0.16±0.20 → REJECT (n.s.).
 
-## [076] Leave-one-out ablation of the champion's stack (bot_045) — RUNNING
+## [076] Leave-one-out ablation of the champion's stack (bot_045) — DONE
 
 - The last eight bot_045 variants all landed within ±0.2 SC (noise band). Report-relevant question instead: how much
   does each stacked part contribute inside bot_045? --set TWO_PLY=false / CONVOYS=false / VM_CANDS=false on B126 S2/S3
   (stand-in 004), paired with bot_045. Queue q25.
+- results (B126 S2/S3, stand-in 004, paired with bot_045):
+  TWO_PLY off: S2 16.25 (80.2%) −0.48±0.39, S3 14.83 (62.7%) −0.49±0.45, pooled −0.48±0.30;
+  CONVOYS off: S2 16.72 −0.01±0.35, S3 14.98 −0.35±0.52, pooled −0.18±0.31;
+  VM_CANDS off: S2 16.56 −0.17±0.36, S3 14.33 (62.7%) −0.99±0.53, pooled −0.58±0.32.
+- takeaway: all three parts help inside the stack (consistent with additivity); valuemap candidate matters most (S3),
+  then two-ply Spring, convoys least. Report: leave-one-out table next to the one-at-a-time results (026/028/035).
