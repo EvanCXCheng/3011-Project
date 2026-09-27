@@ -741,3 +741,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   support-hold first, neutral SCs within 2 only, 3v1 attacks), bot_042 opportunist (weakest reachable power's SCs).
   Sanity S1/S2 seed 12: 040 18/18, 041 16/9, 042 18/5; tmax ≤ 3 ms, no errors.
 - plan: queue q7: 039 vs bot_017 (T1/T2 bot_004, B126); 040–042 vs bot_012 for reference (T1 greedy, T2 bot_001, B210).
+- bot_043 adaptive/hitrate (parent bot_005, style-pure rules): hit-rate opponent classes (≥0.85 greedy, ≥0.4 strong,
+  else erratic); 'strong' units threaten every adjacent province and probably hold (0.85). Sanity S1 18/18, S2 16/9,
+  S3 18/2 (stand-in 004). plan: queue q8 vs bot_005 (T1 bot_003, T2 bot_004, B126).

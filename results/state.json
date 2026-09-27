@@ -377,12 +377,21 @@
    "parent": "bot_040",
    "status": "RUNNING",
    "tags": "archetype-opportunist"
+  },
+  "bot_043": {
+   "created": "2026-09-27T08:43",
+   "family": "adaptive",
+   "file": "bots/bot_043_adaptive_hitrate.py",
+   "note": "",
+   "parent": "bot_005",
+   "status": "RUNNING",
+   "tags": "prediction-accuracy-gating"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_009",
-   "iterations": 3,
+   "iterations": 4,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
   },
@@ -439,7 +448,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 43,
+ "next_bot_id": 44,
  "overall_champions": [
   {
    "bot": "bot_001",
