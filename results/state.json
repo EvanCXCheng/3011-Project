@@ -490,10 +490,19 @@
    "created": "2026-09-27T22:12",
    "family": "search",
    "file": "bots/bot_055_search_openings.py",
-   "note": "",
+   "note": "opening-book candidates: S2 +0.23, S3 -0.03, pooled +0.07\u00b10.21 vs bot_045",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "opening-book-candidates"
+  },
+  "bot_056": {
+   "created": "2026-09-27T22:46",
+   "family": "greedy",
+   "file": "bots/bot_056_greedy_convoy.py",
+   "note": "",
+   "parent": "bot_012",
+   "status": "RUNNING",
+   "tags": "convoys"
   }
  },
  "families": {
@@ -517,7 +526,7 @@
   },
   "greedy": {
    "champion": "bot_012",
-   "iterations": 4,
+   "iterations": 5,
    "reason": "3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13",
    "status": "DORMANT"
   },
@@ -558,7 +567,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 56,
+ "next_bot_id": 57,
  "overall_champions": [
   {
    "bot": "bot_001",
@@ -646,6 +655,10 @@
   "one-ply-simulation": {
    "bot": "bot_004",
    "effect": "pooled +2.16\u00b10.31 SC vs bot_003 (378 paired, B); mark 13 vs 11; S1 +4.31\u00b10.44"
+  },
+  "opening-book-candidates": {
+   "bot": "bot_055",
+   "effect": "pooled +0.07\u00b10.21 SC vs bot_045 (378 paired, B; n.s.)"
   },
   "opponent-aware-eval": {
    "bot": "bot_008",

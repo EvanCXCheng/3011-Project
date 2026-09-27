@@ -943,9 +943,18 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   92/162 wins, Turkey 87/162, England 96/162, Germany 107/163 vs France 142/162, Russia 145/163.
 - defence-based fixes have failed repeatedly (015, 023, 037, 053) → try a different lever: opening quality (bot_055).
 
-## [073] bot_055 search/openings — RUNNING
+## [073] bot_055 search/openings — REJECTED
 
 - family: search | parent: bot_045 | tags: opening-book-candidates (search 21/56 iterations = 37.5%, under the cap)
 - three standard S1901 openings per power (published opening theory; our transcription, all legal) added to the first
   race. Check: they enter the pool (Austria picked a book opening; Germany/England preferred generated plans).
 - plan: queue q22 vs bot_045 (T1 bot_001, T2 bot_004 B126).
+- bot_055 Tier 2 B126 (stand-in 004): S2 16.96±0.28 (86.5%) / S3 15.29±0.43 (68.3%); vs bot_045 S2 +0.23, S3 −0.03,
+  pooled +0.07±0.21 → REJECT: the race already finds sound openings.
+
+## [074] bot_056 greedy/convoy — RUNNING (dormant family, style-pure)
+
+- family: greedy | parent: bot_012 | tags: convoys (greedy backlog item 9)
+- armies that cannot approach any target over land take the VIA move whose landing is closest to a target, with every
+  fleet of ours that can convoy it ordered to convoy (multi-fleet chains work: A CLY - DEN VIA with F NTH + F NWG).
+- sanity England S2 seeds 1/8 → 14/10 SC, no errors. plan: queue q23 vs bot_012 (T1 greedy, T2 bot_001 B210).
