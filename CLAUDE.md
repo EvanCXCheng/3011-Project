@@ -189,10 +189,10 @@ Repeat until usage runs out:
   champion-vs-six-styles tables, and S3 with each style as the Hidden Agent stand-in. A style-pure bot may join the
   field even if it does not beat a hybrid family champion.
 - **New families (human permission, 27 Sep):** at the start of any queue, new families may be added when promising.
-- **Priority work (human request, 28 Sep):** (a) a fast own move resolver for rollouts (many more simulations per
-  move), validated against the engine on random positions before use; (b) changes that make the champion stronger in
-  Scenario 4 against the styles it does worst against (aggressive bot_040, lookahead bot_024 as Hidden Agent / table
-  opponents). These take precedence over routine variants when judged more valuable.
+- **Priority work (human request, 28 Sep):** develop whichever lines look most promising (any family, not one
+  particular bot), and only when judged better value than the usual loop step. Candidates: (a) bots built on the own
+  fast move resolver (validated against the engine with `lab/validate_resolver.py` before use); (b) changes that
+  improve Scenario 4 play against the styles our bots do worst against (aggressive, lookahead).
 - **Best-bots summary (human request, 27 Sep):** end every loop turn with a compact table of the best bots
   (overall champion, top bots by estimated mark / mean SC with S1–S3 SC and win rates, family champions) from
   `LEADERBOARD.md`.
