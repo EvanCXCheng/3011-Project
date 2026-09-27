@@ -14,7 +14,9 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_DIR = os.path.expanduser('~/.claude/projects/' + re.sub(r'[^A-Za-z0-9]', '-', ROOT))
-TAG_RE = re.compile(r'<(ide_[a-z_]+|system-reminder)>.*?</\1>', re.S)
+TAG_RE = re.compile(r'<(ide_[a-z_]+|system-reminder|task-notification)>.*?</\1>', re.S)
+CMD_RE = re.compile(r'<command-name>(.*?)</command-name>\s*<command-args>(.*?)</command-args>', re.S)
+AUTO_PREFIXES = ('<command-', '[Request interrupted', 'Caveat:', 'This session is being continued from a previous conversation')
 ANSWER_MARKERS = ('Your questions have been answered', 'User has approved your plan', 'The user doesn\'t want')
 
 
@@ -59,7 +61,11 @@ def main():
                 content = d.get('message', {}).get('content')
                 ts = d.get('timestamp', '')
                 txt = TAG_RE.sub('', text_of(content) if content else '').strip()
-                if txt and not txt.startswith('<command-') and not txt.startswith('Caveat:'):
+                m = CMD_RE.search(txt)
+                if m:
+                    txt = (m.group(1) + ' ' + m.group(2)).strip()
+                    items.append((ts, session, 'prompt', txt))
+                elif txt and not txt.startswith(AUTO_PREFIXES):
                     items.append((ts, session, 'prompt', txt))
                 for ans in answers_of(content or []):
                     items.append((ts, session, 'answer', ans))
