@@ -512,6 +512,15 @@
    "parent": "bot_045",
    "status": "REJECTED",
    "tags": "vulture-candidate"
+  },
+  "bot_058": {
+   "created": "2026-09-28T00:35",
+   "family": "search",
+   "file": "bots/bot_058_search_stackfast.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "shared-opponent-rollouts"
   }
  },
  "families": {
@@ -553,7 +562,7 @@
   },
   "search": {
    "champion": "bot_045",
-   "iterations": 21,
+   "iterations": 22,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -576,7 +585,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 58,
+ "next_bot_id": 59,
  "overall_champions": [
   {
    "bot": "bot_001",

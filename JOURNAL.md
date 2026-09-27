@@ -982,3 +982,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   VM_CANDS off: S2 16.56 −0.17±0.36, S3 14.33 (62.7%) −0.99±0.53, pooled −0.58±0.32.
 - takeaway: all three parts help inside the stack (consistent with additivity); valuemap candidate matters most (S3),
   then two-ply Spring, convoys least. Report: leave-one-out table next to the one-at-a-time results (026/028/035).
+
+## [077] bot_058 search/stackfast — RUNNING
+
+- parent bot_045 | tags: shared-opponent-rollouts. Two-ply halves Spring rollouts, so the ×1.5 speed-up (neutral on
+  bot_022 in 025) may matter here. Check: 1583/1586 processes moved units (the rest are retreat steps in the two-ply
+  reply); S3 seeds 12/13 → 18/7. plan: queue q26 vs bot_045 (T1 bot_001, T2 bot_004 B126).
