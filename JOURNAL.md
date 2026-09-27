@@ -810,3 +810,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_042 opportunist: S1 17.59 (81.4%) / S2 8.08 / S3 7.29 — focusing one victim leaves it exposed.
 - takeaway: against the provided baselines, relentless supported aggression is nearly as good as the simulation
   champion. Ideas: bot_040's plan as a candidate in bot_022's race; bot_040 is a key S4 sparring partner.
+
+## [062] bot_047 search/aggcand — RUNNING
+
+- family: search | parent: bot_022 | tags: multi-source-candidates (aggressive archetype plan)
+- hypothesis: bot_040's all-out aggressive plan ties bot_022 in S2; adding it to bot_022's race lets the rollouts use
+  aggression when it pays → S2/S3 gain.
+- checks: generator returns legal plans (e.g. S1901 France: A MAR - SPA, F BRE - ENG, A PAR - BUR); S2 seeds 12/13 →
+  18/10 SC, no errors.
+- plan: queue q12 (queue_bots.sh vs bot_022).

@@ -413,6 +413,15 @@
    "parent": "bot_036",
    "status": "RUNNING",
    "tags": "holder-aware-priors"
+  },
+  "bot_047": {
+   "created": "2026-09-27T11:13",
+   "family": "search",
+   "file": "bots/bot_047_search_aggcand.py",
+   "note": "",
+   "parent": "bot_022",
+   "status": "RUNNING",
+   "tags": "multi-source-candidates"
   }
  },
  "families": {
@@ -454,7 +463,7 @@
   },
   "search": {
    "champion": "bot_022",
-   "iterations": 15,
+   "iterations": 16,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -477,7 +486,7 @@
   "bot_007",
   "bot_021"
  ],
- "next_bot_id": 47,
+ "next_bot_id": 48,
  "overall_champions": [
   {
    "bot": "bot_001",
