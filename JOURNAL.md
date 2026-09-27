@@ -1054,3 +1054,5 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   bot_060 2.29±0.41 SC. Champion first again; seeded GA second. The ensemble (est. 15 vs the baseline mix) finishes last
   among strong bots: pure rule planners do well against weak opponents only.
 - family review pending one measurement: bot_038 S3 vs a strong stand-in (only measured vs bot_001 so far) → q33.
+- test_21.py: default ablation keys updated for the new champion's switches (ROLLOUT, LA_CANDS, VM_CANDS, TWO_PLY,
+  CONVOYS, HALVING, ACC_GATE, OPP_AWARE); all present in agent_21.py; smoke-tested (ablate TWO_PLY, 1 game). 20 KB.

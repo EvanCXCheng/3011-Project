@@ -14,7 +14,7 @@ Commands (run from the project folder that holds game.py, agent_baselines.py and
   python test_21.py eval   --agent agent_21.py --scenarios 1 2 3 --n 42 [--seed-base 400000] [--standin greedy]
                            [--set KEY=VAL ...] [--workers 3] [--out results_21.jsonl]
   python test_21.py compare --a LABEL_A --b LABEL_B [--out results_21.jsonl]      paired mean-SC differences
-  python test_21.py ablate --agent agent_21.py --keys ROLLOUT LA_CANDS HALVING ACC_GATE OPP_AWARE --n 42
+  python test_21.py ablate --agent agent_21.py --keys ROLLOUT LA_CANDS VM_CANDS TWO_PLY CONVOYS HALVING ACC_GATE OPP_AWARE --n 42
                            (evaluates the agent with each technique switched off, then compares with the full agent)
   python test_21.py stress --agent agent_21.py [--procs 4]                          slow-machine timing check
   python test_21.py tournament --agents agent_21.py greedy attitude ... --games 28  all-agent games, rotating seats
@@ -479,7 +479,7 @@ def main():
     p.set_defaults(func=cmd_compare)
     p = sub.add_parser('ablate')
     common(p)
-    p.add_argument('--keys', nargs='+', default=['ROLLOUT', 'LA_CANDS', 'HALVING', 'ACC_GATE', 'OPP_AWARE'])
+    p.add_argument('--keys', nargs='+', default=['ROLLOUT', 'LA_CANDS', 'VM_CANDS', 'TWO_PLY', 'CONVOYS', 'HALVING', 'ACC_GATE', 'OPP_AWARE'])
     p.add_argument('--scenarios', type=int, nargs='+', default=[1, 2, 3])
     p.add_argument('--n', type=int, default=42)
     p.add_argument('--seed-base', type=int, default=400000)
