@@ -1075,3 +1075,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_065 Tier 2 B126 (stand-in 004): S1 18.00 / S2 17.17±0.23 (88.1%) / S3 15.60±0.39 (70.6%) — best S2/S3 on these
   seeds so far. vs bot_045 S2 +0.44±0.29, S3 +0.27±0.50, pooled +0.24±0.19 (z≈1.3 < 1.5: no extension) → not overall.
   vs bot_062 S2 +0.48, S3 +1.21, pooled +0.56±0.19 → PROMOTE → evolution family champion.
+
+## [086] bot_066 evolution/racega — RUNNING
+
+- parent bot_065 | tags: race-then-evolve. First half of the rollout time: halving race over the pool; then the GA
+  breeds only from the survivors (race totals carried over). Checks: rollout path ok; S3 seeds 12/13 → 18/10.
+- plan: queue q35 vs bot_065 (T1 bot_001, T2 bot_004 B126).

@@ -584,6 +584,15 @@
    "parent": "bot_045",
    "status": "PROMOTED",
    "tags": "genetic-algorithm,seeded-population"
+  },
+  "bot_066": {
+   "created": "2026-09-28T05:06",
+   "family": "evolution",
+   "file": "bots/bot_066_evolution_racega.py",
+   "note": "",
+   "parent": "bot_065",
+   "status": "RUNNING",
+   "tags": "genetic-algorithm"
   }
  },
  "families": {
@@ -613,7 +622,7 @@
   },
   "evolution": {
    "champion": "bot_065",
-   "iterations": 4,
+   "iterations": 5,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -662,7 +671,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 66,
+ "next_bot_id": 67,
  "overall_champions": [
   {
    "bot": "bot_001",
