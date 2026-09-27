@@ -821,3 +821,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: queue q12 (queue_bots.sh vs bot_022).
 - bot_043 adaptive/hitrate (B126, stand-in 004): S1 18.00 (100%) / S2 12.87±0.49 (42.9%) / S3 9.87±0.52 (19.8%);
   vs bot_005 pooled −0.03±0.23 → REJECTED (no effect): the rule plan does not use the finer threat model much.
+- bot_040 S3 vs strong stand-in (bot_004, B210): 12.41±0.45 (48.6%). Paired vs bot_022: S1 0, S2 −0.15±0.39,
+  S3 −1.93±0.41, pooled −0.80±0.22. → aggression ties the champion against the baselines but loses clearly against a
+  strong Hidden Agent; simulation pays where it matters (S3). bot_040 still est. 15 (S3 just > 12): fast strong sparring bot.
