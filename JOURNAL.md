@@ -1076,8 +1076,17 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   seeds so far. vs bot_045 S2 +0.44±0.29, S3 +0.27±0.50, pooled +0.24±0.19 (z≈1.3 < 1.5: no extension) → not overall.
   vs bot_062 S2 +0.48, S3 +1.21, pooled +0.56±0.19 → PROMOTE → evolution family champion.
 
-## [086] bot_066 evolution/racega — RUNNING
+## [086] bot_066 evolution/racega — REJECTED
 
 - parent bot_065 | tags: race-then-evolve. First half of the rollout time: halving race over the pool; then the GA
   breeds only from the survivors (race totals carried over). Checks: rollout path ok; S3 seeds 12/13 → 18/10.
 - plan: queue q35 vs bot_065 (T1 bot_001, T2 bot_004 B126).
+- bot_066 Tier 2 B126: S2 17.04±0.28 (88.9%) / S3 14.36±0.49 (62.7%); vs bot_065 S2 −0.13, S3 −1.24, pooled −0.46±0.19
+  → REJECT: racing first discards plans the GA could recombine usefully.
+
+## [087] bot_067 adaptive/seataware — RUNNING
+
+- parent bot_045 | tags: seat-aware-score. Central seats (AUS/GER/ITA): +0.5 extra cost per own SC lost in the rollout
+  outcome, unit weight 1.0 (vs 0.6). Found while writing it: with two-ply Spring bot_045 never uses R_W_LOST (Spring is
+  always scored on post-Fall ownership), so a lost own SC cost exactly as much as a gained one.
+- checks: rollout path ok (Austria seat); S3 Austria seeds 7/14 → 6/18. plan: queue q36 vs bot_045 (T1 001, T2 004).

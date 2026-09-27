@@ -589,16 +589,25 @@
    "created": "2026-09-28T05:06",
    "family": "evolution",
    "file": "bots/bot_066_evolution_racega.py",
-   "note": "",
+   "note": "race-then-GA: S3 -1.24; pooled -0.46\u00b10.19 vs bot_065",
    "parent": "bot_065",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "genetic-algorithm"
+  },
+  "bot_067": {
+   "created": "2026-09-28T05:42",
+   "family": "adaptive",
+   "file": "bots/bot_067_adaptive_seataware.py",
+   "note": "",
+   "parent": "bot_045",
+   "status": "RUNNING",
+   "tags": "seat-aware-score"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_009",
-   "iterations": 5,
+   "iterations": 6,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
   },
@@ -671,7 +680,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 67,
+ "next_bot_id": 68,
  "overall_champions": [
   {
    "bot": "bot_001",

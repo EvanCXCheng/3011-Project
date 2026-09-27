@@ -707,3 +707,12 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-043920_bot_065_evolution_poolga_tier2,2026-09-28T05:05,bot_065_evolution_poolga,557a422efa,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4738,0,90.4,0,0,0,0
 20260928-043920_bot_065_evolution_poolga_tier2,2026-09-28T05:05,bot_065_evolution_poolga,557a422efa,tier2,B,2,,126,0,0.881,17.1667,0.2336,5,False,0.485,0,95.7,0,0,0,0
 20260928-043920_bot_065_evolution_poolga_tier2,2026-09-28T05:05,bot_065_evolution_poolga,557a422efa,tier2,B,3,bot_004_lookahead_base,126,0,0.7063,15.5952,0.3919,5,False,0.4908,0,97.1,0,0,0,0
+20260928-050726_bot_066_evolution_racega_tier0,2026-09-28T05:09,bot_066_evolution_racega,5f3ed7f5b2,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4627,0,153.6,0,0,0,0
+20260928-050726_bot_066_evolution_racega_tier0,2026-09-28T05:09,bot_066_evolution_racega,5f3ed7f5b2,tier0,X,2,,3,0,0.3333,14.3333,1.8559,5,True,0.47,0,153.6,0,0,0,0
+20260928-050726_bot_066_evolution_racega_tier0,2026-09-28T05:09,bot_066_evolution_racega,5f3ed7f5b2,tier0,X,3,bot_045_search_stack,3,0,0.3333,9.3333,4.6667,3,True,0.4688,0,153.6,0,0,0,0
+20260928-050931_bot_066_evolution_racega_tier1,2026-09-28T05:15,bot_066_evolution_racega,5f3ed7f5b2,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4787,0,90.1,0,0,0,0
+20260928-050931_bot_066_evolution_racega_tier1,2026-09-28T05:15,bot_066_evolution_racega,5f3ed7f5b2,tier1,A,2,,42,0,0.881,17.0714,0.4788,5,False,0.4774,0,95.2,0,0,0,0
+20260928-050931_bot_066_evolution_racega_tier1,2026-09-28T05:15,bot_066_evolution_racega,5f3ed7f5b2,tier1,A,3,bot_001_greedy_base,42,0,0.7619,15.8571,0.7014,5,False,0.4839,0,95.1,0,0,0,0
+20260928-051549_bot_066_evolution_racega_tier2,2026-09-28T05:42,bot_066_evolution_racega,5f3ed7f5b2,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4872,0,90.5,0,0,0,0
+20260928-051549_bot_066_evolution_racega_tier2,2026-09-28T05:42,bot_066_evolution_racega,5f3ed7f5b2,tier2,B,2,,126,0,0.8889,17.0397,0.2754,5,False,0.4807,0,96.5,0,0,0,0
+20260928-051549_bot_066_evolution_racega_tier2,2026-09-28T05:42,bot_066_evolution_racega,5f3ed7f5b2,tier2,B,3,bot_004_lookahead_base,126,0,0.627,14.3571,0.4915,5,False,0.4942,0,96.6,0,0,0,0
