@@ -539,6 +539,15 @@
    "parent": "none",
    "status": "PROMOTED",
    "tags": "ensemble-voting"
+  },
+  "bot_061": {
+   "created": "2026-09-28T02:05",
+   "family": "ensemble",
+   "file": "bots/bot_061_ensemble_vote4.py",
+   "note": "",
+   "parent": "bot_060",
+   "status": "RUNNING",
+   "tags": "ensemble-voting"
   }
  },
  "families": {
@@ -562,7 +571,7 @@
   },
   "ensemble": {
    "champion": "bot_060",
-   "iterations": 1,
+   "iterations": 2,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -617,7 +626,7 @@
   "bot_021",
   "bot_022"
  ],
- "next_bot_id": 61,
+ "next_bot_id": 62,
  "overall_champions": [
   {
    "bot": "bot_001",

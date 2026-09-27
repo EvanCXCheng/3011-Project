@@ -1008,3 +1008,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   no simulation. vs bot_045 S2 −0.40, S3 −2.39, pooled −0.93±0.25; vs bot_040 (same seeds) S2 +0.14, S3 +0.83, pooled
   +0.33±0.23 → ensemble family champion; the strongest pure rule bot so far (a fast fallback design and a strong
   S4 sparring partner).
+
+## [079] bot_061 ensemble/vote4 — RUNNING
+
+- parent bot_060 | tags: ensemble-voting + a 4th voter (bot_012's greedy attack-matching plan). All voters verified.
+- sanity: S1 seeds 13/14/15 → 6/18/18 (bot_060: 18/18/18): with four voters 2–2 ties become common and the tie-break
+  can pick a bad mix (Turkey, seed 13). Evaluated as is (fast rule bot) to measure it.
+- plan: queue q28 vs bot_060 (T1 bot_001, T2 bot_004 B126).
