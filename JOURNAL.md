@@ -1381,3 +1381,5 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - promoted by identity: default play is bot_075's code path unchanged (diff = CONFIG key + name + inert early return),
   so no paired test or new stress run (bot_075 stress PASS applies). agent_21.py = bot_081; evolution family and
   overall champion records point at bot_081; bot_075's results remain the performance evidence.
+- test_21.py ablate accepts KEY=VAL (BASIC_GREEDY=true added to the default keys); smoke-tested n=1 S2: full 18 SC,
+  basic 6 SC, 0 issues. 20.7 KB.
