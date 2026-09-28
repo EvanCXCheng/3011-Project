@@ -112,3 +112,9 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
   before designing a fix (fleet-first opening? convoy timing?).
 - central powers (AUS/GER/ITA) in S3: early defence of home SCs when a strong neighbour is adjacent (bot_067 seat-aware
   score failed; try on the GA line, where bot_075's confirm race favours robust plans).
+
+## freeze runs prepared (29 Sep)
+- results/logs/freeze_final.sh (not started): FINAL 504/scenario for agent_21 (= bot_081, S3 stand-in bot_004), then
+  10 ablations at 210/scenario on the same FINAL seeds: BASIC_GREEDY=true, ROLLOUT, CONFIRM, TWO_PLY, ACC_GATE,
+  OPP_AWARE, FAST_RES, LA_CANDS, VM_CANDS, CONVOYS =false. Estimated ≈ 2 h + 10 × ~50 min ≈ 10–11 h (3 workers).
+  Launch with: (nohup setsid results/logs/freeze_final.sh > results/logs/freeze_final.out 2>&1 &)
