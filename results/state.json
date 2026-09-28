@@ -733,9 +733,9 @@
    "created": "2026-09-28T23:00",
    "family": "evolution",
    "file": "bots/bot_082_evolution_antilead.py",
-   "note": "",
+   "note": "anti-leader score: B +0.04\u00b10.14, C -0.11\u00b10.22 vs bot_075",
    "parent": "bot_081",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "anti-leader-score"
   }
  },

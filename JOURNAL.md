@@ -1362,7 +1362,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   basic-technique numbers from the submitted file; then promote bot_081 → agent_21.py by identity (no paired test:
   default behaviour unchanged).
 
-## [104] Failure analysis of champion bot_075 → bot_082 evolution/antilead — RUNNING
+## [104] Failure analysis of champion bot_075 → bot_082 evolution/antilead — REJECTED
 
 - bot_075 (1638 games): S2 AUS 14.9/74% is the one weak seat (ENG 81%, ITA 87%, others 96–100%); S3 AUS 13.1/62%,
   ENG 71%, TUR 74%, ITA 79% (FRA 92%, RUS 97%). Austria S2 is bimodal: 40/54 wins, 14 games at 0–9 SC. Their SC
@@ -1383,3 +1383,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   overall champion records point at bot_081; bot_075's results remain the performance evidence.
 - test_21.py ablate accepts KEY=VAL (BASIC_GREEDY=true added to the default keys); smoke-tested n=1 S2: full 18 SC,
   basic 6 SC, 0 issues. 20.7 KB.
+
+- bot_082 results (appended after [103]): T0 clean. T1 A42 vs 075 +0.18±0.27. T2: S1 18.00; B210 S2 17.39±0.17 (91.9%) /
+  S3 16.60±0.26 (81.4%); vs bot_075 S2 +0.21±0.21, S3 −0.11±0.31, pooled +0.04±0.14. Held-out C: S2 +0.17±0.21,
+  S3 −0.39±0.37, pooled −0.11±0.22 → REJECTED.
+- takeaway: penalising a runaway leader does not change results vs the baseline mix: when a greedy France snowballs,
+  Austria is usually too far away to act on it. Not tested in all-bot tables; left as an S4 idea only.

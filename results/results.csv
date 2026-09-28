@@ -893,3 +893,14 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-230052_bot_081_evolution_basicswitch_basic,2026-09-28T23:12,bot_081_evolution_basicswitch[BASIC_GREEDY=True],a9beb99280,basic,B,1,,126,0,0.0,7.7143,0.1239,1,False,0.0421,0,98.2,0,0,0,0
 20260928-230052_bot_081_evolution_basicswitch_basic,2026-09-28T23:12,bot_081_evolution_basicswitch[BASIC_GREEDY=True],a9beb99280,basic,B,2,,126,0,0.2143,10.8016,0.4835,3,True,0.0389,0,101.9,0,0,0,0
 20260928-230052_bot_081_evolution_basicswitch_basic,2026-09-28T23:12,bot_081_evolution_basicswitch[BASIC_GREEDY=True],a9beb99280,basic,B,3,bot_004_lookahead_base,126,0,0.0873,7.3413,0.46,1,True,0.0418,0,100.0,0,0,0,0
+20260928-231208_bot_082_evolution_antilead_tier0,2026-09-28T23:13,bot_082_evolution_antilead,463fe66a77,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4504,0,185.0,0,0,0,0
+20260928-231208_bot_082_evolution_antilead_tier0,2026-09-28T23:13,bot_082_evolution_antilead,463fe66a77,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4538,0,185.0,0,0,0,0
+20260928-231208_bot_082_evolution_antilead_tier0,2026-09-28T23:13,bot_082_evolution_antilead,463fe66a77,tier0,X,3,bot_073_lookahead_widepool,3,0,0.3333,9.3333,4.6667,3,True,0.4516,0,185.0,0,0,0,0
+20260928-231350_bot_082_evolution_antilead_tier1,2026-09-28T23:19,bot_082_evolution_antilead,463fe66a77,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4659,0,88.2,0,0,0,0
+20260928-231350_bot_082_evolution_antilead_tier1,2026-09-28T23:19,bot_082_evolution_antilead,463fe66a77,tier1,A,2,,42,0,0.9524,17.5,0.3814,5,False,0.4746,0,93.0,0,0,0,0
+20260928-231350_bot_082_evolution_antilead_tier1,2026-09-28T23:19,bot_082_evolution_antilead,463fe66a77,tier1,A,3,bot_001_greedy_base,42,0,0.9048,17.0476,0.5031,5,False,0.4795,0,94.0,0,0,0,0
+20260928-231930_bot_082_evolution_antilead_tier2,2026-09-28T23:23,bot_082_evolution_antilead,463fe66a77,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4715,0,88.5,0,0,0,0
+20260928-232326_bot_082_evolution_antilead_tier2,2026-09-28T23:57,bot_082_evolution_antilead,463fe66a77,tier2,B,2,,210,0,0.919,17.3857,0.1716,5,False,0.4701,0,94.4,0,0,0,0
+20260928-232326_bot_082_evolution_antilead_tier2,2026-09-28T23:57,bot_082_evolution_antilead,463fe66a77,tier2,B,3,bot_004_lookahead_base,210,0,0.8143,16.5952,0.2602,5,False,0.5025,0,98.5,0,0,0,0
+20260928-235732_bot_082_evolution_antilead_heldout,2026-09-29T00:17,bot_082_evolution_antilead,463fe66a77,heldout,C,2,,126,0,0.9048,17.3651,0.2295,5,False,0.7042,0,94.1,0,0,0,0
+20260928-235732_bot_082_evolution_antilead_heldout,2026-09-29T00:17,bot_082_evolution_antilead,463fe66a77,heldout,C,3,bot_004_lookahead_base,126,0,0.8095,16.0635,0.3958,5,False,0.4891,0,98.2,0,0,0,0
