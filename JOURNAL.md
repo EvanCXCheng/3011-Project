@@ -1233,3 +1233,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   +0.03±0.18; by stand-in vs 071: 004 +0.10, 024 +0.17, 040 +0.14 → REJECTED.
 - takeaway: bot_069's +0.94 vs the aggressive stand-in did not replicate on the low-noise resolver line → most likely
   noise (one of several stand-in splits). Coordinated-opponent sampling closed as no measurable effect.
+
+## [096] bot_077 lookahead/agcand — RUNNING
+
+- parent bot_073 (still under extension) | tags: archetype-plan-candidate. The aggressive archetype plan (bot_040's
+  engine as ported into bot_062) joins the race as one more candidate. Rationale: candidate diversity is the only
+  lever that has paid lately (073 +0.35 vs 071; 062 seeding +1.18; 035 valuemap candidate +0.30).
+- checks: archetype plan produced in 8/8 movement phases (0 exceptions); sanity S1/S2/S3 seed 20 → 18/18/18, tmax
+  0.452 s. File 66 KB (< 100 KB).
+- plan: queue q48 (after q45–q47): T0, T1 A42 vs bot_073, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and bot_073.

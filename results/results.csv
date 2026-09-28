@@ -801,3 +801,6 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-123752_bot_074_adaptive_oppsupres_tier2,2026-09-28T13:02,bot_074_adaptive_oppsupres,9bc5cfaea7,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4758,0,89.2,0,0,0,0
 20260928-123752_bot_074_adaptive_oppsupres_tier2,2026-09-28T13:02,bot_074_adaptive_oppsupres,9bc5cfaea7,tier2,B,2,,126,0,0.8492,16.7302,0.3085,5,False,0.4897,0,95.5,0,0,0,0
 20260928-123752_bot_074_adaptive_oppsupres_tier2,2026-09-28T13:02,bot_074_adaptive_oppsupres,9bc5cfaea7,tier2,B,3,bot_004_lookahead_base,126,0,0.7143,15.6508,0.3953,5,False,0.48,0,98.5,0,0,0,0
+20260928-130240_bot_075_evolution_confirm_tier0,2026-09-28T13:04,bot_075_evolution_confirm,fc62a7b21c,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4502,0,167.6,0,0,0,0
+20260928-130240_bot_075_evolution_confirm_tier0,2026-09-28T13:04,bot_075_evolution_confirm,fc62a7b21c,tier0,X,2,,3,0,0.6667,17.0,1.0,5,True,0.4505,0,167.6,0,0,0,0
+20260928-130240_bot_075_evolution_confirm_tier0,2026-09-28T13:04,bot_075_evolution_confirm,fc62a7b21c,tier0,X,3,bot_070_search_mapfix,3,0,0.3333,8.3333,5.2387,3,True,0.4505,0,167.6,0,0,0,0

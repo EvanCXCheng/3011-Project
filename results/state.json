@@ -683,6 +683,15 @@
    "parent": "bot_071",
    "status": "RUNNING",
    "tags": "valuemap-rollout-score"
+  },
+  "bot_077": {
+   "created": "2026-09-28T13:04",
+   "family": "lookahead",
+   "file": "bots/bot_077_lookahead_agcand.py",
+   "note": "",
+   "parent": "bot_073",
+   "status": "RUNNING",
+   "tags": "archetype-plan-candidate"
   }
  },
  "families": {
@@ -724,7 +733,7 @@
   },
   "lookahead": {
    "champion": "bot_071",
-   "iterations": 13,
+   "iterations": 14,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -761,7 +770,7 @@
   "bot_022",
   "bot_045"
  ],
- "next_bot_id": 77,
+ "next_bot_id": 78,
  "overall_champions": [
   {
    "bot": "bot_001",
