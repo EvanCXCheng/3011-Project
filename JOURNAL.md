@@ -1185,7 +1185,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   what limits it now is the opponent model / score and the candidate set. Resolver still useful where evaluations are
   scarce (GA, bot_072) and for bigger candidate pools or richer opponent models at no time cost.
 
-## [093] bot_073 lookahead/widepool, bot_074 adaptive/oppsupres — RUNNING
+## [093] bot_073 lookahead/widepool, bot_074 adaptive/oppsupres — RUNNING (073 borderline, extending)
 
 - after bot_071's null result (rollouts no longer binding), two ways to use the spare rollouts, both on bot_071:
 - bot_073 (tags: wide-candidate-pool): TOP_K 8 → 16, N_LA 12 → 36; measured pool 15–21 → 30–51 candidates per phase.
@@ -1220,3 +1220,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   Paired: S2 +0.14±0.25, S3 +0.66±0.44, pooled +0.40±0.25 — same direction and size as seed set B (+0.50±0.20);
   fresh seeds neither bot was selected on → the map-fix gain is not a seed-set artefact. (compare's "REJECT" and
   marks 10 only reflect the missing S1 and a single-set test.)
+
+- bot_073 results (appended after [095]): T1 A42 vs bot_071 S2 −0.10, S3 −0.19 (pass). T2 B126 (004): S1 18.00 / S2
+  17.43±0.22 (92.9%) / S3 15.77±0.38 (72.2%); S3 vs 040 15.16, vs 024 15.52.
+  vs bot_070: S2 +0.44±0.29, S3 (378) +0.39±0.25, pooled +0.32±0.16 → PROMOTE (z≈2.0, borderline);
+  vs parent bot_071: pooled +0.35±0.17 → REJECT (just under 2 SE). By stand-in vs 070: 004 +0.06, 024 +0.58, 040 +0.52.
+- borderline on both → [040] extension rule: q47 extends 073/070/071 to B210 (S2/S3, stand-in 004) and adds held-out C
+  (offset 400; bot_070 already has it) before any promotion.
