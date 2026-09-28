@@ -1203,7 +1203,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   either; bot_065 ≈ bot_070 ≈ bot_071 ≈ bot_072 on these seeds (all within ±0.2). Evolution line stays level with
   the champion (best S2), not ahead.
 
-## [094] bot_075 evolution/confirm, bot_076 lookahead/vmscore — RUNNING
+## [094] bot_075 evolution/confirm, bot_076 lookahead/vmscore — RUNNING (075 strong, extending)
 
 - bots 065/070/071/072 tie within ±0.2 and neither rollout count (071) nor GA generations (072) was binding, so the
   next two target selection bias and the score function:
@@ -1242,3 +1242,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - checks: archetype plan produced in 8/8 movement phases (0 exceptions); sanity S1/S2/S3 seed 20 → 18/18/18, tmax
   0.452 s. File 66 KB (< 100 KB).
 - plan: queue q48 (after q45–q47): T0, T1 A42 vs bot_073, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and bot_073.
+
+- bot_075 results (appended after [096]): T1 A42 vs bot_072 pooled +0.06±0.25. T2 B126 (004): S1 18.00 / S2 17.12±0.29
+  (91.3%) / S3 16.51±0.34 (83.3%, best S3 so far); S3 vs 040 15.40, vs 024 15.63.
+  vs bot_070 (overall): S2 +0.13±0.32, S3 (378) +0.75±0.26, pooled +0.48±0.17 → PROMOTE (z 2.8).
+  vs bot_065 (evolution champion; S3 paired on stand-in 004 only): S2 −0.05, S3 +0.91±0.43, pooled +0.29±0.18 (z 1.6);
+  vs parent bot_072 +0.29±0.17. By stand-in vs 072: 004 +0.84, 024 +0.67, 040 +0.12.
+- family comparison borderline → [040] extension: q49 extends 075/065/070 to B210 (S2/S3) + held-out C for 075.
+- takeaway so far: the confirmation race (fresh samples for the GA's finalists) helps mainly in S3 → the GA's
+  best-by-mean was biased toward plans lucky on few samples (winner's curse), which matters most vs a strong opponent.
