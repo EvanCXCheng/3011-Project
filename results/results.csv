@@ -742,3 +742,17 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-071808_bot_069_adaptive_oppsupport_tier2,2026-09-28T07:45,bot_069_adaptive_oppsupport,840d8c44b8,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4771,0,90.2,0,0,0,0
 20260928-071808_bot_069_adaptive_oppsupport_tier2,2026-09-28T07:45,bot_069_adaptive_oppsupport,840d8c44b8,tier2,B,2,,126,0,0.8968,17.3571,0.193,5,False,0.4924,0,95.2,0,0,0,0
 20260928-071808_bot_069_adaptive_oppsupport_tier2,2026-09-28T07:45,bot_069_adaptive_oppsupport,840d8c44b8,tier2,B,3,bot_004_lookahead_base,126,0,0.5794,14.3651,0.4618,5,False,0.4826,0,97.3,0,0,0,0
+20260928-074519_bot_070_search_mapfix_tier0,2026-09-28T07:47,bot_070_search_mapfix,61d2dc2d85,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4527,0,159.2,0,0,0,0
+20260928-074519_bot_070_search_mapfix_tier0,2026-09-28T07:47,bot_070_search_mapfix,61d2dc2d85,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4676,0,159.2,0,0,0,0
+20260928-074519_bot_070_search_mapfix_tier0,2026-09-28T07:47,bot_070_search_mapfix,61d2dc2d85,tier0,X,3,bot_065_evolution_poolga,3,0,0.3333,12.3333,3.8442,5,True,0.4756,0,159.2,0,0,0,0
+20260928-074723_bot_070_search_mapfix_tier1,2026-09-28T07:53,bot_070_search_mapfix,61d2dc2d85,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4742,0,90.2,0,0,0,0
+20260928-074723_bot_070_search_mapfix_tier1,2026-09-28T07:53,bot_070_search_mapfix,61d2dc2d85,tier1,A,2,,42,0,0.881,16.9048,0.5244,5,False,0.4745,0,95.2,0,0,0,0
+20260928-074723_bot_070_search_mapfix_tier1,2026-09-28T07:53,bot_070_search_mapfix,61d2dc2d85,tier1,A,3,bot_001_greedy_base,42,0,0.9048,17.381,0.3458,5,False,0.4793,0,95.7,0,0,0,0
+20260928-075333_bot_070_search_mapfix_sparring,2026-09-28T08:00,bot_070_search_mapfix,61d2dc2d85,sparring,B,3,bot_040_archetype_aggressive,126,0,0.6429,14.6349,0.4663,5,False,0.4812,0,96.5,0,0,0,0
+20260928-080056_bot_070_search_mapfix_sparring,2026-09-28T08:16,bot_070_search_mapfix,61d2dc2d85,sparring,B,3,bot_024_lookahead_fastroll,126,0,0.6667,14.9444,0.4389,5,False,0.4875,0,97.6,0,0,0,0
+20260928-081600_bot_070_search_mapfix_tier2,2026-09-28T08:41,bot_070_search_mapfix,61d2dc2d85,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4758,0,90.3,0,0,0,0
+20260928-081600_bot_070_search_mapfix_tier2,2026-09-28T08:41,bot_070_search_mapfix,61d2dc2d85,tier2,B,2,,126,0,0.873,16.9841,0.2735,5,False,0.4815,0,96.4,0,0,0,0
+20260928-081600_bot_070_search_mapfix_tier2,2026-09-28T08:41,bot_070_search_mapfix,61d2dc2d85,tier2,B,3,bot_004_lookahead_base,126,0,0.754,15.7063,0.429,5,False,0.4837,0,97.2,0,0,0,0
+20260928-084103_bot_071_lookahead_fastres_tier0,2026-09-28T08:42,bot_071_lookahead_fastres,8be0e59d57,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4662,0,160.4,0,0,0,0
+20260928-084103_bot_071_lookahead_fastres_tier0,2026-09-28T08:42,bot_071_lookahead_fastres,8be0e59d57,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4504,0,160.4,0,0,0,0
+20260928-084103_bot_071_lookahead_fastres_tier0,2026-09-28T08:42,bot_071_lookahead_fastres,8be0e59d57,tier0,X,3,bot_065_evolution_poolga,3,0,0.6667,14.0,4.0,5,True,0.4505,0,160.4,0,0,0,0

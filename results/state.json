@@ -627,7 +627,7 @@
    "file": "bots/bot_070_search_mapfix.py",
    "note": "",
    "parent": "bot_045",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "split-coast-army-adjacency-fix"
   },
   "bot_071": {
@@ -699,7 +699,7 @@
    "status": "DORMANT"
   },
   "search": {
-   "champion": "bot_045",
+   "champion": "bot_070",
    "iterations": 23,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
@@ -720,10 +720,10 @@
   "bot_012",
   "bot_024",
   "bot_017",
-  "bot_045",
+  "bot_070",
   "bot_038",
-  "bot_021",
-  "bot_022"
+  "bot_022",
+  "bot_045"
  ],
  "next_bot_id": 73,
  "overall_champions": [
@@ -754,6 +754,10 @@
   {
    "bot": "bot_045",
    "date": "2026-09-27T12:35"
+  },
+  {
+   "bot": "bot_070",
+   "date": "2026-09-28T08:42"
   }
  ],
  "standin_rotation": 0,
@@ -881,6 +885,10 @@
   "shared-opponent-rollouts": {
    "bot": "bot_024",
    "effect": "pooled +0.49\u00b10.21 SC vs bot_021 (378 paired, B); S2 +0.63\u00b10.36, S3 +0.85\u00b10.52; ~1.5x rollouts"
+  },
+  "split-coast-army-adjacency-fix": {
+   "bot": "bot_070",
+   "effect": "bug fix, pooled +0.50\u00b10.20 SC vs bot_045 (630 paired, B); S3 +0.73/+0.98/+0.88 vs stand-ins 004/024/040"
   },
   "stacked-near-misses": {
    "bot": "bot_045",

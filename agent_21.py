@@ -1,4 +1,15 @@
-"""bot_045 — family: search — parent: bot_029 (+ bot_035's valuemap candidate)
+"""bot_070 — family: search — parent: bot_045
+
+Change vs bot_045 (one fix): army adjacency for the split-coast provinces. map_info built army neighbours from
+map.loc_abut, which lists coast-qualified names ('SPA/SC', 'BUL/EC', 'STP/NC'); those are not army nodes, so 20 army
+links were missing (MAR-SPA, GAS-SPA, POR-SPA, CON-BUL, GRE-BUL, RUM-BUL, SER-BUL, FIN/LVN/MOS/NWY-STP, ...). Armies
+saw SPA, BUL and STP as unreachable, armies standing there as stuck, and greedy predictions of opponents' armies were
+wrong near them (SPA/BUL/STP themselves are keyed in lower case in loc_abut, so they had no army neighbours
+at all). Army neighbours now use the base province and the lower-case key (checked against map.abuts: 0 missing, army and fleet).
+The found-bug fix applies to every bot copied from the same helper (bots 001-069); only this line gets it.
+
+bot_045 notes:
+bot_045 — family: search — parent: bot_029 (+ bot_035's valuemap candidate)
 
 Change vs bot_029 (one idea, stacking two measured near-misses against the champion bot_022): adds bot_035's valuemap
 candidate (bot_014's joint order) to bot_029's race (two-ply Spring rollouts + convoy candidates). Each was about
@@ -151,9 +162,11 @@ def map_info(game):
         nodeset = set(nodes)
         for a in nodes:
             nbrs = []
-            for b in m.loc_abut.get(a, []):
+            for b in m.loc_abut.get(a) or m.loc_abut.get(a.lower(), []):
                 b = b.upper()
-                if b in nodeset and m.abuts(t, a, '-', b):
+                if t == 'A':
+                    b = _base(b)
+                if b in nodeset and b not in nbrs and m.abuts(t, a, '-', b):
                     nbrs.append(b)
             adj[t][a] = nbrs
     reach = {t: {a: {_base(b) for b in adj[t][a]} for a in adj[t]} for t in adj}
@@ -207,7 +220,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_045_search_stack'):
+    def __init__(self, agent_name='bot_070_search_mapfix'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):

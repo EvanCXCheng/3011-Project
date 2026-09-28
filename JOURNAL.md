@@ -1120,7 +1120,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: queue q38: T0 X3; T1 A42 (001) vs bot_045; S3 B126 with stand-ins 040 and 024 (bot_045 refs from [067]);
   T2 B126 (004) vs bot_045.
 
-## [090] Found bug: army adjacency at split-coast provinces (all bots) — bot_070 search/mapfix RUNNING
+## [090] Found bug: army adjacency at split-coast provinces (all bots) — bot_070 search/mapfix PROMOTED (overall champion)
 
 - Found while validating an own resolver: map_info (copied into every bot since bot_001) built army neighbours from
   map.loc_abut, which lists coast-qualified names ('SPA/SC', 'BUL/EC', 'STP/NC') and keys SPA/BUL/STP in lower case.
@@ -1165,3 +1165,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   compare (S3 pooled over the three stand-ins): pooled +0.17±0.19 → REJECT (below 2 SE).
 - takeaway: modelling supported opponent attacks helps against the aggressive style (the S4 weak spot, z≈2.0) and in
   S2, but not against bot_004. Retest on the resolver line, where rollout noise is far lower (backlog).
+
+- bot_070 results (appended after [092]): Tier 0 clean. T1 A42 vs bot_045 pooled −0.21±0.20 (pass). T2 B126 (004): S1 18.00
+  / S2 16.98±0.27 (87.3%) / S3 15.71±0.43 (75.4%). vs bot_045: S2 +0.25±0.32, S3 (3 stand-ins, 378) +0.75±0.31,
+  pooled +0.50±0.20 → PROMOTE. By stand-in: 004 +0.73±0.49, 024 lookahead +0.98±0.58 (14.94), 040 aggressive
+  +0.88±0.55 (14.63) — consistent gains, incl. both S4 weak-spot styles.
+- stress (evals pinned to cores 1–3, stress on core 0): slowdown ×3.66, tmax 0.518 s, 0 errors → PASS. Promoted:
+  search family champion + overall champion; agent_21.py = bot_070.
+- takeaway: a correct army map is worth ≈0.5 SC; the found bug cost every earlier bot. bot_071/072 (resolver) already
+  build on the fixed map. Style sparring bots still carry the bug (backlog).
