@@ -767,3 +767,11 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-093728_bot_072_evolution_fastga_tier0,2026-09-28T09:39,bot_072_evolution_fastga,109b7eb5f0,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4585,0,161.8,0,0,0,0
 20260928-093728_bot_072_evolution_fastga_tier0,2026-09-28T09:39,bot_072_evolution_fastga,109b7eb5f0,tier0,X,2,,3,0,0.6667,15.0,3.0,5,True,0.4505,0,161.8,0,0,0,0
 20260928-093728_bot_072_evolution_fastga_tier0,2026-09-28T09:39,bot_072_evolution_fastga,109b7eb5f0,tier0,X,3,bot_070_search_mapfix,3,0,0.3333,9.6667,4.4096,3,True,0.4506,0,161.8,0,0,0,0
+20260928-093941_bot_072_evolution_fastga_tier1,2026-09-28T09:45,bot_072_evolution_fastga,109b7eb5f0,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4572,0,89.1,0,0,0,0
+20260928-093941_bot_072_evolution_fastga_tier1,2026-09-28T09:45,bot_072_evolution_fastga,109b7eb5f0,tier1,A,2,,42,0,0.9286,17.4524,0.3948,5,False,0.4681,0,93.5,0,0,0,0
+20260928-093941_bot_072_evolution_fastga_tier1,2026-09-28T09:45,bot_072_evolution_fastga,109b7eb5f0,tier1,A,3,bot_001_greedy_base,42,0,0.8571,16.3571,0.7033,5,False,0.4725,0,94.4,0,0,0,0
+20260928-094527_bot_072_evolution_fastga_sparring,2026-09-28T09:52,bot_072_evolution_fastga,109b7eb5f0,sparring,B,3,bot_040_archetype_aggressive,126,0,0.6984,15.2778,0.444,5,False,0.4748,0,95.8,0,0,0,0
+20260928-095230_bot_072_evolution_fastga_sparring,2026-09-28T10:06,bot_072_evolution_fastga,109b7eb5f0,sparring,B,3,bot_024_lookahead_fastroll,126,0,0.6825,14.9683,0.4594,5,False,0.4768,0,98.4,0,0,0,0
+20260928-100653_bot_072_evolution_fastga_tier2,2026-09-28T10:32,bot_072_evolution_fastga,109b7eb5f0,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4761,0,88.8,0,0,0,0
+20260928-100653_bot_072_evolution_fastga_tier2,2026-09-28T10:32,bot_072_evolution_fastga,109b7eb5f0,tier2,B,2,,126,0,0.9206,17.3175,0.2511,5,False,0.47,0,93.6,0,0,0,0
+20260928-100653_bot_072_evolution_fastga_tier2,2026-09-28T10:32,bot_072_evolution_fastga,109b7eb5f0,tier2,B,3,bot_004_lookahead_base,126,0,0.746,15.6667,0.4188,5,False,0.4805,0,98.6,0,0,0,0

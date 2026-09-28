@@ -643,9 +643,9 @@
    "created": "2026-09-28T07:06",
    "family": "evolution",
    "file": "bots/bot_072_evolution_fastga.py",
-   "note": "",
+   "note": "GA on resolver: vs bot_065 +0.07\u00b10.18, vs bot_070 +0.19\u00b10.18 (n.s.); best S2 (17.32, 92.1%)",
    "parent": "bot_065",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "own-fast-resolver,genetic-algorithm"
   },
   "bot_073": {

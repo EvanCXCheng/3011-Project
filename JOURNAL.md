@@ -1151,7 +1151,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: queue q40: T0, T1 A42 vs bot_045, S3 B126 vs stand-ins 040/024, T2 B126 (004) vs bot_045 and bot_070.
   FAST_RES False = bot_070 (ablation switch for the report).
 
-## [092] bot_072 evolution/fastga — RUNNING
+## [092] bot_072 evolution/fastga — REJECTED (not significant)
 
 - parent bot_065 | tags: own-fast-resolver, genetic-algorithm (human asked to keep the evolution line going). bot_065's
   GA fitness rollouts moved onto bot_071's resolver (+ the [090] map fix it needs). Resolver copy validated 660/660.
@@ -1194,3 +1194,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - sanity S2/S3 seed 11 vs stand-in 040: both 18/18, tmax ≤ 0.451 s, no errors.
 - plan: queues q43/q44 (after q41 bot_072 and q42 held-out): T0, T1 A42 vs bot_071, S3 B126 vs 040/024, T2 B126 (004)
   vs bot_070 (overall) and bot_071 (parent).
+
+- bot_072 results (appended after [093]): Tier 0 clean; T1 A42 S2 17.45 / S3 16.36. T2 B126 (004): S1 18.00 / S2 17.32±0.25
+  (92.1%, best S2 of any bot) / S3 15.67±0.42 (74.6%); S3 vs 040 15.28, vs 024 14.97.
+  vs bot_065 (parent): pooled +0.07±0.18; vs bot_070 (overall): S2 +0.33±0.29, S3 +0.21±0.28, pooled +0.19±0.18
+  (z 1.06 < 1.5: no extension); vs bot_045 +0.69±0.19. By stand-in vs 070: 004 −0.04, 024 +0.02, 040 +0.64±0.52.
+- takeaway: ×40 GA generations and the map fix together add only +0.07 over bot_065, so the GA was not evaluation-limited
+  either; bot_065 ≈ bot_070 ≈ bot_071 ≈ bot_072 on these seeds (all within ±0.2). Evolution line stays level with
+  the champion (best S2), not ahead.
