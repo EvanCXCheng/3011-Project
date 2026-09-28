@@ -1410,3 +1410,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs 070 search 14.16 (55.6%), vs 073 lookahead-widepool 13.46 (51.6%). All above the S3 5-pt lines (>12 SC / >40%).
   Hardest Hidden Agents are our own strongest search bots — the real Hidden Agent (~50% S2 wins) is weaker than
   070/073 (85–92% S2 wins), so the S3 mark has a wide margin.
+
+## [106] Tuning sweep on the champion's GA/confirm parameters — RUNNING
+
+- GA and confirmation parameters were set by hand in bot_059/065/075 and never tuned. --set variants of bot_075 (same
+  play as agent_21/bot_081) on B210 S2/S3 (stand-in 004), paired with bot_075: GA_SAMPLES=4 (2), CONFIRM_K=8 (5),
+  CONFIRM_T=0.12 (0.07), GA_POP=24 (16). Tuning, not a technique; a winner (z ≥ 2, confirmed on held-out C) becomes
+  a new bot file. Queue q58 (~3 h).
