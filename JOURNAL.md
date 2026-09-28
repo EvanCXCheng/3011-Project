@@ -1278,3 +1278,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 15.66±0.41 (73.8%); S3 vs 040 15.44, vs 024 15.85. vs parent bot_073 pooled +0.07±0.15 → REJECTED (vs bot_070
   +0.39±0.16 on B only inherits bot_073's unconfirmed B gain). By stand-in vs 073: 004 −0.11, 024 +0.33, 040 +0.29.
 - takeaway: the archetype plan rarely wins the race once the pool is wide; candidate diversity saturates.
+
+## [098] Failure analysis of champion bot_070 (after bots 068–077) — DONE
+
+- 1176 games. S1 100% every power. S2 (378): weakest ENG 15.7/72% and AUS 16.1/76% (FRA 98%, RUS 100%, TUR 93%);
+  45/378 games lose ≥3 SC from peak; worst 20% mostly vs greedy opponents (70/75); S2 falls from 18.0 (0 greedy
+  opponents) to 16.6 (4–5 greedy). Worst seeds: ENG collapses to 1–3 SC.
+- S3 (630, three stand-ins): AUS 13.6/60%, GER 14.1/63%, ITA 14.5/63%, ENG 15.4/60% vs FRA 89%, RUS 92%, TUR 79%;
+  72/630 lose ≥3 SC from peak; worst-20% strongest opponent spread over 004 (40), 040 (31), 024 (26), greedy (29).
+- unchanged picture since [072]: central powers and England lose early, mostly to greedy/strong neighbours.

@@ -95,3 +95,9 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
   is much lower.
 - all families: the split-coast army adjacency fix ([090]) applies to every copied map_info; style-pure sparring bots
   (012/014/017/038/040) could get the fix before the final style tournament (bug fix, not a strategy change).
+
+## added 28 Sep (failure analysis [098])
+- England S2 collapses to 1–3 SC vs greedy neighbours: inspect 2–3 worst games (100010, 200026) in the visualiser
+  before designing a fix (fleet-first opening? convoy timing?).
+- central powers (AUS/GER/ITA) in S3: early defence of home SCs when a strong neighbour is adjacent (bot_067 seat-aware
+  score failed; try on the GA line, where bot_075's confirm race favours robust plans).
