@@ -692,6 +692,15 @@
    "parent": "bot_073",
    "status": "RUNNING",
    "tags": "archetype-plan-candidate"
+  },
+  "bot_078": {
+   "created": "2026-09-28T14:47",
+   "family": "evolution",
+   "file": "bots/bot_078_evolution_widepool.py",
+   "note": "",
+   "parent": "bot_075",
+   "status": "RUNNING",
+   "tags": "wide-candidate-pool"
   }
  },
  "families": {
@@ -721,7 +730,7 @@
   },
   "evolution": {
    "champion": "bot_065",
-   "iterations": 7,
+   "iterations": 8,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -770,7 +779,7 @@
   "bot_022",
   "bot_045"
  ],
- "next_bot_id": 78,
+ "next_bot_id": 79,
  "overall_champions": [
   {
    "bot": "bot_001",

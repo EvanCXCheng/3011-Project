@@ -1258,3 +1258,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: the valuemap score helps a lot against bot_004 but not against the stronger lookahead/aggressive styles, so
   it is not a general gain. Possible follow-up: stack on bot_075 if that promotes (different mechanism: score vs
   selection); low priority.
+
+## [097] bot_078 evolution/widepool — RUNNING
+
+- parent bot_075 (under extension) | tags: wide-candidate-pool. Stacks the two positive signals: bot_073's wider pool
+  (TOP_K 16, N_LA 36) seeds bot_075's GA (with confirmation race). Sanity S2/S3 seed 22 vs stand-in 024: 18/18,
+  tmax 0.452 s, no errors.
+- plan: queue q50: T0, T1 A42 vs bot_075, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and bot_075.
