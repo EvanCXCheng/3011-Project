@@ -1339,9 +1339,15 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: the wider pool adds nothing once the GA with confirmation is in place (candidate breadth saturated, as in
   077). Remaining gaps between the top bots are below what 210 + 126 games resolve (≈ ±0.13–0.25).
 
-## [102] bot_080 evolution/stack — RUNNING
+## [102] bot_080 evolution/stack — REJECTED (n.s.)
 
 - parent bot_075 | tags: build-choice-k-nearest, valuemap-rollout-score. Stack of two near-misses measured on other
   parents: bot_079's build rule (+0.13±0.16 vs 070; S2 +0.60) and bot_076's valuemap rollout score (+0.24±0.17 vs
   071). Different mechanisms (builds vs move scoring). Sanity: S2 100010 ENG 18, S3 15 ENG 18, S3 16 FRA 18; tmax 0.450 s.
 - plan: queue q54: T0, T1 A42 vs bot_075, T2 S1 B126 + S2/S3 B210 (004) vs bot_075, held-out C (offset 400) vs bot_075.
+- results: T0 clean (tmax 0.451 s, 181 MB serial). T1 A42 vs 075 +0.34±0.24. T2: S1 18.00 (100%); B210 S2 17.39±0.17
+  (92.4%) / S3 16.86±0.21 (84.8%); vs bot_075 S2 +0.22±0.21, S3 +0.16±0.29, pooled +0.14±0.14 → REJECT.
+  Held-out C: S2 17.49 (92.9%) / S3 16.45 (81.0%); vs 075 pooled +0.15±0.19. Combined ≈ +0.14±0.11 (n.s.).
+- timing note: one move of 0.715 s in held-out C S3 (all other runs ≤ 0.48 s) — likely the valuemap computation in
+  _rollout_select plus machine load; another reason not to promote without a stress re-check.
+- takeaway: the two small fixes do not add up to a measurable gain on top of the GA champion; bot_075 stays.

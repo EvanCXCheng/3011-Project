@@ -715,9 +715,9 @@
    "created": "2026-09-28T20:15",
    "family": "evolution",
    "file": "bots/bot_080_evolution_stack.py",
-   "note": "",
+   "note": "stack build rule + valuemap score on 075: B +0.14\u00b10.14, C +0.15\u00b10.19 (n.s.); one 0.715 s move on C",
    "parent": "bot_075",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "build-choice-k-nearest,valuemap-rollout-score"
   }
  },

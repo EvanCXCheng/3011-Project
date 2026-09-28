@@ -69,6 +69,17 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
   FINAL seeds. Keep these toggles in any later champion.
 - test_21.py: lab is 66 KB now (+ nothing else needed); trim to a self-contained runner (evaluate / compare / ablation
   / stress / tournament) ≤ 100 KB at the freeze.
+- Spec re-read 28 Sep (rubric notes [3], [7]): the basic technique AND the three new techniques must be implemented
+  in the submitted agent file and referred to in the report, even if not used in the final version. agent_21.py
+  (bot_075) already runs its local-search-only mode via ROLLOUT=False; before the freeze add a switch that plays the
+  pure BFS-greedy plan (e.g. BASIC_GREEDY, default off; verify default behaviour unchanged) so whichever basic
+  technique the group picks can be evaluated from the submitted file on FINAL seeds.
+  Design (checked in bot_075 source): in `_movement`, right after `target_set = set(targets)`, add
+  `if CONFIG['BASIC_GREEDY']: return self._la_candidates(possible, locs, targets, random.Random(0))[0]` —
+  `_la_candidates(...)[0]` is exactly the BFS-greedy no-self-bounce plan (each unit's move/hold closest to an unowned
+  SC, +3 for landing on one, units in order of best score, no two into one province). New bot (bot_081, evolution,
+  parent bot_075) with the switch default False; default path identical → agent_21.py swap needs only T0 +
+  a BASIC_GREEDY=true sanity run, no paired test.
 
 ## freeze compute plan (noted 26 Sep)
 - FINAL eval of the champion: 504/scenario ≈ 1512 games × ~25 s / 3 workers ≈ 3.5 h.
