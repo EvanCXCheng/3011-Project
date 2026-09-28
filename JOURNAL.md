@@ -1259,7 +1259,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   it is not a general gain. Possible follow-up: stack on bot_075 if that promotes (different mechanism: score vs
   selection); low priority.
 
-## [097] bot_078 evolution/widepool — RUNNING
+## [097] bot_078 evolution/widepool — RUNNING (borderline vs bot_075, extending)
 
 - parent bot_075 (under extension) | tags: wide-candidate-pool. Stacks the two positive signals: bot_073's wider pool
   (TOP_K 16, N_LA 36) seeds bot_075's GA (with confirmation race). Sanity S2/S3 seed 22 vs stand-in 024: 18/18,
@@ -1311,3 +1311,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - test_21.py ablation defaults updated: ROLLOUT LA_CANDS VM_CANDS TWO_PLY CONVOYS FAST_RES CONFIRM ACC_GATE OPP_AWARE
   (HALVING is dead code in the GA line). No GA on/off switch exists (the GA replaced the race in bot_065); an
   ablation for the GA itself = compare with bot_070/bot_071 (same machinery, race instead of GA).
+
+- bot_078 results (appended after [100]): T1 A42 vs bot_075 +0.24±0.27. T2 B126 (004): S1 18.00 / S2 17.44±0.21 (92.9%) /
+  S3 16.61±0.34 (83.3%); S3 vs 040 15.84, vs 024 16.01. vs bot_075 (now champion): S2 +0.33±0.28, S3 +0.31±0.23,
+  pooled +0.25±0.15 (z 1.67 ≥ 1.5 → [040] extension); vs bot_070 +0.73±0.16. By stand-in vs 075: 004 +0.10,
+  024 +0.37, 040 +0.44. q53: B210 extension + held-out C (offset 400) vs bot_075.

@@ -853,3 +853,11 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-172903_bot_078_evolution_widepool_tier0,2026-09-28T17:30,bot_078_evolution_widepool,a4b6065ede,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4503,0,176.8,0,0,0,0
 20260928-172903_bot_078_evolution_widepool_tier0,2026-09-28T17:30,bot_078_evolution_widepool,a4b6065ede,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4504,0,176.8,0,0,0,0
 20260928-172903_bot_078_evolution_widepool_tier0,2026-09-28T17:30,bot_078_evolution_widepool,a4b6065ede,tier0,X,3,bot_073_lookahead_widepool,3,0,1.0,18.0,0.0,5,False,0.4504,0,176.8,0,0,0,0
+20260928-173033_bot_078_evolution_widepool_tier1,2026-09-28T17:36,bot_078_evolution_widepool,a4b6065ede,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4538,0,88.8,0,0,0,0
+20260928-173033_bot_078_evolution_widepool_tier1,2026-09-28T17:36,bot_078_evolution_widepool,a4b6065ede,tier1,A,2,,42,0,0.9048,17.4762,0.369,5,False,0.4527,0,94.6,0,0,0,0
+20260928-173033_bot_078_evolution_widepool_tier1,2026-09-28T17:36,bot_078_evolution_widepool,a4b6065ede,tier1,A,3,bot_001_greedy_base,42,0,0.881,17.2381,0.403,5,False,0.4871,0,94.0,0,0,0,0
+20260928-173623_bot_078_evolution_widepool_sparring,2026-09-28T17:42,bot_078_evolution_widepool,a4b6065ede,sparring,B,3,bot_040_archetype_aggressive,126,0,0.7619,15.8413,0.4009,5,False,0.4734,0,96.0,0,0,0,0
+20260928-174253_bot_078_evolution_widepool_sparring,2026-09-28T17:56,bot_078_evolution_widepool,a4b6065ede,sparring,B,3,bot_024_lookahead_fastroll,126,0,0.754,16.0079,0.3859,5,False,0.4692,0,99.3,0,0,0,0
+20260928-175609_bot_078_evolution_widepool_tier2,2026-09-28T18:19,bot_078_evolution_widepool,a4b6065ede,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4664,0,89.2,0,0,0,0
+20260928-175609_bot_078_evolution_widepool_tier2,2026-09-28T18:19,bot_078_evolution_widepool,a4b6065ede,tier2,B,2,,126,0,0.9286,17.4444,0.2107,5,False,0.4757,0,94.1,0,0,0,0
+20260928-175609_bot_078_evolution_widepool_tier2,2026-09-28T18:19,bot_078_evolution_widepool,a4b6065ede,tier2,B,3,bot_004_lookahead_base,126,0,0.8333,16.6111,0.336,5,False,0.4729,0,98.1,0,0,0,0
