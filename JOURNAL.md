@@ -1227,3 +1227,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs parent bot_071: pooled +0.35±0.17 → REJECT (just under 2 SE). By stand-in vs 070: 004 +0.06, 024 +0.58, 040 +0.52.
 - borderline on both → [040] extension rule: q47 extends 073/070/071 to B210 (S2/S3, stand-in 004) and adds held-out C
   (offset 400; bot_070 already has it) before any promotion.
+
+- bot_074 results (appended after [095]): T1 A42 vs bot_071 S3 −0.95±0.59 (pass). T2 B126 (004): S1 18.00 / S2 16.73±0.31
+  (84.9%) / S3 15.65±0.40 (71.4%); S3 vs 040 15.14, vs 024 14.88. vs parent bot_071 pooled +0.05±0.18; vs bot_070
+  +0.03±0.18; by stand-in vs 071: 004 +0.10, 024 +0.17, 040 +0.14 → REJECTED.
+- takeaway: bot_069's +0.94 vs the aggressive stand-in did not replicate on the low-noise resolver line → most likely
+  noise (one of several stand-in splits). Coordinated-opponent sampling closed as no measurable effect.

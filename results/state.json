@@ -661,9 +661,9 @@
    "created": "2026-09-28T09:38",
    "family": "adaptive",
    "file": "bots/bot_074_adaptive_oppsupres.py",
-   "note": "",
+   "note": "coordinated opp supports on resolver: +0.05\u00b10.18 vs bot_071; vs aggressive +0.14 (bot_069's +0.94 did not replicate)",
    "parent": "bot_071",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "coordinated-opponent-model"
   },
   "bot_075": {
