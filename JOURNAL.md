@@ -1251,3 +1251,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - family comparison borderline → [040] extension: q49 extends 075/065/070 to B210 (S2/S3) + held-out C for 075.
 - takeaway so far: the confirmation race (fresh samples for the GA's finalists) helps mainly in S3 → the GA's
   best-by-mean was biased toward plans lucky on few samples (winner's curse), which matters most vs a strong opponent.
+
+- bot_076 results (appended after [096]): T1 A42 vs bot_071 −0.17±0.23. T2 B126 (004): S1 18.00 / S2 17.10±0.26 (87.3%) /
+  S3 16.72±0.31 (84.9%); S3 vs 040 14.81, vs 024 14.75. vs parent bot_071 pooled +0.24±0.17 (z 1.4 < 1.5, no
+  extension); vs bot_070 +0.22±0.17. By stand-in vs 071: 004 +1.17±0.37, 024 +0.03±0.50, 040 −0.19±0.48 → REJECTED.
+- takeaway: the valuemap score helps a lot against bot_004 but not against the stronger lookahead/aggressive styles, so
+  it is not a general gain. Possible follow-up: stack on bot_075 if that promotes (different mechanism: score vs
+  selection); low priority.

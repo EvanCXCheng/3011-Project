@@ -812,3 +812,14 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-133040_bot_075_evolution_confirm_tier2,2026-09-28T13:54,bot_075_evolution_confirm,fc62a7b21c,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4662,0,88.9,0,0,0,0
 20260928-133040_bot_075_evolution_confirm_tier2,2026-09-28T13:54,bot_075_evolution_confirm,fc62a7b21c,tier2,B,2,,126,0,0.9127,17.119,0.2888,5,False,0.4701,0,94.8,0,0,0,0
 20260928-133040_bot_075_evolution_confirm_tier2,2026-09-28T13:54,bot_075_evolution_confirm,fc62a7b21c,tier2,B,3,bot_004_lookahead_base,126,0,0.8333,16.5079,0.3352,5,False,0.4706,0,98.1,0,0,0,0
+20260928-135434_bot_076_lookahead_vmscore_tier0,2026-09-28T13:56,bot_076_lookahead_vmscore,a992bcb3ff,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4503,0,168.9,0,0,0,0
+20260928-135434_bot_076_lookahead_vmscore_tier0,2026-09-28T13:56,bot_076_lookahead_vmscore,a992bcb3ff,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4504,0,168.9,0,0,0,0
+20260928-135434_bot_076_lookahead_vmscore_tier0,2026-09-28T13:56,bot_076_lookahead_vmscore,a992bcb3ff,tier0,X,3,bot_065_evolution_poolga,3,0,0.0,5.6667,2.6034,0,True,0.4506,0,168.9,0,0,0,0
+20260928-135611_bot_076_lookahead_vmscore_tier1,2026-09-28T14:01,bot_076_lookahead_vmscore,a992bcb3ff,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.47,0,88.9,0,0,0,0
+20260928-135611_bot_076_lookahead_vmscore_tier1,2026-09-28T14:01,bot_076_lookahead_vmscore,a992bcb3ff,tier1,A,2,,42,0,0.9286,17.4286,0.3495,5,False,0.4703,0,95.3,0,0,0,0
+20260928-135611_bot_076_lookahead_vmscore_tier1,2026-09-28T14:01,bot_076_lookahead_vmscore,a992bcb3ff,tier1,A,3,bot_001_greedy_base,42,0,0.8095,16.5714,0.5904,5,False,0.4785,0,95.4,0,0,0,0
+20260928-140158_bot_076_lookahead_vmscore_sparring,2026-09-28T14:09,bot_076_lookahead_vmscore,a992bcb3ff,sparring,B,3,bot_040_archetype_aggressive,126,0,0.6587,14.8095,0.4755,5,False,0.4733,0,96.5,0,0,0,0
+20260928-140902_bot_076_lookahead_vmscore_sparring,2026-09-28T14:23,bot_076_lookahead_vmscore,a992bcb3ff,sparring,B,3,bot_024_lookahead_fastroll,126,0,0.6429,14.746,0.4609,5,False,0.4838,0,100.0,0,0,0,0
+20260928-142318_bot_076_lookahead_vmscore_tier2,2026-09-28T14:46,bot_076_lookahead_vmscore,a992bcb3ff,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4743,0,88.9,0,0,0,0
+20260928-142318_bot_076_lookahead_vmscore_tier2,2026-09-28T14:46,bot_076_lookahead_vmscore,a992bcb3ff,tier2,B,2,,126,0,0.873,17.0952,0.2566,5,False,0.4704,0,95.6,0,0,0,0
+20260928-142318_bot_076_lookahead_vmscore_tier2,2026-09-28T14:46,bot_076_lookahead_vmscore,a992bcb3ff,tier2,B,3,bot_004_lookahead_base,126,0,0.8492,16.7222,0.3112,5,False,0.4783,0,98.4,0,0,0,0

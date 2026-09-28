@@ -679,9 +679,9 @@
    "created": "2026-09-28T10:33",
    "family": "lookahead",
    "file": "bots/bot_076_lookahead_vmscore.py",
-   "note": "",
+   "note": "valuemap rollout score: +0.24\u00b10.17 vs bot_071 (n.s.); S3 vs 004 +1.17\u00b10.37 but vs 024/040 ~0",
    "parent": "bot_071",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "valuemap-rollout-score"
   },
   "bot_077": {
