@@ -701,6 +701,15 @@
    "parent": "bot_075",
    "status": "RUNNING",
    "tags": "wide-candidate-pool"
+  },
+  "bot_079": {
+   "created": "2026-09-28T16:44",
+   "family": "search",
+   "file": "bots/bot_079_search_buildmix.py",
+   "note": "",
+   "parent": "bot_070",
+   "status": "RUNNING",
+   "tags": "build-choice-k-nearest"
   }
  },
  "families": {
@@ -754,7 +763,7 @@
   },
   "search": {
    "champion": "bot_070",
-   "iterations": 23,
+   "iterations": 24,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -779,7 +788,7 @@
   "bot_022",
   "bot_045"
  ],
- "next_bot_id": 79,
+ "next_bot_id": 80,
  "overall_champions": [
   {
    "bot": "bot_001",

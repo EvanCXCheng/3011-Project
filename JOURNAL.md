@@ -1287,3 +1287,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - S3 (630, three stand-ins): AUS 13.6/60%, GER 14.1/63%, ITA 14.5/63%, ENG 15.4/60% vs FRA 89%, RUS 92%, TUR 79%;
   72/630 lose ≥3 SC from peak; worst-20% strongest opponent spread over 004 (40), 040 (31), 024 (26), greedy (29).
 - unchanged picture since [072]: central powers and England lose early, mostly to greedy/strong neighbours.
+
+## [099] bot_079 search/buildmix — RUNNING
+
+- parent bot_070 | tags: build-choice-k-nearest. From [098]: replay of S2 seed 100010 (England) showed W1901 'A EDI B'
+  (LON lost in 1901; army and fleet tie at distance 2 to LON, ties go to armies), then A EDI and A LON held on the
+  island for the rest of the game (2 of 5–7 units idle). Build type now by the mean of the 3 smallest target distances
+  (capped at 12): England EDI army 8.67 vs fleet 2.0 → fleet; continental armies unaffected when several land SCs
+  are near.
+- sanity: S2 100010 ENG 13 (bot_070 replay 12; recorded 1), S2 8 ENG 18, S3 15 ENG 16, S1 1 ENG 18; tmax 0.476 s.
+- plan: queue q51: T0, T1 A42 vs bot_070, S3 B126 vs 040/024, T2 B126 (004) vs bot_070; check the England seat split.
