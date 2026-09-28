@@ -1213,3 +1213,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   after the rollout (values 20–57 per unit at the start → ≈0.4–1.1 each; neighbouring provinces differ ≈0.1–0.3).
 - sanity S2/S3 seed 16 vs stand-in 040: 075 18/18, 076 18/9; tmax ≤ 0.455 s; no errors.
 - plan: queues q45/q46 (after q42–q44): T0, T1 A42 vs parent, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and parent.
+
+## [095] Held-out C check of bot_070 vs bot_045 (offset 400, n=126, S2/S3, stand-in 004) — DONE
+
+- bot_070 S2 17.25±0.19 (86.5%) / S3 16.20±0.37 (78.6%); bot_045 S2 17.10±0.22 (84.1%) / S3 15.54±0.40 (69.0%).
+  Paired: S2 +0.14±0.25, S3 +0.66±0.44, pooled +0.40±0.25 — same direction and size as seed set B (+0.50±0.20);
+  fresh seeds neither bot was selected on → the map-fix gain is not a seed-set artefact. (compare's "REJECT" and
+  marks 10 only reflect the missing S1 and a single-set test.)

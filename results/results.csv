@@ -775,3 +775,7 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-100653_bot_072_evolution_fastga_tier2,2026-09-28T10:32,bot_072_evolution_fastga,109b7eb5f0,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4761,0,88.8,0,0,0,0
 20260928-100653_bot_072_evolution_fastga_tier2,2026-09-28T10:32,bot_072_evolution_fastga,109b7eb5f0,tier2,B,2,,126,0,0.9206,17.3175,0.2511,5,False,0.47,0,93.6,0,0,0,0
 20260928-100653_bot_072_evolution_fastga_tier2,2026-09-28T10:32,bot_072_evolution_fastga,109b7eb5f0,tier2,B,3,bot_004_lookahead_base,126,0,0.746,15.6667,0.4188,5,False,0.4805,0,98.6,0,0,0,0
+20260928-103239_bot_070_search_mapfix_heldout,2026-09-28T10:53,bot_070_search_mapfix,61d2dc2d85,heldout,C,2,,126,0,0.8651,17.246,0.1895,5,False,0.4772,0,95.8,0,0,0,0
+20260928-103239_bot_070_search_mapfix_heldout,2026-09-28T10:53,bot_070_search_mapfix,61d2dc2d85,heldout,C,3,bot_004_lookahead_base,126,0,0.7857,16.1984,0.3658,5,False,0.4845,0,96.9,0,0,0,0
+20260928-105335_bot_045_search_stack_heldout,2026-09-28T11:15,bot_045_search_stack,d9e994d594,heldout,C,2,,126,0,0.8413,17.1032,0.2248,5,False,0.4788,0,95.4,0,0,0,0
+20260928-105335_bot_045_search_stack_heldout,2026-09-28T11:15,bot_045_search_stack,d9e994d594,heldout,C,3,bot_004_lookahead_base,126,0,0.6905,15.5397,0.3964,5,False,0.4878,0,97.1,0,0,0,0
