@@ -688,9 +688,9 @@
    "created": "2026-09-28T13:04",
    "family": "lookahead",
    "file": "bots/bot_077_lookahead_agcand.py",
-   "note": "",
+   "note": "aggressive archetype plan as race candidate: +0.07\u00b10.15 vs bot_073 (no gain)",
    "parent": "bot_073",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "archetype-plan-candidate"
   },
   "bot_078": {

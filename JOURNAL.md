@@ -1234,7 +1234,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: bot_069's +0.94 vs the aggressive stand-in did not replicate on the low-noise resolver line → most likely
   noise (one of several stand-in splits). Coordinated-opponent sampling closed as no measurable effect.
 
-## [096] bot_077 lookahead/agcand — RUNNING
+## [096] bot_077 lookahead/agcand — REJECTED
 
 - parent bot_073 (still under extension) | tags: archetype-plan-candidate. The aggressive archetype plan (bot_040's
   engine as ported into bot_062) joins the race as one more candidate. Rationale: candidate diversity is the only
@@ -1273,3 +1273,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   champion (borderline B gain not confirmed on fresh seeds; bot_070 stays).
 - takeaway: seed set B has now picked many winners; a +0.3–0.4 B gain for a borderline bot can be a selection
   effect. Held-out C is the deciding test for every further overall promotion (bot_075 pending in q49).
+
+- bot_077 results (appended after [097]): T1 A42 vs bot_073 −0.28±0.31. T2 B126 (004): S1 18.00 / S2 17.27±0.23 (91.3%) /
+  S3 15.66±0.41 (73.8%); S3 vs 040 15.44, vs 024 15.85. vs parent bot_073 pooled +0.07±0.15 → REJECTED (vs bot_070
+  +0.39±0.16 on B only inherits bot_073's unconfirmed B gain). By stand-in vs 073: 004 −0.11, 024 +0.33, 040 +0.29.
+- takeaway: the archetype plan rarely wins the race once the pool is wide; candidate diversity saturates.
