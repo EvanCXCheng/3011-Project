@@ -1351,3 +1351,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - timing note: one move of 0.715 s in held-out C S3 (all other runs ≤ 0.48 s) — likely the valuemap computation in
   _rollout_select plus machine load; another reason not to promote without a stress re-check.
 - takeaway: the two small fixes do not add up to a measurable gain on top of the GA champion; bot_075 stays.
+
+## [103] bot_081 evolution/basicswitch (freeze prep: basic technique in the submitted file) — RUNNING
+
+- parent bot_075 | tags: basic-greedy-switch. Spec rubric note [3]: the basic technique must be implemented in the
+  submitted code. Adds CONFIG BASIC_GREEDY (default False): movement phases play _la_candidates(...)[0], the pure
+  BFS-greedy no-self-bounce plan. Diff vs bot_075: the CONFIG key, the agent name and a 2-line early return — default
+  play is identical code. Sanity basic mode S1/S2/S3 seed 12 (Russia): 11/18/9 SC, tmax 2 ms; default S3 seed 12: 18.
+- plan: q55: T0 (default); basic mode B126 all scenarios (--set BASIC_GREEDY=true, tag basic) for the report's
+  basic-technique numbers from the submitted file; then promote bot_081 → agent_21.py by identity (no paired test:
+  default behaviour unchanged).

@@ -719,6 +719,15 @@
    "parent": "bot_075",
    "status": "REJECTED",
    "tags": "build-choice-k-nearest,valuemap-rollout-score"
+  },
+  "bot_081": {
+   "created": "2026-09-28T22:58",
+   "family": "evolution",
+   "file": "bots/bot_081_evolution_basicswitch.py",
+   "note": "",
+   "parent": "bot_075",
+   "status": "RUNNING",
+   "tags": "basic-greedy-switch"
   }
  },
  "families": {
@@ -748,7 +757,7 @@
   },
   "evolution": {
    "champion": "bot_075",
-   "iterations": 9,
+   "iterations": 10,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -796,7 +805,7 @@
   "bot_038",
   "bot_045"
  ],
- "next_bot_id": 81,
+ "next_bot_id": 82,
  "overall_champions": [
   {
    "bot": "bot_001",
