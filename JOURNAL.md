@@ -1390,10 +1390,23 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: penalising a runaway leader does not change results vs the baseline mix: when a greedy France snowballs,
   Austria is usually too far away to act on it. Not tested in all-bot tables; left as an S4 idea only.
 
-## [105] Final S4 sparring evaluation of the champion (human request, 27 Sep) — RUNNING
+## [105] Final S4 sparring evaluation of the champion (human request, 27 Sep) — DONE
 
 - champion bot_081 (plays as bot_075). (1) Style tournament, 112 games, rotating seats, offset 600: 081 evolution,
   070 search, 073 lookahead, 038 valuemap, 012 greedy, 040 aggressive archetype, 036 bandit. (2) S3 B126 with each
   other style as the Hidden Agent stand-in (run as bot_075, same play, so its 004/024/040 runs are reused): 070, 073,
   038, 012, 036, 017, 060. Queue q57 (~4 h). Style bots keep their historical code (incl. the [090] map bug) so the
   field matches [067]/[101]. Re-run only if the champion changes before the freeze.
+
+- [105] results. Style tournament (112 games, offset 600): bot_081 8.11±0.72, bot_070 7.78±0.68, bot_073 7.77±0.63,
+  bot_036 2.82±0.38, bot_012 2.39±0.38, bot_038 2.22±0.29, bot_040 2.16±0.35 SC. Champion first but within 1 SE of the
+  two other search-machinery bots; the rule-based styles are far behind (≈2–3 SC each) in all-bot tables.
+- issues: 1 timeout each for bot_073 (seed 500675) and bot_070 (seed 500674), both the Italy seat, t_max 1.89 / 1.78 s,
+  in consecutive seeds that ran concurrently on different workers → a machine-wide stall (WSL/host), not a bot bug;
+  champion 0 issues in 112 games. (Neither bot is submitted; noted as the one timing anomaly of the lab.)
+- champion S3 (B126, bot_075 play) with each style as the Hidden Agent: vs 017 positional 17.04 (87.3%), vs 004 16.70*
+  (84.8%, B210), vs 012 greedy 16.13 (80.2%), vs 038 valuemap 15.67 (75.4%), vs 036 bandit 15.44 (74.6%), vs 040
+  aggressive 15.40 (B126 from [094]), vs 024 lookahead 15.63 ([094]), vs 060 ensemble 14.92 (67.5%, tmax 0.534 s),
+  vs 070 search 14.16 (55.6%), vs 073 lookahead-widepool 13.46 (51.6%). All above the S3 5-pt lines (>12 SC / >40%).
+  Hardest Hidden Agents are our own strongest search bots — the real Hidden Agent (~50% S2 wins) is weaker than
+  070/073 (85–92% S2 wins), so the S3 mark has a wide margin.

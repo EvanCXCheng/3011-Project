@@ -904,3 +904,10 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-232326_bot_082_evolution_antilead_tier2,2026-09-28T23:57,bot_082_evolution_antilead,463fe66a77,tier2,B,3,bot_004_lookahead_base,210,0,0.8143,16.5952,0.2602,5,False,0.5025,0,98.5,0,0,0,0
 20260928-235732_bot_082_evolution_antilead_heldout,2026-09-29T00:17,bot_082_evolution_antilead,463fe66a77,heldout,C,2,,126,0,0.9048,17.3651,0.2295,5,False,0.7042,0,94.1,0,0,0,0
 20260928-235732_bot_082_evolution_antilead_heldout,2026-09-29T00:17,bot_082_evolution_antilead,463fe66a77,heldout,C,3,bot_004_lookahead_base,126,0,0.8095,16.0635,0.3958,5,False,0.4891,0,98.2,0,0,0,0
+20260929-005012_bot_075_evolution_confirm_sparring,2026-09-29T01:03,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_070_search_mapfix,126,0,0.5556,14.1587,0.4536,5,False,0.4887,0,97.6,0,0,0,0
+20260929-010335_bot_075_evolution_confirm_sparring,2026-09-29T01:16,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_073_lookahead_widepool,126,0,0.5159,13.4603,0.4948,5,False,0.4946,0,98.6,0,0,0,0
+20260929-011638_bot_075_evolution_confirm_sparring,2026-09-29T01:23,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_038_valuemap_season,126,0,0.754,15.6746,0.4189,5,False,0.4696,0,95.7,0,0,0,0
+20260929-012358_bot_075_evolution_confirm_sparring,2026-09-29T01:30,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_012_greedy_attackmatch,126,0,0.8016,16.127,0.3785,5,False,0.4857,0,130.4,0,0,0,0
+20260929-013048_bot_075_evolution_confirm_sparring,2026-09-29T01:44,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_036_bandit_pairs,126,0,0.746,15.4444,0.437,5,False,0.4864,0,99.0,0,0,0,0
+20260929-014434_bot_075_evolution_confirm_sparring,2026-09-29T01:51,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_017_positional_threatw,126,0,0.873,17.0397,0.2538,5,False,0.4747,0,95.3,0,0,0,0
+20260929-015159_bot_075_evolution_confirm_sparring,2026-09-29T01:59,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_060_ensemble_vote,126,0,0.6746,14.9206,0.4401,5,False,0.5338,0,95.9,0,0,0,0
