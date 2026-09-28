@@ -872,3 +872,7 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-184753_bot_079_search_buildmix_tier2,2026-09-28T19:12,bot_079_search_buildmix,7c1d101115,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.481,0,90.5,0,0,0,0
 20260928-184753_bot_079_search_buildmix_tier2,2026-09-28T19:12,bot_079_search_buildmix,7c1d101115,tier2,B,2,,126,0,0.9286,17.5794,0.179,5,False,0.4919,0,95.6,0,0,0,0
 20260928-184753_bot_079_search_buildmix_tier2,2026-09-28T19:12,bot_079_search_buildmix,7c1d101115,tier2,B,3,bot_004_lookahead_base,126,0,0.7143,15.3571,0.4308,5,False,0.4858,0,97.8,0,0,0,0
+20260928-194254_bot_078_evolution_widepool_tier2ext,2026-09-28T19:55,bot_078_evolution_widepool,a4b6065ede,tier2ext,B,2,,210,0,0.9286,17.481,0.1622,5,False,0.4757,0,95.0,0,0,0,0
+20260928-194254_bot_078_evolution_widepool_tier2ext,2026-09-28T19:55,bot_078_evolution_widepool,a4b6065ede,tier2ext,B,3,bot_004_lookahead_base,210,0,0.8476,16.6619,0.2589,5,False,0.4732,0,99.1,0,0,0,0
+20260928-195533_bot_078_evolution_widepool_heldout,2026-09-28T20:14,bot_078_evolution_widepool,a4b6065ede,heldout,C,2,,126,0,0.873,17.0635,0.2552,5,False,0.464,0,95.5,0,0,0,0
+20260928-195533_bot_078_evolution_widepool_heldout,2026-09-28T20:14,bot_078_evolution_widepool,a4b6065ede,heldout,C,3,bot_004_lookahead_base,126,0,0.8413,16.5714,0.3376,5,False,0.4808,0,98.5,0,0,0,0

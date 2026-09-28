@@ -1259,7 +1259,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   it is not a general gain. Possible follow-up: stack on bot_075 if that promotes (different mechanism: score vs
   selection); low priority.
 
-## [097] bot_078 evolution/widepool — RUNNING (borderline vs bot_075, extending)
+## [097] bot_078 evolution/widepool — REJECTED (extension + held-out: no gain over bot_075)
 
 - parent bot_075 (under extension) | tags: wide-candidate-pool. Stacks the two positive signals: bot_073's wider pool
   (TOP_K 16, N_LA 36) seeds bot_075's GA (with confirmation race). Sanity S2/S3 seed 22 vs stand-in 024: 18/18,
@@ -1322,3 +1322,19 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   (S2+S3, 72 each): ENG +0.43±0.64, ITA +0.68±0.67, TUR +0.11, FRA +0.17, GER +0.15, AUS −0.69±0.65, RUS +0.25.
 - takeaway: the stuck-army builds are real but rare; effect below what 630 games resolve. Candidate for a later stack
   onto the champion together with other small fixes (backlog).
+
+## [101] Tournament (7 family champions, 112 games, offset 500) + family review — DONE
+
+- field: 075 evolution (champion), 070 search, 073 lookahead, 036 bandit, 040 archetype, 038 valuemap, 060 ensemble.
+- result: bot_075 8.96±0.73, bot_070 7.66±0.66, bot_073 5.82±0.69, bot_036 4.34±0.43, bot_040 2.53±0.41, bot_038 2.13±0.35,
+  bot_060 1.91±0.33 SC; 0 issues. New champion first in the all-bot table as well as vs baselines.
+- family review (iterations incl. 068–079): evolution ACTIVE (champion line; 078 extending); search ACTIVE (070, 2nd in
+  tournament); lookahead ACTIVE (073 family champion); adaptive DORMANT (069/074 opponent-support idea closed as noise);
+  archetype ACTIVE for sparring only; ensemble ACTIVE-sparring (est. 15 vs baselines but last among strong bots; no
+  further iterations planned); bandit, greedy, valuemap, positional stay DORMANT.
+
+- bot_078 extension (q53, appended after [101]): B210 S2 17.48±0.16 (92.9%) / S3 16.66±0.26 (84.8%); vs bot_075 S2
+  +0.31±0.21, S3 (462) +0.20±0.21, pooled +0.20±0.13 → REJECT. Held-out C (offset 400): S2 17.06 (87.3%) / S3 16.57
+  (84.1%); vs bot_075 pooled −0.00±0.26. → REJECTED; bot_075 stays champion.
+- takeaway: the wider pool adds nothing once the GA with confirmation is in place (candidate breadth saturated, as in
+  077). Remaining gaps between the top bots are below what 210 + 126 games resolve (≈ ±0.13–0.25).

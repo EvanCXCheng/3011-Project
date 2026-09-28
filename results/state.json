@@ -697,9 +697,9 @@
    "created": "2026-09-28T14:47",
    "family": "evolution",
    "file": "bots/bot_078_evolution_widepool.py",
-   "note": "",
+   "note": "GA+confirm with wide pool: B210 +0.20\u00b10.13 vs bot_075, held-out C 0.00\u00b10.26",
    "parent": "bot_075",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "wide-candidate-pool"
   },
   "bot_079": {
