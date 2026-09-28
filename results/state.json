@@ -728,6 +728,15 @@
    "parent": "bot_075",
    "status": "RUNNING",
    "tags": "basic-greedy-switch"
+  },
+  "bot_082": {
+   "created": "2026-09-28T23:00",
+   "family": "evolution",
+   "file": "bots/bot_082_evolution_antilead.py",
+   "note": "",
+   "parent": "bot_081",
+   "status": "RUNNING",
+   "tags": "anti-leader-score"
   }
  },
  "families": {
@@ -757,7 +766,7 @@
   },
   "evolution": {
    "champion": "bot_075",
-   "iterations": 10,
+   "iterations": 11,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -805,7 +814,7 @@
   "bot_038",
   "bot_045"
  ],
- "next_bot_id": 82,
+ "next_bot_id": 83,
  "overall_champions": [
   {
    "bot": "bot_001",

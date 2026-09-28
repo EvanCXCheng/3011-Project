@@ -1361,3 +1361,15 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - plan: q55: T0 (default); basic mode B126 all scenarios (--set BASIC_GREEDY=true, tag basic) for the report's
   basic-technique numbers from the submitted file; then promote bot_081 → agent_21.py by identity (no paired test:
   default behaviour unchanged).
+
+## [104] Failure analysis of champion bot_075 → bot_082 evolution/antilead — RUNNING
+
+- bot_075 (1638 games): S2 AUS 14.9/74% is the one weak seat (ENG 81%, ITA 87%, others 96–100%); S3 AUS 13.1/62%,
+  ENG 71%, TUR 74%, ITA 79% (FRA 92%, RUS 97%). Austria S2 is bimodal: 40/54 wins, 14 games at 0–9 SC. Their SC
+  trajectories: mostly not early collapses but games that END when a greedy France (sometimes Germany/Russia)
+  snowballs to 18 while Austria grows slowly in the centre (e.g. C 300433: FRA 18 in 1907, AUS 4).
+- bot_082 (parent bot_081, tags anti-leader-score): once any opponent owns ≥ 10 SCs, rollout outcomes pay 0.5 per SC
+  the strongest opponent would own above 12 (ownership after Fall: occupant else previous owner) and 3.0 if it would
+  reach 18. Checks: term active in 14 phases from 1907 in S2 C 300433 (no activation in a 7-greedy test game to
+  1912); sanity S2 300433 AUS 5 (France still won: too far away), S2 200151 AUS 18; tmax 0.456 s; no errors.
+- plan: q56: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075 (same play as 081).
