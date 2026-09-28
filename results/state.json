@@ -665,6 +665,24 @@
    "parent": "bot_071",
    "status": "RUNNING",
    "tags": "coordinated-opponent-model"
+  },
+  "bot_075": {
+   "created": "2026-09-28T10:33",
+   "family": "evolution",
+   "file": "bots/bot_075_evolution_confirm.py",
+   "note": "",
+   "parent": "bot_072",
+   "status": "RUNNING",
+   "tags": "evolve-then-confirm"
+  },
+  "bot_076": {
+   "created": "2026-09-28T10:33",
+   "family": "lookahead",
+   "file": "bots/bot_076_lookahead_vmscore.py",
+   "note": "",
+   "parent": "bot_071",
+   "status": "RUNNING",
+   "tags": "valuemap-rollout-score"
   }
  },
  "families": {
@@ -694,7 +712,7 @@
   },
   "evolution": {
    "champion": "bot_065",
-   "iterations": 6,
+   "iterations": 7,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -706,7 +724,7 @@
   },
   "lookahead": {
    "champion": "bot_071",
-   "iterations": 12,
+   "iterations": 13,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -743,7 +761,7 @@
   "bot_022",
   "bot_045"
  ],
- "next_bot_id": 75,
+ "next_bot_id": 77,
  "overall_champions": [
   {
    "bot": "bot_001",

@@ -1202,3 +1202,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: ×40 GA generations and the map fix together add only +0.07 over bot_065, so the GA was not evaluation-limited
   either; bot_065 ≈ bot_070 ≈ bot_071 ≈ bot_072 on these seeds (all within ±0.2). Evolution line stays level with
   the champion (best S2), not ahead.
+
+## [094] bot_075 evolution/confirm, bot_076 lookahead/vmscore — RUNNING
+
+- bots 065/070/071/072 tie within ±0.2 and neither rollout count (071) nor GA generations (072) was binding, so the
+  next two target selection bias and the score function:
+- bot_075 (parent bot_072; tags evolve-then-confirm): GA stops 0.07 s early; its 5 best plans race on fresh opponent
+  samples (~143 rounds each) and the best fresh mean is played. Instrumented: changed the GA's pick in 2/6 phases.
+- bot_076 (parent bot_071; tags valuemap-rollout-score): rollout score adds 0.02 × valuemap value of each of our units
+  after the rollout (values 20–57 per unit at the start → ≈0.4–1.1 each; neighbouring provinces differ ≈0.1–0.3).
+- sanity S2/S3 seed 16 vs stand-in 040: 075 18/18, 076 18/9; tmax ≤ 0.455 s; no errors.
+- plan: queues q45/q46 (after q42–q44): T0, T1 A42 vs parent, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and parent.
