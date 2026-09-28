@@ -1132,7 +1132,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   0 extra links for armies and fleets vs map.abuts. Sanity S2 seeds 1/2/13: 18/18/11, tmax 0.458 s, no errors.
 - plan: queue q39 (after q38): same protocol as bot_069 (T0, T1 A42, S3 vs 040/024 B126, T2 B126 vs bot_045).
 
-## [091] bot_071 lookahead/fastres — RUNNING
+## [091] bot_071 lookahead/fastres — PROMOTED (lookahead family champion; not overall)
 
 - parent bot_070 (map fix needed: the resolver's convoy/adjacency test uses army reach) | tags: own-fast-resolver
   (human priority, 28 Sep). Own movement resolver replaces engine copies in the rollouts: move decisions resolved
@@ -1175,3 +1175,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - test.py (course script via its experiment(), repeat 1, S1 + S2): 7/7 wins each, 18.0 SC, no errors.
 - takeaway: a correct army map is worth ≈0.5 SC; the found bug cost every earlier bot. bot_071/072 (resolver) already
   build on the fixed map. Style sparring bots still carry the bug (backlog).
+
+- bot_071 results (appended after [092]): Tier 0 clean; T1 A42 vs bot_045 −0.13±0.20. T2 B126 (004): S1 18.00 / S2
+  16.89±0.28 (85.7%) / S3 15.55±0.43 (74.6%); S3 vs 040 15.00, vs 024 14.71.
+  vs parent bot_070 (isolates the resolver): S2 −0.10±0.23, S3 −0.01±0.28, pooled −0.02±0.17 → no gain.
+  By stand-in vs 070: 004 −0.16, 024 −0.23, 040 +0.37 (all n.s.). vs bot_045 +0.47±0.20 (= the map fix).
+  vs lookahead champion bot_024: pooled +1.06±0.23 → lookahead family champion.
+- takeaway: ×34 rollouts buy nothing once the race has ~130 rollouts per phase: selection is no longer sampling-limited;
+  what limits it now is the opponent model / score and the candidate set. Resolver still useful where evaluations are
+  scarce (GA, bot_072) and for bigger candidate pools or richer opponent models at no time cost.

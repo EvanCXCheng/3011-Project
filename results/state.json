@@ -636,7 +636,7 @@
    "file": "bots/bot_071_lookahead_fastres.py",
    "note": "",
    "parent": "bot_070",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "own-fast-resolver"
   },
   "bot_072": {
@@ -687,7 +687,7 @@
    "status": "DORMANT"
   },
   "lookahead": {
-   "champion": "bot_024",
+   "champion": "bot_071",
    "iterations": 11,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
@@ -718,7 +718,7 @@
   "bot_060",
   "bot_065",
   "bot_012",
-  "bot_024",
+  "bot_071",
   "bot_017",
   "bot_070",
   "bot_038",
@@ -845,6 +845,10 @@
   "opponent-model-sampling": {
    "bot": "bot_007",
    "effect": "pooled +0.75\u00b10.26 SC vs bot_004 (378 paired, B); S1 100% wins (+1.90\u00b10.29), S2/S3 n.s."
+  },
+  "own-fast-resolver": {
+   "bot": "bot_071",
+   "effect": "x34 rollouts/phase; vs parent bot_070 pooled -0.02\u00b10.17 (630 paired B) - rollout count no longer binding; vs bot_024 +1.06\u00b10.23"
   },
   "pair-arms": {
    "bot": "bot_036",

@@ -759,3 +759,8 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-084247_bot_071_lookahead_fastres_tier1,2026-09-28T08:48,bot_071_lookahead_fastres,8be0e59d57,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4638,0,88.8,0,0,0,0
 20260928-084247_bot_071_lookahead_fastres_tier1,2026-09-28T08:48,bot_071_lookahead_fastres,8be0e59d57,tier1,A,2,,42,0,0.9048,17.5714,0.229,5,False,0.4709,0,95.1,0,0,0,0
 20260928-084247_bot_071_lookahead_fastres_tier1,2026-09-28T08:48,bot_071_lookahead_fastres,8be0e59d57,tier1,A,3,bot_001_greedy_base,42,0,0.8095,16.9524,0.443,5,False,0.469,0,95.5,0,0,0,0
+20260928-084852_bot_071_lookahead_fastres_sparring,2026-09-28T08:56,bot_071_lookahead_fastres,8be0e59d57,sparring,B,3,bot_040_archetype_aggressive,126,0,0.6587,15.0,0.4451,5,False,0.4999,0,95.8,0,0,0,0
+20260928-085623_bot_071_lookahead_fastres_sparring,2026-09-28T09:11,bot_071_lookahead_fastres,8be0e59d57,sparring,B,3,bot_024_lookahead_fastroll,126,0,0.627,14.7143,0.4624,5,False,0.4778,0,99.2,0,0,0,0
+20260928-091148_bot_071_lookahead_fastres_tier2,2026-09-28T09:37,bot_071_lookahead_fastres,8be0e59d57,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4719,0,89.2,0,0,0,0
+20260928-091148_bot_071_lookahead_fastres_tier2,2026-09-28T09:37,bot_071_lookahead_fastres,8be0e59d57,tier2,B,2,,126,0,0.8571,16.8889,0.2795,5,False,0.4788,0,95.5,0,0,0,0
+20260928-091148_bot_071_lookahead_fastres_tier2,2026-09-28T09:37,bot_071_lookahead_fastres,8be0e59d57,tier2,B,3,bot_004_lookahead_base,126,0,0.746,15.5476,0.4304,5,False,0.4728,0,98.5,0,0,0,0
