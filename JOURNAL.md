@@ -1411,9 +1411,22 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   Hardest Hidden Agents are our own strongest search bots — the real Hidden Agent (~50% S2 wins) is weaker than
   070/073 (85–92% S2 wins), so the S3 mark has a wide margin.
 
-## [106] Tuning sweep on the champion's GA/confirm parameters — RUNNING
+## [106] Tuning sweep on the champion's GA/confirm parameters — DONE (no change)
 
 - GA and confirmation parameters were set by hand in bot_059/065/075 and never tuned. --set variants of bot_075 (same
   play as agent_21/bot_081) on B210 S2/S3 (stand-in 004), paired with bot_075: GA_SAMPLES=4 (2), CONFIRM_K=8 (5),
   CONFIRM_T=0.12 (0.07), GA_POP=24 (16). Tuning, not a technique; a winner (z ≥ 2, confirmed on held-out C) becomes
   a new bot file. Queue q58 (~3 h).
+
+- [106] results (B210 S2/S3 paired with bot_075): GA_SAMPLES=4 −0.07±0.18; CONFIRM_K=8 −0.02±0.20; CONFIRM_T=0.12
+  −0.03±0.18; GA_POP=24 −0.20±0.20 (S3 −0.55±0.32). None better → keep bot_075's hand-set values.
+- one game error in GA_POP=24 (S2 B 200175, our seat GERMANY): KeyError 'A MOS' raised in the BASELINE
+  AttitudeAgent.update_attitude (agent_baselines.py:125, `order_status[unit]`). Engine get_order_status(power) is
+  keyed by that power's units at the start of the phase, so the key is missing when some power's order list holds a
+  move for a unit it did not own at phase start (or the attitude agent's internal game differs). First and only such
+  error in 65,502 recorded games; our seat has 0 illegal orders over all of them; replay of the seed (timing-
+  dependent) did not reproduce. Not attributable to our bot from the evidence; noted as a baseline robustness issue.
+- lab/run_game.py: on any game error, the true game is now dumped (to_saved_game_format) to
+  results/logs/crash_<run>_<seed>.json for post-mortem (self-tested with a throwaway patched process). Harness-only
+  change; engine and baselines untouched.
+- HOLD (human request 29 Sep 03:54): no new evaluations until the human says they are done gaming.

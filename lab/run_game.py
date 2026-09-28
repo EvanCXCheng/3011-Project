@@ -54,6 +54,9 @@ def seat_plan(scenario, seed, standin=None):
     return power, opp
 
 
+_LAST = {}   # the game being played, dumped to results/logs on a crash for post-mortem
+
+
 def play(seats, seed, instrument, overrides_by_power=None, save_file=None):
     """Play one game. seats: {power: spec}. instrument: powers to wrap. Returns a record dict."""
     from diplomacy import Game
@@ -64,6 +67,7 @@ def play(seats, seed, instrument, overrides_by_power=None, save_file=None):
     np.random.seed(seed % (2 ** 32))
     overrides_by_power = overrides_by_power or {}
     true_game = Game()
+    _LAST['game'] = true_game
     agents = {}
     wrapped = {}
     for p in C.POWERS:
@@ -119,6 +123,16 @@ def run_task(task):
         out['status'] = 'error'
         out['error'] = f'{type(e).__name__}: {e}'[:300]
         out['trace'] = traceback.format_exc()[-1500:]
+        try:
+            from diplomacy.utils.export import to_saved_game_format
+            g = _LAST.get('game')
+            if g is not None:
+                path = os.path.join(C.ROOT, 'results', 'logs', f"crash_{out.get('run_id', 'x')}_{task.get('seed')}.json")
+                with open(path, 'w') as f:
+                    json.dump(to_saved_game_format(g), f)
+                out['crash_dump'] = os.path.relpath(path, C.ROOT)
+        except Exception:  # noqa: BLE001
+            pass
     finally:
         signal.setitimer(signal.ITIMER_PROF, 0)
         signal.signal(signal.SIGPROF, old)

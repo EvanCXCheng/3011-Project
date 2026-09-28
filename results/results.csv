@@ -911,3 +911,11 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260929-013048_bot_075_evolution_confirm_sparring,2026-09-29T01:44,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_036_bandit_pairs,126,0,0.746,15.4444,0.437,5,False,0.4864,0,99.0,0,0,0,0
 20260929-014434_bot_075_evolution_confirm_sparring,2026-09-29T01:51,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_017_positional_threatw,126,0,0.873,17.0397,0.2538,5,False,0.4747,0,95.3,0,0,0,0
 20260929-015159_bot_075_evolution_confirm_sparring,2026-09-29T01:59,bot_075_evolution_confirm,fc62a7b21c,sparring,B,3,bot_060_ensemble_vote,126,0,0.6746,14.9206,0.4401,5,False,0.5338,0,95.9,0,0,0,0
+20260929-020039_bot_075_evolution_confirm_tuning,2026-09-29T02:34,bot_075_evolution_confirm[GA_SAMPLES=4],fc62a7b21c,tuning,B,2,,210,0,0.919,17.2048,0.2109,5,False,0.6689,0,95.1,0,0,0,0
+20260929-020039_bot_075_evolution_confirm_tuning,2026-09-29T02:34,bot_075_evolution_confirm[GA_SAMPLES=4],fc62a7b21c,tuning,B,3,bot_004_lookahead_base,210,0,0.8286,16.5286,0.2635,5,False,0.4925,0,98.5,0,0,0,0
+20260929-023428_bot_075_evolution_confirm_tuning,2026-09-29T03:08,bot_075_evolution_confirm[CONFIRM_K=8],fc62a7b21c,tuning,B,2,,210,0,0.9143,17.281,0.184,5,False,0.475,0,95.0,0,0,0,0
+20260929-023428_bot_075_evolution_confirm_tuning,2026-09-29T03:08,bot_075_evolution_confirm[CONFIRM_K=8],fc62a7b21c,tuning,B,3,bot_004_lookahead_base,210,0,0.8381,16.5524,0.2572,5,False,0.4893,0,97.5,0,0,0,0
+20260929-030805_bot_075_evolution_confirm_tuning,2026-09-29T03:41,bot_075_evolution_confirm[CONFIRM_T=0.12],fc62a7b21c,tuning,B,2,,210,0,0.9333,17.3476,0.1928,5,False,0.4717,0,96.1,0,0,0,0
+20260929-030805_bot_075_evolution_confirm_tuning,2026-09-29T03:41,bot_075_evolution_confirm[CONFIRM_T=0.12],fc62a7b21c,tuning,B,3,bot_004_lookahead_base,210,0,0.819,16.4714,0.2532,5,False,0.5081,0,97.8,0,0,0,0
+20260929-034116_bot_075_evolution_confirm_tuning,2026-09-29T04:16,bot_075_evolution_confirm[GA_POP=24],fc62a7b21c,tuning,B,2,,209,1,0.9234,17.3254,0.1871,5,False,6.7231,6,94.9,0,0,6,0
+20260929-034116_bot_075_evolution_confirm_tuning,2026-09-29T04:16,bot_075_evolution_confirm[GA_POP=24],fc62a7b21c,tuning,B,3,bot_004_lookahead_base,210,0,0.7857,16.1524,0.2908,5,False,2.2654,2,98.0,0,0,2,0
