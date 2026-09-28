@@ -1450,9 +1450,19 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   not greedy planners) and costs 20–40 ms per phase per strong opponent — the slowest moves of the lab (0.99 s)
   come from that precompute in all-strong tables. REJECTED; the per-unit sampling mix is kept.
 
-## [108] Report evidence: GA vs race and the confirmation race on identical machinery — RUNNING
+## [108] Report evidence: GA vs race and the confirmation race on identical machinery — DONE
 
 - No switch turns the GA off inside agent_21, so its effect is measured between bots that differ only in selection:
   bot_072 (GA) vs bot_071 (halving race) — same resolver, map fix, candidates, opponent model; and bot_075 (GA +
   confirm) vs bot_072 (GA). q60: extend 072 to B210 (S2/S3), held-out C (offset 400) for 072 and 071, then paired
   compares on B and C.
+
+- [108] results. bot_072 B210: S2 16.98±0.22 (87.6%) / S3 15.51±0.33 (72.9%); C: S2 17.21 / S3 16.09. bot_071 C: S2 17.50
+  (92.1%) / S3 16.01.
+  GA vs race (072 − 071): B S2/S3 +0.07±0.19 (672 paired), C −0.11±0.26 → no difference: the GA alone does not beat
+  the halving race on identical machinery.
+  Confirmation race (075 − 072): B +0.58±0.18 (S3 +0.76±0.24, wins 77.9% vs 70.8%), C +0.17±0.25 (S3 +0.37) → the
+  champion's gain over the race line comes from re-testing the GA's finalists on fresh samples (removing the
+  winner's-curse bias of newly bred plans), not from evolution itself.
+- implication: a confirmation step only helps a selector whose final pick has uneven, small sample counts (GA
+  children); the halving race's survivors already share many samples, so race+confirm would be a no-op (not built).

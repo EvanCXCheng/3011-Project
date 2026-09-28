@@ -932,3 +932,9 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260929-050138_bot_083_evolution_oppplans_tier2,2026-09-29T05:35,bot_083_evolution_oppplans,ca524634d6,tier2,B,3,bot_004_lookahead_base,210,0,0.8571,16.7333,0.2495,5,False,0.5038,0,98.4,0,0,0,0
 20260929-053538_bot_083_evolution_oppplans_heldout,2026-09-29T05:55,bot_083_evolution_oppplans,ca524634d6,heldout,C,2,,126,0,0.8968,17.246,0.2344,5,False,0.4684,0,94.1,0,0,0,0
 20260929-053538_bot_083_evolution_oppplans_heldout,2026-09-29T05:55,bot_083_evolution_oppplans,ca524634d6,heldout,C,3,bot_004_lookahead_base,126,0,0.8492,16.8968,0.2718,5,False,0.4928,0,98.2,0,0,0,0
+20260929-063024_bot_072_evolution_fastga_tier2ext,2026-09-29T06:44,bot_072_evolution_fastga,109b7eb5f0,tier2ext,B,2,,210,0,0.8762,16.9762,0.2161,5,False,0.4704,0,94.2,0,0,0,0
+20260929-063024_bot_072_evolution_fastga_tier2ext,2026-09-29T06:44,bot_072_evolution_fastga,109b7eb5f0,tier2ext,B,3,bot_004_lookahead_base,210,0,0.7286,15.5095,0.3339,5,False,0.4805,0,98.6,0,0,0,0
+20260929-064419_bot_072_evolution_fastga_heldout,2026-09-29T07:04,bot_072_evolution_fastga,109b7eb5f0,heldout,C,2,,126,0,0.8968,17.2063,0.2283,5,False,0.4771,0,93.9,0,0,0,0
+20260929-064419_bot_072_evolution_fastga_heldout,2026-09-29T07:04,bot_072_evolution_fastga,109b7eb5f0,heldout,C,3,bot_004_lookahead_base,126,0,0.7698,16.0873,0.3555,5,False,0.4753,0,98.1,0,0,0,0
+20260929-070422_bot_071_lookahead_fastres_heldout,2026-09-29T07:26,bot_071_lookahead_fastres,8be0e59d57,heldout,C,2,,126,0,0.9206,17.5,0.1861,5,False,0.4574,0,95.9,0,0,0,0
+20260929-070422_bot_071_lookahead_fastres_heldout,2026-09-29T07:26,bot_071_lookahead_fastres,8be0e59d57,heldout,C,3,bot_004_lookahead_base,126,0,0.7857,16.0079,0.3809,5,False,0.4788,0,99.3,0,0,0,0

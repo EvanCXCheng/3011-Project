@@ -916,6 +916,10 @@
    "bot": "bot_075",
    "effect": "vs parent bot_072 +0.29\u00b10.17 (B126); vs bot_070 B210 +0.59\u00b10.15, held-out C +0.10\u00b10.22 (combined +0.43\u00b10.12)"
   },
+  "ga-vs-race-identical": {
+   "bot": "bot_072",
+   "effect": "GA vs halving race on identical machinery (072-071): B +0.07\u00b10.19, C -0.11\u00b10.26 (no difference)"
+  },
   "genetic-algorithm": {
    "bot": "bot_065",
    "effect": "GA over the champion's pool: vs bot_062 +0.56\u00b10.19; vs bot_045 +0.24\u00b10.19 (n.s.); S2 17.17 (88.1%), S3 15.60 (70.6%) B126"
