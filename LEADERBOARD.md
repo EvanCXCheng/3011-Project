@@ -1,7 +1,7 @@
 # Leaderboard
 
-_Generated 2026-09-28 14:47 AWST by lab/leaderboard.py — do not hand-edit._  
-Freeze in 69.2 h, deadline in 105.2 h.
+_Generated 2026-09-28 15:50 AWST by lab/leaderboard.py — do not hand-edit._  
+Freeze in 68.2 h, deadline in 104.1 h.
 
 **Overall champion:** bot_070  (agent_21.py matches)
 
@@ -12,17 +12,17 @@ Mark = estimated rubric points /15 (per scenario: highest tier reached by win ra
 | # | bot | family | status | S1 sc (win%) n | S2 sc (win%) n | S3 sc (win%) n | mark | tmax s | mem MB | issues | tourn |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 1 | bot_075_evolution_confirm | evolution | RUNNING | 18.00±0.00 (100%) 168 → 5 | 17.20±0.23 (91%) 168 → 5 | 15.92±0.22 (77%) 420 → 5 | **15** | 0.478 | 100 | 0 | - |
-| 2 | bot_073_lookahead_widepool | lookahead | RUNNING | 18.00±0.00 (100%) 168 → 5 | 17.46±0.17 (93%) 175 → 5 | 15.61±0.22 (72%) 420 → 5 | **15** | 0.488 | 99 | 0 | - |
+| 2 | bot_073_lookahead_widepool | lookahead | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 17.25±0.14 (91%) 378 → 5 | 15.72±0.18 (74%) 630 → 5 | **15** | 0.488 | 99 | 0 | - |
 | 3 | bot_057_adaptive_vulture | adaptive | REJECTED | 18.00±0.00 (100%) 168 → 5 | 17.23±0.22 (90%) 168 → 5 | 15.62±0.36 (74%) 168 → 5 | **15** | 0.492 | 97 | 0 | - |
 | 4 | bot_065_evolution_poolga | evolution | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 17.17±0.21 (89%) 168 → 5 | 15.63±0.34 (71%) 168 → 5 | **15** | 0.491 | 97 | 0 | - |
 | 5 | bot_072_evolution_fastga | evolution | REJECTED | 18.00±0.00 (100%) 168 → 5 | 17.35±0.21 (92%) 168 → 5 | 15.41±0.24 (72%) 420 → 5 | **15** | 0.480 | 99 | 0 | - |
 | 6 | bot_076_lookahead_vmscore | lookahead | REJECTED | 18.00±0.00 (100%) 168 → 5 | 17.18±0.21 (89%) 168 → 5 | 15.54±0.23 (73%) 420 → 5 | **15** | 0.484 | 100 | 0 | - |
 | 7 | bot_068_lookahead_riskaverse | lookahead | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.77±0.27 (85%) 168 → 5 | 15.90±0.66 (80%) 49 → 5 | **15** | 0.515 | 96 | 0 | - |
-| 8 | bot_070_search_mapfix | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 17.09±0.16 (87%) 294 → 5 | 15.53±0.20 (73%) 546 → 5 | **15** | 0.487 | 98 | 0 | - |
+| 8 | bot_070_search_mapfix | search | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 17.08±0.14 (87%) 378 → 5 | 15.48±0.19 (72%) 630 → 5 | **15** | 0.487 | 98 | 0 | - |
 | 9 | bot_055_search_openings | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.97±0.25 (88%) 168 → 5 | 15.55±0.36 (71%) 168 → 5 | **15** | 0.488 | 97 | 0 | - |
 | 10 | bot_050_search_stackagg | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 17.11±0.22 (90%) 168 → 5 | 15.33±0.37 (71%) 168 → 5 | **15** | 0.523 | 96 | 0 | - |
-| 11 | bot_067_adaptive_seataware | adaptive | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.80±0.24 (83%) 168 → 5 | 15.55±0.36 (74%) 168 → 5 | **15** | 0.495 | 97 | 0 | - |
-| 12 | bot_071_lookahead_fastres | lookahead | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 17.06±0.22 (87%) 168 → 5 | 15.27±0.24 (69%) 420 → 5 | **15** | 0.500 | 99 | 0 | - |
+| 11 | bot_071_lookahead_fastres | lookahead | PROMOTED | 18.00±0.00 (100%) 168 → 5 | 17.04±0.18 (87%) 252 → 5 | 15.36±0.21 (69%) 504 → 5 | **15** | 0.500 | 99 | 0 | - |
+| 12 | bot_067_adaptive_seataware | adaptive | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.80±0.24 (83%) 168 → 5 | 15.55±0.36 (74%) 168 → 5 | **15** | 0.495 | 97 | 0 | - |
 | 13 | bot_058_search_stackfast | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 17.09±0.21 (88%) 168 → 5 | 15.23±0.37 (70%) 168 → 5 | **15** | 0.511 | 98 | 0 | - |
 | 14 | bot_049_search_stackseason | search | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.85±0.25 (87%) 168 → 5 | 15.45±0.36 (70%) 168 → 5 | **15** | 0.529 | 97 | 0 | - |
 | 15 | bot_074_adaptive_oppsupres | adaptive | REJECTED | 18.00±0.00 (100%) 168 → 5 | 16.86±0.25 (86%) 168 → 5 | 15.30±0.23 (69%) 420 → 5 | **15** | 0.490 | 99 | 0 | - |
@@ -114,14 +114,14 @@ Mark = estimated rubric points /15 (per scenario: highest tier reached by win ra
 | archetype | ACTIVE | 4 (5%) | bot_040 | 5 | 5 | 5 | 15 | new |
 | bandit | DORMANT | 4 (5%) | bot_036 | 1 | 5 | 5 | 11 | 3 iters (034/036/046); champion bot_036 est 11 vs overall 15 |
 | ensemble | ACTIVE | 3 (4%) | bot_060 | 5 | 5 | 5 | 15 | new |
-| evolution | ACTIVE | 7 (9%) | bot_065 | 5 | 5 | 5 | 15 | new |
+| evolution | ACTIVE | 8 (10%) | bot_065 | 5 | 5 | 5 | 15 | new |
 | greedy | DORMANT | 5 (6%) | bot_012 | 3 | 5 | 3 | 11 | 3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13 |
-| lookahead | ACTIVE | 14 (18%) | bot_071 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
+| lookahead | ACTIVE | 14 (18%) | bot_073 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
 | positional | DORMANT | 4 (5%) | bot_017 | 5 | 3 | 1 | 9 | 3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC) |
-| search | ACTIVE | 23 (30%) | bot_070 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
+| search | ACTIVE | 23 (29%) | bot_070 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
 | valuemap | DORMANT | 5 (6%) | bot_038 | 5 | 5 | 3 | 13 | champion bot_038 est 13 vs strong stand-in (S3 11.00, 34.9%) vs overall 15 |
 
-**Hall of fame:** bot_009, bot_040, bot_036, bot_060, bot_065, bot_012, bot_071, bot_017, bot_070, bot_038, bot_022, bot_045  
+**Hall of fame:** bot_009, bot_040, bot_036, bot_060, bot_065, bot_012, bot_073, bot_017, bot_070, bot_038, bot_022, bot_045  
 **Overall champion history:** bot_001 → bot_003 → bot_004 → bot_007 → bot_021 → bot_022 → bot_045 → bot_070
 
 ## Report coverage: techniques
@@ -178,8 +178,8 @@ Distinct techniques measured: 42 (need basic + 3 new).
 | scenario | AUSTRIA | ENGLAND | FRANCE | GERMANY | ITALY | RUSSIA | TURKEY |
 |---|---|---|---|---|---|---|---|
 | S1 | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% |
-| S2 | 16.0 / 74% | 15.7 / 74% | 17.9 / 98% | 17.2 / 88% | 17.2 / 86% | 18.0 / 100% | 17.6 / 90% |
-| S3 | 13.3 / 59% | 15.2 / 58% | 17.1 / 88% | 14.8 / 68% | 14.3 / 63% | 17.4 / 92% | 16.6 / 81% |
+| S2 | 16.1 / 76% | 15.7 / 72% | 17.9 / 98% | 16.8 / 83% | 17.4 / 87% | 18.0 / 100% | 17.7 / 93% |
+| S3 | 13.6 / 60% | 15.4 / 60% | 17.1 / 89% | 14.1 / 63% | 14.5 / 63% | 17.3 / 92% | 16.4 / 79% |
 
 ## Tournament (stand-in for Scenario 4)
 

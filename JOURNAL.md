@@ -1185,7 +1185,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   what limits it now is the opponent model / score and the candidate set. Resolver still useful where evaluations are
   scarce (GA, bot_072) and for bigger candidate pools or richer opponent models at no time cost.
 
-## [093] bot_073 lookahead/widepool, bot_074 adaptive/oppsupres — RUNNING (073 borderline, extending)
+## [093] bot_073 lookahead/widepool (lookahead family champion; not overall), bot_074 adaptive/oppsupres (REJECTED)
 
 - after bot_071's null result (rollouts no longer binding), two ways to use the spare rollouts, both on bot_071:
 - bot_073 (tags: wide-candidate-pool): TOP_K 8 → 16, N_LA 12 → 36; measured pool 15–21 → 30–51 candidates per phase.
@@ -1265,3 +1265,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   (TOP_K 16, N_LA 36) seeds bot_075's GA (with confirmation race). Sanity S2/S3 seed 22 vs stand-in 024: 18/18,
   tmax 0.452 s, no errors.
 - plan: queue q50: T0, T1 A42 vs bot_075, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and bot_075.
+
+- bot_073 extension (q47, B210 S2/S3, stand-in 004): 073 S2 17.27±0.19 (91.9%) / S3 16.04±0.27 (75.2%); 070 S2 17.01 /
+  S3 15.50; 071 S2 16.93 / S3 15.65. vs bot_070 pooled +0.38±0.15 (PROMOTE on B); vs bot_071 +0.34±0.15 (PROMOTE).
+- held-out C (offset 400) vs bot_070: S2 −0.09±0.27, S3 −0.59±0.45, pooled −0.34±0.26 → does NOT confirm.
+  Inverse-variance B+C: ≈ +0.20±0.13 (z 1.5). Decision: lookahead family champion (beats bot_071 on B210), NOT overall
+  champion (borderline B gain not confirmed on fresh seeds; bot_070 stays).
+- takeaway: seed set B has now picked many winners; a +0.3–0.4 B gain for a borderline bot can be a selection
+  effect. Held-out C is the deciding test for every further overall promotion (bot_075 pending in q49).

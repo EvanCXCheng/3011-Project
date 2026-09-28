@@ -654,7 +654,7 @@
    "file": "bots/bot_073_lookahead_widepool.py",
    "note": "",
    "parent": "bot_071",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "wide-candidate-pool"
   },
   "bot_074": {
@@ -741,7 +741,7 @@
    "status": "DORMANT"
   },
   "lookahead": {
-   "champion": "bot_071",
+   "champion": "bot_073",
    "iterations": 14,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
@@ -772,7 +772,7 @@
   "bot_060",
   "bot_065",
   "bot_012",
-  "bot_071",
+  "bot_073",
   "bot_017",
   "bot_070",
   "bot_038",

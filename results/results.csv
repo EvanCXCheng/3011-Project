@@ -823,3 +823,11 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260928-142318_bot_076_lookahead_vmscore_tier2,2026-09-28T14:46,bot_076_lookahead_vmscore,a992bcb3ff,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4743,0,88.9,0,0,0,0
 20260928-142318_bot_076_lookahead_vmscore_tier2,2026-09-28T14:46,bot_076_lookahead_vmscore,a992bcb3ff,tier2,B,2,,126,0,0.873,17.0952,0.2566,5,False,0.4704,0,95.6,0,0,0,0
 20260928-142318_bot_076_lookahead_vmscore_tier2,2026-09-28T14:46,bot_076_lookahead_vmscore,a992bcb3ff,tier2,B,3,bot_004_lookahead_base,126,0,0.8492,16.7222,0.3112,5,False,0.4783,0,98.4,0,0,0,0
+20260928-144645_bot_073_lookahead_widepool_tier2ext,2026-09-28T15:00,bot_073_lookahead_widepool,bd6f9a1c83,tier2ext,B,2,,210,0,0.919,17.2667,0.1925,5,False,0.4816,0,94.7,0,0,0,0
+20260928-144645_bot_073_lookahead_widepool_tier2ext,2026-09-28T15:00,bot_073_lookahead_widepool,bd6f9a1c83,tier2ext,B,3,bot_004_lookahead_base,210,0,0.7524,16.0381,0.2747,5,False,0.4811,0,98.9,0,0,0,0
+20260928-150050_bot_070_search_mapfix_tier2ext,2026-09-28T15:15,bot_070_search_mapfix,61d2dc2d85,tier2ext,B,2,,210,0,0.8714,17.0143,0.2047,5,False,0.4821,0,96.4,0,0,0,0
+20260928-150050_bot_070_search_mapfix_tier2ext,2026-09-28T15:15,bot_070_search_mapfix,61d2dc2d85,tier2ext,B,3,bot_004_lookahead_base,210,0,0.7333,15.5,0.3392,5,False,0.4837,0,97.2,0,0,0,0
+20260928-151506_bot_071_lookahead_fastres_tier2ext,2026-09-28T15:29,bot_071_lookahead_fastres,8be0e59d57,tier2ext,B,2,,210,0,0.8571,16.9286,0.2122,5,False,0.4788,0,95.5,0,0,0,0
+20260928-151506_bot_071_lookahead_fastres_tier2ext,2026-09-28T15:29,bot_071_lookahead_fastres,8be0e59d57,tier2ext,B,3,bot_004_lookahead_base,210,0,0.7333,15.6524,0.3118,5,False,0.4802,0,98.6,0,0,0,0
+20260928-152913_bot_073_lookahead_widepool_heldout,2026-09-28T15:49,bot_073_lookahead_widepool,bd6f9a1c83,heldout,C,2,,126,0,0.8968,17.1587,0.2644,5,False,0.477,0,95.0,0,0,0,0
+20260928-152913_bot_073_lookahead_widepool_heldout,2026-09-28T15:49,bot_073_lookahead_widepool,bd6f9a1c83,heldout,C,3,bot_004_lookahead_base,126,0,0.754,15.6111,0.4291,5,False,0.4855,0,99.4,0,0,0,0
