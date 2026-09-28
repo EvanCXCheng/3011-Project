@@ -1172,5 +1172,6 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   +0.88±0.55 (14.63) — consistent gains, incl. both S4 weak-spot styles.
 - stress (evals pinned to cores 1–3, stress on core 0): slowdown ×3.66, tmax 0.518 s, 0 errors → PASS. Promoted:
   search family champion + overall champion; agent_21.py = bot_070.
+- test.py (course script via its experiment(), repeat 1, S1 + S2): 7/7 wins each, 18.0 SC, no errors.
 - takeaway: a correct army map is worth ≈0.5 SC; the found bug cost every earlier bot. bot_071/072 (resolver) already
   build on the fixed map. Style sparring bots still carry the bug (backlog).
