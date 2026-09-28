@@ -1389,3 +1389,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 −0.39±0.37, pooled −0.11±0.22 → REJECTED.
 - takeaway: penalising a runaway leader does not change results vs the baseline mix: when a greedy France snowballs,
   Austria is usually too far away to act on it. Not tested in all-bot tables; left as an S4 idea only.
+
+## [105] Final S4 sparring evaluation of the champion (human request, 27 Sep) — RUNNING
+
+- champion bot_081 (plays as bot_075). (1) Style tournament, 112 games, rotating seats, offset 600: 081 evolution,
+  070 search, 073 lookahead, 038 valuemap, 012 greedy, 040 aggressive archetype, 036 bandit. (2) S3 B126 with each
+  other style as the Hidden Agent stand-in (run as bot_075, same play, so its 004/024/040 runs are reused): 070, 073,
+  038, 012, 036, 017, 060. Queue q57 (~4 h). Style bots keep their historical code (incl. the [090] map bug) so the
+  field matches [067]/[101]. Re-run only if the champion changes before the freeze.
