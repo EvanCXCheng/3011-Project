@@ -1288,7 +1288,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   72/630 lose ≥3 SC from peak; worst-20% strongest opponent spread over 004 (40), 040 (31), 024 (26), greedy (29).
 - unchanged picture since [072]: central powers and England lose early, mostly to greedy/strong neighbours.
 
-## [099] bot_079 search/buildmix — RUNNING
+## [099] bot_079 search/buildmix — REJECTED (n.s.)
 
 - parent bot_070 | tags: build-choice-k-nearest. From [098]: replay of S2 seed 100010 (England) showed W1901 'A EDI B'
   (LON lost in 1901; army and fleet tie at distance 2 to LON, ties go to armies), then A EDI and A LON held on the
@@ -1316,3 +1316,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 16.61±0.34 (83.3%); S3 vs 040 15.84, vs 024 16.01. vs bot_075 (now champion): S2 +0.33±0.28, S3 +0.31±0.23,
   pooled +0.25±0.15 (z 1.67 ≥ 1.5 → [040] extension); vs bot_070 +0.73±0.16. By stand-in vs 075: 004 +0.10,
   024 +0.37, 040 +0.44. q53: B210 extension + held-out C (offset 400) vs bot_075.
+
+- bot_079 results (appended after [100]): T1 A42 vs bot_070 −0.04±0.25. T2 B126 (004): S1 18.00 / S2 17.58±0.18 (92.9%) /
+  S3 15.36±0.43 (71.4%). vs bot_070: S2 +0.60±0.27, S3 (378) +0.01±0.25, pooled +0.13±0.16 → REJECT. By power
+  (S2+S3, 72 each): ENG +0.43±0.64, ITA +0.68±0.67, TUR +0.11, FRA +0.17, GER +0.15, AUS −0.69±0.65, RUS +0.25.
+- takeaway: the stuck-army builds are real but rare; effect below what 630 games resolve. Candidate for a later stack
+  onto the champion together with other small fixes (backlog).

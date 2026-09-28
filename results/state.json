@@ -706,9 +706,9 @@
    "created": "2026-09-28T16:44",
    "family": "search",
    "file": "bots/bot_079_search_buildmix.py",
-   "note": "",
+   "note": "build type by k-nearest reach: +0.13\u00b10.16 vs bot_070 (S2 +0.60\u00b10.27, S3 0); England +0.43\u00b10.64",
    "parent": "bot_070",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "build-choice-k-nearest"
   }
  },
