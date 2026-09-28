@@ -1203,7 +1203,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   either; bot_065 ≈ bot_070 ≈ bot_071 ≈ bot_072 on these seeds (all within ±0.2). Evolution line stays level with
   the champion (best S2), not ahead.
 
-## [094] bot_075 evolution/confirm, bot_076 lookahead/vmscore — RUNNING (075 strong, extending)
+## [094] bot_075 evolution/confirm (PROMOTED: overall champion), bot_076 lookahead/vmscore (REJECTED)
 
 - bots 065/070/071/072 tie within ±0.2 and neither rollout count (071) nor GA generations (072) was binding, so the
   next two target selection bias and the score function:
@@ -1297,3 +1297,16 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   are near.
 - sanity: S2 100010 ENG 13 (bot_070 replay 12; recorded 1), S2 8 ENG 18, S3 15 ENG 16, S1 1 ENG 18; tmax 0.476 s.
 - plan: queue q51: T0, T1 A42 vs bot_070, S3 B126 vs 040/024, T2 B126 (004) vs bot_070; check the England seat split.
+
+## [100] bot_075 promoted: overall champion (evolution family)
+
+- extension (q49, B210 S2/S3, stand-in 004): 075 S2 17.17±0.21 (91.4%) / S3 16.70±0.24 (84.8%); 065 S2 16.70 / S3 15.27;
+  070 S2 17.01 / S3 15.50. vs bot_070 pooled +0.59±0.15 (S3 over 3 stand-ins +0.94±0.24); vs bot_065 +0.73±0.18.
+- held-out C (offset 400) vs bot_070: S2 −0.06±0.25, S3 +0.25±0.37, pooled +0.10±0.22 (same direction; unlike 073).
+  Inverse-variance B+C ≈ +0.43±0.12. Win rates on C: S2 90.5% vs 86.5%, S3 84.1% vs 78.6%.
+- stress (evals pinned to cores 1–3): slowdown ×4.26, tmax 0.495 s, 0 errors → PASS.
+- promoted: evolution family champion + overall champion; agent_21.py = bot_075 (61 KB). Champion history now
+  … → bot_045 → bot_070 → bot_075. First overall champion from a non-search family since bot_021.
+- test_21.py ablation defaults updated: ROLLOUT LA_CANDS VM_CANDS TWO_PLY CONVOYS FAST_RES CONFIRM ACC_GATE OPP_AWARE
+  (HALVING is dead code in the GA line). No GA on/off switch exists (the GA replaced the race in bot_065); an
+  ablation for the GA itself = compare with bot_070/bot_071 (same machinery, race instead of GA).

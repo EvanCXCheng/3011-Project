@@ -672,7 +672,7 @@
    "file": "bots/bot_075_evolution_confirm.py",
    "note": "",
    "parent": "bot_072",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "evolve-then-confirm"
   },
   "bot_076": {
@@ -738,7 +738,7 @@
    "status": "ACTIVE"
   },
   "evolution": {
-   "champion": "bot_065",
+   "champion": "bot_075",
    "iterations": 8,
    "reason": "new",
    "status": "ACTIVE"
@@ -779,13 +779,12 @@
   "bot_040",
   "bot_036",
   "bot_060",
-  "bot_065",
+  "bot_075",
   "bot_012",
   "bot_073",
   "bot_017",
   "bot_070",
   "bot_038",
-  "bot_022",
   "bot_045"
  ],
  "next_bot_id": 80,
@@ -821,6 +820,10 @@
   {
    "bot": "bot_070",
    "date": "2026-09-28T08:42"
+  },
+  {
+   "bot": "bot_075",
+   "date": "2026-09-28T17:30"
   }
  ],
  "standin_rotation": 0,
@@ -864,6 +867,10 @@
   "ensemble-voting": {
    "bot": "bot_060",
    "effect": "new family, rule-only ~40 ms: S2 16.33 (80.2%), S3 12.94 (47.6%) B126; est 15; vs bot_045 pooled -0.93\u00b10.25"
+  },
+  "evolve-then-confirm": {
+   "bot": "bot_075",
+   "effect": "vs parent bot_072 +0.29\u00b10.17 (B126); vs bot_070 B210 +0.59\u00b10.15, held-out C +0.10\u00b10.22 (combined +0.43\u00b10.12)"
   },
   "genetic-algorithm": {
    "bot": "bot_065",

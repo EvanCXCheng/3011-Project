@@ -1,15 +1,29 @@
-"""bot_070 — family: search — parent: bot_045
+"""bot_075 — family: evolution — parent: bot_072
 
-Change vs bot_045 (one fix): army adjacency for the split-coast provinces. map_info built army neighbours from
-map.loc_abut, which lists coast-qualified names ('SPA/SC', 'BUL/EC', 'STP/NC'); those are not army nodes, so 20 army
-links were missing (MAR-SPA, GAS-SPA, POR-SPA, CON-BUL, GRE-BUL, RUM-BUL, SER-BUL, FIN/LVN/MOS/NWY-STP, ...). Armies
-saw SPA, BUL and STP as unreachable, armies standing there as stuck, and greedy predictions of opponents' armies were
-wrong near them (SPA/BUL/STP themselves are keyed in lower case in loc_abut, so they had no army neighbours
-at all). Army neighbours now use the base province and the lower-case key (checked against map.abuts: 0 missing, army and fleet).
-The found-bug fix applies to every bot copied from the same helper (bots 001-069); only this line gets it.
+Change vs bot_072 (one idea): evolve, then confirm. The GA stops CONFIRM_T early; its CONFIRM_K best plans (by mean
+fitness) then race on fresh opponent samples, and the best fresh mean is played. Newly bred plans have few samples,
+so the GA's best-by-mean is biased toward lucky plans (winner's curse); the fresh race removes that bias. With the
+resolver a 0.07 s race gives each finalist ~200 fresh rollouts. CONFIRM False = bot_072.
+
+bot_072 notes:
+bot_072 — family: evolution — parent: bot_065
+
+Change vs bot_065 (one infrastructure change, from bot_070/071): the GA's fitness rollouts run on the own movement
+resolver instead of engine copies (FAST_RES; ~x34 rollouts per move), with the split-coast army adjacency fix the
+resolver needs ([090]). bot_065 managed only a few generations of 2 opponent samples each in 0.45 s; the hypothesis is
+that the GA gains more from cheap rollouts than the halving race (bot_071), because it can breed and re-test many
+more generations. FAST_RES False = bot_065 + map fix.
+
+bot_065 notes:
+bot_065 — family: evolution — parent: bot_045 (code base) / bot_062 (idea)
+
+Change vs bot_045 (one idea): the halving race is replaced by a genetic algorithm over bot_045's candidate pool.
+bot_062 showed a GA is only competitive with good seeds; bot_045's pool (hill-climbing optima, lookahead candidates,
+valuemap plan, convoys) is the best seed set we have. Genes = each unit's orders appearing in any pool plan (+ hold);
+each generation all plans meet the same fresh opponent samples (two-ply in Spring, as bot_045), the better half
+survives, the rest is refilled by uniform crossover + mutation with support/convoy repair; best mean is played.
 
 bot_045 notes:
-bot_045 — family: search — parent: bot_029 (+ bot_035's valuemap candidate)
 
 Change vs bot_029 (one idea, stacking two measured near-misses against the champion bot_022): adds bot_035's valuemap
 candidate (bot_014's joint order) to bot_029's race (two-ply Spring rollouts + convoy candidates). Each was about
@@ -67,7 +81,7 @@ greedy rules miss. The evaluation estimates, for each move, a success probabilit
 scores expected unit positions (unowned SC captured, distance to the nearest unowned SC) and penalises own SCs left
 open to adjacent enemies. Search: coordinate-ascent hill climbing with random restarts until the time budget.
 
-Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates
+Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates, genetic-algorithm
 """
 import copy
 import random
@@ -91,6 +105,7 @@ CONFIG = {
     'TWO_PLY': True,         # False = no two-ply Spring rollouts
     'CONVOYS': True,         # False = no convoy candidates
     'VM_CANDS': True,        # False = bot_029 (no valuemap candidate)
+    'GA_POP': 16, 'GA_SAMPLES': 2, 'GA_MUT': 0.1,
     'W_NEUTRAL': 10.0, 'W_ENEMY': 7.0, 'W_DEFEND': 5.0, 'DIFF_ITERS': 6, 'DIFF_MAX': 0.6, 'DIFF_SUM': 0.05,
     'SUPPORTS': True, 'STRENGTH': True, 'OCC_FACTOR': 0.15, 'COMP': 0.0,
     'P_CONVOY': 0.4,         # chance a perturbed candidate also carries one random convoy
@@ -114,6 +129,10 @@ CONFIG = {
     'STATIC_HOLD_FRAC': 0.95,
     'GREEDY_TOWARD_FRAC': 0.8,
     'MIN_OBS': 2,
+    'FAST_RES': True,        # False = bot_065 + map fix (engine copies for rollouts)
+    'CONFIRM': True,         # False = bot_072 (play the GA's best mean)
+    'CONFIRM_T': 0.07,       # s reserved at the end of TIME_BUDGET for the confirmation race
+    'CONFIRM_K': 5,          # GA plans that enter the confirmation race
     'ACC_GATE': True,        # False = bot_008 behaviour
     'ACC_GREEDY': 0.85,      # greedy-prediction hit rate at or above which a power is 'greedy'
     'ACC_STRONG': 0.4,       # hit rate at or above which (and below ACC_GREEDY) a power is 'strong'
@@ -199,6 +218,239 @@ def parse_order(order):
     return ut, loc, kind, dest
 
 
+# own movement resolver (validated against the engine, see docstring)
+_PARSE_CACHE = {}
+
+
+def parse_mo(order, reach_a):
+    tok = order.split()
+    loc = tok[1]
+    b = _base(loc)
+    if len(tok) < 4:
+        return b, ('H',)
+    k = tok[2]
+    if k == '-':
+        dest = tok[3]
+        db = _base(dest)
+        adj = tok[0] == 'F' or db in reach_a.get(loc, ())
+        return b, ('M', dest, db, tok[-1] == 'VIA' or not adj, adj)
+    if k == 'S':
+        tb = _base(tok[4])
+        if len(tok) >= 7 and tok[5] == '-':
+            return b, ('S', tb, _base(tok[6]), tok[6])
+        return b, ('S', tb, None)
+    if k == 'C' and len(tok) >= 7:
+        return b, ('C', _base(tok[4]), _base(tok[6]))
+    return b, ('H',)
+
+
+def _convoy_path(units, orders, reach_f, a, d, gone):
+    """True if fleets ordered to convoy a -> d (minus those in gone) link a to d."""
+    live = [f for f, o in orders.items() if o[0] == 'C' and o[1] == a and o[2] == d and f in units
+            and units[f][1] == 'F' and f not in gone]
+    if not live:
+        return False
+    rf = {f: reach_f.get(units[f][2], ()) for f in live}
+    frontier = [f for f in live if a in rf[f]]
+    seen = set(frontier)
+    while frontier:
+        f = frontier.pop()
+        if d in rf[f]:
+            return True
+        for g in live:
+            if g not in seen and g in rf[f]:
+                seen.add(g)
+                frontier.append(g)
+    return False
+
+
+def resolve_moves(units, orders, reach_f):
+    moves = {}
+    via = {}
+    into = {}
+    convoyed = {(o[1], o[2]) for o in orders.values() if o[0] == 'C'}
+    for b, o in orders.items():
+        if o[0] == 'M' and b in units and o[2] != b:
+            moves[b] = o
+            via[b] = o[3] and not (o[4] and (b, o[2]) not in convoyed)   # VIA with no convoy ordered: overland
+            into.setdefault(o[2], []).append(b)
+    if not moves:
+        return dict(units), set()
+    own_conv = {(o[1], o[2]) for f, o in orders.items() if o[0] == 'C' and f in units and o[1] in units
+                and units[f][0] == units[o[1]][0]}
+    for b in list(via):
+        o = moves[b]
+        if o[4] and units[b][1] == 'A' and (via[b] or (b, o[2]) in own_conv):
+            # engine: an adjacent army move is convoyed if VIA or its own power orders a convoy, and a convoy route
+            # exists; otherwise it moves overland
+            via[b] = _convoy_path(units, orders, reach_f, b, o[2], ())
+    sup = {}
+    for b, o in orders.items():
+        if o[0] != 'S' or b not in units:
+            continue
+        tb, db = o[1], o[2]
+        if tb not in units:
+            continue
+        if db is None:
+            if tb in moves:
+                continue
+        else:
+            m = moves.get(tb)
+            if m is None or m[2] != db or ('/' in o[3] and o[3] != m[1]):
+                continue               # a support naming another coast does not match the move
+        sup.setdefault((tb, db), []).append(b)
+
+    res = {}
+    state = {}              # 1 = guessing, 2 = resolved
+    dep = []
+    conv_cache = {}
+
+    def dislodged(f):
+        for x in into.get(f, ()):
+            if resolve(x):
+                return True
+        return False
+
+    def convoy_ok(a):
+        fl = conv_cache.get(a)
+        if fl is None:
+            fl = conv_cache[a] = [f for f, o in orders.items() if o[0] == 'C' and o[1] == a]
+        return _convoy_path(units, orders, reach_f, a, moves[a][2], [f for f in fl if dislodged(f)])
+
+    def valid(a):
+        return not via[a] or convoy_ok(a)
+
+    def cut(s):
+        o = orders[s]
+        into_prov = o[2] if o[2] is not None else o[1]
+        pw = units[s][0]
+        for a in into.get(s, ()):
+            if units[a][0] == pw or not valid(a):
+                continue
+            if a != into_prov:
+                return True
+            if resolve(a):          # attack from the supported-into province cuts only by dislodging
+                return True
+        return False
+
+    def nsup(key, not_power=None):
+        n = 0
+        for s in sup.get(key, ()):
+            if not_power is not None and units[s][0] == not_power:
+                continue
+            if not cut(s):
+                n += 1
+        return n
+
+    def h2h(a, occ):
+        mo = moves.get(occ)
+        return mo is not None and mo[2] == a and not via[a] and not via[occ]
+
+    def adjudicate(a):
+        d = moves[a][2]
+        if not valid(a):
+            return False
+        pw = units[a][0]
+        occ = d if d in units else None
+        hh = occ is not None and h2h(a, occ)
+        if occ is not None and (hh or occ not in moves or not resolve(occ)):
+            opw = units[occ][0]
+            # own-power supports cannot dislodge their own unit (engine: not applied to explicit VIA / non-adjacent orders)
+            attack = 0 if opw == pw else 1 + nsup((a, d), None if via[a] and moves[a][3] else opw)
+        else:
+            attack = 1 + nsup((a, d))
+        if hh:
+            if attack <= 1 + nsup((occ, a)):
+                return False
+        elif occ is not None:
+            if occ in moves:
+                hold = 0 if resolve(occ) else 1
+            else:
+                hold = 1 + nsup((occ, None))
+            if attack <= hold:
+                return False
+        for b in into[d]:
+            if b == a or not valid(b):
+                continue
+            if d in units and h2h(b, d) and resolve(d):
+                continue            # b lost a head-to-head battle: no prevent strength
+            if attack <= 1 + nsup((b, d)):
+                return False
+        return True
+
+    def resolve(a):
+        st = state.get(a)
+        if st == 2:
+            return res[a]
+        if st == 1:
+            if a not in dep:
+                dep.append(a)
+            return res[a]
+        n0 = len(dep)
+        res[a] = False
+        state[a] = 1
+        r1 = adjudicate(a)
+        if len(dep) == n0:
+            if state.get(a) != 2:
+                res[a] = r1
+                state[a] = 2
+            return res[a]
+        if dep[n0] != a:
+            dep.append(a)
+            res[a] = r1
+            return r1
+        for x in dep[n0:]:
+            state.pop(x, None)
+        del dep[n0:]
+        res[a] = True
+        state[a] = 1
+        r2 = adjudicate(a)
+        if r1 == r2:
+            for x in dep[n0:]:
+                state.pop(x, None)
+            del dep[n0:]
+            res[a] = r1
+            state[a] = 2
+            return r1
+        cyc = dep[n0:] if a in dep[n0:] else dep[n0:] + [a]
+        del dep[n0:]
+        if (not r1) and r2:        # two consistent outcomes: circular movement, all succeed
+            for x in cyc:
+                res[x] = True
+                state[x] = 2
+        else:                      # no consistent outcome: convoy paradox, the convoyed moves fail
+            anyvia = any(via.get(x) for x in cyc)
+            for x in cyc:
+                if via.get(x) or not anyvia:
+                    res[x] = False
+                    state[x] = 2
+                else:
+                    state.pop(x, None)
+        return resolve(a)
+
+    for a in moves:
+        resolve(a)
+    out = {}
+    moved_in = set()
+    for a, o in moves.items():
+        if res[a]:
+            moved_in.add(o[2])
+    lost = set()
+    for b, u in units.items():
+        m = moves.get(b)
+        if m is not None and res[b]:
+            continue
+        if b in moved_in:
+            lost.add(b)
+            continue
+        out[b] = u
+    for a, o in moves.items():
+        if res[a]:
+            pw, t, _ = units[a]
+            out[o[2]] = (pw, t, o[1])
+    return out, lost
+
+
 def light_game(game):
     """History-free copy of the current movement position (units, centres, phase)."""
     g = Game(map_name=game.map.name)
@@ -220,7 +472,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_070_search_mapfix'):
+    def __init__(self, agent_name='bot_075_evolution_confirm'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -631,7 +883,22 @@ class StudentAgent(Agent):
         me = self.power_name
         info = self.info
         rng = random.Random(zlib.crc32((g0.get_current_phase() + me + 'R').encode()))
-        base_game = light_game(g0)
+        fast = CONFIG['FAST_RES']
+        base_game = None if fast else light_game(g0)
+        reach_a, reach_f = info['reach']['A'], info['reach']['F']
+        units0 = {}
+        for p, pw in g0.powers.items():
+            for u in pw.units:
+                t, loc = _unit_split(u)
+                units0[_base(loc)] = (p, t, loc)
+        pc = _PARSE_CACHE
+
+        def parse_into(lst, out):
+            for o in lst:
+                r = pc.get(o)
+                if r is None:
+                    r = pc[o] = parse_mo(o, reach_a)
+                out[r[0]] = r[1]
         ctx = {}
         for p, pw in g0.powers.items():
             if p == me or not pw.units:
@@ -690,6 +957,23 @@ class StudentAgent(Agent):
                     g.set_orders(p, lst)
             g.process()
 
+        def fall_reply_fast(units):
+            """fall_reply on a resolver position (dislodged units are already gone)."""
+            orders = {}
+            for b, (p, t, loc) in units.items():
+                ptg = ply2.get(p)
+                if ptg is None:
+                    continue
+                here = self._near(t, loc, ptg)
+                best, bd = None, here
+                for n in adj[t].get(loc, ()):
+                    d = self._near(t, n, ptg)
+                    if d < bd:
+                        best, bd = n, d
+                if best is not None:
+                    orders[b] = ('M', best, _base(best), False, True)
+            return resolve_moves(units, orders, reach_f)[0] if orders else units
+
         def sample():
             out = {}
             for p, (units, mix) in ctx.items():
@@ -710,7 +994,12 @@ class StudentAgent(Agent):
             for p, x in g.powers.items():
                 for u in x.units:
                     occ[_base(_unit_split(u)[1])] = p
-            my_units = [_unit_split(u) for u in g.get_power(me).units]
+            return score_occ(occ, [_unit_split(u) for u in g.get_power(me).units])
+
+        def score_units(units):
+            return score_occ({b: u[0] for b, u in units.items()}, [(u[1], u[2]) for u in units.values() if u[0] == me])
+
+        def score_occ(occ, my_units):
             sc_ = CONFIG['R_W_UNIT'] * len(my_units)
             for t, loc in my_units:
                 sc_ -= CONFIG['R_W_DIST'] * min(self._near(t, loc, tg), 20)
@@ -728,37 +1017,124 @@ class StudentAgent(Agent):
                 sc_ -= CONFIG['R_W_LOST'] * 0.5 * sum(1 for c in own_before if occ.get(c) not in (None, me))
             return sc_
 
-        totals = [0.0] * len(cand_orders)
-        n_eval = 0
-        alive = list(range(len(cand_orders)))
-        since = 0
-        while time.perf_counter() - t0 < CONFIG['TIME_BUDGET']:
-            opp = sample()
-            rs = []
-            for k in alive:
-                if time.perf_counter() - t0 > CONFIG['TIME_BUDGET']:
+        # genetic algorithm over the candidate pool (replaces the halving race)
+        units = sorted({' '.join(o.split()[:2]) for c in cand_orders for o in c})
+        genes = {u: [] for u in units}
+        for c in cand_orders:
+            for o in c:
+                u = ' '.join(o.split()[:2])
+                if o not in genes[u]:
+                    genes[u].append(o)
+        for u in units:
+            if f'{u} H' not in genes[u]:
+                genes[u].append(f'{u} H')
+
+        def repair(plan):
+            d = {' '.join(o.split()[:2]): o for o in plan}
+            for u, o in list(d.items()):
+                tok = o.split()
+                if len(tok) >= 7 and tok[2] == 'S' and tok[5] == '-':
+                    mt = d.get(' '.join(tok[3:5]), '').split()
+                    if not (len(mt) >= 4 and mt[2] == '-' and _base(mt[3]) == _base(tok[6])):
+                        d[u] = f'{u} H'
+                elif len(tok) >= 5 and tok[2] == 'C':
+                    if d.get(' '.join(tok[3:5]), '').split()[-1:] != ['VIA']:
+                        d[u] = f'{u} H'
+            return [d[u] for u in sorted(d)]
+
+        pop = {}
+        for c in cand_orders:
+            pop.setdefault(tuple(sorted(c)), [list(c), 0.0, 0])
+        confirm = CONFIG['CONFIRM'] and fast
+        budget = CONFIG['TIME_BUDGET'] - (CONFIG['CONFIRM_T'] if confirm else 0.0)
+        done = True
+        while time.perf_counter() - t0 < budget:
+            for _ in range(CONFIG['GA_SAMPLES']):
+                opp = sample()
+                if fast:
+                    opp_orders = {}
+                    for p, lst in opp.items():
+                        parse_into(lst, opp_orders)
+                for key, st in pop.items():
+                    if time.perf_counter() - t0 > budget:
+                        done = False
+                        break
+                    if fast:
+                        if len(st) < 4:
+                            d = {}
+                            parse_into(st[0], d)
+                            st.append(d)
+                        orders = dict(opp_orders)
+                        orders.update(st[3])
+                        u1 = resolve_moves(units0, orders, reach_f)[0]
+                        if two:
+                            u1 = fall_reply_fast(u1)
+                        st[1] += score_units(u1)
+                        st[2] += 1
+                        continue
+                    g = copy.deepcopy(base_game)
+                    for p, lst in opp.items():
+                        g.set_orders(p, lst)
+                    g.set_orders(me, st[0])
+                    g.process()
+                    if two:
+                        fall_reply(g)
+                    st[1] += score(g)
+                    st[2] += 1
+                if not done:
                     break
-                g = copy.deepcopy(base_game)
-                for p, lst in opp.items():
-                    g.set_orders(p, lst)
-                g.set_orders(me, cand_orders[k])
-                g.process()
-                if two:
-                    fall_reply(g)
-                rs.append(score(g))
-            if len(rs) < len(alive):
+            if not done:
                 break
-            for k, v in zip(alive, rs):
-                totals[k] += v
-            n_eval += 1
-            since += 1
-            if CONFIG['HALVING'] and since >= CONFIG['HALVE_EVERY'] and len(alive) > CONFIG['MIN_ALIVE']:
-                alive.sort(key=lambda k: (-totals[k], k))
-                alive = alive[:max(CONFIG['MIN_ALIVE'], (len(alive) + 1) // 2)]
-                since = 0
-        if n_eval == 0:
+            ranked = sorted(pop.items(), key=lambda kv: -(kv[1][1] / max(1, kv[1][2])))
+            keep = dict(ranked[:max(2, CONFIG['GA_POP'] // 2)])
+            parents = [v[0] for v in keep.values()]
+            tries = 0
+            while len(keep) < CONFIG['GA_POP'] and tries < CONFIG['GA_POP'] * 5:
+                tries += 1
+                a, b = rng.sample(parents, 2)
+                da = {' '.join(o.split()[:2]): o for o in a}
+                db = {' '.join(o.split()[:2]): o for o in b}
+                child = []
+                for u in units:
+                    o = db.get(u) if (u in db and rng.random() < 0.5) else da.get(u, db.get(u))
+                    if rng.random() < CONFIG['GA_MUT']:
+                        o = rng.choice(genes[u])
+                    if o:
+                        child.append(o)
+                child = repair(child)
+                keep.setdefault(tuple(sorted(child)), [child, 0.0, 0])
+            pop = keep
+        scored = [(st[1] / st[2], key) for key, st in pop.items() if st[2] > 0]
+        if not scored:
             return 0
-        return max(alive, key=lambda k: (totals[k], -k))
+        best = pop[max(scored)[1]][0]
+        if confirm and len(scored) > 1:
+            top = [k for _, k in sorted(scored, reverse=True)[:CONFIG['CONFIRM_K']]]
+            tot = [0.0] * len(top)
+            n = 0
+            while time.perf_counter() - t0 < CONFIG['TIME_BUDGET']:
+                opp_orders = {}
+                for p, lst in sample().items():
+                    parse_into(lst, opp_orders)
+                rs = []
+                for k in top:
+                    if time.perf_counter() - t0 > CONFIG['TIME_BUDGET']:
+                        break
+                    orders = dict(opp_orders)
+                    orders.update(pop[k][3])
+                    u1 = resolve_moves(units0, orders, reach_f)[0]
+                    if two:
+                        u1 = fall_reply_fast(u1)
+                    rs.append(score_units(u1))
+                if len(rs) < len(top):
+                    break
+                for i, v in enumerate(rs):
+                    tot[i] += v
+                n += 1
+            if n >= 3:
+                best = pop[top[max(range(len(top)), key=lambda i: (tot[i], -i))]][0]
+        cand_orders.append(best)
+        return len(cand_orders) - 1
 
     # valuemap candidate generator (ported from bot_014)
     def _vm_value_map(self):
