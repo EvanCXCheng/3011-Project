@@ -1307,6 +1307,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - stress (evals pinned to cores 1–3): slowdown ×4.26, tmax 0.495 s, 0 errors → PASS.
 - promoted: evolution family champion + overall champion; agent_21.py = bot_075 (61 KB). Champion history now
   … → bot_045 → bot_070 → bot_075. First overall champion from a non-search family since bot_021.
+- test.py (course script via experiment(), repeat 1, core 0): S1 7/7 wins 18.0 SC; S2 5/7 wins, 15.0 SC (7 games; runs clean).
 - test_21.py ablation defaults updated: ROLLOUT LA_CANDS VM_CANDS TWO_PLY CONVOYS FAST_RES CONFIRM ACC_GATE OPP_AWARE
   (HALVING is dead code in the GA line). No GA on/off switch exists (the GA replaced the race in bot_065); an
   ablation for the GA itself = compare with bot_070/bot_071 (same machinery, race instead of GA).
