@@ -737,6 +737,15 @@
    "parent": "bot_081",
    "status": "REJECTED",
    "tags": "anti-leader-score"
+  },
+  "bot_083": {
+   "created": "2026-09-29T04:20",
+   "family": "evolution",
+   "file": "bots/bot_083_evolution_oppplans.py",
+   "note": "",
+   "parent": "bot_081",
+   "status": "RUNNING",
+   "tags": "opponent-plan-model"
   }
  },
  "families": {
@@ -766,7 +775,7 @@
   },
   "evolution": {
    "champion": "bot_081",
-   "iterations": 11,
+   "iterations": 12,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -814,7 +823,7 @@
   "bot_038",
   "bot_075"
  ],
- "next_bot_id": 83,
+ "next_bot_id": 84,
  "overall_champions": [
   {
    "bot": "bot_001",

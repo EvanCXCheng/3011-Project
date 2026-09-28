@@ -1430,3 +1430,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   results/logs/crash_<run>_<seed>.json for post-mortem (self-tested with a throwaway patched process). Harness-only
   change; engine and baselines untouched.
 - HOLD (human request 29 Sep 03:54): no new evaluations until the human says they are done gaming.
+- HOLD lifted 2026-09-29 04:19:59 (human sent /loop).
+
+## [107] bot_083 evolution/oppplans — RUNNING
+
+- parent bot_081 | tags: opponent-plan-model. For 'strong' opponents, rollout samples play (p 0.6) one of the first 4
+  plans of our own _la_candidates generator built from that power's view (BFS-greedy no-self-bounce + perturbations
+  with supports), instead of independent per-unit sampling. Target: strong opponents (S3 vs 070/073 stand-ins
+  14.2/13.5 SC; tournament tie with 070/073). Check: vs 3× bot_070 + 3× bot_012, all six classified 'strong'; plan
+  sets built for ~4.6 opponents per phase; tmax 0.45 s.
+- plan: q59: T0; T1 A42; S3 B126 vs 070 and 073 (075 refs from [105]); T2 S1 B126 + S2/S3 B210; held-out C; all vs
+  bot_075; then the [105] tournament rerun with 083 in 081's seat (same seeds/seats → paired S4 comparison).
