@@ -1466,3 +1466,4 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   winner's-curse bias of newly bred plans), not from evolution itself.
 - implication: a confirmation step only helps a selector whose final pick has uneven, small sample counts (GA
   children); the halving race's survivors already share many samples, so race+confirm would be a no-op (not built).
+- Loop stopped by the human 2026-09-29 07:32:01; no bots in progress. Freeze runs (results/logs/freeze_final.sh) to be launched later when the human is away from the PC.
