@@ -1449,3 +1449,10 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: modelling strong opponents as playing our own greedy-plan generator does not help against them (they are
   not greedy planners) and costs 20–40 ms per phase per strong opponent — the slowest moves of the lab (0.99 s)
   come from that precompute in all-strong tables. REJECTED; the per-unit sampling mix is kept.
+
+## [108] Report evidence: GA vs race and the confirmation race on identical machinery — RUNNING
+
+- No switch turns the GA off inside agent_21, so its effect is measured between bots that differ only in selection:
+  bot_072 (GA) vs bot_071 (halving race) — same resolver, map fix, candidates, opponent model; and bot_075 (GA +
+  confirm) vs bot_072 (GA). q60: extend 072 to B210 (S2/S3), held-out C (offset 400) for 072 and 071, then paired
+  compares on B and C.
