@@ -710,6 +710,15 @@
    "parent": "bot_070",
    "status": "REJECTED",
    "tags": "build-choice-k-nearest"
+  },
+  "bot_080": {
+   "created": "2026-09-28T20:15",
+   "family": "evolution",
+   "file": "bots/bot_080_evolution_stack.py",
+   "note": "",
+   "parent": "bot_075",
+   "status": "RUNNING",
+   "tags": "build-choice-k-nearest,valuemap-rollout-score"
   }
  },
  "families": {
@@ -739,7 +748,7 @@
   },
   "evolution": {
    "champion": "bot_075",
-   "iterations": 8,
+   "iterations": 9,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -787,7 +796,7 @@
   "bot_038",
   "bot_045"
  ],
- "next_bot_id": 80,
+ "next_bot_id": 81,
  "overall_champions": [
   {
    "bot": "bot_001",
