@@ -1352,7 +1352,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   _rollout_select plus machine load; another reason not to promote without a stress re-check.
 - takeaway: the two small fixes do not add up to a measurable gain on top of the GA champion; bot_075 stays.
 
-## [103] bot_081 evolution/basicswitch (freeze prep: basic technique in the submitted file) — RUNNING
+## [103] bot_081 evolution/basicswitch (freeze prep: basic technique in the submitted file) — PROMOTED (identity)
 
 - parent bot_075 | tags: basic-greedy-switch. Spec rubric note [3]: the basic technique must be implemented in the
   submitted code. Adds CONFIG BASIC_GREEDY (default False): movement phases play _la_candidates(...)[0], the pure
@@ -1373,3 +1373,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   reach 18. Checks: term active in 14 phases from 1907 in S2 C 300433 (no activation in a 7-greedy test game to
   1912); sanity S2 300433 AUS 5 (France still won: too far away), S2 200151 AUS 18; tmax 0.456 s; no errors.
 - plan: q56: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075 (same play as 081).
+
+- bot_081 results (appended after [104]): T0 default X3 clean (tmax 0.467 s, 184 MB serial). Basic mode
+  (BASIC_GREEDY=true) B126: S1 7.71±0.12 (0%), S2 10.80±0.48 (21.4%), S3 7.34±0.46 (8.7%, stand-in 004) → est. 5
+  (S1 1, S2 3, S3 1); tmax 0.042 s. (bot_001, the original greedy base without no-self-bounce: S1 6.14 / S2 7.43 /
+  S3 6.75, est. 2.)
+- promoted by identity: default play is bot_075's code path unchanged (diff = CONFIG key + name + inert early return),
+  so no paired test or new stress run (bot_075 stress PASS applies). agent_21.py = bot_081; evolution family and
+  overall champion records point at bot_081; bot_075's results remain the performance evidence.

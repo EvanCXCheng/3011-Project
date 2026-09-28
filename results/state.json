@@ -726,7 +726,7 @@
    "file": "bots/bot_081_evolution_basicswitch.py",
    "note": "",
    "parent": "bot_075",
-   "status": "RUNNING",
+   "status": "PROMOTED",
    "tags": "basic-greedy-switch"
   },
   "bot_082": {
@@ -765,7 +765,7 @@
    "status": "ACTIVE"
   },
   "evolution": {
-   "champion": "bot_075",
+   "champion": "bot_081",
    "iterations": 11,
    "reason": "new",
    "status": "ACTIVE"
@@ -806,13 +806,13 @@
   "bot_040",
   "bot_036",
   "bot_060",
-  "bot_075",
+  "bot_081",
   "bot_012",
   "bot_073",
   "bot_017",
   "bot_070",
   "bot_038",
-  "bot_045"
+  "bot_075"
  ],
  "next_bot_id": 83,
  "overall_champions": [
@@ -851,6 +851,10 @@
   {
    "bot": "bot_075",
    "date": "2026-09-28T17:30"
+  },
+  {
+   "bot": "bot_081",
+   "date": "2026-09-28T23:12"
   }
  ],
  "standin_rotation": 0,
@@ -858,6 +862,10 @@
   "archetype-aggressive": {
    "bot": "bot_040",
    "effect": "rule bot, 40 ms: S1 18.00 (100%), S2 15.91 (76.7%) = bot_022 (S2 paired -0.15\u00b10.39); S3 15.94 vs weak stand-in"
+  },
+  "basic-greedy-switch": {
+   "bot": "bot_081",
+   "effect": "basic technique in the submitted file (BASIC_GREEDY=true), B126: S1 7.71 (0%), S2 10.80 (21.4%), S3 7.34 (8.7%); est. mark 5"
   },
   "bfs-greedy": {
    "bot": "bot_001",

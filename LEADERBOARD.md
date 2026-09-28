@@ -1,9 +1,9 @@
 # Leaderboard
 
-_Generated 2026-09-28 22:57 AWST by lab/leaderboard.py — do not hand-edit._  
-Freeze in 61.0 h, deadline in 97.0 h.
+_Generated 2026-09-28 23:12 AWST by lab/leaderboard.py — do not hand-edit._  
+Freeze in 60.8 h, deadline in 96.8 h.
 
-**Overall champion:** bot_075  (agent_21.py matches)
+**Overall champion:** bot_081  (agent_21.py matches)
 
 ## Bots
 
@@ -102,13 +102,14 @@ Mark = estimated rubric points /15 (per scenario: highest tier reached by win ra
 | 89 | bot_037_greedy_homedef | greedy | REJECTED | 12.29±0.30 (29%) 252 → 3* | 9.98±0.35 (18%) 252 → 1* | 8.68±0.30 (9%) 252 → 1 | **5** | 0.059 | 135 | 0 | - |
 | 90 | bot_006_positional_base | positional | PROMOTED | 12.29±0.25 (14%) 252 → 3 | 8.67±0.32 (9%) 252 → 1 | 6.17±0.26 (3%) 252 → 1* | **5** | 0.058 | 102 | 0 | 14 |
 | 91 | bot_002_valuemap_base | valuemap | PROMOTED | 12.29±0.18 (0%) 252 → 3 | 8.29±0.34 (12%) 252 → 1 | 6.51±0.30 (7%) 252 → 1 | **5** | 0.056 | 102 | 0 | - |
-| 92 | baseline:greedy | - | - | 7.39±0.40 (4%) 49 → 1* | 9.92±0.98 (31%) 49 → 3* | 7.65±0.85 (14%) 49 → 1* | **5** | 0.051 | 101 | 12 | 24 |
-| 93 | bot_041_archetype_turtle | archetype | REJECTED | 14.29±0.07 (0%) 252 → 3 | 6.65±0.24 (1%) 252 → 0 | 5.90±0.22 (0%) 252 → 0 | **3** | 0.059 | 101 | 0 | - |
-| 94 | bot_013_positional_supadvance | positional | REJECTED | 11.86±0.21 (0%) 252 → 1* | 8.64±0.32 (11%) 252 → 1 | 6.15±0.27 (2%) 252 → 1* | **3** | 0.091 | 108 | 0 | - |
-| 95 | bot_001_greedy_base | greedy | PROMOTED | 6.14±0.16 (0%) 252 → 0 | 7.58±0.31 (8%) 252 → 1 | 6.41±0.19 (3%) 462 → 1 | **2** | 0.074 | 102 | 0 | - |
-| 96 | baseline:attitude | - | - | 6.76±0.24 (0%) 49 → 0 | 1.55±0.26 (0%) 49 → 0 | 1.37±0.23 (0%) 49 → 0 | **0** | 0.079 | 101 | 0 | - |
-| 97 | baseline:random | - | - | 6.55±0.25 (0%) 49 → 0 | 1.55±0.30 (0%) 49 → 0 | 1.37±0.29 (0%) 49 → 0 | **0** | 0.074 | 100 | 0 | - |
-| 98 | baseline:static | - | - | 3.14±0.05 (0%) 49 → 0 | 2.45±0.16 (0%) 49 → 0 | 2.41±0.16 (0%) 49 → 0 | **0** | 0.009 | 100 | 0 | - |
+| 92 | bot_081_evolution_basicswitch[BASIC_GREEDY=True] | evolution | PROMOTED | 7.71±0.12 (0%) 126 → 1 | 10.80±0.48 (21%) 126 → 3* | 7.34±0.46 (9%) 126 → 1* | **5** | 0.042 | 102 | 0 | - |
+| 93 | baseline:greedy | - | - | 7.39±0.40 (4%) 49 → 1* | 9.92±0.98 (31%) 49 → 3* | 7.65±0.85 (14%) 49 → 1* | **5** | 0.051 | 101 | 12 | 24 |
+| 94 | bot_041_archetype_turtle | archetype | REJECTED | 14.29±0.07 (0%) 252 → 3 | 6.65±0.24 (1%) 252 → 0 | 5.90±0.22 (0%) 252 → 0 | **3** | 0.059 | 101 | 0 | - |
+| 95 | bot_013_positional_supadvance | positional | REJECTED | 11.86±0.21 (0%) 252 → 1* | 8.64±0.32 (11%) 252 → 1 | 6.15±0.27 (2%) 252 → 1* | **3** | 0.091 | 108 | 0 | - |
+| 96 | bot_001_greedy_base | greedy | PROMOTED | 6.14±0.16 (0%) 252 → 0 | 7.58±0.31 (8%) 252 → 1 | 6.41±0.19 (3%) 462 → 1 | **2** | 0.074 | 102 | 0 | - |
+| 97 | baseline:attitude | - | - | 6.76±0.24 (0%) 49 → 0 | 1.55±0.26 (0%) 49 → 0 | 1.37±0.23 (0%) 49 → 0 | **0** | 0.079 | 101 | 0 | - |
+| 98 | baseline:random | - | - | 6.55±0.25 (0%) 49 → 0 | 1.55±0.30 (0%) 49 → 0 | 1.37±0.29 (0%) 49 → 0 | **0** | 0.074 | 100 | 0 | - |
+| 99 | baseline:static | - | - | 3.14±0.05 (0%) 49 → 0 | 2.45±0.16 (0%) 49 → 0 | 2.41±0.16 (0%) 49 → 0 | **0** | 0.009 | 100 | 0 | - |
 
 ## Families
 
@@ -118,23 +119,24 @@ Mark = estimated rubric points /15 (per scenario: highest tier reached by win ra
 | archetype | ACTIVE | 4 (5%) | bot_040 | 5 | 5 | 5 | 15 | new |
 | bandit | DORMANT | 4 (5%) | bot_036 | 1 | 5 | 5 | 11 | 3 iters (034/036/046); champion bot_036 est 11 vs overall 15 |
 | ensemble | ACTIVE | 3 (4%) | bot_060 | 5 | 5 | 5 | 15 | new |
-| evolution | ACTIVE | 9 (11%) | bot_075 | 5 | 5 | 5 | 15 | new |
+| evolution | ACTIVE | 11 (13%) | bot_081 | - | - | - | - | new |
 | greedy | DORMANT | 5 (6%) | bot_012 | 3 | 5 | 3 | 11 | 3 iters; champion bot_012 est 11 (S3 9.99 vs strong stand-in bot_008) vs overall 13 |
-| lookahead | ACTIVE | 14 (18%) | bot_073 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
+| lookahead | ACTIVE | 14 (17%) | bot_073 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
 | positional | DORMANT | 4 (5%) | bot_017 | 5 | 3 | 1 | 9 | 3 iters; champion bot_017 est 9 vs overall 13 (S3 7.4 SC) |
-| search | ACTIVE | 24 (30%) | bot_070 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
+| search | ACTIVE | 24 (29%) | bot_070 | 5 | 5 | 5 | 15 | review 26 Sep: champion at est. 13 (tie band with overall) |
 | valuemap | DORMANT | 5 (6%) | bot_038 | 5 | 5 | 3 | 13 | champion bot_038 est 13 vs strong stand-in (S3 11.00, 34.9%) vs overall 15 |
 
-**Hall of fame:** bot_009, bot_040, bot_036, bot_060, bot_075, bot_012, bot_073, bot_017, bot_070, bot_038, bot_045  
-**Overall champion history:** bot_001 → bot_003 → bot_004 → bot_007 → bot_021 → bot_022 → bot_045 → bot_070 → bot_075
+**Hall of fame:** bot_009, bot_040, bot_036, bot_060, bot_081, bot_012, bot_073, bot_017, bot_070, bot_038, bot_075  
+**Overall champion history:** bot_001 → bot_003 → bot_004 → bot_007 → bot_021 → bot_022 → bot_045 → bot_070 → bot_075 → bot_081
 
 ## Report coverage: techniques
 
-Distinct techniques measured: 43 (need basic + 3 new).
+Distinct techniques measured: 44 (need basic + 3 new).
 
 | technique tag | first bot | measured effect vs parent |
 |---|---|---|
 | archetype-aggressive | bot_040 | rule bot, 40 ms: S1 18.00 (100%), S2 15.91 (76.7%) = bot_022 (S2 paired -0.15±0.39); S3 15.94 vs weak stand-in |
+| basic-greedy-switch | bot_081 | basic technique in the submitted file (BASIC_GREEDY=true), B126: S1 7.71 (0%), S2 10.80 (21.4%), S3 7.34 (8.7%); est. mark 5 |
 | bfs-greedy | bot_001 | basic technique: est. mark 2 (B210: S1 6.14, S2 7.43, S3 6.75) |
 | candidate-crossover | bot_027 | pooled +0.17±0.21 SC vs bot_022 (378 paired, B; n.s.) |
 | competitive-score | bot_032 | pooled +0.12±0.21 SC vs bot_022 (378 paired, B; n.s.) |
@@ -177,14 +179,6 @@ Distinct techniques measured: 43 (need basic + 3 new).
 | two-ply-spring | bot_028 | pooled +0.30±0.19 SC vs bot_022 (378 paired, B; n.s.); S3 +0.86±0.45 (65.9% vs 57.1% wins) |
 | value-map | bot_002 | pooled +2.20±0.20 SC vs bot_001 (630 paired, B); S1 +6.14±0.20 |
 | vulture-candidate | bot_057 | pooled +0.16±0.20 SC vs bot_045 (378 paired, B; n.s.) |
-
-## Champion bot_075 by power (mean SC / win%)
-
-| scenario | AUSTRIA | ENGLAND | FRANCE | GERMANY | ITALY | RUSSIA | TURKEY |
-|---|---|---|---|---|---|---|---|
-| S1 | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% | 18.0 / 100% |
-| S2 | 14.9 / 74% | 17.0 / 81% | 18.0 / 100% | 17.9 / 98% | 16.8 / 87% | 18.0 / 100% | 17.9 / 96% |
-| S3 | 13.1 / 62% | 16.0 / 71% | 17.5 / 92% | 16.3 / 82% | 16.1 / 79% | 17.8 / 97% | 16.4 / 74% |
 
 ## Tournament (stand-in for Scenario 4)
 
