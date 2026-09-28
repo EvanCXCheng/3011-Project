@@ -647,12 +647,30 @@
    "parent": "bot_065",
    "status": "RUNNING",
    "tags": "own-fast-resolver,genetic-algorithm"
+  },
+  "bot_073": {
+   "created": "2026-09-28T09:38",
+   "family": "lookahead",
+   "file": "bots/bot_073_lookahead_widepool.py",
+   "note": "",
+   "parent": "bot_071",
+   "status": "RUNNING",
+   "tags": "wide-candidate-pool"
+  },
+  "bot_074": {
+   "created": "2026-09-28T09:38",
+   "family": "adaptive",
+   "file": "bots/bot_074_adaptive_oppsupres.py",
+   "note": "",
+   "parent": "bot_071",
+   "status": "RUNNING",
+   "tags": "coordinated-opponent-model"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_009",
-   "iterations": 7,
+   "iterations": 8,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
   },
@@ -688,7 +706,7 @@
   },
   "lookahead": {
    "champion": "bot_071",
-   "iterations": 11,
+   "iterations": 12,
    "reason": "review 26 Sep: champion at est. 13 (tie band with overall)",
    "status": "ACTIVE"
   },
@@ -725,7 +743,7 @@
   "bot_022",
   "bot_045"
  ],
- "next_bot_id": 73,
+ "next_bot_id": 75,
  "overall_champions": [
   {
    "bot": "bot_001",

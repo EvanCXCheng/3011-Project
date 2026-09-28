@@ -1184,3 +1184,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: ×34 rollouts buy nothing once the race has ~130 rollouts per phase: selection is no longer sampling-limited;
   what limits it now is the opponent model / score and the candidate set. Resolver still useful where evaluations are
   scarce (GA, bot_072) and for bigger candidate pools or richer opponent models at no time cost.
+
+## [093] bot_073 lookahead/widepool, bot_074 adaptive/oppsupres — RUNNING
+
+- after bot_071's null result (rollouts no longer binding), two ways to use the spare rollouts, both on bot_071:
+- bot_073 (tags: wide-candidate-pool): TOP_K 8 → 16, N_LA 12 → 36; measured pool 15–21 → 30–51 candidates per phase.
+- bot_074 (tags: coordinated-opponent-model): bot_069's supported-attack sampling for 'strong' powers on the resolver
+  line (lower rollout noise; bot_069 was +0.94±0.47 vs the aggressive stand-in).
+- sanity S2/S3 seed 11 vs stand-in 040: both 18/18, tmax ≤ 0.451 s, no errors.
+- plan: queues q43/q44 (after q41 bot_072 and q42 held-out): T0, T1 A42 vs bot_071, S3 B126 vs 040/024, T2 B126 (004)
+  vs bot_070 (overall) and bot_071 (parent).
