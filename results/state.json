@@ -742,9 +742,9 @@
    "created": "2026-09-29T04:20",
    "family": "evolution",
    "file": "bots/bot_083_evolution_oppplans.py",
-   "note": "",
+   "note": "whole-plan opponent model: B 0.00\u00b10.14, C +0.25\u00b10.23, vs 070/073 stand-ins -0.27/-0.01, paired tournament -1.51\u00b10.77; tmax 0.988 s",
    "parent": "bot_081",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "opponent-plan-model"
   }
  },

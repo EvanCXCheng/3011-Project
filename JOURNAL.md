@@ -1432,7 +1432,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - HOLD (human request 29 Sep 03:54): no new evaluations until the human says they are done gaming.
 - HOLD lifted 2026-09-29 04:19:59 (human sent /loop).
 
-## [107] bot_083 evolution/oppplans — RUNNING
+## [107] bot_083 evolution/oppplans — REJECTED
 
 - parent bot_081 | tags: opponent-plan-model. For 'strong' opponents, rollout samples play (p 0.6) one of the first 4
   plans of our own _la_candidates generator built from that power's view (BFS-greedy no-self-bounce + perturbations
@@ -1441,3 +1441,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   sets built for ~4.6 opponents per phase; tmax 0.45 s.
 - plan: q59: T0; T1 A42; S3 B126 vs 070 and 073 (075 refs from [105]); T2 S1 B126 + S2/S3 B210; held-out C; all vs
   bot_075; then the [105] tournament rerun with 083 in 081's seat (same seeds/seats → paired S4 comparison).
+
+- bot_083 results (appended): T0 clean; T1 A42 vs 075 +0.31±0.26 (S2 tmax 0.742 s). S3 B126 vs 070 13.89 (−0.27±0.45),
+  vs 073 13.45 (−0.01±0.52; tmax 0.988 s, 1 move > 0.9 s). T2: S1 18.00; B210 S2 17.30 (92.4%) / S3 16.73 (85.7%);
+  vs bot_075 pooled −0.00±0.14. Held-out C +0.25±0.23. Tournament rerun (offset 600, same seats): bot_083 6.74 SC,
+  3rd, vs bot_081's 8.11 in the same seats → paired −1.51±0.77.
+- takeaway: modelling strong opponents as playing our own greedy-plan generator does not help against them (they are
+  not greedy planners) and costs 20–40 ms per phase per strong opponent — the slowest moves of the lab (0.99 s)
+  come from that precompute in all-strong tables. REJECTED; the per-unit sampling mix is kept.
