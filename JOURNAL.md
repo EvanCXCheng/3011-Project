@@ -1526,3 +1526,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - pattern: S2 (baseline mix) slightly positive on both seed sets (≈ +0.20±0.17 combined), S3 slightly negative. The
   hold-on-target change applies to every class, incl. the S3 stand-in; a greedy-class-only variant might keep the S2
   part — expected pooled effect ≈ +0.1, below what the lab can resolve.
+
+## [113] bot_088 adaptive/greedyonly — RUNNING
+
+- parent bot_087 | tags: greedy-emulation-model (refinement). Hold-on-target rule restricted to 'greedy'-class powers,
+  so the S3 stand-in's model is bot_081's again. Sanity S2 8 / S3 15 clean. plan: q65 (same protocol, vs bot_075).

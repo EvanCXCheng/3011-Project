@@ -782,12 +782,21 @@
    "parent": "bot_081",
    "status": "REJECTED",
    "tags": "greedy-emulation-model"
+  },
+  "bot_088": {
+   "created": "2026-09-29T18:17",
+   "family": "adaptive",
+   "file": "bots/bot_088_adaptive_greedyonly.py",
+   "note": "",
+   "parent": "bot_087",
+   "status": "RUNNING",
+   "tags": "greedy-emulation-model"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_009",
-   "iterations": 9,
+   "iterations": 10,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
   },
@@ -859,7 +868,7 @@
   "bot_038",
   "bot_075"
  ],
- "next_bot_id": 88,
+ "next_bot_id": 89,
  "overall_champions": [
   {
    "bot": "bot_001",
