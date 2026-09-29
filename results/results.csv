@@ -982,3 +982,14 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260929-172456_bot_087_adaptive_greedyemu_tier2,2026-09-29T17:57,bot_087_adaptive_greedyemu,e893871ced,tier2,B,3,bot_004_lookahead_base,210,0,0.8286,16.5714,0.251,5,False,0.4849,0,98.2,0,0,0,0
 20260929-175707_bot_087_adaptive_greedyemu_heldout,2026-09-29T18:16,bot_087_adaptive_greedyemu,e893871ced,heldout,C,2,,126,0,0.9048,17.4206,0.1979,5,False,0.4757,0,95.0,0,0,0,0
 20260929-175707_bot_087_adaptive_greedyemu_heldout,2026-09-29T18:16,bot_087_adaptive_greedyemu,e893871ced,heldout,C,3,bot_004_lookahead_base,126,0,0.7619,16.1825,0.3467,5,False,0.4767,0,98.4,0,0,0,0
+20260929-181821_bot_088_adaptive_greedyonly_tier0,2026-09-29T18:20,bot_088_adaptive_greedyonly,3b11470490,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4504,0,211.6,0,0,0,0
+20260929-181821_bot_088_adaptive_greedyonly_tier0,2026-09-29T18:20,bot_088_adaptive_greedyonly,3b11470490,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4509,0,211.6,0,0,0,0
+20260929-181821_bot_088_adaptive_greedyonly_tier0,2026-09-29T18:20,bot_088_adaptive_greedyonly,3b11470490,tier0,X,3,bot_081_evolution_basicswitch,3,0,0.3333,8.0,5.1316,3,True,0.4507,0,211.6,0,0,0,0
+20260929-182007_bot_088_adaptive_greedyonly_tier1,2026-09-29T18:25,bot_088_adaptive_greedyonly,3b11470490,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4635,0,88.0,0,0,0,0
+20260929-182007_bot_088_adaptive_greedyonly_tier1,2026-09-29T18:25,bot_088_adaptive_greedyonly,3b11470490,tier1,A,2,,42,0,1.0,18.0,0.0,5,False,0.4731,0,92.3,0,0,0,0
+20260929-182007_bot_088_adaptive_greedyonly_tier1,2026-09-29T18:25,bot_088_adaptive_greedyonly,3b11470490,tier1,A,3,bot_001_greedy_base,42,0,0.8333,17.0714,0.4137,5,False,0.4528,0,93.9,0,0,0,0
+20260929-182543_bot_088_adaptive_greedyonly_tier2,2026-09-29T18:29,bot_088_adaptive_greedyonly,3b11470490,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4637,0,88.3,0,0,0,0
+20260929-182939_bot_088_adaptive_greedyonly_tier2,2026-09-29T19:02,bot_088_adaptive_greedyonly,3b11470490,tier2,B,2,,210,0,0.9143,17.1476,0.2202,5,False,0.475,0,94.3,0,0,0,0
+20260929-182939_bot_088_adaptive_greedyonly_tier2,2026-09-29T19:02,bot_088_adaptive_greedyonly,3b11470490,tier2,B,3,bot_004_lookahead_base,210,0,0.781,16.0524,0.2879,5,False,0.4694,0,97.9,0,0,0,0
+20260929-190209_bot_088_adaptive_greedyonly_heldout,2026-09-29T19:20,bot_088_adaptive_greedyonly,3b11470490,heldout,C,2,,126,0,0.8968,17.2698,0.2338,5,False,0.4799,0,93.7,0,0,0,0
+20260929-190209_bot_088_adaptive_greedyonly_heldout,2026-09-29T19:20,bot_088_adaptive_greedyonly,3b11470490,heldout,C,3,bot_004_lookahead_base,126,0,0.754,15.5873,0.4321,5,False,0.4865,0,97.1,0,0,0,0

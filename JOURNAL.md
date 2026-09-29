@@ -1527,7 +1527,16 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   hold-on-target change applies to every class, incl. the S3 stand-in; a greedy-class-only variant might keep the S2
   part — expected pooled effect ≈ +0.1, below what the lab can resolve.
 
-## [113] bot_088 adaptive/greedyonly — RUNNING
+## [113] bot_088 adaptive/greedyonly — REJECTED
 
 - parent bot_087 | tags: greedy-emulation-model (refinement). Hold-on-target rule restricted to 'greedy'-class powers,
   so the S3 stand-in's model is bot_081's again. Sanity S2 8 / S3 15 clean. plan: q65 (same protocol, vs bot_075).
+
+- bot_088 results: B210 S2 17.15 (91.4%) / S3 16.05 (78.1%); vs 075 S2 −0.02, S3 −0.65±0.28, pooled −0.26±0.14. Held-out C:
+  S2 +0.08, S3 −0.87±0.48, pooled −0.39±0.28 → REJECTED. Both greedy-emulation variants closed.
+
+## [114] Safety check: TIME_BUDGET 0.40 vs 0.45 on the champion — RUNNING
+
+- Question for the submission, not a strength idea: does a 0.40 s budget (≈0.55 s margin to the 1 s limit instead of
+  ≈0.5 s) cost strength? bot_071 showed rollout count is not binding. --set TIME_BUDGET=0.40 on bot_075, B210 S2/S3 +
+  held-out C, paired with bot_075. If ≈0 (no worse than −0.1), consider adopting it (ask the human first).

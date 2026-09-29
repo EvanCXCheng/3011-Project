@@ -787,9 +787,9 @@
    "created": "2026-09-29T18:17",
    "family": "adaptive",
    "file": "bots/bot_088_adaptive_greedyonly.py",
-   "note": "",
+   "note": "greedy emulation for greedy class only: B -0.26\u00b10.14 (S3 -0.65), C -0.39\u00b10.28",
    "parent": "bot_087",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "greedy-emulation-model"
   }
  },
