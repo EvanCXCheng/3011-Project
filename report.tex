@@ -1,0 +1,35 @@
+\documentclass[12pt, a4paper]{article}
+ 
+\title{CITS3011 Group 21 Report}
+\author{Tep Nguyen and Evan Cheng}
+ 
+\begin{document}
+ 
+\maketitle                         
+
+\section{Basic Technique}
+Basic technique as a simple search algorithm (bfs across map) over orders to find SCs to attack and defend and paths to SCs
+
+Find probability of success based on estimates of opposing strength
+
+We wanted to find a relatively low cost way to consider the orders together, but instead of a greedy approach this method can account far better for changing environments and opponent moves
+(idk exactly what else for "motivations and justifies")
+
+Say technique is decent, describe which parts are weaker (missing things from the next section), report SC values from agent3?
+
+    Not sure if we need complexity for this, could do
+
+\section{New Technique}
+We need three improvements to discuss (basically same procedure as above for each)
+
+Tracking enemy behaviour to identify agent tendencies (use bot 8 or 16 (theory I assume we arent actually talking abt the bots))
+    Acknowledge this works worse on unknown agents but we still expect these unknown agents to follow the rough outlines we track
+
+Top-k rollout selection or halving (bots 20 and 22 or use genetic from 65/72/75)
+
+Valuemap Spring/Fall changes thing (bot 45)
+
+Also did it need to do the thing in bot 81 idk if we actually need that
+
+ 
+\end{document}
