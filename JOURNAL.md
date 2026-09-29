@@ -1509,3 +1509,14 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   Held-out C: S2 16.89 / S3 16.35; vs 075 −0.20±0.24. Austria seats (B+C S2/S3, 96 paired) +0.19±0.59 → REJECTED.
 - takeaway: extra defensive genes make S3 slightly worse (less expansion) without fixing Austria. Tenth consecutive
   challenger since bot_075 at or below noise level. Loop stopped by the human after this bot; freeze runs not started.
+- Loop resumed by the human (29 Sep).
+
+## [112] bot_087 adaptive/greedyemu — RUNNING
+
+- parent bot_081 | tags: greedy-emulation-model. Rollout opponent model fixed against the Greedy baseline's
+  documented behaviour (spec text; baseline code read, not copied): (1) a unit on an SC its power does not own was
+  sampled as a random order (our greedy-destination set is its own province → no greedy move) — the greedy rule holds
+  it; now the greedy component holds (all classes); (2) 'greedy' powers: two sampled moves to the same destination →
+  move + support of it (if legal; else hold). Instrumented (Austria vs six baseline GreedyAgents to 1905): 13,264
+  holds-on-target (previously random), 2,431 same-target supports, 49,514 greedy moves. Sanity S2 7 / S3 14 → 18/18.
+- plan: q64: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075.

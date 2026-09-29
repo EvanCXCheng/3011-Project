@@ -773,12 +773,21 @@
    "parent": "bot_081",
    "status": "REJECTED",
    "tags": "defensive-plan-candidate"
+  },
+  "bot_087": {
+   "created": "2026-09-29T17:12",
+   "family": "adaptive",
+   "file": "bots/bot_087_adaptive_greedyemu.py",
+   "note": "",
+   "parent": "bot_081",
+   "status": "RUNNING",
+   "tags": "greedy-emulation-model"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_009",
-   "iterations": 8,
+   "iterations": 9,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
   },
@@ -850,7 +859,7 @@
   "bot_038",
   "bot_075"
  ],
- "next_bot_id": 87,
+ "next_bot_id": 88,
  "overall_champions": [
   {
    "bot": "bot_001",
