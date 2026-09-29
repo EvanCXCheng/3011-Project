@@ -1494,3 +1494,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   S3 16.56; vs 075 −0.09±0.23 → REJECTED.
 - takeaway: the Fall look-ahead does not add to the Spring one; after Fall, the next Spring's value is already
   mostly captured by SC ownership. Ninth consecutive challenger since bot_075 within ±0.2 SC (076–085, tuning sweep).
+
+## [111] bot_086 evolution/defcand — RUNNING
+
+- parent bot_081 | tags: defensive-plan-candidate. One more pool plan: BFS-greedy plan, then hold + one support-hold
+  on every own SC an enemy unit can reach (reoccupy an empty threatened SC), so the GA has defensive genes (target:
+  central powers overrun early in S3). Checks (Austria vs six bot_012s to 1905): plan differs from greedy in 8/8
+  movement phases, 0 illegal orders, support-holds rare (1 in 8 phases). Sanity S3 7 / S3 14 / S2 21 (Austria):
+  7 / 18 / 18 SC, tmax 0.451 s.
+- plan: q63: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075; check Austria split.

@@ -764,6 +764,15 @@
    "parent": "bot_081",
    "status": "REJECTED",
    "tags": "two-ply-fall"
+  },
+  "bot_086": {
+   "created": "2026-09-29T11:13",
+   "family": "evolution",
+   "file": "bots/bot_086_evolution_defcand.py",
+   "note": "",
+   "parent": "bot_081",
+   "status": "RUNNING",
+   "tags": "defensive-plan-candidate"
   }
  },
  "families": {
@@ -793,7 +802,7 @@
   },
   "evolution": {
    "champion": "bot_081",
-   "iterations": 14,
+   "iterations": 15,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -841,7 +850,7 @@
   "bot_038",
   "bot_075"
  ],
- "next_bot_id": 86,
+ "next_bot_id": 87,
  "overall_champions": [
   {
    "bot": "bot_001",
