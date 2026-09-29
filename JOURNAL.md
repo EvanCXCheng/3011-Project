@@ -1481,3 +1481,11 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   pooled −0.04±0.14. Held-out C: S2 17.45 / S3 16.58; vs 075 +0.19±0.22. Combined ≈ +0.03±0.12 → REJECTED.
 - takeaway: once the fresh-sample confirmation is in place, equalising the GA's sample counts adds nothing — the
   confirmation already removes the ranking bias. Selection is saturated; bot_075/081 stays.
+
+## [110] bot_085 evolution/fallply — RUNNING
+
+- parent bot_081 | tags: two-ply-fall. Fall rollouts continue with a greedy Spring reply (all non-static powers, no
+  builds) and add 0.3 × SCs we would newly occupy − 0.3 × owned SCs an enemy would occupy after that Spring. The
+  Spring counterpart (TWO_PLY) is a measured gain; Fall had no view of the next year. Checks: term active (5,698
+  calls, 60% non-zero, Germany vs six bot_012s to 1905); sanity S1/S2/S3 seed 20 → 18/18/18, tmax 0.451 s.
+- plan: q62: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075.

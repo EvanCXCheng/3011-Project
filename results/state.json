@@ -755,6 +755,15 @@
    "parent": "bot_081",
    "status": "REJECTED",
    "tags": "common-random-numbers-ga"
+  },
+  "bot_085": {
+   "created": "2026-09-29T10:05",
+   "family": "evolution",
+   "file": "bots/bot_085_evolution_fallply.py",
+   "note": "",
+   "parent": "bot_081",
+   "status": "RUNNING",
+   "tags": "two-ply-fall"
   }
  },
  "families": {
@@ -784,7 +793,7 @@
   },
   "evolution": {
    "champion": "bot_081",
-   "iterations": 13,
+   "iterations": 14,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -832,7 +841,7 @@
   "bot_038",
   "bot_075"
  ],
- "next_bot_id": 85,
+ "next_bot_id": 86,
  "overall_champions": [
   {
    "bot": "bot_001",
