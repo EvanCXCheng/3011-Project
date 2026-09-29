@@ -1545,3 +1545,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   pooled −0.13±0.19. C: S2 17.16 / S3 16.24, tmax 0.430 s; pooled −0.12±0.24. Combined ≈ −0.13±0.15 (n.s., same sign
   on both seed sets, S3 side). Decision: keep 0.45 (slowest champion move over 74k moves 0.534 s; stress 0.495 s at
   ×4.3 slowdown) — the extra ≈0.05 s margin is not worth a likely small S3 cost.
+
+## [115] bot_089 evolution/rival — RUNNING
+
+- Non-win breakdown for bot_075 (S2 381 / S3 1515 games): another power won 6.3% / 21.3%; near-miss (≥14 SC, no
+  winner) 1.0% / 1.5%; low with no winner 1.8% / 3.2% → the main loss mode is a rival (mostly the Hidden Agent) winning.
+- bot_089 (parent bot_081, tags relative-rival-score): wherever ownership is scored, subtract 0.3 × the SC count the
+  turn's leading opponent would own after the rollout (always on, unlike bot_082's > 12 threshold). Term runs (28,527
+  evaluations, Italy vs six GreedyAgents to 1904). Sanity S3 15 / S3 16 / S2 17 → 18 / 12 / 18, tmax 0.451 s.
+- plan: q67: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075.

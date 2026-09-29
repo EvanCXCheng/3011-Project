@@ -791,6 +791,15 @@
    "parent": "bot_087",
    "status": "REJECTED",
    "tags": "greedy-emulation-model"
+  },
+  "bot_089": {
+   "created": "2026-09-29T20:12",
+   "family": "evolution",
+   "file": "bots/bot_089_evolution_rival.py",
+   "note": "",
+   "parent": "bot_081",
+   "status": "RUNNING",
+   "tags": "relative-rival-score"
   }
  },
  "families": {
@@ -820,7 +829,7 @@
   },
   "evolution": {
    "champion": "bot_081",
-   "iterations": 15,
+   "iterations": 16,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -868,7 +877,7 @@
   "bot_038",
   "bot_075"
  ],
- "next_bot_id": 89,
+ "next_bot_id": 90,
  "overall_champions": [
   {
    "bot": "bot_001",
