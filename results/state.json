@@ -769,9 +769,9 @@
    "created": "2026-09-29T11:13",
    "family": "evolution",
    "file": "bots/bot_086_evolution_defcand.py",
-   "note": "",
+   "note": "defensive candidate: B -0.04\u00b10.14, C -0.20\u00b10.24 vs bot_075; Austria +0.19\u00b10.59",
    "parent": "bot_081",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "defensive-plan-candidate"
   }
  },

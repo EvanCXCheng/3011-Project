@@ -1495,7 +1495,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - takeaway: the Fall look-ahead does not add to the Spring one; after Fall, the next Spring's value is already
   mostly captured by SC ownership. Ninth consecutive challenger since bot_075 within ±0.2 SC (076–085, tuning sweep).
 
-## [111] bot_086 evolution/defcand — RUNNING
+## [111] bot_086 evolution/defcand — REJECTED
 
 - parent bot_081 | tags: defensive-plan-candidate. One more pool plan: BFS-greedy plan, then hold + one support-hold
   on every own SC an enemy unit can reach (reoccupy an empty threatened SC), so the GA has defensive genes (target:
@@ -1504,3 +1504,8 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   7 / 18 / 18 SC, tmax 0.451 s.
 - plan: q63: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075; check Austria split.
 - Human (2026-09-29 11:28:38): stop after bot_086; do not start the freeze runs yet.
+
+- bot_086 results: B210 S2 17.48 (92.4%) / S3 16.29 (79.5%); vs 075 S2 +0.30±0.22, S3 −0.42±0.30, pooled −0.04±0.14.
+  Held-out C: S2 16.89 / S3 16.35; vs 075 −0.20±0.24. Austria seats (B+C S2/S3, 96 paired) +0.19±0.59 → REJECTED.
+- takeaway: extra defensive genes make S3 slightly worse (less expansion) without fixing Austria. Tenth consecutive
+  challenger since bot_075 at or below noise level. Loop stopped by the human after this bot; freeze runs not started.

@@ -967,3 +967,7 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260929-111637_bot_086_evolution_defcand_tier1,2026-09-29T11:22,bot_086_evolution_defcand,c1dea024da,tier1,A,2,,42,0,0.9524,17.5714,0.3625,5,False,0.4714,0,93.7,0,0,0,0
 20260929-111637_bot_086_evolution_defcand_tier1,2026-09-29T11:22,bot_086_evolution_defcand,c1dea024da,tier1,A,3,bot_001_greedy_base,42,0,0.9048,17.0952,0.5233,5,False,0.4602,0,94.0,0,0,0,0
 20260929-112230_bot_086_evolution_defcand_tier2,2026-09-29T11:26,bot_086_evolution_defcand,c1dea024da,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4668,0,88.7,0,0,0,0
+20260929-112641_bot_086_evolution_defcand_tier2,2026-09-29T12:02,bot_086_evolution_defcand,c1dea024da,tier2,B,2,,210,0,0.9238,17.4762,0.1543,5,False,0.4737,0,95.3,0,0,0,0
+20260929-112641_bot_086_evolution_defcand_tier2,2026-09-29T12:02,bot_086_evolution_defcand,c1dea024da,tier2,B,3,bot_004_lookahead_base,210,0,0.7952,16.2857,0.2767,5,False,0.4825,0,99.3,0,0,0,0
+20260929-120228_bot_086_evolution_defcand_heldout,2026-09-29T12:22,bot_086_evolution_defcand,c1dea024da,heldout,C,2,,126,0,0.8651,16.8889,0.3049,5,False,0.4734,0,94.5,0,0,0,0
+20260929-120228_bot_086_evolution_defcand_heldout,2026-09-29T12:22,bot_086_evolution_defcand,c1dea024da,heldout,C,3,bot_004_lookahead_base,126,0,0.7698,16.3492,0.3267,5,False,0.4784,0,98.8,0,0,0,0
