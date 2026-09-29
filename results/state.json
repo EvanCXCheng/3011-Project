@@ -751,9 +751,9 @@
    "created": "2026-09-29T08:59",
    "family": "evolution",
    "file": "bots/bot_084_evolution_crn.py",
-   "note": "",
+   "note": "CRN GA: B -0.04\u00b10.14, C +0.19\u00b10.22 vs bot_075 (n.s.)",
    "parent": "bot_081",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "common-random-numbers-ga"
   }
  },
