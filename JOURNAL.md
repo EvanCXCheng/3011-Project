@@ -1503,3 +1503,4 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   movement phases, 0 illegal orders, support-holds rare (1 in 8 phases). Sanity S3 7 / S3 14 / S2 21 (Austria):
   7 / 18 / 18 SC, tmax 0.451 s.
 - plan: q63: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075; check Austria split.
+- Human (2026-09-29 11:28:38): stop after bot_086; do not start the freeze runs yet.

@@ -960,3 +960,10 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260929-101845_bot_085_evolution_fallply_tier2,2026-09-29T10:52,bot_085_evolution_fallply,f164413082,tier2,B,3,bot_004_lookahead_base,210,0,0.8381,16.8095,0.2287,5,False,0.4741,0,98.6,0,0,0,0
 20260929-105250_bot_085_evolution_fallply_heldout,2026-09-29T11:12,bot_085_evolution_fallply,f164413082,heldout,C,2,,126,0,0.881,16.9048,0.3128,5,False,0.4703,0,93.2,0,0,0,0
 20260929-105250_bot_085_evolution_fallply_heldout,2026-09-29T11:12,bot_085_evolution_fallply,f164413082,heldout,C,3,bot_004_lookahead_base,126,0,0.8333,16.5556,0.3348,5,False,0.4681,0,98.2,0,0,0,0
+20260929-111509_bot_086_evolution_defcand_tier0,2026-09-29T11:16,bot_086_evolution_defcand,c1dea024da,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4529,0,206.0,0,0,0,0
+20260929-111509_bot_086_evolution_defcand_tier0,2026-09-29T11:16,bot_086_evolution_defcand,c1dea024da,tier0,X,2,,3,0,1.0,18.0,0.0,5,False,0.4742,0,206.0,0,0,0,0
+20260929-111509_bot_086_evolution_defcand_tier0,2026-09-29T11:16,bot_086_evolution_defcand,c1dea024da,tier0,X,3,bot_073_lookahead_widepool,3,0,0.0,9.6667,2.848,3,True,0.4506,0,206.0,0,0,0,0
+20260929-111637_bot_086_evolution_defcand_tier1,2026-09-29T11:22,bot_086_evolution_defcand,c1dea024da,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4505,0,88.3,0,0,0,0
+20260929-111637_bot_086_evolution_defcand_tier1,2026-09-29T11:22,bot_086_evolution_defcand,c1dea024da,tier1,A,2,,42,0,0.9524,17.5714,0.3625,5,False,0.4714,0,93.7,0,0,0,0
+20260929-111637_bot_086_evolution_defcand_tier1,2026-09-29T11:22,bot_086_evolution_defcand,c1dea024da,tier1,A,3,bot_001_greedy_base,42,0,0.9048,17.0952,0.5233,5,False,0.4602,0,94.0,0,0,0,0
+20260929-112230_bot_086_evolution_defcand_tier2,2026-09-29T11:26,bot_086_evolution_defcand,c1dea024da,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4668,0,88.7,0,0,0,0
