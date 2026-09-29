@@ -69,6 +69,17 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
   FINAL seeds. Keep these toggles in any later champion.
 - test_21.py: lab is 66 KB now (+ nothing else needed); trim to a self-contained runner (evaluate / compare / ablation
   / stress / tournament) ≤ 100 KB at the freeze.
+- Spec re-read 28 Sep (rubric notes [3], [7]): the basic technique AND the three new techniques must be implemented
+  in the submitted agent file and referred to in the report, even if not used in the final version. agent_21.py
+  (bot_075) already runs its local-search-only mode via ROLLOUT=False; before the freeze add a switch that plays the
+  pure BFS-greedy plan (e.g. BASIC_GREEDY, default off; verify default behaviour unchanged) so whichever basic
+  technique the group picks can be evaluated from the submitted file on FINAL seeds.
+  Design (checked in bot_075 source): in `_movement`, right after `target_set = set(targets)`, add
+  `if CONFIG['BASIC_GREEDY']: return self._la_candidates(possible, locs, targets, random.Random(0))[0]` —
+  `_la_candidates(...)[0]` is exactly the BFS-greedy no-self-bounce plan (each unit's move/hold closest to an unowned
+  SC, +3 for landing on one, units in order of best score, no two into one province). New bot (bot_081, evolution,
+  parent bot_075) with the switch default False; default path identical → agent_21.py swap needs only T0 +
+  a BASIC_GREEDY=true sanity run, no paired test.
 
 ## freeze compute plan (noted 26 Sep)
 - FINAL eval of the champion: 504/scenario ≈ 1512 games × ~25 s / 3 workers ≈ 3.5 h.
@@ -86,3 +97,24 @@ Ideas queued per family, top = next. Mark items `[done bot_NNN]` or `[dropped: r
 - bandit: third iteration after 034/036 results.
 - final (before freeze): tournament champion vs strongest bot of each style (rotating seats, 112+ games); champion in
   one seat vs six different styles; S3 with each style as the Hidden Agent stand-in.
+
+## added 28 Sep (own resolver + S4 priority, human direction)
+- lookahead (after bot_071): spend the ×34 rollouts: bigger candidate pool (TOP_K 8→20, N_LA 12→30), later halving
+  (HALVE_EVERY up), MIN_ALIVE up; deeper two-ply (Fall → next Spring via a greedy reply; builds skipped).
+- lookahead: rollouts as the hill-climb evaluation itself (resolver fast enough for ~50 samples per neighbour?).
+- S4: opponent reply model with coordinated supports (bot_069) re-tested on the resolver bot, where sampling noise
+  is much lower.
+- all families: the split-coast army adjacency fix ([090]) applies to every copied map_info; style-pure sparring bots
+  (012/014/017/038/040) could get the fix before the final style tournament (bug fix, not a strategy change).
+
+## added 28 Sep (failure analysis [098])
+- England S2 collapses to 1–3 SC vs greedy neighbours: inspect 2–3 worst games (100010, 200026) in the visualiser
+  before designing a fix (fleet-first opening? convoy timing?).
+- central powers (AUS/GER/ITA) in S3: early defence of home SCs when a strong neighbour is adjacent (bot_067 seat-aware
+  score failed; try on the GA line, where bot_075's confirm race favours robust plans).
+
+## freeze runs prepared (29 Sep)
+- results/logs/freeze_final.sh (not started): FINAL 504/scenario for agent_21 (= bot_081, S3 stand-in bot_004), then
+  10 ablations at 210/scenario on the same FINAL seeds: BASIC_GREEDY=true, ROLLOUT, CONFIRM, TWO_PLY, ACC_GATE,
+  OPP_AWARE, FAST_RES, LA_CANDS, VM_CANDS, CONVOYS =false. Estimated ≈ 2 h + 10 × ~50 min ≈ 10–11 h (3 workers).
+  Launch with: (nohup setsid results/logs/freeze_final.sh > results/logs/freeze_final.out 2>&1 &)

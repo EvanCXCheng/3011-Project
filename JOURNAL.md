@@ -737,7 +737,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   vs bot_034: S1 +4.02±0.35, S2 +2.06±0.40, S3 +2.83±0.56, pooled +2.97±0.26 → PROMOTE → bandit champion.
   vs bot_022: pooled −2.89±0.28. S1 still stalls (~12 SC): units do not gather next to static holders.
 
-## [055] Sparring field, round 1 (human request) — RUNNING
+## [055] Sparring field, round 1 (human request) — DONE (results in [060], [061])
 
 - bot_037 greedy/homedef (parent bot_012, rule-based): hold / support-hold / garrison own SCs that an *active* enemy
   (one that has ever ordered a move) can enter, before attack matching. First version garrisoned against static units
@@ -849,7 +849,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_047 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.19±0.35 (77.0%) / S3 14.44±0.47 (61.9%). vs bot_022: S2 +0.16±0.38,
   S3 +0.36±0.46, pooled +0.17±0.20 → REJECT (n.s.; the race already covers most of what the aggressive plan offers).
 
-## [065] Refinements on the new champion: bot_049, bot_050 — RUNNING
+## [065] Refinements on the new champion: bot_049, bot_050 — REJECTED
 
 - bot_049 search/stackseason (parent bot_045): valuemap candidate uses bot_038's season weights (bot_038 beat bot_014
   by +1.02 stand-alone).
@@ -869,3 +869,601 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_048 Tier 2 B126 (stand-in 004): S1 14.13±0.42 (54.0%) / S2 14.91±0.39 (57.1%) / S3 11.75±0.49 (32.5%). vs bot_036:
   S1 +2.37±0.43, S2 −0.43±0.36, S3 −0.58±0.53, pooled +0.46±0.26 → REJECT (n.s.). The S1 gain is real; S2/S3 within
   noise. Not extended: the extension rule targets champion challengers, and bandit is a dormant sparring family.
+- bot_049 Tier 2 B126: S2 16.92±0.29 (88.1%) / S3 15.21±0.43 (68.3%); vs bot_045 S2 +0.19, S3 −0.12, pooled +0.02±0.20.
+- bot_050 Tier 2 B126: S2 16.99±0.27 (88.1%) / S3 14.98±0.45 (68.3%); vs bot_045 S2 +0.26, S3 −0.34, pooled −0.03±0.20.
+  → both neutral: the champion's pool already covers these plans. (tmax 0.523–0.529 s in S2, possibly host load.)
+
+## [067] Scenario 4 sparring evaluation (champion bot_045 vs the style field) — DONE
+
+- field (one champion per family = seven styles): 045 champion, 024 lookahead, 038 valuemap, 012 greedy, 017 positional,
+  036 bandit, 040 aggressive archetype.
+- (1) tournament, 112 games, rotating seats, offset 300; (2) bot_045 S3 B126 with each of the six other styles as the
+  Hidden Agent stand-in. Queue q16. Re-run at the freeze if the champion changes.
+- Tournament (112 games, 7 styles, rotating seats): bot_045 10.19±0.69, bot_024 5.14±0.51, bot_036 4.88±0.56,
+  bot_040 4.16±0.52, bot_038 3.29±0.39, bot_017 3.22±0.34, bot_012 2.65±0.44 SC → champion scores 2x the next style.
+- bot_045 S3 (B126) with each style as the Hidden Agent: vs 017 positional 15.91±0.40 (76.2%), vs 012 greedy 15.68±0.38
+  (71.4%), vs 036 bandit 15.05±0.45 (69.0%), vs 038 valuemap 14.89±0.46 (67.5%), vs 024 lookahead 13.97±0.50 (57.9%),
+  vs 040 aggressive 13.75±0.52 (59.5%). All above the S3 5-pt lines; hardest: aggressive and lookahead opponents.
+
+## [068] Tuning sweep on bot_045 — DONE
+
+- The rollout score weights and pool sizes were set in bot_004/020/022 and never tuned. --set variants on B126 S2/S3
+  (stand-in 004), paired with bot_045: R_W_UNIT=1.0 (0.6), R_W_DIST=0.1 (0.05), N_LA=20 (12), SEARCH_BUDGET=0.10 (0.15).
+  Extension rule applies (z ≥ 1.5 → 210); a winner becomes a new bot file (tuning, not a technique). Queue q17.
+
+## [069] bot_051 search/policyopp — REJECTED
+
+- family: search | parent: bot_045 | tags: policy-opponent-model
+- motivation: [067] hardest Hidden-Agent styles are aggressive (13.75) and lookahead (13.97). 'strong' powers are
+  sampled from a fixed mix; now, per rollout round, a strong power plays with p=0.5 the orders our aggressive rule
+  engine (bot_040) would give as that power (computed once per turn from its point of view).
+- check: in a 1901–1904 test game, 24/24 policy predictions computed for the 3 opponents classed strong.
+- plan: queue q18 vs bot_045 (T1 bot_001, T2 bot_004 B126); also re-run its S3 vs bot_040 and bot_024 if promising.
+- results (B126 S2/S3 vs bot_045): R_W_UNIT=1.0 S2 +0.51 S3 −0.54 pooled −0.02±0.27; R_W_DIST=0.1 +0.48/−0.68, −0.10±0.31;
+  N_LA=20 +0.38/−0.38, 0.00±0.28; SEARCH_BUDGET=0.1 S2 17.37 (92.1%) +0.63, S3 15.68 (72.2%) +0.36, pooled +0.50±0.26
+  (z≈1.9) → extension rule: SEARCH_BUDGET=0.1 to 210 on S2/S3 (queued after bot_051).
+- note: all four variants are +0.4–0.6 in S2 → bot_045's own B126 S2 (16.73) was probably on the low side; the 210
+  comparison uses its 210-game S2 (16.60).
+- bot_051 Tier 2 B126 (stand-in 004): S1 18.00 / S2 17.11±0.23 (85.7%) / S3 14.78±0.44 (61.9%). vs bot_045: S2 +0.38±0.24,
+  S3 −0.55±0.48, pooled −0.06±0.18 → REJECT: predicting a strong (lookahead) opponent with an aggressive rule policy
+  misleads the rollouts as much as it helps.
+- SEARCH_BUDGET=0.1 at 210 (S2/S3, stand-in 004): S2 17.06±0.21 (88.6%), S3 15.26±0.33 (69.0%); vs bot_045 S2 +0.46±0.26,
+  S3 +0.11±0.32, pooled +0.29±0.21 (z≈1.4) → n.s.; keep 0.15.
+
+## [070] bot_052 search/stack2 — REJECTED
+
+- family: search | parent: bot_045 | tags: stacked-near-misses (round 2)
+- stack: SEARCH_BUDGET 0.10 (+0.29±0.21 on 045 at 210) + candidate crossover (027: +0.17 on 022) + competitive rival
+  score term (032: +0.12 on 022). Crossover also keeps convoy orders consistent (fleet convoy → hold if its army
+  is not convoying in the child).
+- checks: pool 15–27 with children, a child picked in a test game; S3 seeds 12/13 → 18/18, tmax 0.454 s.
+- plan: queue q20 vs bot_045 (T1 bot_001, T2 bot_004 B126); extension rule applies.
+- bot_052 Tier 2 B126 (stand-in 004): S2 16.90±0.28 (84.1%) / S3 14.87±0.44 (63.5%); vs bot_045 S2 +0.17±0.36,
+  S3 −0.45±0.52, pooled −0.09±0.21 → REJECT. Stacking round 2 fails: these smaller effects were mostly noise.
+- search family at 38% of iterations (cap 40%) → next bots from other families.
+
+## [071] bot_053 archetype/balanced, bot_054 lookahead/twoply — REJECTED
+
+- bot_053 (parent bot_040): new STYLE 'balanced' = aggressive targeting and all-in supported attacks + hold threatened
+  own SCs against active enemies (support-hold with 2+ adjacent). Question: does minimal defence close bot_040's S3 gap
+  (−1.93 vs the champion against a strong stand-in)? Sanity S1/S2/S3 seed 12 → 18/18/18, 1–3 ms per move.
+- bot_054 (parent bot_024): bot_028's two-ply Spring rollouts on the pure lookahead line. All 1152 test rollouts moved
+  units; S3 seeds 12/13 (stand-in 003) → 18/2.
+- plan: queue q21: 053 vs bot_040 (T1 greedy, T2 bot_004 B210, the stand-in that exposed bot_040), 054 vs bot_024
+  (T1/T2 bot_003, B126).
+- bot_053 Tier 2 B210 (stand-in 004): S1 18.00 / S2 10.83±0.42 (29.5%) / S3 8.40±0.39 (13.8%); vs bot_040 S2 −5.09, S3 −4.02,
+  pooled −3.03±0.23 → REJECT: tying units to defence cripples the aggressive style (same lesson as bot_037).
+- bot_054 Tier 2 B126 (stand-in 003): S2 16.67±0.30 (81.0%) / S3 12.70±0.50 (42.1%); vs bot_024 S2 +0.49, S3 −0.52,
+  pooled −0.01±0.24 → REJECT: two-ply only paid off inside the hybrid stack.
+
+## [072] Failure analysis of bot_045 in S3 — DONE
+
+- S3 (all stand-ins, n=1137): 777 wins; non-wins ≥14 SC 65, 8–13 SC 141, <8 SC 154 → losses are mostly early collapses,
+  not near-misses. In collapses the Hidden-Agent stand-in ends strongest in 104/154 (Greedy 50). By power: Austria
+  92/162 wins, Turkey 87/162, England 96/162, Germany 107/163 vs France 142/162, Russia 145/163.
+- defence-based fixes have failed repeatedly (015, 023, 037, 053) → try a different lever: opening quality (bot_055).
+
+## [073] bot_055 search/openings — REJECTED
+
+- family: search | parent: bot_045 | tags: opening-book-candidates (search 21/56 iterations = 37.5%, under the cap)
+- three standard S1901 openings per power (published opening theory; our transcription, all legal) added to the first
+  race. Check: they enter the pool (Austria picked a book opening; Germany/England preferred generated plans).
+- plan: queue q22 vs bot_045 (T1 bot_001, T2 bot_004 B126).
+- bot_055 Tier 2 B126 (stand-in 004): S2 16.96±0.28 (86.5%) / S3 15.29±0.43 (68.3%); vs bot_045 S2 +0.23, S3 −0.03,
+  pooled +0.07±0.21 → REJECT: the race already finds sound openings.
+
+## [074] bot_056 greedy/convoy — REJECTED (dormant family, style-pure)
+
+- family: greedy | parent: bot_012 | tags: convoys (greedy backlog item 9)
+- armies that cannot approach any target over land take the VIA move whose landing is closest to a target, with every
+  fleet of ours that can convoy it ordered to convoy (multi-fleet chains work: A CLY - DEN VIA with F NTH + F NWG).
+- sanity England S2 seeds 1/8 → 14/10 SC, no errors. plan: queue q23 vs bot_012 (T1 greedy, T2 bot_001 B210).
+- bot_056 Tier 2 B210 (stand-in 001): S1 12.29 (28.6%) / S2 14.09±0.36 (53.8%) / S3 12.15±0.39 (38.1%); vs bot_012 S1 0,
+  S2 +0.60±0.33, S3 +0.07±0.36, pooled +0.22±0.16 → REJECT (n.s.; England +0.21±0.36 over 90 games).
+
+## [075] bot_057 adaptive/vulture — REJECTED (adaptive family revisited)
+
+- parent bot_045 | tags: vulture-candidate. A power is 'weakened' if a third power stands on one of its SCs, ≥2 other
+  (not ours) units are adjacent to its SCs, or it owns fewer SCs than at the start of the year. One extra race
+  candidate = greedy plan aimed only at weakened powers' SCs.
+- checks: 4–12 vulture target SCs per phase in a random-opponent test game; S3 seeds 12/13 (stand-in 004) → 18/12 SC.
+- plan: queue q24 vs bot_045 (T1 bot_001, T2 bot_004 B126).
+- bot_057 Tier 2 B126 (stand-in 004): S2 17.19±0.26 (89.7%) / S3 15.35±0.42 (70.6%); vs bot_045 S2 +0.46±0.38,
+  S3 +0.02±0.46, pooled +0.16±0.20 → REJECT (n.s.).
+
+## [076] Leave-one-out ablation of the champion's stack (bot_045) — DONE
+
+- The last eight bot_045 variants all landed within ±0.2 SC (noise band). Report-relevant question instead: how much
+  does each stacked part contribute inside bot_045? --set TWO_PLY=false / CONVOYS=false / VM_CANDS=false on B126 S2/S3
+  (stand-in 004), paired with bot_045. Queue q25.
+- results (B126 S2/S3, stand-in 004, paired with bot_045):
+  TWO_PLY off: S2 16.25 (80.2%) −0.48±0.39, S3 14.83 (62.7%) −0.49±0.45, pooled −0.48±0.30;
+  CONVOYS off: S2 16.72 −0.01±0.35, S3 14.98 −0.35±0.52, pooled −0.18±0.31;
+  VM_CANDS off: S2 16.56 −0.17±0.36, S3 14.33 (62.7%) −0.99±0.53, pooled −0.58±0.32.
+- takeaway: all three parts help inside the stack (consistent with additivity); valuemap candidate matters most (S3),
+  then two-ply Spring, convoys least. Report: leave-one-out table next to the one-at-a-time results (026/028/035).
+
+## [077] bot_058 search/stackfast — REJECTED
+
+- parent bot_045 | tags: shared-opponent-rollouts. Two-ply halves Spring rollouts, so the ×1.5 speed-up (neutral on
+  bot_022 in 025) may matter here. Check: 1583/1586 processes moved units (the rest are retreat steps in the two-ply
+  reply); S3 seeds 12/13 → 18/7. plan: queue q26 vs bot_045 (T1 bot_001, T2 bot_004 B126).
+- bot_058 Tier 2 B126: S2 17.13±0.24 (88.1%) / S3 14.98±0.44 (68.3%); vs bot_045 S2 +0.40, S3 −0.35, pooled +0.02±0.21
+  → REJECT: rollout count is not the bottleneck for bot_045 either.
+
+## [078] New families: evolution (bot_059), ensemble (bot_060) — PROMOTED (family champions, bootstrap)
+
+- bot_059 evolution/base (new family, genetic-algorithm): population of 12 joint plans (greedy plan + mutations),
+  per generation all plans vs the same 2 fresh opponent samples (shared-opponent copies), keep the better half by
+  running mean fitness, refill by uniform crossover + 15% per-unit mutation, until 0.45 s; play the best mean.
+  Sanity S1/S2/S3 seed 12 → 18/18/18, tmax 0.453 s.
+- bot_060 ensemble/vote (new family, ensemble-voting): per-unit majority vote of three rule planners (aggressive
+  bot_040, valuemap bot_014-style, greedy no-bounce); ties aggressive > valuemap > greedy; support repair. No
+  simulation, ~2 ms/move. All three voters verified. Sanity S1/S2/S3 seed 12 → 18/18/18.
+- plan: queue q27, both vs bot_045 for reference (T1 bot_001, T2 bot_004 B126); new families → Tier 2 regardless.
+- bot_059 Tier 2 B126 (stand-in 004): S1 18.00 / S2 15.56±0.40 (68.3%) / S3 11.98±0.53 (38.9%) → est. 13. vs bot_045
+  S2 −1.17, S3 −3.34, pooled −1.51±0.24 → evolution family champion (bootstrap). GA over whole plans is clearly weaker
+  than hill-climb + candidate race within 0.45 s.
+- bot_060 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.33±0.38 (80.2%) / S3 12.94±0.53 (47.6%) → est. 15, ~40 ms/move,
+  no simulation. vs bot_045 S2 −0.40, S3 −2.39, pooled −0.93±0.25; vs bot_040 (same seeds) S2 +0.14, S3 +0.83, pooled
+  +0.33±0.23 → ensemble family champion; the strongest pure rule bot so far (a fast fallback design and a strong
+  S4 sparring partner).
+
+## [079] bot_061 ensemble/vote4 — REJECTED
+
+- parent bot_060 | tags: ensemble-voting + a 4th voter (bot_012's greedy attack-matching plan). All voters verified.
+- sanity: S1 seeds 13/14/15 → 6/18/18 (bot_060: 18/18/18): with four voters 2–2 ties become common and the tie-break
+  can pick a bad mix (Turkey, seed 13). Evaluated as is (fast rule bot) to measure it.
+- plan: queue q28 vs bot_060 (T1 bot_001, T2 bot_004 B126).
+
+## [080] bot_062 evolution/seeded — PROMOTED (evolution family champion)
+
+- parent bot_059 | tags: genetic-algorithm, seeded-population. Initial population also holds the plans of three rule
+  planners (aggressive, valuemap, greedy no-bounce), genes extended where needed.
+- bug caught before evaluation: the copied greedy planner read CONFIG['CONVOYS'] (missing) → that seed was silently
+  skipped. Fixed (keys added, convoys off). A check over all 62 bot files found no other missing CONFIG keys.
+- sanity S1/S2/S3 seed 13 → 18/18/8 SC, tmax 0.465 s. plan: queue q29 vs bot_059 (T1 bot_001, T2 bot_004 B126).
+- bot_061 Tier 2 B126 (stand-in 004): S1 16.29±0.38 (85.7%) / S2 14.61±0.48 (65.1%) / S3 12.71±0.57 (53.2%); vs bot_060
+  S1 −1.71, S2 −1.71, S3 −0.23, pooled −1.22±0.30 → REJECT: per-unit mixing on 2–2 ties breaks plan coordination.
+
+## [081] bot_063 ensemble/medoid — REJECTED
+
+- parent bot_061 | tags: plan-level-consensus. Play the whole proposal that agrees most with the others (medoid) —
+  keeps each plan coherent. Sanity S1 12/13 → 18/8, S2 → 18/18, S3 → 5/7. plan: queue q30 vs bot_060 (T1 001, T2 004).
+- bot_062 Tier 2 B126 (stand-in 004): S1 18.00 / S2 16.69±0.29 (82.5%) / S3 14.39±0.47 (57.9%) → est. 15. vs bot_059:
+  S2 +1.13±0.33, S3 +2.40±0.55, pooled +1.18±0.22 → PROMOTE → evolution champion. Seeding the GA with rule planners'
+  plans is what makes evolution competitive.
+- bot_062 vs champion bot_045 (same seeds): S2 −0.04±0.36, S3 −0.94±0.49, pooled −0.33±0.20 → not overall.
+
+## [082] bot_064 evolution/twoply — REJECTED
+
+- parent bot_062 | tags: two-ply-spring (GA fitness in Spring = SC ownership after a greedy Fall reply; LOO showed two-ply
+  worth ≈0.5 SC inside bot_045). Sanity S2/S3 seed 13 → 18/7. plan: queue q31 vs bot_062 (T1 bot_001, T2 bot_004 B126).
+- bot_063 Tier 2 B126 (stand-in 004): S1 10.43±0.40 (14.3%) / S2 14.06±0.47 (54.8%) / S3 12.01±0.55 (39.7%); vs bot_060
+  S1 −7.57, S2 −2.26, S3 −0.93, pooled −3.59±0.32 → REJECT: the medoid is the most 'typical' plan, usually a cautious one
+  without supported attacks (fatal in S1). Ensemble family: 3 iterations (060/061/063), champion bot_060 (est. 15) → ACTIVE.
+- bot_064 Tier 2 B126: S2 16.28±0.34 (77.8%) / S3 13.90±0.50 (56.3%); vs bot_062 S2 −0.41, S3 −0.49, pooled −0.30±0.23
+  (vs bot_045 −0.63±0.23) → REJECT: the GA needs many fitness evaluations; two-ply halves them. Evolution family:
+  3 iterations (059/062/064), champion bot_062 (est. 15) → ACTIVE.
+
+## [083] Tournament with the new families (112 games) — DONE
+
+- field: bot_045 (champion), bot_062 (evolution), bot_060 (ensemble), bot_024 (lookahead), bot_040 (aggressive),
+  bot_038 (valuemap), bot_036 (bandit); rotating seats, offset 400. Queue q32.
+- bot_045 8.46±0.69, bot_062 6.54±0.66, bot_024 5.33±0.51, bot_040 4.44±0.58, bot_036 3.78±0.43, bot_038 2.56±0.27,
+  bot_060 2.29±0.41 SC. Champion first again; seeded GA second. The ensemble (est. 15 vs the baseline mix) finishes last
+  among strong bots: pure rule planners do well against weak opponents only.
+- family review pending one measurement: bot_038 S3 vs a strong stand-in (only measured vs bot_001 so far) → q33.
+- test_21.py: default ablation keys updated for the new champion's switches (ROLLOUT, LA_CANDS, VM_CANDS, TWO_PLY,
+  CONVOYS, HALVING, ACC_GATE, OPP_AWARE); all present in agent_21.py; smoke-tested (ablate TWO_PLY, 1 game). 20 KB.
+
+## [084] Family review (after bots 045–064) — DONE
+
+- bot_038 S3 vs strong stand-in (bot_004, B126): 11.00±0.55 (34.9%) → est. 13 (S3 3 pts) → valuemap DORMANT.
+- ACTIVE: search (champion bot_045), lookahead (bot_024, est 15), evolution (bot_062, est 15), ensemble (bot_060, est 15
+  vs baselines but last in the strong-bot tournament), archetype (bot_040, sparring). DORMANT: greedy, valuemap,
+  positional, adaptive, bandit.
+
+## [085] bot_065 evolution/poolga — PROMOTED (evolution family champion)
+
+- family: evolution | parent: bot_045 (code) / bot_062 (idea) | tags: genetic-algorithm, seeded-population
+- GA replaces bot_045's halving race: population = bot_045's candidate pool (hill-climb optima, lookahead candidates,
+  valuemap plan, convoys); genes = each unit's orders seen in the pool + hold; per generation 2 shared opponent samples
+  (two-ply in Spring), keep the better half, refill by uniform crossover + 10% mutation with support/convoy repair.
+- checks: rollout path verified (evolved plan appended and returned each move); S3 seeds 12/13 → 18/18, tmax 0.455 s.
+- plan: queue q34 vs bot_045 (T1 bot_001, T2 bot_004 B126).
+- bot_065 Tier 2 B126 (stand-in 004): S1 18.00 / S2 17.17±0.23 (88.1%) / S3 15.60±0.39 (70.6%) — best S2/S3 on these
+  seeds so far. vs bot_045 S2 +0.44±0.29, S3 +0.27±0.50, pooled +0.24±0.19 (z≈1.3 < 1.5: no extension) → not overall.
+  vs bot_062 S2 +0.48, S3 +1.21, pooled +0.56±0.19 → PROMOTE → evolution family champion.
+
+## [086] bot_066 evolution/racega — REJECTED
+
+- parent bot_065 | tags: race-then-evolve. First half of the rollout time: halving race over the pool; then the GA
+  breeds only from the survivors (race totals carried over). Checks: rollout path ok; S3 seeds 12/13 → 18/10.
+- plan: queue q35 vs bot_065 (T1 bot_001, T2 bot_004 B126).
+- bot_066 Tier 2 B126: S2 17.04±0.28 (88.9%) / S3 14.36±0.49 (62.7%); vs bot_065 S2 −0.13, S3 −1.24, pooled −0.46±0.19
+  → REJECT: racing first discards plans the GA could recombine usefully.
+
+## [087] bot_067 adaptive/seataware — REJECTED
+
+- parent bot_045 | tags: seat-aware-score. Central seats (AUS/GER/ITA): +0.5 extra cost per own SC lost in the rollout
+  outcome, unit weight 1.0 (vs 0.6). Found while writing it: with two-ply Spring bot_045 never uses R_W_LOST (Spring is
+  always scored on post-Fall ownership), so a lost own SC cost exactly as much as a gained one.
+- checks: rollout path ok (Austria seat); S3 Austria seeds 7/14 → 6/18. plan: queue q36 vs bot_045 (T1 001, T2 004).
+- bot_067 Tier 2 B126: S2 16.81±0.27 (82.5%) / S3 15.17±0.44 (69.8%); vs bot_045 pooled −0.03±0.21 → REJECT.
+  By seat (S2+S3): central (AUS/GER/ITA, changed code) −0.60±0.58; other seats (identical code to bot_045) +0.38±0.33 —
+  i.e. run-to-run noise alone produces ≈ ±0.35 SC differences on 126 games (useful calibration for the report).
+
+## [088] bot_068 lookahead/riskaverse — REJECTED
+
+- parent bot_045 | tags: risk-averse-selection. Race ranks candidates (halving + final pick) by mean − 0.5·sd of their
+  rollout scores instead of the mean (RISK toggle). Target: S3 early collapses next to a strong opponent.
+- sanity S3 seed 7 (Austria): 12 SC, tmax 0.46 s, no errors. plan: queue q37 T0 X3, T1 A42 (stand-in 001),
+  T2 B126 (stand-in 004), compare vs bot_045.
+- side work: tools/export_prompts.py now drops <task-notification>/compaction/interrupt turns and keeps /loop prompts
+  (dry run: 40 entries, 0 notifications).
+- Tier 0 X3 clean (tmax 0.473 s). Tier 1 A42 (stand-in 001): S1 18.00 / S2 16.14±0.67 (78.6%) / S3 16.76±0.53 (85.7%);
+  vs bot_045 S2 −1.48±0.67, S3 −0.52±0.58, pooled −0.67±0.30 (< −2 SE) → REJECT at Tier 1; Tier 2 stopped early
+  (partial raw games kept). Takeaway: penalising outcome spread favours passive plans; bot_045's mean is the better
+  criterion. Risk aversion, if any, belongs in the S3/S4 opponent model, not the selection rule.
+- human direction (28 Sep): next priorities are (a) a fast own move resolver for rollouts, validated against the
+  engine, and (b) S4 fixes vs the styles bot_045 is weakest against (aggressive bot_040, lookahead bot_024).
+
+## [089] bot_069 adaptive/oppsupport — REJECTED
+
+- parent bot_045 | tags: coordinated-opponent-model (S4 priority, human direction 28 Sep). Rollout sampling: for
+  opponents classified 'strong', a sampled holder supports one of its power's sampled moves when legal (p 0.8).
+  bot_045 samples units independently, so sampled attacks were almost never supported; the aggressive and lookahead
+  styles (hardest Hidden Agents in [067]) do support attacks.
+- checks: support string format matches the engine; instrumented 10-phase game vs bot_040 field: 290 coordinated
+  rounds, 39 supports added. S3 seeds 7/8/9 vs stand-in 040: 4/8/18 (bot_045: 1/18/4) — noise, no errors.
+- plan: queue q38: T0 X3; T1 A42 (001) vs bot_045; S3 B126 with stand-ins 040 and 024 (bot_045 refs from [067]);
+  T2 B126 (004) vs bot_045.
+
+## [090] Found bug: army adjacency at split-coast provinces (all bots) — bot_070 search/mapfix PROMOTED (overall champion)
+
+- Found while validating an own resolver: map_info (copied into every bot since bot_001) built army neighbours from
+  map.loc_abut, which lists coast-qualified names ('SPA/SC', 'BUL/EC', 'STP/NC') and keys SPA/BUL/STP in lower case.
+  20 army links were missing vs map.abuts (MAR/GAS/POR-SPA, CON/GRE/RUM/SER-BUL, FIN/LVN/MOS/NWY-STP, both ways);
+  SPA/BUL/STP had no army neighbours at all. Fleet adjacency was correct. Effect: army BFS distances treated three
+  SCs as unreachable (or far), armies there as stuck, and greedy predictions of opponents' armies were wrong nearby.
+  Engine-side results (rollouts, legality) were never affected: orders always come from the engine's possible orders.
+- bot_070 = bot_045 + fixed map_info (base names for army neighbours, lower-case key fallback); verified 0 missing /
+  0 extra links for armies and fleets vs map.abuts. Sanity S2 seeds 1/2/13: 18/18/11, tmax 0.458 s, no errors.
+- plan: queue q39 (after q38): same protocol as bot_069 (T0, T1 A42, S3 vs 040/024 B126, T2 B126 vs bot_045).
+
+## [091] bot_071 lookahead/fastres — PROMOTED (lookahead family champion; not overall)
+
+- parent bot_070 (map fix needed: the resolver's convoy/adjacency test uses army reach) | tags: own-fast-resolver
+  (human priority, 28 Sep). Own movement resolver replaces engine copies in the rollouts: move decisions resolved
+  recursively with guess-and-check for cycles (circular movement succeeds; convoy paradox: convoyed moves fail);
+  supports/cuts incl. the "attack from the supported-into province cuts only by dislodging" rule; head-to-head,
+  prevent strength, own-unit dislodgement ban; convoy routes with dislodged fleets removed.
+- validation (lab/validate_resolver.py, new): random games to 1912 with structured random orders (moves; supports of
+  chosen moves 80%; convoys of chosen VIA moves). Engine conventions found and matched: (1) VIA with no convoy route
+  to an adjacent province moves overland; (2) an adjacent army move is convoyed when its own power orders a convoy
+  route; (3) own-power supports DO count against an own unit for explicit VIA / non-adjacent attacks (land attacks:
+  not); (4) coast-specific supports must name the move's coast. Result: identical unit positions in 14,080/14,080
+  movement phases (8 seeds) + 2,640/2,640 with the code as pasted in the bot; ~42 us vs ~600 us per engine.process.
+  Dislodged lists differ in ~2/1760 phases only in reporting (units with no retreat removed at once), positions same.
+- rollouts per movement phase (France vs six bot_040s, loaded machine): 131 (engine) → 4,461 (resolver), ×34.
+  Sanity S1/S2/S3 seeds 4/12: 18/18, 18/18, 13/18; tmax 0.456 s; no errors.
+- plan: queue q40: T0, T1 A42 vs bot_045, S3 B126 vs stand-ins 040/024, T2 B126 (004) vs bot_045 and bot_070.
+  FAST_RES False = bot_070 (ablation switch for the report).
+
+## [092] bot_072 evolution/fastga — REJECTED (not significant)
+
+- parent bot_065 | tags: own-fast-resolver, genetic-algorithm (human asked to keep the evolution line going). bot_065's
+  GA fitness rollouts moved onto bot_071's resolver (+ the [090] map fix it needs). Resolver copy validated 660/660.
+- generations per movement phase (Turkey vs six bot_040s, loaded machine): 3.4 → 138; rollouts 125 → 4,447.
+  Sanity S2/S3 seeds 5/13: 18/18/18/18, tmax 0.463 s, no errors.
+- plan: queue q41: T0, T1 A42 vs bot_045, S3 B126 vs stand-ins 040/024, T2 B126 (004) vs bot_045 and bot_065.
+
+- bot_069 results (appended after [092]): Tier 0 clean. T1 A42 vs bot_045 pooled −0.04±0.17. T2 B126 (004): S1 18.00 /
+  S2 17.36±0.19 (89.7%) / S3 14.37±0.46 (57.9%). Paired vs bot_045 by S3 stand-in (lab/by_standin.py, new):
+  vs 040 aggressive 14.70, +0.94±0.47; vs 024 lookahead 14.21, +0.25±0.56; vs 004 14.37, −0.61±0.47. S2 +0.63±0.34.
+  compare (S3 pooled over the three stand-ins): pooled +0.17±0.19 → REJECT (below 2 SE).
+- takeaway: modelling supported opponent attacks helps against the aggressive style (the S4 weak spot, z≈2.0) and in
+  S2, but not against bot_004. Retest on the resolver line, where rollout noise is far lower (backlog).
+
+- bot_070 results (appended after [092]): Tier 0 clean. T1 A42 vs bot_045 pooled −0.21±0.20 (pass). T2 B126 (004): S1 18.00
+  / S2 16.98±0.27 (87.3%) / S3 15.71±0.43 (75.4%). vs bot_045: S2 +0.25±0.32, S3 (3 stand-ins, 378) +0.75±0.31,
+  pooled +0.50±0.20 → PROMOTE. By stand-in: 004 +0.73±0.49, 024 lookahead +0.98±0.58 (14.94), 040 aggressive
+  +0.88±0.55 (14.63) — consistent gains, incl. both S4 weak-spot styles.
+- stress (evals pinned to cores 1–3, stress on core 0): slowdown ×3.66, tmax 0.518 s, 0 errors → PASS. Promoted:
+  search family champion + overall champion; agent_21.py = bot_070.
+- test.py (course script via its experiment(), repeat 1, S1 + S2): 7/7 wins each, 18.0 SC, no errors.
+- takeaway: a correct army map is worth ≈0.5 SC; the found bug cost every earlier bot. bot_071/072 (resolver) already
+  build on the fixed map. Style sparring bots still carry the bug (backlog).
+
+- bot_071 results (appended after [092]): Tier 0 clean; T1 A42 vs bot_045 −0.13±0.20. T2 B126 (004): S1 18.00 / S2
+  16.89±0.28 (85.7%) / S3 15.55±0.43 (74.6%); S3 vs 040 15.00, vs 024 14.71.
+  vs parent bot_070 (isolates the resolver): S2 −0.10±0.23, S3 −0.01±0.28, pooled −0.02±0.17 → no gain.
+  By stand-in vs 070: 004 −0.16, 024 −0.23, 040 +0.37 (all n.s.). vs bot_045 +0.47±0.20 (= the map fix).
+  vs lookahead champion bot_024: pooled +1.06±0.23 → lookahead family champion.
+- takeaway: ×34 rollouts buy nothing once the race has ~130 rollouts per phase: selection is no longer sampling-limited;
+  what limits it now is the opponent model / score and the candidate set. Resolver still useful where evaluations are
+  scarce (GA, bot_072) and for bigger candidate pools or richer opponent models at no time cost.
+
+## [093] bot_073 lookahead/widepool (lookahead family champion; not overall), bot_074 adaptive/oppsupres (REJECTED)
+
+- after bot_071's null result (rollouts no longer binding), two ways to use the spare rollouts, both on bot_071:
+- bot_073 (tags: wide-candidate-pool): TOP_K 8 → 16, N_LA 12 → 36; measured pool 15–21 → 30–51 candidates per phase.
+- bot_074 (tags: coordinated-opponent-model): bot_069's supported-attack sampling for 'strong' powers on the resolver
+  line (lower rollout noise; bot_069 was +0.94±0.47 vs the aggressive stand-in).
+- sanity S2/S3 seed 11 vs stand-in 040: both 18/18, tmax ≤ 0.451 s, no errors.
+- plan: queues q43/q44 (after q41 bot_072 and q42 held-out): T0, T1 A42 vs bot_071, S3 B126 vs 040/024, T2 B126 (004)
+  vs bot_070 (overall) and bot_071 (parent).
+
+- bot_072 results (appended after [093]): Tier 0 clean; T1 A42 S2 17.45 / S3 16.36. T2 B126 (004): S1 18.00 / S2 17.32±0.25
+  (92.1%, best S2 of any bot) / S3 15.67±0.42 (74.6%); S3 vs 040 15.28, vs 024 14.97.
+  vs bot_065 (parent): pooled +0.07±0.18; vs bot_070 (overall): S2 +0.33±0.29, S3 +0.21±0.28, pooled +0.19±0.18
+  (z 1.06 < 1.5: no extension); vs bot_045 +0.69±0.19. By stand-in vs 070: 004 −0.04, 024 +0.02, 040 +0.64±0.52.
+- takeaway: ×40 GA generations and the map fix together add only +0.07 over bot_065, so the GA was not evaluation-limited
+  either; bot_065 ≈ bot_070 ≈ bot_071 ≈ bot_072 on these seeds (all within ±0.2). Evolution line stays level with
+  the champion (best S2), not ahead.
+
+## [094] bot_075 evolution/confirm (PROMOTED: overall champion), bot_076 lookahead/vmscore (REJECTED)
+
+- bots 065/070/071/072 tie within ±0.2 and neither rollout count (071) nor GA generations (072) was binding, so the
+  next two target selection bias and the score function:
+- bot_075 (parent bot_072; tags evolve-then-confirm): GA stops 0.07 s early; its 5 best plans race on fresh opponent
+  samples (~143 rounds each) and the best fresh mean is played. Instrumented: changed the GA's pick in 2/6 phases.
+- bot_076 (parent bot_071; tags valuemap-rollout-score): rollout score adds 0.02 × valuemap value of each of our units
+  after the rollout (values 20–57 per unit at the start → ≈0.4–1.1 each; neighbouring provinces differ ≈0.1–0.3).
+- sanity S2/S3 seed 16 vs stand-in 040: 075 18/18, 076 18/9; tmax ≤ 0.455 s; no errors.
+- plan: queues q45/q46 (after q42–q44): T0, T1 A42 vs parent, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and parent.
+
+## [095] Held-out C check of bot_070 vs bot_045 (offset 400, n=126, S2/S3, stand-in 004) — DONE
+
+- bot_070 S2 17.25±0.19 (86.5%) / S3 16.20±0.37 (78.6%); bot_045 S2 17.10±0.22 (84.1%) / S3 15.54±0.40 (69.0%).
+  Paired: S2 +0.14±0.25, S3 +0.66±0.44, pooled +0.40±0.25 — same direction and size as seed set B (+0.50±0.20);
+  fresh seeds neither bot was selected on → the map-fix gain is not a seed-set artefact. (compare's "REJECT" and
+  marks 10 only reflect the missing S1 and a single-set test.)
+
+- bot_073 results (appended after [095]): T1 A42 vs bot_071 S2 −0.10, S3 −0.19 (pass). T2 B126 (004): S1 18.00 / S2
+  17.43±0.22 (92.9%) / S3 15.77±0.38 (72.2%); S3 vs 040 15.16, vs 024 15.52.
+  vs bot_070: S2 +0.44±0.29, S3 (378) +0.39±0.25, pooled +0.32±0.16 → PROMOTE (z≈2.0, borderline);
+  vs parent bot_071: pooled +0.35±0.17 → REJECT (just under 2 SE). By stand-in vs 070: 004 +0.06, 024 +0.58, 040 +0.52.
+- borderline on both → [040] extension rule: q47 extends 073/070/071 to B210 (S2/S3, stand-in 004) and adds held-out C
+  (offset 400; bot_070 already has it) before any promotion.
+
+- bot_074 results (appended after [095]): T1 A42 vs bot_071 S3 −0.95±0.59 (pass). T2 B126 (004): S1 18.00 / S2 16.73±0.31
+  (84.9%) / S3 15.65±0.40 (71.4%); S3 vs 040 15.14, vs 024 14.88. vs parent bot_071 pooled +0.05±0.18; vs bot_070
+  +0.03±0.18; by stand-in vs 071: 004 +0.10, 024 +0.17, 040 +0.14 → REJECTED.
+- takeaway: bot_069's +0.94 vs the aggressive stand-in did not replicate on the low-noise resolver line → most likely
+  noise (one of several stand-in splits). Coordinated-opponent sampling closed as no measurable effect.
+
+## [096] bot_077 lookahead/agcand — REJECTED
+
+- parent bot_073 (still under extension) | tags: archetype-plan-candidate. The aggressive archetype plan (bot_040's
+  engine as ported into bot_062) joins the race as one more candidate. Rationale: candidate diversity is the only
+  lever that has paid lately (073 +0.35 vs 071; 062 seeding +1.18; 035 valuemap candidate +0.30).
+- checks: archetype plan produced in 8/8 movement phases (0 exceptions); sanity S1/S2/S3 seed 20 → 18/18/18, tmax
+  0.452 s. File 66 KB (< 100 KB).
+- plan: queue q48 (after q45–q47): T0, T1 A42 vs bot_073, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and bot_073.
+
+- bot_075 results (appended after [096]): T1 A42 vs bot_072 pooled +0.06±0.25. T2 B126 (004): S1 18.00 / S2 17.12±0.29
+  (91.3%) / S3 16.51±0.34 (83.3%, best S3 so far); S3 vs 040 15.40, vs 024 15.63.
+  vs bot_070 (overall): S2 +0.13±0.32, S3 (378) +0.75±0.26, pooled +0.48±0.17 → PROMOTE (z 2.8).
+  vs bot_065 (evolution champion; S3 paired on stand-in 004 only): S2 −0.05, S3 +0.91±0.43, pooled +0.29±0.18 (z 1.6);
+  vs parent bot_072 +0.29±0.17. By stand-in vs 072: 004 +0.84, 024 +0.67, 040 +0.12.
+- family comparison borderline → [040] extension: q49 extends 075/065/070 to B210 (S2/S3) + held-out C for 075.
+- takeaway so far: the confirmation race (fresh samples for the GA's finalists) helps mainly in S3 → the GA's
+  best-by-mean was biased toward plans lucky on few samples (winner's curse), which matters most vs a strong opponent.
+
+- bot_076 results (appended after [096]): T1 A42 vs bot_071 −0.17±0.23. T2 B126 (004): S1 18.00 / S2 17.10±0.26 (87.3%) /
+  S3 16.72±0.31 (84.9%); S3 vs 040 14.81, vs 024 14.75. vs parent bot_071 pooled +0.24±0.17 (z 1.4 < 1.5, no
+  extension); vs bot_070 +0.22±0.17. By stand-in vs 071: 004 +1.17±0.37, 024 +0.03±0.50, 040 −0.19±0.48 → REJECTED.
+- takeaway: the valuemap score helps a lot against bot_004 but not against the stronger lookahead/aggressive styles, so
+  it is not a general gain. Possible follow-up: stack on bot_075 if that promotes (different mechanism: score vs
+  selection); low priority.
+
+## [097] bot_078 evolution/widepool — REJECTED (extension + held-out: no gain over bot_075)
+
+- parent bot_075 (under extension) | tags: wide-candidate-pool. Stacks the two positive signals: bot_073's wider pool
+  (TOP_K 16, N_LA 36) seeds bot_075's GA (with confirmation race). Sanity S2/S3 seed 22 vs stand-in 024: 18/18,
+  tmax 0.452 s, no errors.
+- plan: queue q50: T0, T1 A42 vs bot_075, S3 B126 vs 040/024, T2 B126 (004) vs bot_070 and bot_075.
+
+- bot_073 extension (q47, B210 S2/S3, stand-in 004): 073 S2 17.27±0.19 (91.9%) / S3 16.04±0.27 (75.2%); 070 S2 17.01 /
+  S3 15.50; 071 S2 16.93 / S3 15.65. vs bot_070 pooled +0.38±0.15 (PROMOTE on B); vs bot_071 +0.34±0.15 (PROMOTE).
+- held-out C (offset 400) vs bot_070: S2 −0.09±0.27, S3 −0.59±0.45, pooled −0.34±0.26 → does NOT confirm.
+  Inverse-variance B+C: ≈ +0.20±0.13 (z 1.5). Decision: lookahead family champion (beats bot_071 on B210), NOT overall
+  champion (borderline B gain not confirmed on fresh seeds; bot_070 stays).
+- takeaway: seed set B has now picked many winners; a +0.3–0.4 B gain for a borderline bot can be a selection
+  effect. Held-out C is the deciding test for every further overall promotion (bot_075 pending in q49).
+
+- bot_077 results (appended after [097]): T1 A42 vs bot_073 −0.28±0.31. T2 B126 (004): S1 18.00 / S2 17.27±0.23 (91.3%) /
+  S3 15.66±0.41 (73.8%); S3 vs 040 15.44, vs 024 15.85. vs parent bot_073 pooled +0.07±0.15 → REJECTED (vs bot_070
+  +0.39±0.16 on B only inherits bot_073's unconfirmed B gain). By stand-in vs 073: 004 −0.11, 024 +0.33, 040 +0.29.
+- takeaway: the archetype plan rarely wins the race once the pool is wide; candidate diversity saturates.
+
+## [098] Failure analysis of champion bot_070 (after bots 068–077) — DONE
+
+- 1176 games. S1 100% every power. S2 (378): weakest ENG 15.7/72% and AUS 16.1/76% (FRA 98%, RUS 100%, TUR 93%);
+  45/378 games lose ≥3 SC from peak; worst 20% mostly vs greedy opponents (70/75); S2 falls from 18.0 (0 greedy
+  opponents) to 16.6 (4–5 greedy). Worst seeds: ENG collapses to 1–3 SC.
+- S3 (630, three stand-ins): AUS 13.6/60%, GER 14.1/63%, ITA 14.5/63%, ENG 15.4/60% vs FRA 89%, RUS 92%, TUR 79%;
+  72/630 lose ≥3 SC from peak; worst-20% strongest opponent spread over 004 (40), 040 (31), 024 (26), greedy (29).
+- unchanged picture since [072]: central powers and England lose early, mostly to greedy/strong neighbours.
+
+## [099] bot_079 search/buildmix — REJECTED (n.s.)
+
+- parent bot_070 | tags: build-choice-k-nearest. From [098]: replay of S2 seed 100010 (England) showed W1901 'A EDI B'
+  (LON lost in 1901; army and fleet tie at distance 2 to LON, ties go to armies), then A EDI and A LON held on the
+  island for the rest of the game (2 of 5–7 units idle). Build type now by the mean of the 3 smallest target distances
+  (capped at 12): England EDI army 8.67 vs fleet 2.0 → fleet; continental armies unaffected when several land SCs
+  are near.
+- sanity: S2 100010 ENG 13 (bot_070 replay 12; recorded 1), S2 8 ENG 18, S3 15 ENG 16, S1 1 ENG 18; tmax 0.476 s.
+- plan: queue q51: T0, T1 A42 vs bot_070, S3 B126 vs 040/024, T2 B126 (004) vs bot_070; check the England seat split.
+
+## [100] bot_075 promoted: overall champion (evolution family)
+
+- extension (q49, B210 S2/S3, stand-in 004): 075 S2 17.17±0.21 (91.4%) / S3 16.70±0.24 (84.8%); 065 S2 16.70 / S3 15.27;
+  070 S2 17.01 / S3 15.50. vs bot_070 pooled +0.59±0.15 (S3 over 3 stand-ins +0.94±0.24); vs bot_065 +0.73±0.18.
+- held-out C (offset 400) vs bot_070: S2 −0.06±0.25, S3 +0.25±0.37, pooled +0.10±0.22 (same direction; unlike 073).
+  Inverse-variance B+C ≈ +0.43±0.12. Win rates on C: S2 90.5% vs 86.5%, S3 84.1% vs 78.6%.
+- stress (evals pinned to cores 1–3): slowdown ×4.26, tmax 0.495 s, 0 errors → PASS.
+- promoted: evolution family champion + overall champion; agent_21.py = bot_075 (61 KB). Champion history now
+  … → bot_045 → bot_070 → bot_075. First overall champion from a non-search family since bot_021.
+- test.py (course script via experiment(), repeat 1, core 0): S1 7/7 wins 18.0 SC; S2 5/7 wins, 15.0 SC (7 games; runs clean).
+- test_21.py ablation defaults updated: ROLLOUT LA_CANDS VM_CANDS TWO_PLY CONVOYS FAST_RES CONFIRM ACC_GATE OPP_AWARE
+  (HALVING is dead code in the GA line). No GA on/off switch exists (the GA replaced the race in bot_065); an
+  ablation for the GA itself = compare with bot_070/bot_071 (same machinery, race instead of GA).
+
+- bot_078 results (appended after [100]): T1 A42 vs bot_075 +0.24±0.27. T2 B126 (004): S1 18.00 / S2 17.44±0.21 (92.9%) /
+  S3 16.61±0.34 (83.3%); S3 vs 040 15.84, vs 024 16.01. vs bot_075 (now champion): S2 +0.33±0.28, S3 +0.31±0.23,
+  pooled +0.25±0.15 (z 1.67 ≥ 1.5 → [040] extension); vs bot_070 +0.73±0.16. By stand-in vs 075: 004 +0.10,
+  024 +0.37, 040 +0.44. q53: B210 extension + held-out C (offset 400) vs bot_075.
+
+- bot_079 results (appended after [100]): T1 A42 vs bot_070 −0.04±0.25. T2 B126 (004): S1 18.00 / S2 17.58±0.18 (92.9%) /
+  S3 15.36±0.43 (71.4%). vs bot_070: S2 +0.60±0.27, S3 (378) +0.01±0.25, pooled +0.13±0.16 → REJECT. By power
+  (S2+S3, 72 each): ENG +0.43±0.64, ITA +0.68±0.67, TUR +0.11, FRA +0.17, GER +0.15, AUS −0.69±0.65, RUS +0.25.
+- takeaway: the stuck-army builds are real but rare; effect below what 630 games resolve. Candidate for a later stack
+  onto the champion together with other small fixes (backlog).
+
+## [101] Tournament (7 family champions, 112 games, offset 500) + family review — DONE
+
+- field: 075 evolution (champion), 070 search, 073 lookahead, 036 bandit, 040 archetype, 038 valuemap, 060 ensemble.
+- result: bot_075 8.96±0.73, bot_070 7.66±0.66, bot_073 5.82±0.69, bot_036 4.34±0.43, bot_040 2.53±0.41, bot_038 2.13±0.35,
+  bot_060 1.91±0.33 SC; 0 issues. New champion first in the all-bot table as well as vs baselines.
+- family review (iterations incl. 068–079): evolution ACTIVE (champion line; 078 extending); search ACTIVE (070, 2nd in
+  tournament); lookahead ACTIVE (073 family champion); adaptive DORMANT (069/074 opponent-support idea closed as noise);
+  archetype ACTIVE for sparring only; ensemble ACTIVE-sparring (est. 15 vs baselines but last among strong bots; no
+  further iterations planned); bandit, greedy, valuemap, positional stay DORMANT.
+
+- bot_078 extension (q53, appended after [101]): B210 S2 17.48±0.16 (92.9%) / S3 16.66±0.26 (84.8%); vs bot_075 S2
+  +0.31±0.21, S3 (462) +0.20±0.21, pooled +0.20±0.13 → REJECT. Held-out C (offset 400): S2 17.06 (87.3%) / S3 16.57
+  (84.1%); vs bot_075 pooled −0.00±0.26. → REJECTED; bot_075 stays champion.
+- takeaway: the wider pool adds nothing once the GA with confirmation is in place (candidate breadth saturated, as in
+  077). Remaining gaps between the top bots are below what 210 + 126 games resolve (≈ ±0.13–0.25).
+
+## [102] bot_080 evolution/stack — REJECTED (n.s.)
+
+- parent bot_075 | tags: build-choice-k-nearest, valuemap-rollout-score. Stack of two near-misses measured on other
+  parents: bot_079's build rule (+0.13±0.16 vs 070; S2 +0.60) and bot_076's valuemap rollout score (+0.24±0.17 vs
+  071). Different mechanisms (builds vs move scoring). Sanity: S2 100010 ENG 18, S3 15 ENG 18, S3 16 FRA 18; tmax 0.450 s.
+- plan: queue q54: T0, T1 A42 vs bot_075, T2 S1 B126 + S2/S3 B210 (004) vs bot_075, held-out C (offset 400) vs bot_075.
+- results: T0 clean (tmax 0.451 s, 181 MB serial). T1 A42 vs 075 +0.34±0.24. T2: S1 18.00 (100%); B210 S2 17.39±0.17
+  (92.4%) / S3 16.86±0.21 (84.8%); vs bot_075 S2 +0.22±0.21, S3 +0.16±0.29, pooled +0.14±0.14 → REJECT.
+  Held-out C: S2 17.49 (92.9%) / S3 16.45 (81.0%); vs 075 pooled +0.15±0.19. Combined ≈ +0.14±0.11 (n.s.).
+- timing note: one move of 0.715 s in held-out C S3 (all other runs ≤ 0.48 s) — likely the valuemap computation in
+  _rollout_select plus machine load; another reason not to promote without a stress re-check.
+- takeaway: the two small fixes do not add up to a measurable gain on top of the GA champion; bot_075 stays.
+
+## [103] bot_081 evolution/basicswitch (freeze prep: basic technique in the submitted file) — PROMOTED (identity)
+
+- parent bot_075 | tags: basic-greedy-switch. Spec rubric note [3]: the basic technique must be implemented in the
+  submitted code. Adds CONFIG BASIC_GREEDY (default False): movement phases play _la_candidates(...)[0], the pure
+  BFS-greedy no-self-bounce plan. Diff vs bot_075: the CONFIG key, the agent name and a 2-line early return — default
+  play is identical code. Sanity basic mode S1/S2/S3 seed 12 (Russia): 11/18/9 SC, tmax 2 ms; default S3 seed 12: 18.
+- plan: q55: T0 (default); basic mode B126 all scenarios (--set BASIC_GREEDY=true, tag basic) for the report's
+  basic-technique numbers from the submitted file; then promote bot_081 → agent_21.py by identity (no paired test:
+  default behaviour unchanged).
+
+## [104] Failure analysis of champion bot_075 → bot_082 evolution/antilead — REJECTED
+
+- bot_075 (1638 games): S2 AUS 14.9/74% is the one weak seat (ENG 81%, ITA 87%, others 96–100%); S3 AUS 13.1/62%,
+  ENG 71%, TUR 74%, ITA 79% (FRA 92%, RUS 97%). Austria S2 is bimodal: 40/54 wins, 14 games at 0–9 SC. Their SC
+  trajectories: mostly not early collapses but games that END when a greedy France (sometimes Germany/Russia)
+  snowballs to 18 while Austria grows slowly in the centre (e.g. C 300433: FRA 18 in 1907, AUS 4).
+- bot_082 (parent bot_081, tags anti-leader-score): once any opponent owns ≥ 10 SCs, rollout outcomes pay 0.5 per SC
+  the strongest opponent would own above 12 (ownership after Fall: occupant else previous owner) and 3.0 if it would
+  reach 18. Checks: term active in 14 phases from 1907 in S2 C 300433 (no activation in a 7-greedy test game to
+  1912); sanity S2 300433 AUS 5 (France still won: too far away), S2 200151 AUS 18; tmax 0.456 s; no errors.
+- plan: q56: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075 (same play as 081).
+
+- bot_081 results (appended after [104]): T0 default X3 clean (tmax 0.467 s, 184 MB serial). Basic mode
+  (BASIC_GREEDY=true) B126: S1 7.71±0.12 (0%), S2 10.80±0.48 (21.4%), S3 7.34±0.46 (8.7%, stand-in 004) → est. 5
+  (S1 1, S2 3, S3 1); tmax 0.042 s. (bot_001, the original greedy base without no-self-bounce: S1 6.14 / S2 7.43 /
+  S3 6.75, est. 2.)
+- promoted by identity: default play is bot_075's code path unchanged (diff = CONFIG key + name + inert early return),
+  so no paired test or new stress run (bot_075 stress PASS applies). agent_21.py = bot_081; evolution family and
+  overall champion records point at bot_081; bot_075's results remain the performance evidence.
+- test_21.py ablate accepts KEY=VAL (BASIC_GREEDY=true added to the default keys); smoke-tested n=1 S2: full 18 SC,
+  basic 6 SC, 0 issues. 20.7 KB.
+
+- bot_082 results (appended after [103]): T0 clean. T1 A42 vs 075 +0.18±0.27. T2: S1 18.00; B210 S2 17.39±0.17 (91.9%) /
+  S3 16.60±0.26 (81.4%); vs bot_075 S2 +0.21±0.21, S3 −0.11±0.31, pooled +0.04±0.14. Held-out C: S2 +0.17±0.21,
+  S3 −0.39±0.37, pooled −0.11±0.22 → REJECTED.
+- takeaway: penalising a runaway leader does not change results vs the baseline mix: when a greedy France snowballs,
+  Austria is usually too far away to act on it. Not tested in all-bot tables; left as an S4 idea only.
+
+## [105] Final S4 sparring evaluation of the champion (human request, 27 Sep) — DONE
+
+- champion bot_081 (plays as bot_075). (1) Style tournament, 112 games, rotating seats, offset 600: 081 evolution,
+  070 search, 073 lookahead, 038 valuemap, 012 greedy, 040 aggressive archetype, 036 bandit. (2) S3 B126 with each
+  other style as the Hidden Agent stand-in (run as bot_075, same play, so its 004/024/040 runs are reused): 070, 073,
+  038, 012, 036, 017, 060. Queue q57 (~4 h). Style bots keep their historical code (incl. the [090] map bug) so the
+  field matches [067]/[101]. Re-run only if the champion changes before the freeze.
+
+- [105] results. Style tournament (112 games, offset 600): bot_081 8.11±0.72, bot_070 7.78±0.68, bot_073 7.77±0.63,
+  bot_036 2.82±0.38, bot_012 2.39±0.38, bot_038 2.22±0.29, bot_040 2.16±0.35 SC. Champion first but within 1 SE of the
+  two other search-machinery bots; the rule-based styles are far behind (≈2–3 SC each) in all-bot tables.
+- issues: 1 timeout each for bot_073 (seed 500675) and bot_070 (seed 500674), both the Italy seat, t_max 1.89 / 1.78 s,
+  in consecutive seeds that ran concurrently on different workers → a machine-wide stall (WSL/host), not a bot bug;
+  champion 0 issues in 112 games. (Neither bot is submitted; noted as the one timing anomaly of the lab.)
+- champion S3 (B126, bot_075 play) with each style as the Hidden Agent: vs 017 positional 17.04 (87.3%), vs 004 16.70*
+  (84.8%, B210), vs 012 greedy 16.13 (80.2%), vs 038 valuemap 15.67 (75.4%), vs 036 bandit 15.44 (74.6%), vs 040
+  aggressive 15.40 (B126 from [094]), vs 024 lookahead 15.63 ([094]), vs 060 ensemble 14.92 (67.5%, tmax 0.534 s),
+  vs 070 search 14.16 (55.6%), vs 073 lookahead-widepool 13.46 (51.6%). All above the S3 5-pt lines (>12 SC / >40%).
+  Hardest Hidden Agents are our own strongest search bots — the real Hidden Agent (~50% S2 wins) is weaker than
+  070/073 (85–92% S2 wins), so the S3 mark has a wide margin.
+
+## [106] Tuning sweep on the champion's GA/confirm parameters — DONE (no change)
+
+- GA and confirmation parameters were set by hand in bot_059/065/075 and never tuned. --set variants of bot_075 (same
+  play as agent_21/bot_081) on B210 S2/S3 (stand-in 004), paired with bot_075: GA_SAMPLES=4 (2), CONFIRM_K=8 (5),
+  CONFIRM_T=0.12 (0.07), GA_POP=24 (16). Tuning, not a technique; a winner (z ≥ 2, confirmed on held-out C) becomes
+  a new bot file. Queue q58 (~3 h).
+
+- [106] results (B210 S2/S3 paired with bot_075): GA_SAMPLES=4 −0.07±0.18; CONFIRM_K=8 −0.02±0.20; CONFIRM_T=0.12
+  −0.03±0.18; GA_POP=24 −0.20±0.20 (S3 −0.55±0.32). None better → keep bot_075's hand-set values.
+- one game error in GA_POP=24 (S2 B 200175, our seat GERMANY): KeyError 'A MOS' raised in the BASELINE
+  AttitudeAgent.update_attitude (agent_baselines.py:125, `order_status[unit]`). Engine get_order_status(power) is
+  keyed by that power's units at the start of the phase, so the key is missing when some power's order list holds a
+  move for a unit it did not own at phase start (or the attitude agent's internal game differs). First and only such
+  error in 65,502 recorded games; our seat has 0 illegal orders over all of them; replay of the seed (timing-
+  dependent) did not reproduce. Not attributable to our bot from the evidence; noted as a baseline robustness issue.
+- lab/run_game.py: on any game error, the true game is now dumped (to_saved_game_format) to
+  results/logs/crash_<run>_<seed>.json for post-mortem (self-tested with a throwaway patched process). Harness-only
+  change; engine and baselines untouched.
+- HOLD (human request 29 Sep 03:54): no new evaluations until the human says they are done gaming.
+- HOLD lifted 2026-09-29 04:19:59 (human sent /loop).
+
+## [107] bot_083 evolution/oppplans — REJECTED
+
+- parent bot_081 | tags: opponent-plan-model. For 'strong' opponents, rollout samples play (p 0.6) one of the first 4
+  plans of our own _la_candidates generator built from that power's view (BFS-greedy no-self-bounce + perturbations
+  with supports), instead of independent per-unit sampling. Target: strong opponents (S3 vs 070/073 stand-ins
+  14.2/13.5 SC; tournament tie with 070/073). Check: vs 3× bot_070 + 3× bot_012, all six classified 'strong'; plan
+  sets built for ~4.6 opponents per phase; tmax 0.45 s.
+- plan: q59: T0; T1 A42; S3 B126 vs 070 and 073 (075 refs from [105]); T2 S1 B126 + S2/S3 B210; held-out C; all vs
+  bot_075; then the [105] tournament rerun with 083 in 081's seat (same seeds/seats → paired S4 comparison).
+
+- bot_083 results (appended): T0 clean; T1 A42 vs 075 +0.31±0.26 (S2 tmax 0.742 s). S3 B126 vs 070 13.89 (−0.27±0.45),
+  vs 073 13.45 (−0.01±0.52; tmax 0.988 s, 1 move > 0.9 s). T2: S1 18.00; B210 S2 17.30 (92.4%) / S3 16.73 (85.7%);
+  vs bot_075 pooled −0.00±0.14. Held-out C +0.25±0.23. Tournament rerun (offset 600, same seats): bot_083 6.74 SC,
+  3rd, vs bot_081's 8.11 in the same seats → paired −1.51±0.77.
+- takeaway: modelling strong opponents as playing our own greedy-plan generator does not help against them (they are
+  not greedy planners) and costs 20–40 ms per phase per strong opponent — the slowest moves of the lab (0.99 s)
+  come from that precompute in all-strong tables. REJECTED; the per-unit sampling mix is kept.
+
+## [108] Report evidence: GA vs race and the confirmation race on identical machinery — DONE
+
+- No switch turns the GA off inside agent_21, so its effect is measured between bots that differ only in selection:
+  bot_072 (GA) vs bot_071 (halving race) — same resolver, map fix, candidates, opponent model; and bot_075 (GA +
+  confirm) vs bot_072 (GA). q60: extend 072 to B210 (S2/S3), held-out C (offset 400) for 072 and 071, then paired
+  compares on B and C.
+
+- [108] results. bot_072 B210: S2 16.98±0.22 (87.6%) / S3 15.51±0.33 (72.9%); C: S2 17.21 / S3 16.09. bot_071 C: S2 17.50
+  (92.1%) / S3 16.01.
+  GA vs race (072 − 071): B S2/S3 +0.07±0.19 (672 paired), C −0.11±0.26 → no difference: the GA alone does not beat
+  the halving race on identical machinery.
+  Confirmation race (075 − 072): B +0.58±0.18 (S3 +0.76±0.24, wins 77.9% vs 70.8%), C +0.17±0.25 (S3 +0.37) → the
+  champion's gain over the race line comes from re-testing the GA's finalists on fresh samples (removing the
+  winner's-curse bias of newly bred plans), not from evolution itself.
+- implication: a confirmation step only helps a selector whose final pick has uneven, small sample counts (GA
+  children); the halving race's survivors already share many samples, so race+confirm would be a no-op (not built).
+- Loop stopped by the human 2026-09-29 07:32:01; no bots in progress. Freeze runs (results/logs/freeze_final.sh) to be launched later when the human is away from the PC.
