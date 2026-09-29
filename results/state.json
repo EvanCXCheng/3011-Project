@@ -760,9 +760,9 @@
    "created": "2026-09-29T10:05",
    "family": "evolution",
    "file": "bots/bot_085_evolution_fallply.py",
-   "note": "",
+   "note": "two-ply Fall: B +0.06\u00b10.13, C -0.09\u00b10.23 vs bot_075 (n.s.)",
    "parent": "bot_081",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "two-ply-fall"
   }
  },

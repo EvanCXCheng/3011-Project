@@ -949,3 +949,14 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260929-091130_bot_084_evolution_crn_tier2,2026-09-29T09:44,bot_084_evolution_crn,f5f96b52ff,tier2,B,3,bot_004_lookahead_base,210,0,0.8333,16.4857,0.2663,5,False,0.4751,0,98.2,0,0,0,0
 20260929-094454_bot_084_evolution_crn_heldout,2026-09-29T10:04,bot_084_evolution_crn,f5f96b52ff,heldout,C,2,,126,0,0.9127,17.4524,0.196,5,False,0.484,0,93.5,0,0,0,0
 20260929-094454_bot_084_evolution_crn_heldout,2026-09-29T10:04,bot_084_evolution_crn,f5f96b52ff,heldout,C,3,bot_004_lookahead_base,126,0,0.8175,16.5794,0.3016,5,False,0.486,0,97.9,0,0,0,0
+20260929-100657_bot_085_evolution_fallply_tier0,2026-09-29T10:08,bot_085_evolution_fallply,f164413082,tier0,X,1,,3,0,1.0,18.0,0.0,5,False,0.4577,0,202.9,0,0,0,0
+20260929-100657_bot_085_evolution_fallply_tier0,2026-09-29T10:08,bot_085_evolution_fallply,f164413082,tier0,X,2,,3,0,0.6667,16.3333,1.6667,5,True,0.4517,0,202.9,0,0,0,0
+20260929-100657_bot_085_evolution_fallply_tier0,2026-09-29T10:08,bot_085_evolution_fallply,f164413082,tier0,X,3,bot_073_lookahead_widepool,3,0,0.6667,14.0,4.0,5,True,0.4535,0,202.9,0,0,0,0
+20260929-100847_bot_085_evolution_fallply_tier1,2026-09-29T10:14,bot_085_evolution_fallply,f164413082,tier1,A,1,,42,0,1.0,18.0,0.0,5,False,0.4577,0,87.9,0,0,0,0
+20260929-100847_bot_085_evolution_fallply_tier1,2026-09-29T10:14,bot_085_evolution_fallply,f164413082,tier1,A,2,,42,0,0.9048,17.2381,0.4254,5,False,0.4788,0,93.6,0,0,0,0
+20260929-100847_bot_085_evolution_fallply_tier1,2026-09-29T10:14,bot_085_evolution_fallply,f164413082,tier1,A,3,bot_001_greedy_base,42,0,0.8571,16.881,0.5487,5,False,0.4712,0,93.3,0,0,0,0
+20260929-101439_bot_085_evolution_fallply_tier2,2026-09-29T10:18,bot_085_evolution_fallply,f164413082,tier2,B,1,,126,0,1.0,18.0,0.0,5,False,0.4691,0,88.4,0,0,0,0
+20260929-101845_bot_085_evolution_fallply_tier2,2026-09-29T10:52,bot_085_evolution_fallply,f164413082,tier2,B,2,,210,0,0.9,17.2333,0.1861,5,False,0.4597,0,95.3,0,0,0,0
+20260929-101845_bot_085_evolution_fallply_tier2,2026-09-29T10:52,bot_085_evolution_fallply,f164413082,tier2,B,3,bot_004_lookahead_base,210,0,0.8381,16.8095,0.2287,5,False,0.4741,0,98.6,0,0,0,0
+20260929-105250_bot_085_evolution_fallply_heldout,2026-09-29T11:12,bot_085_evolution_fallply,f164413082,heldout,C,2,,126,0,0.881,16.9048,0.3128,5,False,0.4703,0,93.2,0,0,0,0
+20260929-105250_bot_085_evolution_fallply_heldout,2026-09-29T11:12,bot_085_evolution_fallply,f164413082,heldout,C,3,bot_004_lookahead_base,126,0,0.8333,16.5556,0.3348,5,False,0.4681,0,98.2,0,0,0,0
