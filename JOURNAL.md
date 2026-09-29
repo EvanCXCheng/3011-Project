@@ -1467,3 +1467,12 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - implication: a confirmation step only helps a selector whose final pick has uneven, small sample counts (GA
   children); the halving race's survivors already share many samples, so race+confirm would be a no-op (not built).
 - Loop stopped by the human 2026-09-29 07:32:01; no bots in progress. Freeze runs (results/logs/freeze_final.sh) to be launched later when the human is away from the PC.
+- Loop resumed by the human (downtime, not enough for the freeze runs).
+
+## [109] bot_084 evolution/crn — RUNNING
+
+- parent bot_081 | tags: common-random-numbers-ga. From [108] (the gain is the confirmation race = removing unequal-
+  sample ranking bias): every GA plan is scored on the same bank of 12 opponent samples drawn once per move before it
+  can be ranked; fresh-sample confirmation kept. Instrumented (France vs six bot_040s): 40.6 generations/phase, 11.4
+  fully scored plans at the end, 147 confirmation rounds/phase, tmax 0.45 s. Sanity S2/S3 seed 19 → 18/18.
+- plan: q61: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075 (= agent_21 play).

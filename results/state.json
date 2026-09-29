@@ -746,6 +746,15 @@
    "parent": "bot_081",
    "status": "REJECTED",
    "tags": "opponent-plan-model"
+  },
+  "bot_084": {
+   "created": "2026-09-29T08:59",
+   "family": "evolution",
+   "file": "bots/bot_084_evolution_crn.py",
+   "note": "",
+   "parent": "bot_081",
+   "status": "RUNNING",
+   "tags": "common-random-numbers-ga"
   }
  },
  "families": {
@@ -775,7 +784,7 @@
   },
   "evolution": {
    "champion": "bot_081",
-   "iterations": 12,
+   "iterations": 13,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -823,7 +832,7 @@
   "bot_038",
   "bot_075"
  ],
- "next_bot_id": 84,
+ "next_bot_id": 85,
  "overall_champions": [
   {
    "bot": "bot_001",
