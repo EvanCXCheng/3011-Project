@@ -1546,7 +1546,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   on both seed sets, S3 side). Decision: keep 0.45 (slowest champion move over 74k moves 0.534 s; stress 0.495 s at
   ×4.3 slowdown) — the extra ≈0.05 s margin is not worth a likely small S3 cost.
 
-## [115] bot_089 evolution/rival — RUNNING
+## [115] bot_089 evolution/rival — REJECTED
 
 - Non-win breakdown for bot_075 (S2 381 / S3 1515 games): another power won 6.3% / 21.3%; near-miss (≥14 SC, no
   winner) 1.0% / 1.5%; low with no winner 1.8% / 3.2% → the main loss mode is a rival (mostly the Hidden Agent) winning.
@@ -1554,3 +1554,13 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   turn's leading opponent would own after the rollout (always on, unlike bot_082's > 12 threshold). Term runs (28,527
   evaluations, Italy vs six GreedyAgents to 1904). Sanity S3 15 / S3 16 / S2 17 → 18 / 12 / 18, tmax 0.451 s.
 - plan: q67: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075.
+
+- bot_089 results: B210 S2 17.30 (92.4%) / S3 16.24 (77.6%); vs 075 S2 +0.13, S3 −0.46±0.31, pooled −0.13±0.15. C: S2 17.37 /
+  S3 16.11; pooled −0.08±0.23 → REJECTED.
+
+## [116] Replicate of the champion (noise floor / selection bias) — RUNNING
+
+- Observation: nearly every challenger since bot_075 is "worse in S3" vs bot_075 on B (−0.13 … −0.65), yet on held-out C
+  all of them score 16.1–16.6 SC in S3 like bot_075 (16.45). bot_075's B S3 (16.70, 84.8%) is the best S3 of any bot
+  and was part of what selected it → likely a lucky draw (selection effect). Measure directly: re-run bot_075 with an
+  inert override (R_W_SC=1.0 = default) on B210 S2/S3 and C126, paired with the original bot_075 runs.

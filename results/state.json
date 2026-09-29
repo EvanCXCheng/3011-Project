@@ -796,9 +796,9 @@
    "created": "2026-09-29T20:12",
    "family": "evolution",
    "file": "bots/bot_089_evolution_rival.py",
-   "note": "",
+   "note": "rival-relative score: B -0.13\u00b10.15 (S3 -0.46), C -0.08\u00b10.23",
    "parent": "bot_081",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "relative-rival-score"
   }
  },
