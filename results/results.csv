@@ -1008,3 +1008,7 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260929-202455_bot_089_evolution_rival_tier2,2026-09-29T20:58,bot_089_evolution_rival,f78d2e54eb,tier2,B,3,bot_004_lookahead_base,210,0,0.7762,16.2429,0.2676,5,False,0.4824,0,98.7,0,0,0,0
 20260929-205840_bot_089_evolution_rival_heldout,2026-09-29T21:17,bot_089_evolution_rival,f78d2e54eb,heldout,C,2,,126,0,0.9127,17.373,0.2164,5,False,0.4769,0,93.6,0,0,0,0
 20260929-205840_bot_089_evolution_rival_heldout,2026-09-29T21:17,bot_089_evolution_rival,f78d2e54eb,heldout,C,3,bot_004_lookahead_base,126,0,0.7698,16.1111,0.3533,5,False,0.4872,0,98.2,0,0,0,0
+20260929-211908_bot_075_evolution_confirm_replicate,2026-09-29T21:51,bot_075_evolution_confirm[R_W_SC=1.0],fc62a7b21c,replicate,B,2,,210,0,0.8952,17.119,0.2111,5,False,0.4978,0,94.4,0,0,0,0
+20260929-211908_bot_075_evolution_confirm_replicate,2026-09-29T21:51,bot_075_evolution_confirm[R_W_SC=1.0],fc62a7b21c,replicate,B,3,bot_004_lookahead_base,210,0,0.8048,16.2048,0.2858,5,False,0.4772,0,98.1,0,0,0,0
+20260929-215142_bot_075_evolution_confirm_replicate,2026-09-29T22:11,bot_075_evolution_confirm[R_W_SC=1.0],fc62a7b21c,replicate,C,2,,126,0,0.873,17.0873,0.2552,5,False,0.4766,0,95.6,0,0,0,0
+20260929-215142_bot_075_evolution_confirm_replicate,2026-09-29T22:11,bot_075_evolution_confirm[R_W_SC=1.0],fc62a7b21c,replicate,C,3,bot_004_lookahead_base,126,0,0.8254,16.3968,0.3617,5,False,0.4761,0,98.3,0,0,0,0

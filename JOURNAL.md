@@ -1558,9 +1558,28 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - bot_089 results: B210 S2 17.30 (92.4%) / S3 16.24 (77.6%); vs 075 S2 +0.13, S3 −0.46±0.31, pooled −0.13±0.15. C: S2 17.37 /
   S3 16.11; pooled −0.08±0.23 → REJECTED.
 
-## [116] Replicate of the champion (noise floor / selection bias) — RUNNING
+## [116] Replicate of the champion (noise floor / selection bias) — DONE
 
 - Observation: nearly every challenger since bot_075 is "worse in S3" vs bot_075 on B (−0.13 … −0.65), yet on held-out C
   all of them score 16.1–16.6 SC in S3 like bot_075 (16.45). bot_075's B S3 (16.70, 84.8%) is the best S3 of any bot
   and was part of what selected it → likely a lucky draw (selection effect). Measure directly: re-run bot_075 with an
   inert override (R_W_SC=1.0 = default) on B210 S2/S3 and C126, paired with the original bot_075 runs.
+- results: replicate B210 S2 17.12 (89.5%) / S3 16.20 (80.5%) vs original 17.17 / 16.70 → S2 −0.05±0.24, S3 −0.50±0.32,
+  pooled −0.28±0.20 with IDENTICAL code. Replicate C126 S2 17.09 / S3 16.40 vs 17.19 / 16.45 → pooled −0.08±0.25.
+- conclusions: (1) run-to-run noise of identical code reaches −0.5 SC in one scenario on 210 paired games (≈1.6 SE);
+  (2) bot_075's original B S3 was a high draw (true B S3 ≈ 16.2–16.5), so bots 076–089 compared against it were
+  biased by about −0.25 SC pooled — their "S3 worse" pattern is mostly this artefact, i.e. they are ≈ equal to the
+  champion, not worse; none is better either; (3) bot_075's promotion over bot_070 (+0.59 B) is partly the same luck;
+  the unbiased read is held-out C (+0.10±0.22) plus the tournaments ([101] 8.96 vs 7.66, [105] 8.11 vs 7.78): bot_075
+  is at least equal to bot_070, so agent_21 stays. For the report: a selection effect on the seed set used for
+  promotion, visible only through held-out seeds and replicates.
+- next: re-score the post-075 challengers against the mean of both champion runs (pending: shell check failing).
+
+## [117] FREEZE (human request, Wed 30 Sep 00:48 AWST) — RUNNING
+
+- Freeze started early at the human's request (planned Thu 1 Oct 12:00). No new bots. Final agent: agent_21.py =
+  bot_081 (plays as bot_075). bot_089 status recorded (REJECTED).
+- Freeze runs launched: results/logs/freeze_final.sh → FINAL 504/scenario (S3 stand-in bot_004), then 10 ablations at
+  210/scenario on the same FINAL seeds: BASIC_GREEDY=true, ROLLOUT, CONFIRM, TWO_PLY, ACC_GATE, OPP_AWARE, FAST_RES,
+  LA_CANDS, VM_CANDS, CONVOYS = false. Est. 10–11 h. Remaining freeze tasks afterwards: test_21.py final check,
+  LLM_PROMPTS.md export, agent_21.py size/imports/test.py check.

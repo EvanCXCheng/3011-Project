@@ -376,6 +376,8 @@ Every session, including one started after usage ran out:
 
 ## Freeze
 
+**Freeze started early by the human: Wed 30 Sep 2026, 00:48 AWST.** No new bots from here on; only the freeze tasks below.
+
 From **Thu 1 Oct 2026, 12:00 pm AWST**, stop generating new bots. Only do these:
 
 - Run the final evaluation of the overall champion: `--seedset FINAL --n 504` (72 per power).
