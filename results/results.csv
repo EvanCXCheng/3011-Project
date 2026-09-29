@@ -993,3 +993,7 @@ run_id,date,bot,bot_hash,tag,seedset,scenario,standin,n,n_errors,win_rate,mean_s
 20260929-182939_bot_088_adaptive_greedyonly_tier2,2026-09-29T19:02,bot_088_adaptive_greedyonly,3b11470490,tier2,B,3,bot_004_lookahead_base,210,0,0.781,16.0524,0.2879,5,False,0.4694,0,97.9,0,0,0,0
 20260929-190209_bot_088_adaptive_greedyonly_heldout,2026-09-29T19:20,bot_088_adaptive_greedyonly,3b11470490,heldout,C,2,,126,0,0.8968,17.2698,0.2338,5,False,0.4799,0,93.7,0,0,0,0
 20260929-190209_bot_088_adaptive_greedyonly_heldout,2026-09-29T19:20,bot_088_adaptive_greedyonly,3b11470490,heldout,C,3,bot_004_lookahead_base,126,0,0.754,15.5873,0.4321,5,False,0.4865,0,97.1,0,0,0,0
+20260929-192159_bot_075_evolution_confirm_tuning,2026-09-29T19:52,bot_075_evolution_confirm[TIME_BUDGET=0.4],fc62a7b21c,tuning,B,2,,210,0,0.8905,17.2048,0.1907,5,False,0.4323,0,95.1,0,0,0,0
+20260929-192159_bot_075_evolution_confirm_tuning,2026-09-29T19:52,bot_075_evolution_confirm[TIME_BUDGET=0.4],fc62a7b21c,tuning,B,3,bot_004_lookahead_base,210,0,0.8095,16.419,0.2644,5,False,0.4375,0,98.6,0,0,0,0
+20260929-195242_bot_075_evolution_confirm_tuning,2026-09-29T20:10,bot_075_evolution_confirm[TIME_BUDGET=0.4],fc62a7b21c,tuning,C,2,,126,0,0.8968,17.1587,0.2639,5,False,0.4302,0,94.0,0,0,0,0
+20260929-195242_bot_075_evolution_confirm_tuning,2026-09-29T20:10,bot_075_evolution_confirm[TIME_BUDGET=0.4],fc62a7b21c,tuning,C,3,bot_004_lookahead_base,126,0,0.8095,16.2381,0.3784,5,False,0.4274,0,98.3,0,0,0,0
