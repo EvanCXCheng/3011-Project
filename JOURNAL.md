@@ -1511,7 +1511,7 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   challenger since bot_075 at or below noise level. Loop stopped by the human after this bot; freeze runs not started.
 - Loop resumed by the human (29 Sep).
 
-## [112] bot_087 adaptive/greedyemu — RUNNING
+## [112] bot_087 adaptive/greedyemu — REJECTED (n.s.)
 
 - parent bot_081 | tags: greedy-emulation-model. Rollout opponent model fixed against the Greedy baseline's
   documented behaviour (spec text; baseline code read, not copied): (1) a unit on an SC its power does not own was
@@ -1520,3 +1520,9 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   move + support of it (if legal; else hold). Instrumented (Austria vs six baseline GreedyAgents to 1905): 13,264
   holds-on-target (previously random), 2,431 same-target supports, 49,514 greedy moves. Sanity S2 7 / S3 14 → 18/18.
 - plan: q64: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075.
+
+- bot_087 results: B210 S2 17.35 (92.4%) / S3 16.57 (82.9%); vs 075 S2 +0.18±0.21, S3 −0.13±0.29, pooled +0.02±0.14.
+  Held-out C: S2 17.42 / S3 16.18; vs 075 S2 +0.23±0.27, S3 −0.27±0.29, pooled −0.02±0.20 → REJECTED.
+- pattern: S2 (baseline mix) slightly positive on both seed sets (≈ +0.20±0.17 combined), S3 slightly negative. The
+  hold-on-target change applies to every class, incl. the S3 stand-in; a greedy-class-only variant might keep the S2
+  part — expected pooled effect ≈ +0.1, below what the lab can resolve.

@@ -778,9 +778,9 @@
    "created": "2026-09-29T17:12",
    "family": "adaptive",
    "file": "bots/bot_087_adaptive_greedyemu.py",
-   "note": "",
+   "note": "greedy emulation: B +0.02\u00b10.14 (S2 +0.18, S3 -0.13), C -0.02\u00b10.20 (S2 +0.23, S3 -0.27)",
    "parent": "bot_081",
-   "status": "RUNNING",
+   "status": "REJECTED",
    "tags": "greedy-emulation-model"
   }
  },
