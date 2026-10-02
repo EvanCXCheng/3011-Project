@@ -1,97 +1,36 @@
-"""bot_090 — family: evolution — parent: bot_081 (= bot_075 play)
+"""Group 21 Diplomacy agent (CITS3011, 2026).
 
-Change vs bot_081: none in default play. The basic-technique switch now selects the hill-climbing search baseline
-instead of the BFS-greedy plan (human request, 2 Oct): BASIC_GREEDY is removed and BASIC_SEARCH (default False) added.
-BASIC_SEARCH=True plays the basic technique alone: local search (hill climbing with random restarts) over our joint
-orders, scored by the heuristic evaluation with the raw-adjacency threat model, i.e. it sets ROLLOUT, OPP_AWARE and
-ACC_GATE to False (no simulation/GA, no opponent classes). The spec (rubric note [3]) requires the basic technique to
-be implemented in the submitted code; this lets it be evaluated from agent_21.py (--set BASIC_SEARCH=true).
+How it plays a movement phase (time budget TIME_BUDGET = 0.45 s per call):
 
-bot_075 notes:
-bot_075 — family: evolution — parent: bot_072
+1. Opponent model. Every opponent's past orders are compared with a greedy prediction (each unit steps towards its
+   power's nearest unowned supply centre). Each power is classed as static (>= 95% holds), greedy (prediction hit
+   rate >= ACC_GREEDY), strong (between ACC_STRONG and ACC_GREEDY), erratic (below ACC_STRONG) or unknown (too few
+   observations). The class sets how its units are expected to hold, move and threaten.
+2. Hill climbing (SEARCH_BUDGET). Local search over our joint orders (one order per unit), starting from all units
+   holding, with random restarts. Plans are scored by a fast heuristic: the value of each unit's resulting position
+   (bonus for an unowned supply centre, penalty per step to the nearest one), the success probability of each move
+   (supports, enemy occupants and competition predicted by the opponent model), and a penalty for leaving a
+   threatened own supply centre uncovered.
+3. Candidate plans: the TOP_K best hill-climbing optima, the BFS-greedy plan with random variations (LA_CANDS),
+   convoy plans (CONVOYS), and a value-map plan (VM_CANDS: province values spread over the map, an idea from
+   DumbBot by David Norman, implemented independently here).
+4. Simulation (ROLLOUT). A plan is tested by playing the turn against opponent orders sampled from each power's
+   class, using an own movement resolver (FAST_RES) that reproduces the engine's adjudication. In Spring the
+   simulation continues with a greedy Fall reply by every power (TWO_PLY). Outcome score: supply centres owned
+   + 0.6 per unit - 0.05 per step from our units to their nearest unowned supply centre.
+5. Genetic algorithm. The candidates form the starting population and a plan's genes are its unit orders. Each
+   generation every plan meets the same fresh opponent samples (GA_SAMPLES); the better half survives and children
+   are bred by uniform crossover with GA_MUT mutation until GA_POP plans. Children whose supports or convoys no
+   longer match a move are repaired to holds.
+6. Confirmation race (CONFIRM). CONFIRM_T before the budget ends, the CONFIRM_K best plans are re-tested on new
+   opponent samples and the best fresh average is played, so a plan that only looked best by luck is not chosen.
 
-Change vs bot_072 (one idea): evolve, then confirm. The GA stops CONFIRM_T early; its CONFIRM_K best plans (by mean
-fitness) then race on fresh opponent samples, and the best fresh mean is played. Newly bred plans have few samples,
-so the GA's best-by-mean is biased toward lucky plans (winner's curse); the fresh race removes that bias. With the
-resolver a 0.07 s race gives each finalist ~200 fresh rollouts. CONFIRM False = bot_072.
+Retreats move towards the nearest unowned supply centre (or disband). Builds use the unit type closest to an
+unowned supply centre at each home centre; disbands remove the unit farthest from any target.
 
-bot_072 notes:
-bot_072 — family: evolution — parent: bot_065
-
-Change vs bot_065 (one infrastructure change, from bot_070/071): the GA's fitness rollouts run on the own movement
-resolver instead of engine copies (FAST_RES; ~x34 rollouts per move), with the split-coast army adjacency fix the
-resolver needs ([090]). bot_065 managed only a few generations of 2 opponent samples each in 0.45 s; the hypothesis is
-that the GA gains more from cheap rollouts than the halving race (bot_071), because it can breed and re-test many
-more generations. FAST_RES False = bot_065 + map fix.
-
-bot_065 notes:
-bot_065 — family: evolution — parent: bot_045 (code base) / bot_062 (idea)
-
-Change vs bot_045 (one idea): the halving race is replaced by a genetic algorithm over bot_045's candidate pool.
-bot_062 showed a GA is only competitive with good seeds; bot_045's pool (hill-climbing optima, lookahead candidates,
-valuemap plan, convoys) is the best seed set we have. Genes = each unit's orders appearing in any pool plan (+ hold);
-each generation all plans meet the same fresh opponent samples (two-ply in Spring, as bot_045), the better half
-survives, the rest is refilled by uniform crossover + mutation with support/convoy repair; best mean is played.
-
-bot_045 notes:
-
-Change vs bot_029 (one idea, stacking two measured near-misses against the champion bot_022): adds bot_035's valuemap
-candidate (bot_014's joint order) to bot_029's race (two-ply Spring rollouts + convoy candidates). Each was about
-+0.3 SC vs bot_022 at 210 games (029 +0.33±0.20, 035 +0.30±0.17) and they target different weaknesses (Spring
-evaluation / England / candidate diversity); this tests whether the gains add up.
-
-bot_029 notes (parent):
-
-Change vs bot_028: adds bot_026's convoy candidates (both ideas measured separately against bot_022: two-ply
-+0.30±0.19, convoys +0.26±0.21; they target different weaknesses, so this tests whether they add up).
-
-bot_028 change vs bot_022: two-ply rollouts in Spring. After the simulated Spring move, every power plays a cheap
-Fall reply (each unit steps to the neighbour closest to its power's nearest unowned SC; static powers hold;
-dislodged units disband), and the rollout is scored on SC ownership after Fall, when ownership actually changes.
-bot_022 scored Spring positions with a heuristic (occupied SCs x 0.5). Fall phases stay one-ply. Costs roughly
-2x per rollout, so fewer samples per candidate.
-
-bot_022 notes (parent):
-
-Change vs bot_020 (one idea, a hybrid): a mixed candidate pool raced by successive halving. The pool is bot_020's
-top local optima from heuristic hill climbing (SEARCH_BUDGET 0.15 s) plus bot_021-style lookahead candidates (a
-greedy distance-based joint order and random perturbations with supports of our own moves). The pool is raced
-with common opponent samples, dropping the worse half every HALVE_EVERY rounds (bot_021's allocation).
-Motivation: bot_020 (S3 +1.71 vs bot_007) and bot_021 (S2 69% wins) each improve a different scenario.
-
-bot_020 notes (parent):
-
-Change vs bot_016 (one idea): rollout selection. The hill climbing (now given SEARCH_BUDGET of the time) keeps every
-distinct local optimum it reaches; the TOP_K best by heuristic value are then compared by one-move simulations on a
-history-free copy of the position against opponent orders sampled from each power's class (static hold, greedy
-greedy move, strong/erratic/unknown mixes), and the best mean simulated outcome is played. The heuristic evaluation
-proposes, the engine decides.
-
-bot_016 notes (parent):
-
-Change vs bot_008 (one idea): prediction-accuracy gating. For every opponent we also score how often its units did
-what our greedy prediction said (move to one of the predicted best neighbours, or hold when none is better). After the
-static check, the hit rate alone classifies: >= ACC_GREEDY greedy (the Greedy baseline scores 1.0), >= ACC_STRONG
-'strong', else erratic (Random/Attitude score 0.1-0.24). In a sample S3 game the lookahead stand-in scored 0.64 with
-79% target-seeking moves, so bot_008 called it erratic and assumed its units rarely stay put, making unsupported
-attacks on it look good. A 'strong' power is treated worst-case like bot_003: every province it can reach counts as a full
-threat and its units are assumed to hold (hold prob STRONG_HOLD). Static/greedy/erratic powers keep bot_008's model.
-Motivation: bot_008 gained +6.2 SC in S1 but lost 1.2 SC in S3 against the lookahead stand-in.
-
-bot_008 change vs bot_003: the evaluation uses predicted enemy behaviour instead of raw adjacency. Each opponent is
-classified from its order history (static / greedy / erratic / unknown) and each enemy unit gets a hold probability
-and move probabilities. Contest counts become expected enemy entries (threat), moves into occupied provinces use
-the occupant's hold probability, and cut-support and home-SC threat use the same threat map. Static units then no
-longer block or threaten anything, which is what stalls bot_003 in Scenario 1.
-
-Parent hypothesis: local search over our joint order set (moves, holds and supports to our own units) scored by a
-heuristic evaluation finds coordinated orders (supported attacks, no self-bounces, covered home SCs) that per-unit
-greedy rules miss. The evaluation estimates, for each move, a success probability from our attack strength
-(1 + valid supports), whether the destination is occupied, and how many enemy units could contest it. It then
-scores expected unit positions (unowned SC captured, distance to the nearest unowned SC) and penalises own SCs left
-open to adjacent enemies. Search: coordinate-ascent hill climbing with random restarts until the time budget.
-
-Technique tags: local-search, hill-climbing, heuristic-eval, opponent-aware-eval, prediction-accuracy-gating, rollout-selection, hybrid-candidate-race, two-ply-spring, convoy-candidates, multi-source-candidates, genetic-algorithm
+Every technique can be switched off in CONFIG (ROLLOUT, OPP_AWARE, ACC_GATE, LA_CANDS, CONVOYS, VM_CANDS, TWO_PLY,
+FAST_RES, CONFIRM). BASIC_SEARCH = True plays only the basic technique: hill climbing with the plain adjacency
+heuristic, without simulation or the opponent model. Any internal error falls back to safe orders.
 """
 import copy
 import random
@@ -105,16 +44,16 @@ from agent_baselines import Agent
 
 CONFIG = {
     'TIME_BUDGET': 0.45,     # s per movement phase: search + rollouts (whole call stays well under 0.6 s)
-    'ROLLOUT': True,         # False = bot_016 behaviour (search only, 0.40 s)
-    'SEARCH_BUDGET': 0.15,   # s of hill climbing when ROLLOUT is on (bot_020: 0.20)
-    'TOP_K': 8,              # local optima entered into the race (bot_020: 6)
-    'LA_CANDS': True,        # add lookahead-style candidates (False + HALVING False ~ bot_020)
-    'N_LA': 12,              # lookahead-style candidates (greedy + perturbations)
+    'ROLLOUT': True,         # False = play the best hill-climbing plan (no simulation or GA; 0.40 s search)
+    'SEARCH_BUDGET': 0.15,   # s of hill climbing when ROLLOUT is on
+    'TOP_K': 8,              # best hill-climbing optima entered into the candidate pool
+    'LA_CANDS': True,        # add the BFS-greedy plan and random variations of it
+    'N_LA': 12,              # greedy-based candidates (greedy plan + random variations)
     'P_PERTURB': 0.3, 'P_SUPPORT': 0.5,
     'HALVING': True, 'HALVE_EVERY': 3, 'MIN_ALIVE': 3,
     'TWO_PLY': True,         # False = no two-ply Spring rollouts
     'CONVOYS': True,         # False = no convoy candidates
-    'VM_CANDS': True,        # False = bot_029 (no valuemap candidate)
+    'VM_CANDS': True,        # add the value-map candidate plan
     'GA_POP': 16, 'GA_SAMPLES': 2, 'GA_MUT': 0.1,
     'W_NEUTRAL': 10.0, 'W_ENEMY': 7.0, 'W_DEFEND': 5.0, 'DIFF_ITERS': 6, 'DIFF_MAX': 0.6, 'DIFF_SUM': 0.05,
     'SUPPORTS': True, 'STRENGTH': True, 'OCC_FACTOR': 0.15, 'COMP': 0.0,
@@ -132,19 +71,19 @@ CONFIG = {
     'P_COMP_1': 0.65,        # per contesting enemy unit, unsupported move
     'P_COMP_2': 0.90,        # per contesting enemy unit, supported move
     'CUT_FACTOR': 0.6,       # support value when the supporter is adjacent to an enemy unit
-    'OPP_AWARE': True,       # False = bot_003's adjacency-count evaluation
+    'OPP_AWARE': True,       # False = plain adjacency threat count (every adjacent enemy unit is a full threat)
     'P_HOLDER_1': 0.0,       # unsupported move into a province whose occupant stays
     'P_HOLDER_2': 0.95,      # supported (>=2) move into a province whose occupant stays
     'THREAT_MIN': 0.1,       # own SC counts as threatened above this expected number of enemy entries
     'STATIC_HOLD_FRAC': 0.95,
     'GREEDY_TOWARD_FRAC': 0.8,
     'MIN_OBS': 2,
-    'FAST_RES': True,        # False = bot_065 + map fix (engine copies for rollouts)
-    'CONFIRM': True,         # False = bot_072 (play the GA's best mean)
+    'FAST_RES': True,        # False = simulate with engine copies instead of the own resolver
+    'CONFIRM': True,         # False = play the GA's best mean without the confirmation race
     'CONFIRM_T': 0.07,       # s reserved at the end of TIME_BUDGET for the confirmation race
     'CONFIRM_K': 5,          # GA plans that enter the confirmation race
     'BASIC_SEARCH': False,   # True = play only the basic technique (hill-climbing search, no rollouts/opponent model)
-    'ACC_GATE': True,        # False = bot_008 behaviour
+    'ACC_GATE': True,        # False = no prediction-accuracy classes (no 'strong' class)
     'ACC_GREEDY': 0.85,      # greedy-prediction hit rate at or above which a power is 'greedy'
     'ACC_STRONG': 0.4,       # hit rate at or above which (and below ACC_GREEDY) a power is 'strong'
     'STRONG_HOLD': 0.85,     # hold probability assumed for units of a 'strong' power
@@ -483,7 +422,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_090_evolution_basicsearch'):
+    def __init__(self, agent_name='agent_21'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -1150,7 +1089,7 @@ class StudentAgent(Agent):
         cand_orders.append(best)
         return len(cand_orders) - 1
 
-    # valuemap candidate generator (ported from bot_014)
+    # value-map candidate generator (idea from DumbBot, independent implementation)
     def _vm_value_map(self):
         """values[t][loc] for t in 'A','F'."""
         info = self.info
