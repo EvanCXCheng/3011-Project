@@ -9,9 +9,9 @@
 \maketitle                         
 
 \section{Basic Technique}
-Our basic technique is a search algorithm over orders to find the best moves for our units. It finds each possible move for each unit, and then performs hill climbing, starting with all uints holding 
+Our basic technique is a search algorithm over orders to find the best moves for our units. It finds each possible move for each unit, and then performs hill climbing, starting with all units holding 
 and repeatedly changing a unit's order if it improves the score.
-That score is heuristically calculated based on the probability of it succeeding (actually taking a space), and the value of that space, increased based on distance to a supply center and then more so for holding or taking a supply center.
+That score is heuristically calculated based on the probability of it succeeding (actually taking a space), and the value of that space, increased based on proximity to a supply center and then more so for holding or taking a supply center.
 We chose this algorithm as a starting point because we wanted to consider our units as a joint force, instead of greedily sending them towards supply centers in attacks that could fail or moves that could weaken our defensive position. 
 The hill climbing search method is an efficient way of achieving this, and is also very good at working within a time limit as we can stop whenever and have a decent solution.
 
@@ -30,25 +30,27 @@ Our first improvement was directly intended to solve the problem we ran into abo
 more reliably work against them (just like in real life games). 
 
 It could be quite easy to determine which agents are static, random, attitude, and greedy from scenarios 1 and 2 as we have the code for those, but this would generalise very poorly against both the hidden agent and our peers' agents. 
-Instead, we decided to try and estimate opposing agents as either greedy (moving optimally towards supply centers), static (always holding), erratic (relatively random or attitude based moves), and strong, 
-an estimate for agents that look towards supply centers in a way that is more successful than typical greedy.
-All of these checks are typically less expensive than our current search algorithm, so we can afford to do them for each opposing agent. 
+Instead, we decided to try and estimate opposing agents as either greedy (moving optimally towards supply centers), static (always holding), erratic (relatively random or attitude based moves), and strong, an estimate for agents that move
+purposefully, but not predictably. This is defined by agents that are greedy 40-85% of the time, which was found empirically through testing agents, as one of our own strong planning agents matched this schema (with an earlier agent of ours
+being greedy 64\% of the time). 
+All of these checks are typically less expensive than our basic search algorithm, so we can afford to do them for each opposing agent. 
 
 We can use these estimates of our opponents to change the expected probability of their moves, and now we can suggest that a particularly strong agent is very likely to defend optimally, so attacking with insufficient support is a poor idea, 
-while static agents will never provide support so we can attack them where the previous agent would be too cautious. 
+while static agents will never provide support so we can attack them where the previous agent would be too cautious. Additionally, they would never attack us, which removed the need to defend against them. 
 This agent improved greatly in scenario 1, achieving a consistent 18 supply centers and jumping to an 100\% winrate. However, it achieved relatively similarly in supply centers and winrate to the previous agent in scenario 2, 
 perhaps because we were already performing about as well against opposing agents, but this also could be due to misclassification of the random or attitude agents, and the element of randomness in scenario 2, 
 as in some runs of the test it was slightly worse, and in others it improved, achieving a 14.14 (varying by 4.93) supply centers with a 54\% winrate in one of the samples.
-Maybe it will be a more consistent trick against the hidden and peer agents, which are more likely to be strong, 
+Notably, our first iteration of this strategy did not consider the strong opponent category, and our simulations of scenario 3, where we used one of our own planning bots as a stand-in for the hidden agent, became worse by -1.23 supply centres
+on average (with an average count of 9.95 centres). Because the stronger bot did not cleanly fit into being static or greedy, it was classified as erratic, leading our bot to make inaccurate predictions assuming randomness from the bot. The addition of the strong agent type rectified this, bringing back the performance in this S3 simulation to 11.42 supply centres on average.
 
 \underline{2: Top-k hill climbselection}
 
-Initially, the search process was to run separate restarting hill climbs, and then take the best orders found. As checking the actual likelihood of each move succeeding, espeically against now measured opponents, is quite expensive it is unrealistic to
-do this during the rollouts, as that will be too expensive, so it is done at the end. However, in some cases this means that the final approach we landed on is seriously impacted, and was in fact not the best choice due to the unknowns of the situation.
-It could easily have been the case that one of the runner-up approaches would have fared much better, but was lost as we only took the best approach. The solution is a top-k hill climb selection (we landed on k=6) by keeping the six highest paths,
-and then checking each of them against the actual probabilities at the end to avoid completely losing some of these potentially optimal approaches.
+Initially, the search process was to run separate restarting hill climbs, and then take the best orders found. As checking the actual likelihood of each move succeeding, especially against now measured opponents, must be done many times in hill climbing, we required a
+fast heuristic to be able to calculate many prospective moves. However, a quickly computed heuristic can be inaccurate, especially in choosing the best from a set of good plans.
+It could easily have been the case that one of the runner-up approaches would have fared much better, but was lost as we only took heuristically best. The solution is a top-k hill climb selection (we landed on k=6 initially, increasing to 8 for the final agent) by keeping the six highest plans, and then simulating the game one turn ahead with opponent moves sampled from the opponent's agent type (as described in Technique 1) through a Monte Carlo simulation, running by giving each opponent's unit a random move with probabilities weighted based on
+their agent type. These sets of opponent moves (about 120 simulations per turn) are played against our six plans, and each simulation is heuristically graded. The plan with the highest average score in these simulations was chosen. 
 
-This improvement held our success in scenario 1, and improved our performan in scenario 2, pushing us up only slightly in supply centers to 14.83 (Varying by 4.76), but improving our winrate substantially to around 60\%, to be expected as a way of capitalising 
+This improvement held our success in scenario 1, and improved our performance in scenario 2, pushing us up only slightly in supply centers to 14.83 (Varying by 4.76), but improving our winrate substantially to around 60\%, to be expected as a way of capitalising 
 more on our opponent behaviour tracking, although there is still decent variance in winrate between the 70 game tests but it tends over 50\%.
 
 Genetic Algorithm
