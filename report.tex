@@ -89,4 +89,15 @@ After adding the final race, the bot had a notable average improvement of +0.58 
 After the race, S2 had an average supply centre count of 17.19 in S2, varying by 0.26, and 15.35, varying by 0.42 in S3. The winrate jumps to around 90\% in S2 and 70\% in S3 are very promising for the results of this algorithm.
 
 The largest gains were in S3, where the strong opponent type existed. The genetic algorithm reduced the number of bad moves made, which reduced the bot's chances of collapsing and losing in winnable scenarios.
+
+\section{References}
+We additionally use a valuemap strategy. This works by creating a 'heat map' of the board, where each space is given a value (for example, unowned supply centres are 10 and owned are 7).
+These values are spread around to neighbours, with the value decaying as it moves further. When choosing moves, units choose moves that lead to spaces with higher values.
+This strategy is used in our agent as one starting plan for the genetic algorithm.
+
+Originally, this comes from a bot called DumBot, created by David Norman. We found this using brainstorming assistance from an LLM.
+As per the spec, only the idea was used without any use of DumBot's actual code. Below is a citation to the original website.
+
+D.~Norman, ``DumbBot'' (2003), algorithm summary in \emph{DAIDE - Diplomacy Artificial Intelligence Development
+Environment}. Available: \url{http://www.daide.org.uk/s0003.html}.
 \end{document}
