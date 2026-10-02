@@ -62,8 +62,13 @@ Yes, again fix as necessary
 From your previous suggestions, the valuemap seems interesting. Explain further.
 
 You mentioned this idea is prominently used in another bot, I would like to only take the idea rather than taking any code from that bot. I have made a clumsy attempt at implementing it, can you help me in improving that? Again, use only the valuemap idea and do not look at or consider any code from other bots
+
+For referencing, am I correct in saying this is the correct source of the strategy? http://www.daide.org.uk/s0003.html
+
 /rc
 
 Run the test suite from the remote controlled computer
+
+For our report, we need the code of the original basic strategy (hill climbing search) in the file. I have retrieved it here from GitHub, can you add it to the file unused?
 
 Do a final sweep for any bugs
