@@ -1583,3 +1583,32 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
   210/scenario on the same FINAL seeds: BASIC_GREEDY=true, ROLLOUT, CONFIRM, TWO_PLY, ACC_GATE, OPP_AWARE, FAST_RES,
   LA_CANDS, VM_CANDS, CONVOYS = false. Est. 10–11 h. Remaining freeze tasks afterwards: test_21.py final check,
   LLM_PROMPTS.md export, agent_21.py size/imports/test.py check.
+- [117] FREEZE results (runs 30 Sep 00:48–03:21, PC shut down, resumed 08:30–13:40; not committed per the human's
+  request). FINAL 504/scenario, agent_21 = bot_081 (S3 stand-in bot_004): S1 18.00 (100%), S2 17.15±0.13 (90.1%),
+  S3 16.17±0.18 (79.4%); tmax 0.532 s; est. 15/15.
+  Ablations (FINAL, first 210 seeds/scenario, paired vs the full agent there: S1 18.00 / S2 17.61 / S3 16.51):
+  BASIC_GREEDY=true −8.80±0.19 (S1 7.71, S2 10.56, S3 7.45; est. 5); ROLLOUT=false −3.37±0.20 (S2 13.03, S3 10.98);
+  LA_CANDS=false −0.83±0.16; FAST_RES=false −0.55±0.14; CONVOYS=false −0.41±0.12; CONFIRM=false −0.29±0.13;
+  VM_CANDS=false −0.28±0.12; ACC_GATE=false −0.27±0.13; TWO_PLY=false −0.19±0.13 (S2 −0.73, S3 +0.17);
+  OPP_AWARE=false −0.15±0.13.
+- ACC_GATE=false run: 3 timeouts (S2 seeds 400105–400107, concurrent on the 3 workers) + one 0.899 s move → replayed
+  serially: 0.45–0.46 s, 0 timeouts → machine-wide stall, not the code path. Submitted agent: 0 timeouts in all FINAL games.
+- Checks: agent_21.py 62 KB, imports stdlib + diplomacy + agent_baselines.Agent only, = bot_081; test.py (experiment,
+  repeat 1): S1 7/7 wins 18.0 SC, S2 5/7 wins 14.9 SC, clean; test_21.py 20.7 KB, eval smoke n=1 S1–S3 clean;
+  LLM_PROMPTS.md regenerated (87 entries, 0 task notifications). freeze_final.sh compare labels fixed (True/False).
+
+## [118] bot_090 evolution/basicsearch → agent_21.py (human request, 2 Oct; post-freeze, no play change) — DONE
+
+- Human asked to replace the greedy basic-technique switch with the search baseline. bot_090 = bot_081 with
+  BASIC_GREEDY removed and BASIC_SEARCH (default False) added: when True, new_game sets ROLLOUT, OPP_AWARE, ACC_GATE
+  False → hill climbing with the raw-adjacency heuristic only (≈ bot_003 + later map/build fixes). Default code path
+  identical to bot_081 (diff: CONFIG key, name, 3-line inert check, removed 2-line greedy early return).
+- checks: promote.py size/imports OK (62.5 KB, stdlib + diplomacy + Agent); default smoke S1/S2/S3 FINAL seed 400000:
+  18/18/18, tmax 0.450 s, 0 errors; BASIC_SEARCH sets the three switches (verified); test_21.py default keys now
+  BASIC_SEARCH=true (smoke n=1 OK, 20.8 KB). Measurement: q_basic (FINAL 210/scenario, paired vs bot_081).
+  Not committed (human: no git on final files).
+
+- Basic technique from the submitted file (BASIC_SEARCH=true, FINAL 210/scenario, S3 stand-in 004): S1 11.10±0.30
+  (21.9%, sd 4.39), S2 13.94±0.35 (52.9%, sd 5.11), S3 11.52±0.39 (31.9%, sd 5.60); est. 11; tmax 0.409 s, 0 timeouts.
+  vs the full agent on the same seeds: S1 −6.90±0.30, S2 −3.68±0.35, S3 −4.99±0.39, pooled −5.19±0.21. Matches the
+  original bot_003 on B210 (11.76 / 13.57 / 11.63) → the switch reproduces the hill-climbing baseline.
