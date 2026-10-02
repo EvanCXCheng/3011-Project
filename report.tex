@@ -44,7 +44,7 @@ more reliably work against them (just like in real life games).
 It could be quite easy to determine which agents are static, random, attitude, and greedy from scenarios 1 and 2 as we have the code for those, but this would generalise very poorly against both the hidden agent and our peers' agents. 
 Instead, we decided to try and estimate opposing agents as either greedy (moving optimally towards supply centres), static (always holding), erratic (relatively random or attitude based moves), and strong, an estimate for agents that move
 purposefully, but not predictably. This is defined by agents that are greedy 40-85\% of the time, which was found empirically through testing agents, as one of our own strong planning agents matched this schema (with an earlier agent of ours
-being greedy 64\% of the time. 
+being greedy 64\% of the time).
 All of these checks are typically less expensive than our basic search algorithm, so we can afford to do them for each opposing agent. 
 
 We can use these estimates of our opponents to change the expected probability of their moves, and now we can suggest that a particularly strong agent is very likely to defend optimally, so attacking with insufficient support is a poor idea, 
@@ -84,14 +84,14 @@ This genetic algorithm replaced the simpler simulation from the previous hill cl
 
 At first, the final race was not performed. Without it, the bot did not do noticeably different than the top-k hill climbing, capturing +0.07 supply centres, with a 0.19 standard error, on average compared to top-k hill climbing,
 which meant the two strategies performed extremely similarly.
-Without the race, S2 had an average supply centre count of 16.61, varying by 0.23, and 15.51, varying by 0.39 in our estimation of S3. 
+Without the race, S2 had an average supply centre count of 16.98, varying by 0.22, and 15.51, varying by 0.33 in our estimation of S3. 
 After adding the final race, the bot had a notable average improvement of +0.58 with a standard error of 0.18 compared to the previous strategy.
-After the race, S2 had an average supply centre count of 17.19 in S2, varying by 0.26, and 15.35, varying by 0.42 in S3. The winrate jumps to around 90\% in S2 and 70\% in S3 are very promising for the results of this algorithm.
+After the race, S2 had an average supply centre count of 17.17 in S2, varying by 0.21, and 16.70, varying by 0.24 in S3. The winrate jumps to around 90\% in S2 and 85\% in S3 are very promising for the results of this algorithm.
 
 The largest gains were in S3, where the strong opponent type existed. The genetic algorithm reduced the number of bad moves made, which reduced the bot's chances of collapsing and losing in winnable scenarios.
 
 \section{References}
-We additionally use a valuemap strategy. This works by creating a 'heat map' of the board, where each space is given a value (for example, unowned supply centres are 10 and owned are 7).
+We additionally use a valuemap strategy. This works by creating a 'heat map' of the board, where each space is given a value (for example, unowned supply centres are 10 and enemy-owned are 7).
 These values are spread around to neighbours, with the value decaying as it moves further. When choosing moves, units choose moves that lead to spaces with higher values.
 This strategy is used in our agent as one starting plan for the genetic algorithm.
 
