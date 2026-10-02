@@ -17,7 +17,6 @@ Commands (run from the project folder that holds game.py, agent_baselines.py and
   python test_21.py ablate --agent agent_21.py --keys ROLLOUT LA_CANDS VM_CANDS TWO_PLY CONVOYS FAST_RES CONFIRM ACC_GATE OPP_AWARE BASIC_SEARCH=true --n 42
                            (evaluates the agent with each technique switched off, then compares with the full agent)
   python test_21.py stress --agent agent_21.py [--procs 4]                          slow-machine timing check
-  python test_21.py tournament --agents agent_21.py greedy attitude ... --games 28  all-agent games, rotating seats
   python test_21.py summary [--out results_21.jsonl]
 
 --set overrides entries of the agent module's CONFIG dict (technique switches / parameters) for ablations.
@@ -429,32 +428,6 @@ def cmd_stress(a):
           f'slowest move {tmax:.3f}s, timeouts/exceptions {bad} -> {verdict} (gate {a.gate}s)')
 
 
-def cmd_tournament(a):
-    specs = a.agents
-    k = len(specs)
-    tasks = []
-    for g in range(a.games):
-        seats = {POWERS[i]: specs[(i + g) % k] for i in range(7)}
-        tasks.append((seats, 500000 + g))
-    totals = {s: [] for s in specs}
-    with ProcessPoolExecutor(max_workers=a.workers, initializer=worker_init) as ex:
-        for seats, res in zip([t[0] for t in tasks], ex.map(_tournament_game, tasks)):
-            for p, s in seats.items():
-                totals[s].append(res[p])
-    for s, xs in sorted(totals.items(), key=lambda kv: -sum(kv[1]) / max(1, len(kv[1]))):
-        m, se = mean_se(xs)
-        print(f'  {label_of(s)}: {m:.2f}±{se:.2f} SC over {len(xs)} seats')
-
-
-def _tournament_game(task):
-    seats, seed = task
-    try:
-        out = play(seats, seed, [])
-        return out['final_sc']
-    except BaseException:  # noqa: BLE001
-        return {p: 0 for p in POWERS}
-
-
 def cmd_summary(a):
     recs = load_records(a.out)
     for lab in sorted({r['label'] for r in recs}):
@@ -499,11 +472,6 @@ def main():
     p.add_argument('--core', type=int, default=0)
     p.add_argument('--gate', type=float, default=0.8)
     p.set_defaults(func=cmd_stress)
-    p = sub.add_parser('tournament')
-    common(p, agent=False)
-    p.add_argument('--agents', nargs='+', default=['agent_21.py', 'greedy', 'attitude', 'random'])
-    p.add_argument('--games', type=int, default=28)
-    p.set_defaults(func=cmd_tournament)
     p = sub.add_parser('summary')
     common(p, agent=False)
     p.set_defaults(func=cmd_summary)
