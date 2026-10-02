@@ -746,12 +746,75 @@
    "parent": "bot_081",
    "status": "REJECTED",
    "tags": "opponent-plan-model"
+  },
+  "bot_084": {
+   "created": "2026-09-29T08:59",
+   "family": "evolution",
+   "file": "bots/bot_084_evolution_crn.py",
+   "note": "CRN GA: B -0.04\u00b10.14, C +0.19\u00b10.22 vs bot_075 (n.s.)",
+   "parent": "bot_081",
+   "status": "REJECTED",
+   "tags": "common-random-numbers-ga"
+  },
+  "bot_085": {
+   "created": "2026-09-29T10:05",
+   "family": "evolution",
+   "file": "bots/bot_085_evolution_fallply.py",
+   "note": "two-ply Fall: B +0.06\u00b10.13, C -0.09\u00b10.23 vs bot_075 (n.s.)",
+   "parent": "bot_081",
+   "status": "REJECTED",
+   "tags": "two-ply-fall"
+  },
+  "bot_086": {
+   "created": "2026-09-29T11:13",
+   "family": "evolution",
+   "file": "bots/bot_086_evolution_defcand.py",
+   "note": "defensive candidate: B -0.04\u00b10.14, C -0.20\u00b10.24 vs bot_075; Austria +0.19\u00b10.59",
+   "parent": "bot_081",
+   "status": "REJECTED",
+   "tags": "defensive-plan-candidate"
+  },
+  "bot_087": {
+   "created": "2026-09-29T17:12",
+   "family": "adaptive",
+   "file": "bots/bot_087_adaptive_greedyemu.py",
+   "note": "greedy emulation: B +0.02\u00b10.14 (S2 +0.18, S3 -0.13), C -0.02\u00b10.20 (S2 +0.23, S3 -0.27)",
+   "parent": "bot_081",
+   "status": "REJECTED",
+   "tags": "greedy-emulation-model"
+  },
+  "bot_088": {
+   "created": "2026-09-29T18:17",
+   "family": "adaptive",
+   "file": "bots/bot_088_adaptive_greedyonly.py",
+   "note": "greedy emulation for greedy class only: B -0.26\u00b10.14 (S3 -0.65), C -0.39\u00b10.28",
+   "parent": "bot_087",
+   "status": "REJECTED",
+   "tags": "greedy-emulation-model"
+  },
+  "bot_089": {
+   "created": "2026-09-29T20:12",
+   "family": "evolution",
+   "file": "bots/bot_089_evolution_rival.py",
+   "note": "rival-relative score: B -0.13\u00b10.15 (S3 -0.46), C -0.08\u00b10.23",
+   "parent": "bot_081",
+   "status": "REJECTED",
+   "tags": "relative-rival-score"
+  },
+  "bot_090": {
+   "created": "2026-10-02T09:41",
+   "family": "evolution",
+   "file": "bots/bot_090_evolution_basicsearch.py",
+   "note": "",
+   "parent": "bot_081",
+   "status": "PROMOTED",
+   "tags": "basic-search-switch"
   }
  },
  "families": {
   "adaptive": {
    "champion": "bot_009",
-   "iterations": 8,
+   "iterations": 10,
    "reason": "3+ iters; champion bot_009 est 13 vs overall 15; last in 56-game tournament (2.12 SC)",
    "status": "DORMANT"
   },
@@ -774,8 +837,8 @@
    "status": "ACTIVE"
   },
   "evolution": {
-   "champion": "bot_081",
-   "iterations": 12,
+   "champion": "bot_090",
+   "iterations": 17,
    "reason": "new",
    "status": "ACTIVE"
   },
@@ -815,15 +878,16 @@
   "bot_040",
   "bot_036",
   "bot_060",
-  "bot_081",
+  "bot_090",
   "bot_012",
   "bot_073",
   "bot_017",
   "bot_070",
   "bot_038",
-  "bot_075"
+  "bot_075",
+  "bot_081"
  ],
- "next_bot_id": 84,
+ "next_bot_id": 91,
  "overall_champions": [
   {
    "bot": "bot_001",
@@ -864,6 +928,10 @@
   {
    "bot": "bot_081",
    "date": "2026-09-28T23:12"
+  },
+  {
+   "bot": "bot_090",
+   "date": "2026-10-02T09:42"
   }
  ],
  "standin_rotation": 0,

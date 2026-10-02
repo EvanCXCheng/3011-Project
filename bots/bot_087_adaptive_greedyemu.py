@@ -1,11 +1,23 @@
-"""bot_090 — family: evolution — parent: bot_081 (= bot_075 play)
+"""bot_087 — family: adaptive (revisited) — parent: bot_081 (= bot_075 play)
 
-Change vs bot_081: none in default play. The basic-technique switch now selects the hill-climbing search baseline
-instead of the BFS-greedy plan (human request, 2 Oct): BASIC_GREEDY is removed and BASIC_SEARCH (default False) added.
-BASIC_SEARCH=True plays the basic technique alone: local search (hill climbing with random restarts) over our joint
-orders, scored by the heuristic evaluation with the raw-adjacency threat model, i.e. it sets ROLLOUT, OPP_AWARE and
-ACC_GATE to False (no simulation/GA, no opponent classes). The spec (rubric note [3]) requires the basic technique to
-be implemented in the submitted code; this lets it be evaluated from agent_21.py (--set BASIC_SEARCH=true).
+Change vs bot_081 (one idea): the rollout opponent model follows the baseline Greedy agent's documented behaviour
+more closely (spec: "each unit will move towards and attack the closest supply centre, or support other units if
+having the same target"; its code was read to understand behaviour, not copied). Two mispredictions fixed:
+(1) a unit already on an SC its power does not own was sampled as a RANDOM order (no distance-reducing move exists),
+while the greedy rule holds it there to capture in Fall — now the greedy component holds (all classes);
+(2) for powers classified 'greedy', two sampled moves with the same destination become move + support of that move
+(the support is used if legal, else the unit holds, as the engine would void it). Worst-20% S2 games are mostly vs
+greedy opponents ([098], [104]). GREEDY_EMU False = bot_081.
+
+bot_081 notes:
+bot_081 — family: evolution — parent: bot_075
+
+Change vs bot_075: none in default play. Adds the switch BASIC_GREEDY (default False) that makes every movement phase
+play the pure basic technique: the BFS-greedy plan (each unit takes the move or hold closest to an unowned SC by BFS
+distance per unit type, +3 for landing on one; units in order of best score; no two units into one province) — the
+first plan of _la_candidates. The spec (rubric note [3]) requires the basic technique to be implemented in the
+submitted code; this lets it be evaluated from agent_21.py itself (--set BASIC_GREEDY=true). Retreats and builds are
+unchanged in both modes.
 
 bot_075 notes:
 bot_075 — family: evolution — parent: bot_072
@@ -143,7 +155,8 @@ CONFIG = {
     'CONFIRM': True,         # False = bot_072 (play the GA's best mean)
     'CONFIRM_T': 0.07,       # s reserved at the end of TIME_BUDGET for the confirmation race
     'CONFIRM_K': 5,          # GA plans that enter the confirmation race
-    'BASIC_SEARCH': False,   # True = play only the basic technique (hill-climbing search, no rollouts/opponent model)
+    'BASIC_GREEDY': False,   # True = play only the basic technique (BFS-greedy plan) in movement phases
+    'GREEDY_EMU': True,      # False = bot_081 (units on a target sampled randomly; no same-target supports)
     'ACC_GATE': True,        # False = bot_008 behaviour
     'ACC_GREEDY': 0.85,      # greedy-prediction hit rate at or above which a power is 'greedy'
     'ACC_STRONG': 0.4,       # hit rate at or above which (and below ACC_GREEDY) a power is 'strong'
@@ -483,7 +496,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_090_evolution_basicsearch'):
+    def __init__(self, agent_name='bot_087_adaptive_greedyemu'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -491,9 +504,6 @@ class StudentAgent(Agent):
         self.power_name = power_name
         self.obs = {}            # power -> [n_unit_orders, n_holds, n_moves, n_toward]
         self.seen_phases = set()
-        if CONFIG['BASIC_SEARCH']:
-            # basic technique alone: hill climbing with the raw-adjacency heuristic, no rollouts or opponent model
-            CONFIG.update(ROLLOUT=False, OPP_AWARE=False, ACC_GATE=False)
         try:
             self.info = map_info(game)
         except Exception:
@@ -668,6 +678,8 @@ class StudentAgent(Agent):
         own_scs = set(game.get_power(me).centers)
         targets = [sc for sc in info['scs'] if sc not in own_scs]
         target_set = set(targets)
+        if CONFIG['BASIC_GREEDY']:
+            return self._la_candidates(possible, locs, targets, random.Random(0))[0]
 
         enemy_reach, enemy_occ = {}, set()
         for p, power in game.powers.items():
@@ -931,8 +943,8 @@ class StudentAgent(Agent):
                 gd = self._greedy_dests(t, loc, ptg)
                 greedy = [o for o in opts if len(o.split()) >= 4 and o.split()[2] == '-' and o.split()[-1] != 'VIA'
                           and _base(o.split()[3]) in gd]
-                units.append((opts, greedy))
-            ctx[p] = (units, CONFIG['MIX'].get(cls, CONFIG['MIX']['unknown']))
+                units.append((opts, greedy, CONFIG['GREEDY_EMU'] and gd == {_base(loc)}, set(opts), t + ' ' + loc))
+            ctx[p] = (units, CONFIG['MIX'].get(cls, CONFIG['MIX']['unknown']), CONFIG['GREEDY_EMU'] and cls == 'greedy')
         fall = g0.get_current_phase().startswith('F')
         own_before = set(g0.get_power(me).centers)
         tg = targets
@@ -990,16 +1002,28 @@ class StudentAgent(Agent):
 
         def sample():
             out = {}
-            for p, (units, mix) in ctx.items():
+            for p, (units, mix, gsup) in ctx.items():
                 lst = []
-                for opts, greedy in units:
+                by_dest = {}
+                for opts, greedy, hold_pred, optset, ustr in units:
                     r = rng.random()
                     if r < mix[0]:
                         continue
-                    if r < mix[0] + mix[1] or not greedy:
+                    if r < mix[0] + mix[1] or (not greedy and not hold_pred):
                         lst.append(rng.choice(opts))
+                    elif hold_pred:
+                        continue                       # greedy rule: stay on the target SC
                     else:
-                        lst.append(rng.choice(greedy))
+                        o = rng.choice(greedy)
+                        dest = o.split()[3]
+                        first = by_dest.get(dest)
+                        if gsup and first is not None:
+                            so = ustr + ' S ' + first
+                            if so in optset:
+                                lst.append(so)         # same target: support the first mover
+                            continue                   # (an illegal support would be voided: hold)
+                        by_dest.setdefault(dest, o)
+                        lst.append(o)
                 out[p] = lst
             return out
 

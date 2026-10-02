@@ -1,11 +1,21 @@
-"""bot_090 — family: evolution — parent: bot_081 (= bot_075 play)
+"""bot_085 — family: evolution — parent: bot_081 (= bot_075 play)
 
-Change vs bot_081: none in default play. The basic-technique switch now selects the hill-climbing search baseline
-instead of the BFS-greedy plan (human request, 2 Oct): BASIC_GREEDY is removed and BASIC_SEARCH (default False) added.
-BASIC_SEARCH=True plays the basic technique alone: local search (hill climbing with random restarts) over our joint
-orders, scored by the heuristic evaluation with the raw-adjacency threat model, i.e. it sets ROLLOUT, OPP_AWARE and
-ACC_GATE to False (no simulation/GA, no opponent classes). The spec (rubric note [3]) requires the basic technique to
-be implemented in the submitted code; this lets it be evaluated from agent_21.py (--set BASIC_SEARCH=true).
+Change vs bot_081 (one idea): two-ply look-ahead in Fall. Spring rollouts already continue with a greedy Fall reply
+(TWO_PLY, bot_028; worth ≈0.3–0.5 SC). Fall rollouts were scored on ownership right after the Fall move only, with no
+view of the next year. Now (FALL_PLY2) each Fall rollout continues with a greedy Spring reply of every non-static
+power (no builds simulated) and adds R_W_FGAIN per SC we would occupy after that Spring that we do not own after Fall,
+minus R_W_FTHREAT per SC we own after Fall that an enemy would occupy. Rewards Fall moves that set up next year and
+leave no centre exposed. FALL_PLY2 False = bot_081.
+
+bot_081 notes:
+bot_081 — family: evolution — parent: bot_075
+
+Change vs bot_075: none in default play. Adds the switch BASIC_GREEDY (default False) that makes every movement phase
+play the pure basic technique: the BFS-greedy plan (each unit takes the move or hold closest to an unowned SC by BFS
+distance per unit type, +3 for landing on one; units in order of best score; no two units into one province) — the
+first plan of _la_candidates. The spec (rubric note [3]) requires the basic technique to be implemented in the
+submitted code; this lets it be evaluated from agent_21.py itself (--set BASIC_GREEDY=true). Retreats and builds are
+unchanged in both modes.
 
 bot_075 notes:
 bot_075 — family: evolution — parent: bot_072
@@ -143,7 +153,9 @@ CONFIG = {
     'CONFIRM': True,         # False = bot_072 (play the GA's best mean)
     'CONFIRM_T': 0.07,       # s reserved at the end of TIME_BUDGET for the confirmation race
     'CONFIRM_K': 5,          # GA plans that enter the confirmation race
-    'BASIC_SEARCH': False,   # True = play only the basic technique (hill-climbing search, no rollouts/opponent model)
+    'BASIC_GREEDY': False,   # True = play only the basic technique (BFS-greedy plan) in movement phases
+    'FALL_PLY2': True,       # False = bot_081 (Fall rollouts scored right after the Fall move)
+    'R_W_FGAIN': 0.3, 'R_W_FTHREAT': 0.3,
     'ACC_GATE': True,        # False = bot_008 behaviour
     'ACC_GREEDY': 0.85,      # greedy-prediction hit rate at or above which a power is 'greedy'
     'ACC_STRONG': 0.4,       # hit rate at or above which (and below ACC_GREEDY) a power is 'strong'
@@ -483,7 +495,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_090_evolution_basicsearch'):
+    def __init__(self, agent_name='bot_085_evolution_fallply'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -491,9 +503,6 @@ class StudentAgent(Agent):
         self.power_name = power_name
         self.obs = {}            # power -> [n_unit_orders, n_holds, n_moves, n_toward]
         self.seen_phases = set()
-        if CONFIG['BASIC_SEARCH']:
-            # basic technique alone: hill climbing with the raw-adjacency heuristic, no rollouts or opponent model
-            CONFIG.update(ROLLOUT=False, OPP_AWARE=False, ACC_GATE=False)
         try:
             self.info = map_info(game)
         except Exception:
@@ -668,6 +677,8 @@ class StudentAgent(Agent):
         own_scs = set(game.get_power(me).centers)
         targets = [sc for sc in info['scs'] if sc not in own_scs]
         target_set = set(targets)
+        if CONFIG['BASIC_GREEDY']:
+            return self._la_candidates(possible, locs, targets, random.Random(0))[0]
 
         enemy_reach, enemy_occ = {}, set()
         for p, power in game.powers.items():
@@ -937,8 +948,9 @@ class StudentAgent(Agent):
         own_before = set(g0.get_power(me).centers)
         tg = targets
         two = CONFIG['TWO_PLY'] and not fall
+        fply2 = CONFIG['FALL_PLY2'] and fall and CONFIG['FAST_RES']
         ply2 = {}
-        if two:
+        if two or fply2:
             for p, pw in g0.powers.items():
                 if p != me and self._classify(p) == 'static':
                     continue
@@ -1031,6 +1043,21 @@ class StudentAgent(Agent):
                 sc_ -= CONFIG['R_W_LOST'] * 0.5 * sum(1 for c in own_before if occ.get(c) not in (None, me))
             return sc_
 
+        def fall_extra(u1):
+            """Fall two-ply term: next-Spring gains minus threatened centres, after a greedy Spring reply."""
+            owned = set(own_before)
+            for c in info['scs']:
+                u = u1.get(c)
+                if u is not None:
+                    if u[0] == me:
+                        owned.add(c)
+                    else:
+                        owned.discard(c)
+            u2 = fall_reply_fast(u1)
+            gain = sum(1 for c in info['scs'] if c not in owned and (u2.get(c) or ('',))[0] == me)
+            threat = sum(1 for c in owned if u2.get(c) is not None and u2[c][0] != me)
+            return CONFIG['R_W_FGAIN'] * gain - CONFIG['R_W_FTHREAT'] * threat
+
         # genetic algorithm over the candidate pool (replaces the halving race)
         units = sorted({' '.join(o.split()[:2]) for c in cand_orders for o in c})
         genes = {u: [] for u in units}
@@ -1083,7 +1110,7 @@ class StudentAgent(Agent):
                         u1 = resolve_moves(units0, orders, reach_f)[0]
                         if two:
                             u1 = fall_reply_fast(u1)
-                        st[1] += score_units(u1)
+                        st[1] += score_units(u1) + (fall_extra(u1) if fply2 else 0.0)
                         st[2] += 1
                         continue
                     g = copy.deepcopy(base_game)
@@ -1139,7 +1166,7 @@ class StudentAgent(Agent):
                     u1 = resolve_moves(units0, orders, reach_f)[0]
                     if two:
                         u1 = fall_reply_fast(u1)
-                    rs.append(score_units(u1))
+                    rs.append(score_units(u1) + (fall_extra(u1) if fply2 else 0.0))
                 if len(rs) < len(top):
                     break
                 for i, v in enumerate(rs):

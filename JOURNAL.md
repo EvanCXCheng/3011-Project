@@ -1467,3 +1467,148 @@ Fields: family, parent, hypothesis, test plan, results (key numbers), takeaway.
 - implication: a confirmation step only helps a selector whose final pick has uneven, small sample counts (GA
   children); the halving race's survivors already share many samples, so race+confirm would be a no-op (not built).
 - Loop stopped by the human 2026-09-29 07:32:01; no bots in progress. Freeze runs (results/logs/freeze_final.sh) to be launched later when the human is away from the PC.
+- Loop resumed by the human (downtime, not enough for the freeze runs).
+
+## [109] bot_084 evolution/crn — REJECTED (n.s.)
+
+- parent bot_081 | tags: common-random-numbers-ga. From [108] (the gain is the confirmation race = removing unequal-
+  sample ranking bias): every GA plan is scored on the same bank of 12 opponent samples drawn once per move before it
+  can be ranked; fresh-sample confirmation kept. Instrumented (France vs six bot_040s): 40.6 generations/phase, 11.4
+  fully scored plans at the end, 147 confirmation rounds/phase, tmax 0.45 s. Sanity S2/S3 seed 19 → 18/18.
+- plan: q61: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075 (= agent_21 play).
+
+- bot_084 results: T0 clean; T1 A42 vs 075 −0.06±0.23. T2: S1 18.00; B210 S2 17.30 (91.9%) / S3 16.49 (83.3%); vs 075
+  pooled −0.04±0.14. Held-out C: S2 17.45 / S3 16.58; vs 075 +0.19±0.22. Combined ≈ +0.03±0.12 → REJECTED.
+- takeaway: once the fresh-sample confirmation is in place, equalising the GA's sample counts adds nothing — the
+  confirmation already removes the ranking bias. Selection is saturated; bot_075/081 stays.
+
+## [110] bot_085 evolution/fallply — REJECTED (n.s.)
+
+- parent bot_081 | tags: two-ply-fall. Fall rollouts continue with a greedy Spring reply (all non-static powers, no
+  builds) and add 0.3 × SCs we would newly occupy − 0.3 × owned SCs an enemy would occupy after that Spring. The
+  Spring counterpart (TWO_PLY) is a measured gain; Fall had no view of the next year. Checks: term active (5,698
+  calls, 60% non-zero, Germany vs six bot_012s to 1905); sanity S1/S2/S3 seed 20 → 18/18/18, tmax 0.451 s.
+- plan: q62: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075.
+
+- bot_085 results: T2 S1 18.00; B210 S2 17.23 (90.0%) / S3 16.81 (83.8%); vs 075 pooled +0.06±0.13. Held-out C: S2 16.90 /
+  S3 16.56; vs 075 −0.09±0.23 → REJECTED.
+- takeaway: the Fall look-ahead does not add to the Spring one; after Fall, the next Spring's value is already
+  mostly captured by SC ownership. Ninth consecutive challenger since bot_075 within ±0.2 SC (076–085, tuning sweep).
+
+## [111] bot_086 evolution/defcand — REJECTED
+
+- parent bot_081 | tags: defensive-plan-candidate. One more pool plan: BFS-greedy plan, then hold + one support-hold
+  on every own SC an enemy unit can reach (reoccupy an empty threatened SC), so the GA has defensive genes (target:
+  central powers overrun early in S3). Checks (Austria vs six bot_012s to 1905): plan differs from greedy in 8/8
+  movement phases, 0 illegal orders, support-holds rare (1 in 8 phases). Sanity S3 7 / S3 14 / S2 21 (Austria):
+  7 / 18 / 18 SC, tmax 0.451 s.
+- plan: q63: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075; check Austria split.
+- Human (2026-09-29 11:28:38): stop after bot_086; do not start the freeze runs yet.
+
+- bot_086 results: B210 S2 17.48 (92.4%) / S3 16.29 (79.5%); vs 075 S2 +0.30±0.22, S3 −0.42±0.30, pooled −0.04±0.14.
+  Held-out C: S2 16.89 / S3 16.35; vs 075 −0.20±0.24. Austria seats (B+C S2/S3, 96 paired) +0.19±0.59 → REJECTED.
+- takeaway: extra defensive genes make S3 slightly worse (less expansion) without fixing Austria. Tenth consecutive
+  challenger since bot_075 at or below noise level. Loop stopped by the human after this bot; freeze runs not started.
+- Loop resumed by the human (29 Sep).
+
+## [112] bot_087 adaptive/greedyemu — REJECTED (n.s.)
+
+- parent bot_081 | tags: greedy-emulation-model. Rollout opponent model fixed against the Greedy baseline's
+  documented behaviour (spec text; baseline code read, not copied): (1) a unit on an SC its power does not own was
+  sampled as a random order (our greedy-destination set is its own province → no greedy move) — the greedy rule holds
+  it; now the greedy component holds (all classes); (2) 'greedy' powers: two sampled moves to the same destination →
+  move + support of it (if legal; else hold). Instrumented (Austria vs six baseline GreedyAgents to 1905): 13,264
+  holds-on-target (previously random), 2,431 same-target supports, 49,514 greedy moves. Sanity S2 7 / S3 14 → 18/18.
+- plan: q64: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075.
+
+- bot_087 results: B210 S2 17.35 (92.4%) / S3 16.57 (82.9%); vs 075 S2 +0.18±0.21, S3 −0.13±0.29, pooled +0.02±0.14.
+  Held-out C: S2 17.42 / S3 16.18; vs 075 S2 +0.23±0.27, S3 −0.27±0.29, pooled −0.02±0.20 → REJECTED.
+- pattern: S2 (baseline mix) slightly positive on both seed sets (≈ +0.20±0.17 combined), S3 slightly negative. The
+  hold-on-target change applies to every class, incl. the S3 stand-in; a greedy-class-only variant might keep the S2
+  part — expected pooled effect ≈ +0.1, below what the lab can resolve.
+
+## [113] bot_088 adaptive/greedyonly — REJECTED
+
+- parent bot_087 | tags: greedy-emulation-model (refinement). Hold-on-target rule restricted to 'greedy'-class powers,
+  so the S3 stand-in's model is bot_081's again. Sanity S2 8 / S3 15 clean. plan: q65 (same protocol, vs bot_075).
+
+- bot_088 results: B210 S2 17.15 (91.4%) / S3 16.05 (78.1%); vs 075 S2 −0.02, S3 −0.65±0.28, pooled −0.26±0.14. Held-out C:
+  S2 +0.08, S3 −0.87±0.48, pooled −0.39±0.28 → REJECTED. Both greedy-emulation variants closed.
+
+## [114] Safety check: TIME_BUDGET 0.40 vs 0.45 on the champion — DONE (keep 0.45)
+
+- Question for the submission, not a strength idea: does a 0.40 s budget (≈0.55 s margin to the 1 s limit instead of
+  ≈0.5 s) cost strength? bot_071 showed rollout count is not binding. --set TIME_BUDGET=0.40 on bot_075, B210 S2/S3 +
+  held-out C, paired with bot_075. If ≈0 (no worse than −0.1), consider adopting it (ask the human first).
+
+- [114] results: TIME_BUDGET 0.40: B210 S2 17.20 (89.0%) / S3 16.42 (81.0%), tmax 0.438 s; vs 0.45: S2 +0.03, S3 −0.29±0.30,
+  pooled −0.13±0.19. C: S2 17.16 / S3 16.24, tmax 0.430 s; pooled −0.12±0.24. Combined ≈ −0.13±0.15 (n.s., same sign
+  on both seed sets, S3 side). Decision: keep 0.45 (slowest champion move over 74k moves 0.534 s; stress 0.495 s at
+  ×4.3 slowdown) — the extra ≈0.05 s margin is not worth a likely small S3 cost.
+
+## [115] bot_089 evolution/rival — REJECTED
+
+- Non-win breakdown for bot_075 (S2 381 / S3 1515 games): another power won 6.3% / 21.3%; near-miss (≥14 SC, no
+  winner) 1.0% / 1.5%; low with no winner 1.8% / 3.2% → the main loss mode is a rival (mostly the Hidden Agent) winning.
+- bot_089 (parent bot_081, tags relative-rival-score): wherever ownership is scored, subtract 0.3 × the SC count the
+  turn's leading opponent would own after the rollout (always on, unlike bot_082's > 12 threshold). Term runs (28,527
+  evaluations, Italy vs six GreedyAgents to 1904). Sanity S3 15 / S3 16 / S2 17 → 18 / 12 / 18, tmax 0.451 s.
+- plan: q67: T0, T1 A42, T2 S1 B126 + S2/S3 B210 (004), held-out C (offset 400); all vs bot_075.
+
+- bot_089 results: B210 S2 17.30 (92.4%) / S3 16.24 (77.6%); vs 075 S2 +0.13, S3 −0.46±0.31, pooled −0.13±0.15. C: S2 17.37 /
+  S3 16.11; pooled −0.08±0.23 → REJECTED.
+
+## [116] Replicate of the champion (noise floor / selection bias) — DONE
+
+- Observation: nearly every challenger since bot_075 is "worse in S3" vs bot_075 on B (−0.13 … −0.65), yet on held-out C
+  all of them score 16.1–16.6 SC in S3 like bot_075 (16.45). bot_075's B S3 (16.70, 84.8%) is the best S3 of any bot
+  and was part of what selected it → likely a lucky draw (selection effect). Measure directly: re-run bot_075 with an
+  inert override (R_W_SC=1.0 = default) on B210 S2/S3 and C126, paired with the original bot_075 runs.
+- results: replicate B210 S2 17.12 (89.5%) / S3 16.20 (80.5%) vs original 17.17 / 16.70 → S2 −0.05±0.24, S3 −0.50±0.32,
+  pooled −0.28±0.20 with IDENTICAL code. Replicate C126 S2 17.09 / S3 16.40 vs 17.19 / 16.45 → pooled −0.08±0.25.
+- conclusions: (1) run-to-run noise of identical code reaches −0.5 SC in one scenario on 210 paired games (≈1.6 SE);
+  (2) bot_075's original B S3 was a high draw (true B S3 ≈ 16.2–16.5), so bots 076–089 compared against it were
+  biased by about −0.25 SC pooled — their "S3 worse" pattern is mostly this artefact, i.e. they are ≈ equal to the
+  champion, not worse; none is better either; (3) bot_075's promotion over bot_070 (+0.59 B) is partly the same luck;
+  the unbiased read is held-out C (+0.10±0.22) plus the tournaments ([101] 8.96 vs 7.66, [105] 8.11 vs 7.78): bot_075
+  is at least equal to bot_070, so agent_21 stays. For the report: a selection effect on the seed set used for
+  promotion, visible only through held-out seeds and replicates.
+- next: re-score the post-075 challengers against the mean of both champion runs (pending: shell check failing).
+
+## [117] FREEZE (human request, Wed 30 Sep 00:48 AWST) — RUNNING
+
+- Freeze started early at the human's request (planned Thu 1 Oct 12:00). No new bots. Final agent: agent_21.py =
+  bot_081 (plays as bot_075). bot_089 status recorded (REJECTED).
+- Freeze runs launched: results/logs/freeze_final.sh → FINAL 504/scenario (S3 stand-in bot_004), then 10 ablations at
+  210/scenario on the same FINAL seeds: BASIC_GREEDY=true, ROLLOUT, CONFIRM, TWO_PLY, ACC_GATE, OPP_AWARE, FAST_RES,
+  LA_CANDS, VM_CANDS, CONVOYS = false. Est. 10–11 h. Remaining freeze tasks afterwards: test_21.py final check,
+  LLM_PROMPTS.md export, agent_21.py size/imports/test.py check.
+- [117] FREEZE results (runs 30 Sep 00:48–03:21, PC shut down, resumed 08:30–13:40; not committed per the human's
+  request). FINAL 504/scenario, agent_21 = bot_081 (S3 stand-in bot_004): S1 18.00 (100%), S2 17.15±0.13 (90.1%),
+  S3 16.17±0.18 (79.4%); tmax 0.532 s; est. 15/15.
+  Ablations (FINAL, first 210 seeds/scenario, paired vs the full agent there: S1 18.00 / S2 17.61 / S3 16.51):
+  BASIC_GREEDY=true −8.80±0.19 (S1 7.71, S2 10.56, S3 7.45; est. 5); ROLLOUT=false −3.37±0.20 (S2 13.03, S3 10.98);
+  LA_CANDS=false −0.83±0.16; FAST_RES=false −0.55±0.14; CONVOYS=false −0.41±0.12; CONFIRM=false −0.29±0.13;
+  VM_CANDS=false −0.28±0.12; ACC_GATE=false −0.27±0.13; TWO_PLY=false −0.19±0.13 (S2 −0.73, S3 +0.17);
+  OPP_AWARE=false −0.15±0.13.
+- ACC_GATE=false run: 3 timeouts (S2 seeds 400105–400107, concurrent on the 3 workers) + one 0.899 s move → replayed
+  serially: 0.45–0.46 s, 0 timeouts → machine-wide stall, not the code path. Submitted agent: 0 timeouts in all FINAL games.
+- Checks: agent_21.py 62 KB, imports stdlib + diplomacy + agent_baselines.Agent only, = bot_081; test.py (experiment,
+  repeat 1): S1 7/7 wins 18.0 SC, S2 5/7 wins 14.9 SC, clean; test_21.py 20.7 KB, eval smoke n=1 S1–S3 clean;
+  LLM_PROMPTS.md regenerated (87 entries, 0 task notifications). freeze_final.sh compare labels fixed (True/False).
+
+## [118] bot_090 evolution/basicsearch → agent_21.py (human request, 2 Oct; post-freeze, no play change) — DONE
+
+- Human asked to replace the greedy basic-technique switch with the search baseline. bot_090 = bot_081 with
+  BASIC_GREEDY removed and BASIC_SEARCH (default False) added: when True, new_game sets ROLLOUT, OPP_AWARE, ACC_GATE
+  False → hill climbing with the raw-adjacency heuristic only (≈ bot_003 + later map/build fixes). Default code path
+  identical to bot_081 (diff: CONFIG key, name, 3-line inert check, removed 2-line greedy early return).
+- checks: promote.py size/imports OK (62.5 KB, stdlib + diplomacy + Agent); default smoke S1/S2/S3 FINAL seed 400000:
+  18/18/18, tmax 0.450 s, 0 errors; BASIC_SEARCH sets the three switches (verified); test_21.py default keys now
+  BASIC_SEARCH=true (smoke n=1 OK, 20.8 KB). Measurement: q_basic (FINAL 210/scenario, paired vs bot_081).
+  Not committed (human: no git on final files).
+
+- Basic technique from the submitted file (BASIC_SEARCH=true, FINAL 210/scenario, S3 stand-in 004): S1 11.10±0.30
+  (21.9%, sd 4.39), S2 13.94±0.35 (52.9%, sd 5.11), S3 11.52±0.39 (31.9%, sd 5.60); est. 11; tmax 0.409 s, 0 timeouts.
+  vs the full agent on the same seeds: S1 −6.90±0.30, S2 −3.68±0.35, S3 −4.99±0.39, pooled −5.19±0.21. Matches the
+  original bot_003 on B210 (11.76 / 13.57 / 11.63) → the switch reproduces the hill-climbing baseline.

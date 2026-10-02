@@ -1,11 +1,21 @@
-"""bot_090 — family: evolution — parent: bot_081 (= bot_075 play)
+"""bot_089 — family: evolution — parent: bot_081 (= bot_075 play)
 
-Change vs bot_081: none in default play. The basic-technique switch now selects the hill-climbing search baseline
-instead of the BFS-greedy plan (human request, 2 Oct): BASIC_GREEDY is removed and BASIC_SEARCH (default False) added.
-BASIC_SEARCH=True plays the basic technique alone: local search (hill climbing with random restarts) over our joint
-orders, scored by the heuristic evaluation with the raw-adjacency threat model, i.e. it sets ROLLOUT, OPP_AWARE and
-ACC_GATE to False (no simulation/GA, no opponent classes). The spec (rubric note [3]) requires the basic technique to
-be implemented in the submitted code; this lets it be evaluated from agent_21.py (--set BASIC_SEARCH=true).
+Change vs bot_081 (one idea): relative (race) score against the leading rival. The champion's non-wins are mostly
+games another power wins first (S2 6.3%, S3 21.3% of games; near-misses only 1–1.5%). bot_082's anti-leader penalty
+only activated once a rival owned > 12 SCs. Now every rollout outcome (where ownership is scored: Fall, and Spring via
+the two-ply Fall reply) subtracts R_W_RIVAL × the SC count the current leading opponent (most SCs at the start of the
+turn) would own afterwards (occupant, else previous owner). SCs taken from the leader count 1 + R_W_RIVAL; plans that
+let it grow are discouraged. RIVAL False = bot_081.
+
+bot_081 notes:
+bot_081 — family: evolution — parent: bot_075
+
+Change vs bot_075: none in default play. Adds the switch BASIC_GREEDY (default False) that makes every movement phase
+play the pure basic technique: the BFS-greedy plan (each unit takes the move or hold closest to an unowned SC by BFS
+distance per unit type, +3 for landing on one; units in order of best score; no two units into one province) — the
+first plan of _la_candidates. The spec (rubric note [3]) requires the basic technique to be implemented in the
+submitted code; this lets it be evaluated from agent_21.py itself (--set BASIC_GREEDY=true). Retreats and builds are
+unchanged in both modes.
 
 bot_075 notes:
 bot_075 — family: evolution — parent: bot_072
@@ -143,7 +153,9 @@ CONFIG = {
     'CONFIRM': True,         # False = bot_072 (play the GA's best mean)
     'CONFIRM_T': 0.07,       # s reserved at the end of TIME_BUDGET for the confirmation race
     'CONFIRM_K': 5,          # GA plans that enter the confirmation race
-    'BASIC_SEARCH': False,   # True = play only the basic technique (hill-climbing search, no rollouts/opponent model)
+    'BASIC_GREEDY': False,   # True = play only the basic technique (BFS-greedy plan) in movement phases
+    'RIVAL': True,           # False = bot_081 (score counts only our SCs)
+    'R_W_RIVAL': 0.3,
     'ACC_GATE': True,        # False = bot_008 behaviour
     'ACC_GREEDY': 0.85,      # greedy-prediction hit rate at or above which a power is 'greedy'
     'ACC_STRONG': 0.4,       # hit rate at or above which (and below ACC_GREEDY) a power is 'strong'
@@ -483,7 +495,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_090_evolution_basicsearch'):
+    def __init__(self, agent_name='bot_089_evolution_rival'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -491,9 +503,6 @@ class StudentAgent(Agent):
         self.power_name = power_name
         self.obs = {}            # power -> [n_unit_orders, n_holds, n_moves, n_toward]
         self.seen_phases = set()
-        if CONFIG['BASIC_SEARCH']:
-            # basic technique alone: hill climbing with the raw-adjacency heuristic, no rollouts or opponent model
-            CONFIG.update(ROLLOUT=False, OPP_AWARE=False, ACC_GATE=False)
         try:
             self.info = map_info(game)
         except Exception:
@@ -668,6 +677,8 @@ class StudentAgent(Agent):
         own_scs = set(game.get_power(me).centers)
         targets = [sc for sc in info['scs'] if sc not in own_scs]
         target_set = set(targets)
+        if CONFIG['BASIC_GREEDY']:
+            return self._la_candidates(possible, locs, targets, random.Random(0))[0]
 
         enemy_reach, enemy_occ = {}, set()
         for p, power in game.powers.items():
@@ -935,6 +946,16 @@ class StudentAgent(Agent):
             ctx[p] = (units, CONFIG['MIX'].get(cls, CONFIG['MIX']['unknown']))
         fall = g0.get_current_phase().startswith('F')
         own_before = set(g0.get_power(me).centers)
+        owner0 = {}
+        for p, pw in g0.powers.items():
+            for c in pw.centers:
+                owner0[c] = p
+        rival = None
+        if CONFIG['RIVAL']:
+            best_n = 0
+            for p, pw in sorted(g0.powers.items()):
+                if p != me and len(pw.centers) > best_n:
+                    rival, best_n = p, len(pw.centers)
         tg = targets
         two = CONFIG['TWO_PLY'] and not fall
         ply2 = {}
@@ -1026,6 +1047,12 @@ class StudentAgent(Agent):
                     elif o is not None:
                         owned.discard(c)
                 sc_ += CONFIG['R_W_SC'] * len(owned)
+                if rival is not None:
+                    rn = 0
+                    for c in info['scs']:
+                        if (occ.get(c) or owner0.get(c)) == rival:
+                            rn += 1
+                    sc_ -= CONFIG['R_W_RIVAL'] * rn
             else:
                 sc_ += CONFIG['R_W_OCC_SPRING'] * sum(1 for c in tg if occ.get(c) == me)
                 sc_ -= CONFIG['R_W_LOST'] * 0.5 * sum(1 for c in own_before if occ.get(c) not in (None, me))

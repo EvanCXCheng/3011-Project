@@ -1,11 +1,21 @@
-"""bot_090 — family: evolution — parent: bot_081 (= bot_075 play)
+"""bot_084 — family: evolution — parent: bot_081 (= bot_075 play)
 
-Change vs bot_081: none in default play. The basic-technique switch now selects the hill-climbing search baseline
-instead of the BFS-greedy plan (human request, 2 Oct): BASIC_GREEDY is removed and BASIC_SEARCH (default False) added.
-BASIC_SEARCH=True plays the basic technique alone: local search (hill climbing with random restarts) over our joint
-orders, scored by the heuristic evaluation with the raw-adjacency threat model, i.e. it sets ROLLOUT, OPP_AWARE and
-ACC_GATE to False (no simulation/GA, no opponent classes). The spec (rubric note [3]) requires the basic technique to
-be implemented in the submitted code; this lets it be evaluated from agent_21.py (--set BASIC_SEARCH=true).
+Change vs bot_081 (one idea): common random numbers in the GA. [108] showed the champion's gain over the race comes
+from the confirmation race, i.e. from removing the bias of ranking plans on unequal, small sample counts (children
+bred late have 2 samples, survivors dozens). Now (CRN) a bank of CRN_BANK opponent samples is drawn once per move and
+every plan — seed or child — is scored on the whole bank before it can be ranked, so all GA comparisons are paired
+on identical samples. The fresh-sample confirmation race is kept. Fewer, better-measured generations
+(~20–30 per move instead of ~140). CRN False = bot_081.
+
+bot_081 notes:
+bot_081 — family: evolution — parent: bot_075
+
+Change vs bot_075: none in default play. Adds the switch BASIC_GREEDY (default False) that makes every movement phase
+play the pure basic technique: the BFS-greedy plan (each unit takes the move or hold closest to an unowned SC by BFS
+distance per unit type, +3 for landing on one; units in order of best score; no two units into one province) — the
+first plan of _la_candidates. The spec (rubric note [3]) requires the basic technique to be implemented in the
+submitted code; this lets it be evaluated from agent_21.py itself (--set BASIC_GREEDY=true). Retreats and builds are
+unchanged in both modes.
 
 bot_075 notes:
 bot_075 — family: evolution — parent: bot_072
@@ -143,7 +153,9 @@ CONFIG = {
     'CONFIRM': True,         # False = bot_072 (play the GA's best mean)
     'CONFIRM_T': 0.07,       # s reserved at the end of TIME_BUDGET for the confirmation race
     'CONFIRM_K': 5,          # GA plans that enter the confirmation race
-    'BASIC_SEARCH': False,   # True = play only the basic technique (hill-climbing search, no rollouts/opponent model)
+    'BASIC_GREEDY': False,   # True = play only the basic technique (BFS-greedy plan) in movement phases
+    'CRN': True,             # False = bot_081 (fresh GA_SAMPLES per generation, unequal counts)
+    'CRN_BANK': 12,          # opponent samples every plan is scored on
     'ACC_GATE': True,        # False = bot_008 behaviour
     'ACC_GREEDY': 0.85,      # greedy-prediction hit rate at or above which a power is 'greedy'
     'ACC_STRONG': 0.4,       # hit rate at or above which (and below ACC_GREEDY) a power is 'strong'
@@ -483,7 +495,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_090_evolution_basicsearch'):
+    def __init__(self, agent_name='bot_084_evolution_crn'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -491,9 +503,6 @@ class StudentAgent(Agent):
         self.power_name = power_name
         self.obs = {}            # power -> [n_unit_orders, n_holds, n_moves, n_toward]
         self.seen_phases = set()
-        if CONFIG['BASIC_SEARCH']:
-            # basic technique alone: hill climbing with the raw-adjacency heuristic, no rollouts or opponent model
-            CONFIG.update(ROLLOUT=False, OPP_AWARE=False, ACC_GATE=False)
         try:
             self.info = map_info(game)
         except Exception:
@@ -668,6 +677,8 @@ class StudentAgent(Agent):
         own_scs = set(game.get_power(me).centers)
         targets = [sc for sc in info['scs'] if sc not in own_scs]
         target_set = set(targets)
+        if CONFIG['BASIC_GREEDY']:
+            return self._la_candidates(possible, locs, targets, random.Random(0))[0]
 
         enemy_reach, enemy_occ = {}, set()
         for p, power in game.powers.items():
@@ -1062,7 +1073,64 @@ class StudentAgent(Agent):
         confirm = CONFIG['CONFIRM'] and fast
         budget = CONFIG['TIME_BUDGET'] - (CONFIG['CONFIRM_T'] if confirm else 0.0)
         done = True
-        while time.perf_counter() - t0 < budget:
+        crn = CONFIG['CRN'] and fast
+        if crn:
+            bank = []
+            for _ in range(CONFIG['CRN_BANK']):
+                oo = {}
+                for p, lst in sample().items():
+                    parse_into(lst, oo)
+                bank.append(oo)
+            nb = len(bank)
+
+            def score_bank(st):
+                if len(st) < 4:
+                    d = {}
+                    parse_into(st[0], d)
+                    st.append(d)
+                tot = 0.0
+                for oo in bank:
+                    if time.perf_counter() - t0 > budget:
+                        return False
+                    orders = dict(oo)
+                    orders.update(st[3])
+                    u1 = resolve_moves(units0, orders, reach_f)[0]
+                    if two:
+                        u1 = fall_reply_fast(u1)
+                    tot += score_units(u1)
+                st[1], st[2] = tot, nb
+                return True
+
+        while crn and time.perf_counter() - t0 < budget:
+            for key, st in list(pop.items()):
+                if st[2] < nb and not score_bank(st):
+                    done = False
+                    break
+            if not done:
+                pop = {k: v for k, v in pop.items() if v[2] >= nb}
+                break
+            ranked = sorted(pop.items(), key=lambda kv: -kv[1][1])
+            keep = dict(ranked[:max(2, CONFIG['GA_POP'] // 2)])
+            parents = [v[0] for v in keep.values()]
+            tries = 0
+            while len(keep) < CONFIG['GA_POP'] and tries < CONFIG['GA_POP'] * 5:
+                tries += 1
+                a, b = rng.sample(parents, 2)
+                da = {' '.join(o.split()[:2]): o for o in a}
+                db = {' '.join(o.split()[:2]): o for o in b}
+                child = []
+                for u in units:
+                    o = db.get(u) if (u in db and rng.random() < 0.5) else da.get(u, db.get(u))
+                    if rng.random() < CONFIG['GA_MUT']:
+                        o = rng.choice(genes[u])
+                    if o:
+                        child.append(o)
+                child = repair(child)
+                keep.setdefault(tuple(sorted(child)), [child, 0.0, 0])
+            pop = keep
+        if crn:
+            pop = {k: v for k, v in pop.items() if v[2] >= nb}
+        while not crn and time.perf_counter() - t0 < budget:
             for _ in range(CONFIG['GA_SAMPLES']):
                 opp = sample()
                 if fast:

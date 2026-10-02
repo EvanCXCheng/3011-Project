@@ -1,11 +1,20 @@
-"""bot_090 — family: evolution — parent: bot_081 (= bot_075 play)
+"""bot_086 — family: evolution — parent: bot_081 (= bot_075 play)
 
-Change vs bot_081: none in default play. The basic-technique switch now selects the hill-climbing search baseline
-instead of the BFS-greedy plan (human request, 2 Oct): BASIC_GREEDY is removed and BASIC_SEARCH (default False) added.
-BASIC_SEARCH=True plays the basic technique alone: local search (hill climbing with random restarts) over our joint
-orders, scored by the heuristic evaluation with the raw-adjacency threat model, i.e. it sets ROLLOUT, OPP_AWARE and
-ACC_GATE to False (no simulation/GA, no opponent classes). The spec (rubric note [3]) requires the basic technique to
-be implemented in the submitted code; this lets it be evaluated from agent_21.py (--set BASIC_SEARCH=true).
+Change vs bot_081 (one idea): a defensive candidate plan in the GA's pool. The GA can only recombine orders present
+in some candidate; almost none contains support-holds of our own centres, and the champion's weakest seats are the
+central powers overrun early in S3 (Austria 13.1 SC / 62%, [104]). The defensive plan starts from the BFS-greedy plan,
+then for every own SC an enemy unit can reach: our unit on it holds and one neighbouring unit of ours supports that
+hold; an empty threatened SC gets one of our adjacent units moved in. DEF_CANDS False = bot_081.
+
+bot_081 notes:
+bot_081 — family: evolution — parent: bot_075
+
+Change vs bot_075: none in default play. Adds the switch BASIC_GREEDY (default False) that makes every movement phase
+play the pure basic technique: the BFS-greedy plan (each unit takes the move or hold closest to an unowned SC by BFS
+distance per unit type, +3 for landing on one; units in order of best score; no two units into one province) — the
+first plan of _la_candidates. The spec (rubric note [3]) requires the basic technique to be implemented in the
+submitted code; this lets it be evaluated from agent_21.py itself (--set BASIC_GREEDY=true). Retreats and builds are
+unchanged in both modes.
 
 bot_075 notes:
 bot_075 — family: evolution — parent: bot_072
@@ -143,7 +152,8 @@ CONFIG = {
     'CONFIRM': True,         # False = bot_072 (play the GA's best mean)
     'CONFIRM_T': 0.07,       # s reserved at the end of TIME_BUDGET for the confirmation race
     'CONFIRM_K': 5,          # GA plans that enter the confirmation race
-    'BASIC_SEARCH': False,   # True = play only the basic technique (hill-climbing search, no rollouts/opponent model)
+    'BASIC_GREEDY': False,   # True = play only the basic technique (BFS-greedy plan) in movement phases
+    'DEF_CANDS': True,       # False = bot_081 (no defensive candidate)
     'ACC_GATE': True,        # False = bot_008 behaviour
     'ACC_GREEDY': 0.85,      # greedy-prediction hit rate at or above which a power is 'greedy'
     'ACC_STRONG': 0.4,       # hit rate at or above which (and below ACC_GREEDY) a power is 'strong'
@@ -483,7 +493,7 @@ def _unit_split(u):
 # ----------------------------------------------------------------------------------------------------------------
 class StudentAgent(Agent):
 
-    def __init__(self, agent_name='bot_090_evolution_basicsearch'):
+    def __init__(self, agent_name='bot_086_evolution_defcand'):
         super().__init__(agent_name)
 
     def new_game(self, game, power_name):
@@ -491,9 +501,6 @@ class StudentAgent(Agent):
         self.power_name = power_name
         self.obs = {}            # power -> [n_unit_orders, n_holds, n_moves, n_toward]
         self.seen_phases = set()
-        if CONFIG['BASIC_SEARCH']:
-            # basic technique alone: hill climbing with the raw-adjacency heuristic, no rollouts or opponent model
-            CONFIG.update(ROLLOUT=False, OPP_AWARE=False, ACC_GATE=False)
         try:
             self.info = map_info(game)
         except Exception:
@@ -668,6 +675,8 @@ class StudentAgent(Agent):
         own_scs = set(game.get_power(me).centers)
         targets = [sc for sc in info['scs'] if sc not in own_scs]
         target_set = set(targets)
+        if CONFIG['BASIC_GREEDY']:
+            return self._la_candidates(possible, locs, targets, random.Random(0))[0]
 
         enemy_reach, enemy_occ = {}, set()
         for p, power in game.powers.items():
@@ -882,6 +891,13 @@ class StudentAgent(Agent):
                 vm = self._vm_movement(possible, locs, self._vm_value_map(), t0)
                 if vm and tuple(sorted(vm)) not in {tuple(sorted(c)) for c in cand_orders}:
                     cand_orders.append(vm)
+            except Exception:
+                pass
+        if CONFIG['DEF_CANDS']:
+            try:
+                dp = self._def_candidate(possible, locs, targets)
+                if dp and tuple(sorted(dp)) not in {tuple(sorted(c)) for c in cand_orders}:
+                    cand_orders.append(dp)
             except Exception:
                 pass
         try:
@@ -1149,6 +1165,54 @@ class StudentAgent(Agent):
                 best = pop[top[max(range(len(top)), key=lambda i: (tot[i], -i))]][0]
         cand_orders.append(best)
         return len(cand_orders) - 1
+
+    def _def_candidate(self, possible, locs, targets):
+        """Greedy plan, then hold + support-hold (or reoccupy) every own SC an enemy unit can reach."""
+        me = self.power_name
+        game = self.game
+        base = self._la_candidates(possible, locs, targets, random.Random(1))[0]
+        plan = {' '.join(o.split()[:2]): o for o in base}
+        reach = self.info['reach']
+        threat = set()
+        for p, pw in game.powers.items():
+            if p == me:
+                continue
+            for u in pw.units:
+                t, loc = _unit_split(u)
+                threat |= reach[t].get(loc, set())
+        mine = {}
+        for u in game.get_power(me).units:
+            t, loc = _unit_split(u)
+            mine[_base(loc)] = f'{t} {loc}'
+        own = set(game.get_power(me).centers)
+        used = set()
+        for sc in sorted(own & threat):
+            opts_of = {}
+            for b in locs:
+                for o in possible.get(b) or []:
+                    opts_of.setdefault(' '.join(o.split()[:2]), set()).add(o)
+            if sc in mine:
+                holder = mine[sc]
+                plan[holder] = f'{holder} H'
+                used.add(holder)
+                for u, opts in opts_of.items():
+                    if u in used or u == holder:
+                        continue
+                    so = f'{u} S {holder}'
+                    if so in opts:
+                        plan[u] = so
+                        used.add(u)
+                        break
+            else:
+                for u, opts in opts_of.items():
+                    if u in used:
+                        continue
+                    mv = [o for o in opts if len(o.split()) == 4 and o.split()[2] == '-' and _base(o.split()[3]) == sc]
+                    if mv:
+                        plan[u] = mv[0]
+                        used.add(u)
+                        break
+        return [plan[u] for u in sorted(plan)]
 
     # valuemap candidate generator (ported from bot_014)
     def _vm_value_map(self):
