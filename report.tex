@@ -19,7 +19,7 @@
  
 \maketitle                         
 
-\section{Basic Technique}
+\section{Basic Technique (~ lines 695 - 800)}
 Our basic technique is a search algorithm over orders to find the best moves for our units. It finds each possible move for each unit, and then performs hill climbing, starting with all units holding 
 and repeatedly changing a unit's order if it improves the score.
 That score is heuristically calculated based on the probability of it succeeding (actually taking a space), and the value of that space, increased based on proximity to a supply centre and then more so for holding or taking a supply centre.
@@ -36,7 +36,7 @@ Overall, we think this should be a solvable problem, and the agent should be abl
 
 \section{New Techniques}
 
-\underline{1: Tracking enemy behaviour to identify agent tendencies}
+\underline{1: Tracking enemy behaviour to identify agent tendencies (~lines 480-600)}
 
 Our first improvement was directly intended to solve the problem we ran into above, where we are better against some agents than others. If we could determine which type opposing agents are, then we can adjust our strategies to 
 more reliably work against them (just like in real life games). 
@@ -54,7 +54,7 @@ perhaps because we were already performing about as well against opposing agents
 Notably, our first iteration of this strategy did not consider the strong opponent category, and our simulations of scenario 3, where we used one of our own planning bots as a stand-in for the hidden agent, became worse by -1.23 supply centres
 on average (with an average count of 9.95 centres). Because the stronger bot did not cleanly fit into being static or greedy, it was classified as erratic, leading our bot to make inaccurate predictions assuming randomness from the bot. The addition of the strong agent type rectified this, bringing back the performance in this S3 simulation to 11.42 supply centres on average.
 
-\underline{2: Top-k hill climb selection}
+\underline{2: Top-k hill climb selection (in hill climb, saved in lines 800-819 and survivors checked in 1042-1065)}
 
 Initially, the search process was to run separate restarting hill climbs, and then take the best orders found. As checking the actual likelihood of each move succeeding, especially against now measured opponents, must be done many times in hill climbing, we required a
 fast heuristic to be able to calculate many prospective moves. However, a quickly computed heuristic can be inaccurate, especially in choosing the best from a set of good plans.
@@ -64,7 +64,7 @@ their agent type. These sets of opponent moves (about 120 simulations per turn) 
 This improvement held our success in scenario 1, and improved our performance in scenario 2, pushing us up only slightly in supply centres to around 15 but improving our winrate substantially to around 60\%, to be expected as a way of capitalising 
 more on our opponent behaviour tracking. 
 
-\underline{3: Genetic Algorithm}
+\underline{3: Genetic Algorithm (~lines 970 - 1050)}
 
 A genetic algorithm was implemented to further improve the hill climbing search. Genetic algorithms work by creating a population of solutions, and iteratively selecting the best solutions (computed using a heuristic called a fitness function)
 to combine with each other to create new solutions, with some random mutations which can introduce novel solutions. Solutions are combined by mixing 'genes', elements of the solution. We chose to implement a genetic algorithm, as we observed that of the plans created by hill climbing, some could have good moves
@@ -100,4 +100,15 @@ As per the spec, only the idea was used without any use of DumBot's actual code.
 
 D.~Norman, ``DumbBot'' (2003), algorithm summary in \emph{DAIDE - Diplomacy Artificial Intelligence Development
 Environment}. Available: \url{http://www.daide.org.uk/s0003.html}.
+
+Hill climbing was found in initial search algorithm exploration, explored to be assessed for usefulness here (https://www.sciencedirect.com/topics/computer-science/hill-climbing) 
+and then implemented with LLM help. 
+
+Top-k was suggested by us as something that has been seen as useful before in other algorithms and was considered a possible route of 
+improvement
+
+The genetic algorithm was identified as a possible extension in the original hill climbing link, explored further in this blog post (https://www.woodruff.dev/day-24-combining-genetic-algorithms-with-hill-climbing-the-hybrid-memetic-approach/)
+and then approved for potential use and continued with the help of an LLM.
+
+
 \end{document}
